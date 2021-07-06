@@ -10,8 +10,28 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@apollo/client": "^3.3.20",
+    "@react-native-async-storage/async-storage": "^1.15.5",
+    "@react-native-community/masked-view": "^0.1.11",
+    "@react-navigation/drawer": "^5.12.5",
+    "@react-navigation/material-top-tabs": "^5.3.15",
+    "@react-navigation/native": "^5.9.4",
+    "@react-navigation/stack": "^5.14.5",
+    "graphql": "^15.5.1",
     "react": "17.0.1",
-    "react-native": "0.64.2"
+    "react-dom": "^17.0.2",
+    "react-native": "0.64.2",
+    "react-native-dotenv": "^3.0.0",
+    "react-native-elements": "^3.4.2",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-pager-view": "^5.2.1",
+    "react-native-reanimated": "^2.2.0",
+    "react-native-safe-area-context": "^3.2.0",
+    "react-native-screens": "^3.4.0",
+    "react-native-swiper": "^1.6.0",
+    "react-native-tab-view": "^3.0.1",
+    "react-native-vector-icons": "^8.1.0",
+    "react-native-web": "^0.17.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
