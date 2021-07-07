@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     borderRadius: 10,
   },
-  btnText: {
+  titleText: {
     color: Colors.white,
     fontFamily: 'Sailec',
     fontSize: 16,
@@ -24,27 +24,28 @@ const styles = StyleSheet.create({
 });
 
 // SERVERS ---------------------------------------------------------
-const serveBtnTitle = title => {
+const serveBtnTitle = props => {
   return (
-    <View>
-      <Text style={styles.btnText}>{title}</Text>
-    </View>
+    <Text style={{...styles.titleText, ...props.titleStyling}}>
+      {props.title}
+    </Text>
   );
 };
-const serveBtnImage = image => {
-  return <View style={styles.imageContainer}>{image}</View>;
+const serveBtnImage = props => {
+  return (
+    <View style={{...styles.imageContainer, ...props.imageStyling}}>
+      {props.image}
+    </View>
+  );
 };
 
 // RETURN ---------------------------------------------------------
 const CustomButton = props => {
-  const title = props.title;
-  const image = props.image;
-
   return (
     <TouchableOpacity onPress={props.onPress}>
       <View style={{...styles.container, ...props.style}}>
-        {title && serveBtnTitle(title)}
-        {image && serveBtnImage(image)}
+        {props.title && serveBtnTitle(props)}
+        {props.image && serveBtnImage(props)}
       </View>
     </TouchableOpacity>
   );

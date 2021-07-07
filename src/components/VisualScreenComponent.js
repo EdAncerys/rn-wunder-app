@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import Colors from '../config/colors';
+import CustomButton from './CustomButton';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
   skipAction: {
     alignItems: 'flex-end',
     paddingTop: '15%',
-    paddingHorizontal: '10%',
+    paddingHorizontal: '5%',
   },
   skipText: {
     color: Colors.white,
@@ -55,13 +56,12 @@ const VisualScreenComponent = ({
     <ImageBackground source={background} style={styles.imgBackground}>
       <View style={styles.container}>
         <View style={styles.skipAction}>
-          <TouchableOpacity>
-            <Text
-              style={styles.skipText}
-              onPress={() => navigation.navigate('CreateAccountScreen')}>
-              skip
-            </Text>
-          </TouchableOpacity>
+          <CustomButton
+            onPress={() => navigation.navigate('CreateAccountScreen')}
+            title="skip"
+            style={{backgroundColor: Colors.transparent}}
+            titleStyling={{fontSize: 12}}
+          />
         </View>
         <View style={styles.titleContainer}>
           <Text style={styles.titleText}>{rowOneText}</Text>
