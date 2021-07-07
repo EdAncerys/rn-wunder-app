@@ -1,14 +1,8 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import {View, StyleSheet, ImageBackground, Image} from 'react-native';
 
 import Colors from '../../config/colors';
+import CustomButton from '../../components/CustomButton';
 import Background from '../../assets/images/onboardingOverSixteen/splash-screen-background.png';
 import Logo from '../../assets/images/onboardingOverSixteen/splash-screen-logo.png';
 
@@ -46,13 +40,11 @@ const SplashScreen = ({navigation}) => {
           <Image source={Logo} />
         </View>
         <View style={styles.actionsContainer}>
-          <TouchableOpacity onPress={() => alert('path')}>
-            <Text
-              style={styles.startActionText}
-              onPress={() => navigation.navigate('Visual')}>
-              Tap to Start
-            </Text>
-          </TouchableOpacity>
+          <CustomButton
+            onPress={() => navigation.navigate('Visual')}
+            title="Tap to Start"
+            style={{backgroundColor: Colors.transparent}}
+          />
         </View>
       </View>
     </ImageBackground>
