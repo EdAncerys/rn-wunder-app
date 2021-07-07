@@ -11,7 +11,7 @@ const App = () => {
     <AuthProvider>
       <ApiProvider>
         <NavigationContainer>
-          <ScreenAuth />
+          <AppNavigator />
         </NavigationContainer>
       </ApiProvider>
     </AuthProvider>

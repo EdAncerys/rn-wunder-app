@@ -32,12 +32,12 @@ const styles = StyleSheet.create({
   },
   startActionText: {
     color: Colors.white,
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 16,
   },
 });
 
-const SplashScreen = ({ navigation }) => {
+const SplashScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ImageBackground source={Background} style={styles.imgBackground}>
@@ -48,8 +48,7 @@ const SplashScreen = ({ navigation }) => {
           <TouchableOpacity onPress={() => alert('path')}>
             <Text
               style={styles.startActionText}
-              onPress={() => navigation.navigate('Visual')}
-            >
+              onPress={() => navigation.navigate('Visual')}>
               Tap to Start
             </Text>
           </TouchableOpacity>

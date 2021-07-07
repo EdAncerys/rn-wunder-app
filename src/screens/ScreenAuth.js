@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   Text,
@@ -14,6 +14,7 @@ import {
   logOut,
   signUp,
 } from '../context/auth';
+import {useApiDispatch} from '../context/api';
 
 const styles = StyleSheet.create({
   container: {
@@ -48,9 +49,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const ScreenAuth = ({ navigation }) => {
+const ScreenAuth = ({navigation}) => {
   const dispatchAuth = useAuthDispatch();
-  const { jwt, user } = useAuthState();
+  const dispatchApi = useApiDispatch();
+  const {jwt, user} = useAuthState();
 
   const [logInEmail, setLogInEmail] = useState('');
   const [logInPassword, setLogInPassword] = useState('');
@@ -60,8 +62,8 @@ const ScreenAuth = ({ navigation }) => {
 
   // HANDLERS ---------------------------------------------------------
   const handleLogIn = () => {
-    const logInData = { identifier: logInEmail, password: logInPassword };
-    logIn({ dispatchAuth, logInData });
+    const logInData = {identifier: logInEmail, password: logInPassword};
+    logIn({dispatchAuth, dispatchApi, logInData});
     setLogInEmail('');
     setLogInPassword('');
   };
@@ -72,17 +74,17 @@ const ScreenAuth = ({ navigation }) => {
       email: signUpEmail,
       password: signUpPassword,
     };
-    signUp({ dispatchAuth, newUserData });
+    signUp({dispatchApi, dispatchAuth, newUserData});
     setSignUpEmail('');
     setSignUpPassword('');
   };
 
   const handleLogOut = () => {
-    logOut({ dispatchAuth });
+    logOut({dispatchAuth});
   };
 
   // SERVERS ---------------------------------------------------------
-  const serveUserInfo = (user) => {
+  const serveUserInfo = user => {
     if (user.role.type === 'authenticated') {
       return (
         <View style={styles.containerMessage}>
