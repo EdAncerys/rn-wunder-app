@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground, Image} from 'react-native';
 
 import Colors from '../../config/colors';
 import Background from '../../assets/images/onboardingOverSixteen/splash-screen-background.png';
@@ -27,7 +20,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: '25%',
+    paddingTop: '30%',
   },
   actionsContainer: {
     alignItems: 'center',
@@ -40,6 +33,7 @@ const styles = StyleSheet.create({
   dividerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    paddingVertical: 10,
   },
   textDivider: {
     color: Colors.white,
@@ -51,11 +45,6 @@ const styles = StyleSheet.create({
     width: 16,
     borderBottomWidth: 1,
     marginHorizontal: 8,
-  },
-  loginActionText: {
-    color: Colors.white,
-    fontFamily: 'Sailec',
-    fontSize: 16,
   },
 });
 
@@ -79,11 +68,11 @@ const CreateAccountScreen = ({navigation}) => {
             <Text style={styles.textDivider}>Or</Text>
             <View style={styles.dash}></View>
           </View>
-          <TouchableOpacity
+          <CustomButton
             onPress={() => navigation.navigate('Login')}
-            style={{alignSelf: 'center', marginTop: 20}}>
-            <Text style={styles.loginActionText}>Login to your account</Text>
-          </TouchableOpacity>
+            title="Login to your account"
+            style={{backgroundColor: Colors.transparent}}
+          />
         </View>
       </View>
     </ImageBackground>

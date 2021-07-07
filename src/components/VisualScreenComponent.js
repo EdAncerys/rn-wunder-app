@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 
 import Colors from '../config/colors';
 import CustomButton from './CustomButton';
