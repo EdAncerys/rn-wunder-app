@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useAuthState, useAuthDispatch, logIn } from '../../context/auth';
+import React, {useState, useEffect} from 'react';
+import {useAuthState, useAuthDispatch, logIn} from '../../context/auth';
 
 import {
   View,
@@ -40,12 +40,12 @@ const styles = StyleSheet.create({
   },
   titleText: {
     color: Colors.white,
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 28,
   },
   infoText: {
     color: Colors.white,
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 12,
   },
   loginContainer: {
@@ -60,17 +60,17 @@ const styles = StyleSheet.create({
 });
 
 const platform = Platform.OS;
-const UploadIdentity = ({ navigation }) => {
+const UploadIdentity = ({navigation}) => {
   const dispatchAuth = useAuthDispatch();
-  const { jwt, user } = useAuthState();
+  const {jwt, user} = useAuthState();
 
   const [logInEmail, setLogInEmail] = useState('');
   const [logInPassword, setLogInPassword] = useState('');
 
   // HANDLERS ---------------------------------------------------------
   const handleLogIn = () => {
-    const logInData = { identifier: logInEmail, password: logInPassword };
-    logIn({ dispatchAuth, logInData });
+    const logInData = {identifier: logInEmail, password: logInPassword};
+    logIn({dispatchAuth, logInData});
     setLogInEmail('');
     setLogInPassword('');
   };
@@ -82,8 +82,7 @@ const UploadIdentity = ({ navigation }) => {
   return (
     <KeyboardAvoidingView
       behavior={platform === 'ios' ? 'padding' : null}
-      style={styles.container}
-    >
+      style={styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.titleText}>Login Screen</Text>
         <Text style={styles.titleText}>Layout TBC</Text>

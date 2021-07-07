@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 import Colors from '../config/colors';
 
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
   btnText: {
     color: Colors.white,
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 16,
     padding: 12,
   },
@@ -24,25 +24,25 @@ const styles = StyleSheet.create({
 });
 
 // SERVERS ---------------------------------------------------------
-const serveBtnTitle = (title) => {
+const serveBtnTitle = title => {
   return (
     <View>
       <Text style={styles.btnText}>{title}</Text>
     </View>
   );
 };
-const serveBtnImage = (image) => {
+const serveBtnImage = image => {
   return <View style={styles.imageContainer}>{image}</View>;
 };
 
 // RETURN ---------------------------------------------------------
-const CustomButton = (props) => {
+const CustomButton = props => {
   const title = props.title;
   const image = props.image;
 
   return (
     <TouchableOpacity onPress={props.onPress}>
-      <View style={{ ...styles.container, ...props.style }}>
+      <View style={{...styles.container, ...props.style}}>
         {title && serveBtnTitle(title)}
         {image && serveBtnImage(image)}
       </View>

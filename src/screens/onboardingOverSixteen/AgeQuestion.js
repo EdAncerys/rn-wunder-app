@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, ImageBackground } from 'react-native';
+import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 
 import Colors from '../../config/colors';
 import Background from '../../assets/images/onboardingOverSixteen/age-question-background.png';
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   },
   textDivider: {
     color: Colors.white,
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 12,
   },
   dash: {
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     color: Colors.white,
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 28,
   },
   navigateActionContainer: {
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const AgeQuestion = ({ navigation }) => {
+const AgeQuestion = ({navigation}) => {
   return (
     <ImageBackground source={Background} style={styles.imgBackground}>
       <View style={styles.container}>
@@ -88,8 +88,7 @@ const AgeQuestion = ({ navigation }) => {
             style={{
               ...styles.overSixteenContainer,
               ...styles.underSixteenContainer,
-            }}
-          >
+            }}>
             <CustomButton
               title="Under 16"
               // onPress={() => navigation.navigate('AgeIdentity')}

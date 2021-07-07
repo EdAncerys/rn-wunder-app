@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useAuthState, useAuthDispatch, logOut } from '../../context/auth';
+import React, {useEffect} from 'react';
+import {useAuthState, useAuthDispatch, logOut} from '../../context/auth';
 import {
   View,
   Text,
@@ -51,19 +51,19 @@ const styles = StyleSheet.create({
   },
   textStyleOne: {
     color: Colors.white,
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 16,
     paddingHorizontal: 10,
   },
   textStyleTwo: {
     color: Colors.white,
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 24,
     paddingVertical: 10,
   },
   textStyleThree: {
     color: Colors.planet,
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 16,
   },
   planetBadge: {
@@ -73,13 +73,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const Home = ({ navigation }) => {
+const Home = ({navigation}) => {
   const dispatchAuth = useAuthDispatch();
-  const { jwt, user } = useAuthState();
+  const {jwt, user} = useAuthState();
 
   // HANDLERS ---------------------------------------------------------
   const handleLogOut = () => {
-    logOut({ dispatchAuth });
+    logOut({dispatchAuth});
   };
 
   useEffect(() => {

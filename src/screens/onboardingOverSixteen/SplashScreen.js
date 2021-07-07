@@ -15,6 +15,7 @@ import Logo from '../../assets/images/onboardingOverSixteen/splash-screen-logo.p
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, .4)',
   },
   imgBackground: {
     flex: 1,
@@ -39,8 +40,8 @@ const styles = StyleSheet.create({
 
 const SplashScreen = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <ImageBackground source={Background} style={styles.imgBackground}>
+    <ImageBackground source={Background} style={styles.imgBackground}>
+      <View style={styles.container}>
         <View style={styles.logoContainer}>
           <Image source={Logo} />
         </View>
@@ -53,8 +54,8 @@ const SplashScreen = ({navigation}) => {
             </Text>
           </TouchableOpacity>
         </View>
-      </ImageBackground>
-    </View>
+      </View>
+    </ImageBackground>
   );
 };
 

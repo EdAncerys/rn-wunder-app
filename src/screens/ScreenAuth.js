@@ -33,13 +33,13 @@ const styles = StyleSheet.create({
   },
   screenTitle: {
     textAlign: 'center',
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 20,
     paddingVertical: 5,
   },
   title: {
     textAlign: 'center',
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 15,
     paddingVertical: 5,
   },

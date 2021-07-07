@@ -32,12 +32,12 @@ const styles = StyleSheet.create({
   },
   titleText: {
     color: Colors.white,
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 16,
   },
   infoText: {
     color: Colors.white,
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 12,
   },
   navigateActionContainer: {

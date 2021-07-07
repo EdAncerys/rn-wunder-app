@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 import Colors from '../../config/colors';
 import CustomButton from '../../components/CustomButton';
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   textDivider: {
     color: Colors.white,
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 12,
   },
   dash: {
@@ -54,12 +54,12 @@ const styles = StyleSheet.create({
   },
   titleText: {
     color: Colors.white,
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 28,
   },
   infoText: {
     color: Colors.white,
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 12,
   },
   navigateActionContainer: {
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const UploadIdentity = ({ navigation }) => {
+const UploadIdentity = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.navigateActionContainer}>
@@ -107,8 +107,7 @@ const UploadIdentity = ({ navigation }) => {
           style={{
             ...styles.overSixteenContainer,
             ...styles.underSixteenContainer,
-          }}
-        >
+          }}>
           <CustomButton
             title="Passport"
             // onPress={() => navigation.navigate('AgeIdentity')}

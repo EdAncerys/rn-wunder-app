@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 
 import Colors from '../config/colors';
 import LeftIcon from '../assets/icons/back-left.png';
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   text: {
     color: Colors.white,
     textAlign: 'center',
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 16,
   },
   iconContainer: {},
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const NavigateAction = ({ title, onPress }) => {
+const NavigateAction = ({title, onPress}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.iconContainer} onPress={onPress}>

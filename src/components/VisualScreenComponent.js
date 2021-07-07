@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
   skipText: {
     color: Colors.white,
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 12,
     opacity: 0.6,
   },
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     color: Colors.white,
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 29,
     textAlign: 'center',
   },

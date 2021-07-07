@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   textDivider: {
     color: Colors.white,
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 12,
   },
   dash: {
@@ -54,12 +54,12 @@ const styles = StyleSheet.create({
   },
   loginActionText: {
     color: Colors.white,
-    // fontFamily: 'Sailec-Bold',
+    fontFamily: 'Sailec',
     fontSize: 16,
   },
 });
 
-const CreateAccountScreen = ({ navigation }) => {
+const CreateAccountScreen = ({navigation}) => {
   return (
     <ImageBackground source={Background} style={styles.imgBackground}>
       <View style={styles.container}>
@@ -81,8 +81,7 @@ const CreateAccountScreen = ({ navigation }) => {
           </View>
           <TouchableOpacity
             onPress={() => navigation.navigate('Login')}
-            style={{ alignSelf: 'center', marginTop: 20 }}
-          >
+            style={{alignSelf: 'center', marginTop: 20}}>
             <Text style={styles.loginActionText}>Login to your account</Text>
           </TouchableOpacity>
         </View>
