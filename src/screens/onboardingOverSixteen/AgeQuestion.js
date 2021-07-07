@@ -9,7 +9,7 @@ import NavigateAction from '../../components/NavigateAction';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, .4)',
+    backgroundColor: Colors.screenFilter,
   },
   imgBackground: {
     flex: 1,

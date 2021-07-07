@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     height: dotSize,
     borderRadius: dotSize / 2,
     marginRight: dotSize,
-    backgroundColor: 'rgba(255, 255, 255, 0.4)',
+    backgroundColor: Colors.matFilter,
   },
   activeDot: {
     marginRight: dotSize,

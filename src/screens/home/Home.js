@@ -17,12 +17,13 @@ import Wunder from '../../assets/icons/wunder.png';
 import VerifiedBadge from '../../assets/icons/verified-badge.png';
 import PlanetBadge from '../../assets/icons/planet-badge.png';
 import HeaderActions from '../../components/HeaderActions';
+import AppActions from '../../components/AppActions';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  imgBackground: {
+  background: {
     flex: 1,
     resizeMode: 'cover',
     justifyContent: 'center',
@@ -32,9 +33,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginHorizontal: '5%',
   },
-  actionsContainer: {
+  appActions: {
     flex: 2,
     justifyContent: 'center',
+    alignItems: 'flex-start',
+    marginHorizontal: '5%',
   },
   footerContainer: {
     flex: 3,
@@ -68,7 +71,6 @@ const styles = StyleSheet.create({
   },
   planetBadge: {
     flex: 1,
-    width: '100%',
     alignItems: 'center',
   },
 });
@@ -89,13 +91,15 @@ const Home = ({navigation}) => {
 
   return (
     <View style={styles.container}>
-      <ImageBackground source={Background} style={styles.imgBackground}>
+      <ImageBackground source={Background} style={styles.background}>
         <View style={styles.headerContainer}>
           <HeaderActions />
         </View>
-        <View style={styles.actionsContainer}>
-          <Text style={styles.textStyleOne}>Side Actions</Text>
+
+        <View style={styles.appActions}>
+          <AppActions />
         </View>
+
         <View style={styles.footerContainer}>
           <View style={styles.footerActions}>
             <View style={styles.rowComponent}>
@@ -106,6 +110,7 @@ const Home = ({navigation}) => {
             <View>
               <Text style={styles.textStyleTwo}>Healthy Eating</Text>
             </View>
+
             <View style={styles.rowComponent}>
               <TouchableOpacity>
                 <View>
@@ -118,9 +123,11 @@ const Home = ({navigation}) => {
                 </View>
               </TouchableOpacity>
               <View style={styles.planetBadge}>
-                <TouchableOpacity>
-                  <Image source={PlanetBadge} />
-                </TouchableOpacity>
+                <CustomButton
+                  image={<Image source={PlanetBadge} />}
+                  style={{backgroundColor: Colors.transparent}}
+                  onPress={() => alert('path')}
+                />
               </View>
             </View>
           </View>
