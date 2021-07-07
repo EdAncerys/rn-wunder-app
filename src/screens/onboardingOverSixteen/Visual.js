@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 import Swiper from 'react-native-swiper';
 import VisualOne from './VisualOne';
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Visual = ({ navigation }) => {
+const Visual = ({navigation}) => {
   return (
     <Swiper
       style={styles.wrapper}
@@ -39,8 +39,7 @@ const Visual = ({ navigation }) => {
       autoplay={true}
       paginationStyle={styles.pagination}
       dotStyle={styles.dot}
-      activeDotStyle={styles.activeDot}
-    >
+      activeDotStyle={styles.activeDot}>
       <VisualOne navigation={navigation} />
       <VisualTwo navigation={navigation} />
       <VisualThree navigation={navigation} />

@@ -1,6 +1,5 @@
 import {ApolloClient, createHttpLink, InMemoryCache} from '@apollo/client';
 import {GRAPHQL_URI} from '@env';
-console.log(GRAPHQL_URI);
 
 const httpLink = createHttpLink({
   uri: GRAPHQL_URI,

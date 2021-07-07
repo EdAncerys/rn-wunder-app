@@ -35,11 +35,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Sailec',
     fontSize: 16,
   },
-  infoText: {
-    color: Colors.white,
-    fontFamily: 'Sailec',
-    fontSize: 12,
-  },
   navigateActionContainer: {
     paddingTop: '20%',
     marginHorizontal: '5%',

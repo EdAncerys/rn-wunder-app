@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {useAuthState, useAuthDispatch, logOut} from '../../context/auth';
+import {useApiDispatch} from '../../context/api';
 import {
   View,
   Text,
@@ -75,11 +76,12 @@ const styles = StyleSheet.create({
 
 const Home = ({navigation}) => {
   const dispatchAuth = useAuthDispatch();
+  const dispatchApi = useApiDispatch();
   const {jwt, user} = useAuthState();
 
   // HANDLERS ---------------------------------------------------------
   const handleLogOut = () => {
-    logOut({dispatchAuth});
+    logOut({dispatchAuth, dispatchApi});
   };
 
   useEffect(() => {

@@ -31,12 +31,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
   },
-  screenTitle: {
-    textAlign: 'center',
-    fontFamily: 'Sailec',
-    fontSize: 20,
-    paddingVertical: 5,
-  },
   title: {
     textAlign: 'center',
     fontFamily: 'Sailec',
