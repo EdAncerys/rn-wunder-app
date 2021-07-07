@@ -1,6 +1,6 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 
 import SplashScreen from '../screens/onboardingOverSixteen/SplashScreen';
 import VisualOne from '../screens/onboardingOverSixteen/VisualOne';
@@ -11,6 +11,7 @@ import CreateAccountScreen from '../screens/onboardingOverSixteen/CreateAccountS
 import AgeQuestion from '../screens/onboardingOverSixteen/AgeQuestion';
 import UploadIdentity from '../screens/onboardingOverSixteen/UploadIdentity';
 import UploadLicenceFront from '../screens/onboardingOverSixteen/UploadLicenceFront';
+import UploadPassport from '../screens/onboardingOverSixteen/UploadPassport';
 import Visual from '../screens/onboardingOverSixteen/Visual';
 import Login from '../screens/onboardingOverSixteen/Login';
 import Home from '../screens/home/Home';
@@ -24,74 +25,78 @@ const onboardingOverSixteen = () => {
       tabBarOptions={{
         activeTintColor: '#e91e63',
         tabBarVisible: false,
-      }}
-    >
+      }}>
       <Tab.Screen
         name="VisualOne"
         component={VisualOne}
-        options={{ title: 'vOne' }}
+        options={{title: 'vOne'}}
       />
       <Tab.Screen
         name="VisualTwo"
         component={VisualTwo}
-        options={{ title: 'vTwo' }}
+        options={{title: 'vTwo'}}
       />
       <Tab.Screen
         name="VisualThree"
         component={VisualThree}
-        options={{ title: 'vThree' }}
+        options={{title: 'vThree'}}
       />
       <Tab.Screen
         name="VisualFour"
         component={VisualFour}
-        options={{ title: 'vFour' }}
+        options={{title: 'vFour'}}
       />
     </Tab.Navigator>
   );
 };
 
-const Router = ({ props }) => {
+const Router = ({props}) => {
   return (
     <Stack.Navigator initialRouteName="SplashScreen">
       <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="Visual"
         component={Visual}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="CreateAccountScreen"
         component={CreateAccountScreen}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="AgeQuestion"
         component={AgeQuestion}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="UploadIdentity"
         component={UploadIdentity}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="UploadLicenceFront"
         component={UploadLicenceFront}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="UploadPassport"
+        component={UploadPassport}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="Login"
         component={Login}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="Home"
         component={Home}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );

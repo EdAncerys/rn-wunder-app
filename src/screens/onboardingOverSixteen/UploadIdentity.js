@@ -110,8 +110,7 @@ const UploadIdentity = ({navigation}) => {
           }}>
           <CustomButton
             title="Passport"
-            // onPress={() => navigation.navigate('AgeIdentity')}
-            onPress={() => alert('path')}
+            onPress={() => navigation.navigate('UploadPassport')}
           />
         </View>
       </View>

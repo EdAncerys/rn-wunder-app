@@ -4,7 +4,7 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import Colors from '../../config/colors';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
-import LicenceImage from '../../assets/images/onboardingOverSixteen/upload-licence-front.png';
+import PassportImage from '../../assets/images/onboardingOverSixteen/upload-passport.png';
 import RightArrow from '../../assets/icons/right-arrow.png';
 
 const styles = StyleSheet.create({
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const UploadLicenceFront = ({navigation}) => {
+const UploadPassport = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.navigateActionContainer}>
@@ -61,7 +61,7 @@ const UploadLicenceFront = ({navigation}) => {
         <Text style={styles.titleText}>front of your licence</Text>
       </View>
       <View style={styles.imageContainer}>
-        <Image source={LicenceImage} />
+        <Image source={PassportImage} />
       </View>
 
       <View style={styles.actionsContainer}>
@@ -75,4 +75,4 @@ const UploadLicenceFront = ({navigation}) => {
   );
 };
 
-export default UploadLicenceFront;
+export default UploadPassport;
