@@ -1,34 +1,35 @@
 import React from 'react';
-import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import {View, StyleSheet, Image} from 'react-native';
 
+import Colors from '../config/colors';
 import LeftIcon from '../assets/icons/notifications.png';
 import RightIcon from '../assets/icons/wallet.png';
+import CustomButton from './CustomButton';
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    justifyContent: 'space-between',
   },
-  leftIconContainer: {
-    flex: 1,
-  },
-  rightIconContainer: {},
 });
 
-const HeaderActions = ({ onPressLeftAction, onPressRightAction }) => {
+const HeaderActions = props => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.leftIconContainer}
-        onPress={onPressLeftAction}
-      >
-        <Image source={LeftIcon} />
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.rightIconContainer}
-        onPress={onPressRightAction}
-      >
-        <Image source={RightIcon} />
-      </TouchableOpacity>
+      <View>
+        <CustomButton
+          style={{backgroundColor: Colors.transparent}}
+          image={<Image source={LeftIcon} />}
+          onPress={() => alert('path')}
+        />
+      </View>
+      <View>
+        <CustomButton
+          style={{backgroundColor: Colors.transparent}}
+          image={<Image source={RightIcon} />}
+          onPress={() => alert('path')}
+        />
+      </View>
     </View>
   );
 };

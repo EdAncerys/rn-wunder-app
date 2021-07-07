@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
     padding: 12,
   },
   imageContainer: {
-    paddingVertical: 15,
-    paddingHorizontal: 25,
+    paddingVertical: 5,
+    paddingHorizontal: 5,
   },
 });
 
