@@ -32,21 +32,25 @@ const actions = [
     image: <Image source={CommentIcon} style={styles.icon} />,
     count: 346,
     onPress: () => alert('path'),
+    id: 1,
   },
   {
     image: <Image source={Apploud} />,
     count: 99,
     onPress: () => alert('path'),
+    id: 2,
   },
   {
     image: <Image source={ShoutOut} />,
     count: 99,
     onPress: () => alert('path'),
+    id: 3,
   },
   {
     image: <Image source={Comment} />,
     count: 99,
     onPress: () => alert('path'),
+    id: 4,
   },
 ];
 
@@ -57,6 +61,7 @@ const AppActions = props => {
         {actions.map(action => {
           return (
             <IconActions
+              key={action.id}
               actionImage={action.image}
               actionTitle={action.count}
               onPress={action.onPress}

@@ -1,15 +1,12 @@
-import React, {useEffect} from 'react';
-import {useAuthState, useAuthDispatch, logOut} from '../../context/auth';
-import {useApiDispatch} from '../../context/api';
+import React from 'react';
 import {View, StyleSheet, ImageBackground, Image} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import Colors from '../../config/colors';
-import CustomButton from '../../components/CustomButton';
-import Background from '../../assets/images/home/home-background.png';
+import Background from '../../assets/images/home/home-exp-one-background.png';
 import PostSnapshot from '../../components/PostSnapshot';
-import Wunder from '../../assets/icons/wunder.png';
-import HeaderActions from '../../components/HeaderActions';
+import GreatOrmand from '../../assets/icons/great-ormand.png';
+import AppNavigateActions from '../../components/AppNavigateActions';
 import AppActions from '../../components/AppActions';
 
 const styles = StyleSheet.create({
@@ -24,6 +21,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     flex: 1,
     justifyContent: 'center',
+    paddingTop: '15%',
     marginHorizontal: '5%',
   },
   appActions: {
@@ -39,20 +37,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const HomeExpOne = ({navigation}) => {
-  const dispatchAuth = useAuthDispatch();
-  const dispatchApi = useApiDispatch();
-  const {jwt, user} = useAuthState();
-
-  // HANDLERS ---------------------------------------------------------
-  const handleLogOut = () => {
-    logOut({dispatchAuth, dispatchApi});
-  };
-
-  useEffect(() => {
-    if (!jwt) navigation.navigate('Login');
-  }, [user]);
-
+const HomeExpTwo = ({navigation}) => {
   return (
     <ImageBackground source={Background} style={styles.background}>
       <LinearGradient
@@ -60,7 +45,7 @@ const HomeExpOne = ({navigation}) => {
         start={{x: 0.4, y: 0.4}}
         style={styles.container}>
         <View style={styles.headerContainer}>
-          <HeaderActions />
+          <AppNavigateActions />
         </View>
 
         <View style={styles.appActions}>
@@ -69,18 +54,16 @@ const HomeExpOne = ({navigation}) => {
 
         <View style={styles.postContainer}>
           <PostSnapshot
-            profileIcon={<Image source={Wunder} />}
+            profileIcon={<Image source={GreatOrmand} />}
             profileName="@greatormondst"
             verified={true}
-            title="Healthy Eating"
-            post="It’s recommended that you eat at least 5 portions of a variety"
-            postTag="planet"
+            title="The difference we make, together"
+            post="Helps us to transform the lives of seriously ill children. Every d"
           />
-          <CustomButton title="Logout" onPress={() => handleLogOut()} />
         </View>
       </LinearGradient>
     </ImageBackground>
   );
 };
 
-export default HomeExpOne;
+export default HomeExpTwo;
