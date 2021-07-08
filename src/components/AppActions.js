@@ -2,9 +2,11 @@ import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 
 import Colors from '../config/colors';
-import LeftIcon from '../assets/icons/notifications.png';
-import RightIcon from '../assets/icons/wallet.png';
 import IconActions from './IconActions';
+import CommentIcon from '../assets/icons/comment-icon.png';
+import Apploud from '../assets/icons/applaud.png';
+import ShoutOut from '../assets/icons/shout-out.png';
+import Comment from '../assets/icons/comment.png';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,26 +18,35 @@ const styles = StyleSheet.create({
     minHeight: 40,
     borderWidth: 2,
     borderRadius: 24,
-    paddingHorizontal: 4,
     paddingVertical: 8,
+    paddingHorizontal: 4,
     borderColor: Colors.white,
     backgroundColor: Colors.blurFilter,
+  },
+  icon: {
+    width: 24,
+    height: 24,
   },
 });
 
 const actions = [
   {
-    image: <Image source={LeftIcon} />,
+    image: <Image source={CommentIcon} style={styles.icon} />,
+    count: 346,
+    onPress: () => alert('path'),
+  },
+  {
+    image: <Image source={Apploud} />,
     count: 99,
     onPress: () => alert('path'),
   },
   {
-    image: <Image source={LeftIcon} />,
+    image: <Image source={ShoutOut} />,
     count: 99,
     onPress: () => alert('path'),
   },
   {
-    image: <Image source={LeftIcon} />,
+    image: <Image source={Comment} />,
     count: 99,
     onPress: () => alert('path'),
   },

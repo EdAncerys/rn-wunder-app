@@ -15,10 +15,6 @@ const styles = StyleSheet.create({
     fontSize: 9,
     marginVertical: 9,
   },
-  icon: {
-    width: 24,
-    height: 24,
-  },
 });
 
 const IconActions = ({actionImage, actionCount, onPress}) => {

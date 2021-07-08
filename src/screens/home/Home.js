@@ -131,8 +131,8 @@ const Home = ({navigation}) => {
               </View>
             </View>
           </View>
-          <CustomButton title="Logout" onPress={() => handleLogOut()} />
         </View>
+        <CustomButton title="Logout" onPress={() => handleLogOut()} />
       </ImageBackground>
     </View>
   );
