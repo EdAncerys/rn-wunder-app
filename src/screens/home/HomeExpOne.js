@@ -1,6 +1,4 @@
-import React, {useEffect} from 'react';
-import {useAuthState, useAuthDispatch, logOut} from '../../context/auth';
-import {useApiDispatch} from '../../context/api';
+import React from 'react';
 import {
   View,
   Text,
@@ -61,7 +59,7 @@ const styles = StyleSheet.create({
   },
   textStyleTwo: {
     color: Colors.white,
-    fontFamily: 'Sailec',
+    fontFamily: 'Sailec-Bold',
     fontSize: 26,
     paddingVertical: 8,
   },
@@ -78,19 +76,6 @@ const styles = StyleSheet.create({
 });
 
 const HomeExpOne = ({navigation}) => {
-  const dispatchAuth = useAuthDispatch();
-  const dispatchApi = useApiDispatch();
-  const {jwt, user} = useAuthState();
-
-  // HANDLERS ---------------------------------------------------------
-  const handleLogOut = () => {
-    logOut({dispatchAuth, dispatchApi});
-  };
-
-  useEffect(() => {
-    if (!jwt) navigation.navigate('Login');
-  }, [user]);
-
   return (
     <ImageBackground source={Background} style={styles.background}>
       <View style={styles.container}>
@@ -135,7 +120,6 @@ const HomeExpOne = ({navigation}) => {
             </View>
           </View>
         </View>
-        <CustomButton title="Logout" onPress={() => handleLogOut()} />
       </View>
     </ImageBackground>
   );

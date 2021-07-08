@@ -15,6 +15,7 @@
 		74688EC20296301FBB08E5D4 /* libPods-WunderApp-WunderAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A048427B9FC83841B118F660 /* libPods-WunderApp-WunderAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		91CFB094F4E5FACCF1EEDD0C /* libPods-WunderApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 75031FAF9EF32D770CF30BFE /* libPods-WunderApp.a */; };
+		79E0BD1961514633A481B3D5 /* Sailec-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A3C7CC0C959F41498C2B947E /* Sailec-Bold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		A2BEFF1E7A084DFEAD183725 /* Sailec.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Sailec.otf; path = ../src/assets/fonts/Sailec.otf; sourceTree = "<group>"; };
 		CB872746A4DAD924CCE12F50 /* Pods-WunderApp-WunderAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderApp-WunderAppTests.debug.xcconfig"; path = "Target Support Files/Pods-WunderApp-WunderAppTests/Pods-WunderApp-WunderAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		A3C7CC0C959F41498C2B947E /* Sailec-Bold.otf */ = {isa = PBXFileReference; name = "Sailec-Bold.otf"; path = "../src/assets/fonts/Sailec-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				A2BEFF1E7A084DFEAD183725 /* Sailec.otf */,
+				A3C7CC0C959F41498C2B947E /* Sailec-Bold.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				55AD62059C234DFD8D227833 /* Sailec.otf in Resources */,
+				79E0BD1961514633A481B3D5 /* Sailec-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
