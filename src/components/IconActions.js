@@ -8,11 +8,13 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
+    margin: 8,
   },
   actionText: {
     color: Colors.white,
     fontFamily: 'Sailec',
     fontSize: 10,
+    marginTop: 8,
   },
 });
 
@@ -23,7 +25,7 @@ const serveActionIcon = props => {
       image={props.actionImage}
       onPress={props.onPress}
       style={{backgroundColor: Colors.transparent}}
-      imageStyling={{paddingVertical: 9, paddingHorizontal: 0}}
+      imageStyling={{paddingVertical: 0, paddingHorizontal: 0}}
     />
   );
 };

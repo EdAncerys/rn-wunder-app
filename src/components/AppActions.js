@@ -18,8 +18,6 @@ const styles = StyleSheet.create({
     minHeight: 40,
     borderWidth: 2,
     borderRadius: 24,
-    paddingVertical: 8,
-    paddingHorizontal: 4,
     borderColor: Colors.white,
     backgroundColor: Colors.blurFilter,
   },
