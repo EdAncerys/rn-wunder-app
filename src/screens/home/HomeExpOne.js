@@ -4,7 +4,6 @@ import {View, StyleSheet, ImageBackground, Image} from 'react-native';
 import Colors from '../../config/colors';
 import Background from '../../assets/images/home/home-exp-one-background.png';
 import PostSnapshot from '../../components/PostSnapshot';
-
 import GreatOrmand from '../../assets/icons/great-ormand.png';
 import AppNavigateActions from '../../components/AppNavigateActions';
 import AppActions from '../../components/AppActions';

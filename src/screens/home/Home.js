@@ -1,21 +1,13 @@
 import React, {useEffect} from 'react';
 import {useAuthState, useAuthDispatch, logOut} from '../../context/auth';
 import {useApiDispatch} from '../../context/api';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import {View, StyleSheet, ImageBackground, Image} from 'react-native';
 
 import Colors from '../../config/colors';
 import CustomButton from '../../components/CustomButton';
 import Background from '../../assets/images/home/home-background.png';
+import PostSnapshot from '../../components/PostSnapshot';
 import Wunder from '../../assets/icons/wunder.png';
-import VerifiedBadge from '../../assets/icons/verified-badge.png';
-import PlanetBadge from '../../assets/icons/planet-badge.png';
 import HeaderActions from '../../components/HeaderActions';
 import AppActions from '../../components/AppActions';
 
@@ -40,38 +32,10 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     marginHorizontal: '5%',
   },
-  footerContainer: {
+  postContainer: {
     flex: 3,
+    marginTop: '25%',
     marginHorizontal: '5%',
-  },
-  footerActions: {
-    justifyContent: 'flex-start',
-    paddingTop: '35%',
-  },
-  rowComponent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  textStyleOne: {
-    color: Colors.white,
-    fontFamily: 'Sailec',
-    fontSize: 16,
-    paddingHorizontal: 10,
-  },
-  textStyleTwo: {
-    color: Colors.white,
-    fontFamily: 'Sailec',
-    fontSize: 24,
-    paddingVertical: 10,
-  },
-  textStyleThree: {
-    color: Colors.planet,
-    fontFamily: 'Sailec',
-    fontSize: 16,
-  },
-  planetBadge: {
-    flex: 1,
-    alignItems: 'center',
   },
 });
 
@@ -100,39 +64,17 @@ const Home = ({navigation}) => {
           <AppActions />
         </View>
 
-        <View style={styles.footerContainer}>
-          <View style={styles.footerActions}>
-            <View style={styles.rowComponent}>
-              <Image source={Wunder} />
-              <Text style={styles.textStyleOne}>@wünder</Text>
-              <Image source={VerifiedBadge} />
-            </View>
-            <View>
-              <Text style={styles.textStyleTwo}>Healthy Eating</Text>
-            </View>
-
-            <View style={styles.rowComponent}>
-              <TouchableOpacity>
-                <View>
-                  <Text style={styles.textStyleThree}>
-                    It’s recommended that you eat at
-                  </Text>
-                  <Text style={styles.textStyleThree}>
-                    least 5 portions of a variety… more
-                  </Text>
-                </View>
-              </TouchableOpacity>
-              <View style={styles.planetBadge}>
-                <CustomButton
-                  image={<Image source={PlanetBadge} />}
-                  style={{backgroundColor: Colors.transparent}}
-                  onPress={() => alert('path')}
-                />
-              </View>
-            </View>
-          </View>
+        <View style={styles.postContainer}>
+          <PostSnapshot
+            profileIcon={<Image source={Wunder} />}
+            profileName="@greatormondst"
+            verified={true}
+            title="Healthy Eating"
+            post="It’s recommended that you eat at least 5 portions of a variety"
+            postTag="planet"
+          />
+          <CustomButton title="Logout" onPress={() => handleLogOut()} />
         </View>
-        <CustomButton title="Logout" onPress={() => handleLogOut()} />
       </View>
     </ImageBackground>
   );

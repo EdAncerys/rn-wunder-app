@@ -93,17 +93,17 @@ const Router = ({props}) => {
         name="Login"
         component={Login}
         options={{headerShown: false}}
-      />
+      /> */}
       <Stack.Screen
         name="Home"
         component={Home}
         options={{headerShown: false}}
-      /> */}
-      <Stack.Screen
+      />
+      {/* <Stack.Screen
         name="HomeExpOne"
         component={HomeExpOne}
         options={{headerShown: false}}
-      />
+      /> */}
     </Stack.Navigator>
   );
 };
