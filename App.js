@@ -4,7 +4,6 @@ import {AuthProvider} from './src/context/auth';
 import {ApiProvider} from './src/context/api';
 
 import AppNavigator from './src/AppNavigator/Router';
-import Home from './src/screens/home/Home';
 
 const App = () => {
   return (

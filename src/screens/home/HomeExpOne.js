@@ -12,10 +12,10 @@ import {
 
 import Colors from '../../config/colors';
 import CustomButton from '../../components/CustomButton';
-import Background from '../../assets/images/home/home-background.png';
-import Wunder from '../../assets/icons/wunder.png';
+import Background from '../../assets/images/home/home-exp-one-background.png';
+import GreatOrmand from '../../assets/icons/great-ormand.png';
 import VerifiedBadge from '../../assets/icons/verified-badge.png';
-import PlanetBadge from '../../assets/icons/planet-badge.png';
+import PeopleBadge from '../../assets/icons/people-badge.png';
 import HeaderActions from '../../components/HeaderActions';
 import AppActions from '../../components/AppActions';
 
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
   rowComponent: {
     flexDirection: 'row',
     alignItems: 'center',
+    paddingVertical: 8,
   },
   textStyleOne: {
     color: Colors.white,
@@ -61,13 +62,14 @@ const styles = StyleSheet.create({
   textStyleTwo: {
     color: Colors.white,
     fontFamily: 'Sailec',
-    fontSize: 24,
-    paddingVertical: 10,
+    fontSize: 26,
+    paddingVertical: 8,
   },
   textStyleThree: {
     color: Colors.planet,
     fontFamily: 'Sailec',
     fontSize: 16,
+    paddingVertical: 8,
   },
   planetBadge: {
     flex: 1,
@@ -75,7 +77,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Home = ({navigation}) => {
+const HomeExpOne = ({navigation}) => {
   const dispatchAuth = useAuthDispatch();
   const dispatchApi = useApiDispatch();
   const {jwt, user} = useAuthState();
@@ -103,28 +105,29 @@ const Home = ({navigation}) => {
         <View style={styles.footerContainer}>
           <View style={styles.footerActions}>
             <View style={styles.rowComponent}>
-              <Image source={Wunder} />
-              <Text style={styles.textStyleOne}>@wünder</Text>
+              <Image source={GreatOrmand} />
+              <Text style={styles.textStyleOne}>@greatormondst</Text>
               <Image source={VerifiedBadge} />
             </View>
             <View>
-              <Text style={styles.textStyleTwo}>Healthy Eating</Text>
+              <Text style={styles.textStyleTwo}>The difference we</Text>
+              <Text style={styles.textStyleTwo}>make, together</Text>
             </View>
 
             <View style={styles.rowComponent}>
               <TouchableOpacity>
                 <View>
                   <Text style={styles.textStyleThree}>
-                    It’s recommended that you eat at
+                    Helps us to transform the lives of
                   </Text>
                   <Text style={styles.textStyleThree}>
-                    least 5 portions of a variety… more
+                    seriously ill children. Every d... more
                   </Text>
                 </View>
               </TouchableOpacity>
               <View style={styles.planetBadge}>
                 <CustomButton
-                  image={<Image source={PlanetBadge} />}
+                  image={<Image source={PeopleBadge} />}
                   style={{backgroundColor: Colors.transparent}}
                   onPress={() => alert('path')}
                 />
@@ -138,4 +141,4 @@ const Home = ({navigation}) => {
   );
 };
 
-export default Home;
+export default HomeExpOne;
