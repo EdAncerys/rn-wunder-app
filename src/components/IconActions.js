@@ -8,29 +8,40 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'tomato',
   },
-  countText: {
+  actionText: {
     color: Colors.white,
     fontFamily: 'Sailec',
-    fontSize: 9,
-    marginVertical: 9,
+    fontSize: 10,
   },
 });
 
-const IconActions = ({actionImage, actionCount, onPress}) => {
+// SERVERS ---------------------------------------------------------
+const serveActionIcon = props => {
+  return (
+    <CustomButton
+      image={props.actionImage}
+      onPress={props.onPress}
+      style={{backgroundColor: Colors.transparent}}
+      imageStyling={{paddingVertical: 9, paddingHorizontal: 0}}
+    />
+  );
+};
+const serveActionTitle = props => {
+  return (
+    <Text style={{...styles.actionText, ...props.actionTitleStyle}}>
+      {props.actionTitle}
+    </Text>
+  );
+};
+
+// RETURN ---------------------------------------------------------
+const IconActions = props => {
   return (
     <View style={styles.container}>
-      <View>
-        <CustomButton
-          image={actionImage}
-          onPress={onPress}
-          style={{backgroundColor: Colors.transparent}}
-          imageStyling={{paddingVertical: 0, paddingHorizontal: 0}}
-        />
-      </View>
-      <View>
-        <Text style={styles.countText}>{actionCount}</Text>
-      </View>
+      {props.actionImage && serveActionIcon(props)}
+      {props.actionTitle && serveActionTitle(props)}
     </View>
   );
 };

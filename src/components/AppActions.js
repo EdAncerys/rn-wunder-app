@@ -60,7 +60,7 @@ const AppActions = props => {
           return (
             <IconActions
               actionImage={action.image}
-              actionCount={action.count}
+              actionTitle={action.count}
               onPress={action.onPress}
             />
           );

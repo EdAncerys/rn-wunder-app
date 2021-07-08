@@ -14,7 +14,7 @@ import Background from '../../assets/images/home/home-exp-one-background.png';
 import GreatOrmand from '../../assets/icons/great-ormand.png';
 import VerifiedBadge from '../../assets/icons/verified-badge.png';
 import PeopleBadge from '../../assets/icons/people-badge.png';
-import HeaderActions from '../../components/HeaderActions';
+import AppNavigateActions from '../../components/AppNavigateActions';
 import AppActions from '../../components/AppActions';
 
 const styles = StyleSheet.create({
@@ -55,19 +55,19 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontFamily: 'Sailec',
     fontSize: 16,
-    paddingHorizontal: 10,
+    paddingHorizontal: 8,
   },
   textStyleTwo: {
     color: Colors.white,
     fontFamily: 'Sailec-Bold',
     fontSize: 26,
-    paddingVertical: 8,
+    paddingVertical: 5,
   },
   textStyleThree: {
     color: Colors.planet,
     fontFamily: 'Sailec',
     fontSize: 16,
-    paddingVertical: 8,
+    paddingVertical: 5,
   },
   planetBadge: {
     flex: 1,
@@ -80,7 +80,7 @@ const HomeExpOne = ({navigation}) => {
     <ImageBackground source={Background} style={styles.background}>
       <View style={styles.container}>
         <View style={styles.headerContainer}>
-          <HeaderActions />
+          <AppNavigateActions />
         </View>
 
         <View style={styles.appActions}>
