@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'flex-start',
     marginHorizontal: '5%',
-    marginBottom: '5%',
+    marginBottom: '2%',
   },
   postContainer: {
     flex: 1,
