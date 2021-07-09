@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     borderRadius: 20,
     backgroundColor: Colors.white,
+    marginTop: '10%',
   },
   icon: {
     width: 24,

@@ -104,7 +104,7 @@ const Router = ({props}) => {
       /> */}
       <Stack.Screen
         name="Home"
-        component={HomeExpOne}
+        component={HomeExpTwo}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

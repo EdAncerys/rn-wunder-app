@@ -7,6 +7,7 @@ import CustomButton from './CustomButton';
 import PostSnapshot from './PostSnapshot';
 import AppActions from './AppActions';
 import DonateActions from './DonateActions';
+import AppNavigateActions from './AppNavigateActions';
 
 const styles = StyleSheet.create({
   container: {
@@ -44,19 +45,27 @@ const HomeScreen = ({
   postTag,
   getInvolved,
   donateActions,
+  navigateActions,
 }) => {
   const applyMarginPost = getInvolved
     ? {marginBottom: '55%'}
     : {marginBottom: '5%'};
-  const applyMarginActions = donateActions
-    ? {marginTop: '5%'}
-    : {marginTop: '50%'};
+  const applyMarginActions =
+    donateActions || navigateActions ? {marginTop: '5%'} : {marginTop: '50%'};
 
   // SERVERS ---------------------------------------------------------
   const serveDonate = props => {
     return (
       <View style={styles.headerContainer}>
         <DonateActions />
+      </View>
+    );
+  };
+
+  const serveAppNavigate = props => {
+    return (
+      <View style={styles.headerContainer}>
+        <AppNavigateActions />
       </View>
     );
   };
@@ -69,6 +78,7 @@ const HomeScreen = ({
         start={{x: 0.4, y: 0.4}}
         style={styles.container}>
         {donateActions && serveDonate()}
+        {navigateActions && serveAppNavigate()}
         <View style={{...styles.appActions, ...applyMarginActions}}>
           <AppActions />
         </View>
