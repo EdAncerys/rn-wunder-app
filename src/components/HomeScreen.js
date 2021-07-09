@@ -17,14 +17,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   appActions: {
-    flex: 1,
+    flex: 2,
     justifyContent: 'flex-end',
     alignItems: 'flex-start',
     marginHorizontal: '5%',
-    marginBottom: '2%',
+    marginBottom: '5%',
   },
   postContainer: {
     flex: 1,
+    justifyContent: 'flex-end',
     marginHorizontal: '5%',
   },
 });
@@ -39,6 +40,10 @@ const HomeScreen = ({
   postTag,
   getInvolved,
 }) => {
+  const applyMargin = getInvolved
+    ? {marginBottom: '50%'}
+    : {marginBottom: '35%'};
+
   return (
     <ImageBackground source={background} style={styles.background}>
       <LinearGradient
@@ -49,7 +54,7 @@ const HomeScreen = ({
           <AppActions />
         </View>
 
-        <View style={styles.postContainer}>
+        <View style={{...styles.postContainer, ...applyMargin}}>
           <PostSnapshot
             profileIcon={profileIcon}
             profileName={profileName}

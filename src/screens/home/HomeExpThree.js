@@ -5,7 +5,7 @@ import Background from '../../assets/images/home/home-exp-three-background.png';
 import ProfileIcon from '../../assets/icons/profile-friends.png';
 import HomeScreen from '../../components/HomeScreen';
 
-const HomeExpThree = ({navigation}) => {
+const HomeExpThree = () => {
   return (
     <HomeScreen
       background={Background}

@@ -5,7 +5,7 @@ import Background from '../../assets/images/home/home-exp-five-background.png';
 import ProfileIcon from '../../assets/icons/profile-tesco.png';
 import HomeScreen from '../../components/HomeScreen';
 
-const HomeExpFive = ({navigation}) => {
+const HomeExpFive = () => {
   return (
     <HomeScreen
       background={Background}

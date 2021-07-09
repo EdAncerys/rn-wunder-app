@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../config/colors';
 import Background from '../../assets/images/home/home-exp-two-background.png';
 import PostSnapshot from '../../components/PostSnapshot';
-import Profile from '../../assets/icons/great-ormand.png';
+import Profile from '../../assets/icons/profile-ormand.png';
 import AppNavigateActions from '../../components/AppNavigateActions';
 import AppActions from '../../components/AppActions';
 
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const HomeExpTwo = ({navigation}) => {
+const HomeExpTwo = () => {
   return (
     <ImageBackground source={Background} style={styles.background}>
       <LinearGradient
