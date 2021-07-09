@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     lineHeight: 34,
     paddingVertical: 5,
-    width: width * 0.65,
+    width: width * 0.7,
   },
   post: {
     color: Colors.planet,
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 24,
     paddingVertical: 5,
-    width: width * 0.65,
+    width: width * 0.7,
   },
   postAction: {
     opacity: 0.8,
