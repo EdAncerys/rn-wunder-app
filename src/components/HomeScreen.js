@@ -36,7 +36,7 @@ const HomeScreen = ({
   verified,
   title,
   post,
-  planet,
+  postTag,
   getInvolved,
 }) => {
   return (
@@ -56,7 +56,7 @@ const HomeScreen = ({
             verified={verified}
             title={title}
             post={post}
-            postTag={planet}
+            postTag={postTag}
           />
           {getInvolved && (
             <CustomButton title="get involved" onPress={() => alert('path')} />
