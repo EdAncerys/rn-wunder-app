@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const HeaderActions = props => {
+const DonateActions = props => {
   return (
     <View style={styles.container}>
       <View>
@@ -34,4 +34,4 @@ const HeaderActions = props => {
   );
 };
 
-export default HeaderActions;
+export default DonateActions;

@@ -6,6 +6,7 @@ import Colors from '../config/colors';
 import CustomButton from './CustomButton';
 import PostSnapshot from './PostSnapshot';
 import AppActions from './AppActions';
+import DonateActions from './DonateActions';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,16 +17,19 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     justifyContent: 'center',
   },
+  headerContainer: {
+    flex: 1.5,
+    justifyContent: 'center',
+    marginHorizontal: '5%',
+  },
   appActions: {
-    flex: 2,
-    justifyContent: 'flex-end',
+    flex: 3,
     alignItems: 'flex-start',
     marginHorizontal: '5%',
-    marginBottom: '5%',
+    marginTop: '5%',
   },
   postContainer: {
-    flex: 1,
-    justifyContent: 'flex-end',
+    flex: 3,
     marginHorizontal: '5%',
   },
 });
@@ -39,22 +43,36 @@ const HomeScreen = ({
   post,
   postTag,
   getInvolved,
+  donateActions,
 }) => {
-  const applyMargin = getInvolved
-    ? {marginBottom: '50%'}
-    : {marginBottom: '35%'};
+  const applyMarginPost = getInvolved
+    ? {marginBottom: '55%'}
+    : {marginBottom: '5%'};
+  const applyMarginActions = donateActions
+    ? {marginTop: '5%'}
+    : {marginTop: '50%'};
 
+  // SERVERS ---------------------------------------------------------
+  const serveDonate = props => {
+    return (
+      <View style={styles.headerContainer}>
+        <DonateActions />
+      </View>
+    );
+  };
+
+  // RETURN ---------------------------------------------------------
   return (
     <ImageBackground source={background} style={styles.background}>
       <LinearGradient
         colors={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}
         start={{x: 0.4, y: 0.4}}
         style={styles.container}>
-        <View style={styles.appActions}>
+        {donateActions && serveDonate()}
+        <View style={{...styles.appActions, ...applyMarginActions}}>
           <AppActions />
         </View>
-
-        <View style={{...styles.postContainer, ...applyMargin}}>
+        <View style={{...styles.postContainer, ...applyMarginPost}}>
           <PostSnapshot
             profileIcon={profileIcon}
             profileName={profileName}
