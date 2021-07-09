@@ -19,6 +19,7 @@ import HomeExpOne from '../screens/home/HomeExpOne';
 import HomeExpTwo from '../screens/home/HomeExpTwo';
 import HomeExpThree from '../screens/home/HomeExpThree';
 import HomeExpFour from '../screens/home/HomeExpFour';
+import HomeExpFive from '../screens/home/HomeExpFive';
 
 const Stack = createStackNavigator();
 const Tab = createMaterialTopTabNavigator();
@@ -99,7 +100,7 @@ const Router = ({props}) => {
       /> */}
       <Stack.Screen
         name="Home"
-        component={Home}
+        component={HomeExpFive}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

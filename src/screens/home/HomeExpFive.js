@@ -4,9 +4,9 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import Colors from '../../config/colors';
 import CustomButton from '../../components/CustomButton';
-import Background from '../../assets/images/home/home-exp-three-background.png';
+import Background from '../../assets/images/home/home-exp-five-background.png';
 import PostSnapshot from '../../components/PostSnapshot';
-import Profile from '../../assets/icons/profile-friends.png';
+import Profile from '../../assets/icons/profile-tesco.png';
 import AppActions from '../../components/AppActions';
 
 const styles = StyleSheet.create({
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const HomeExpThree = ({navigation}) => {
+const HomeExpFive = ({navigation}) => {
   return (
     <ImageBackground source={Background} style={styles.background}>
       <LinearGradient
@@ -51,10 +51,10 @@ const HomeExpThree = ({navigation}) => {
         <View style={styles.postContainer}>
           <PostSnapshot
             profileIcon={<Image source={Profile} />}
-            profileName="@friendsoftheearth"
+            profileName="@tescoofficial"
             verified={true}
-            title="Pembury Children’s Community"
-            post="The Pembury Children’s Community is a partnership led by the Co"
+            title="Community Food Connection Scheme"
+            post="We’re working with FareShare, a leading food redistribution c"
             postTag="planet"
           />
           <CustomButton title="get involved" onPress={() => alert('path')} />
@@ -64,4 +64,4 @@ const HomeExpThree = ({navigation}) => {
   );
 };
 
-export default HomeExpThree;
+export default HomeExpFive;

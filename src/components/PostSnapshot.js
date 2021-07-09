@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontFamily: 'Sailec-Bold',
     fontSize: 26,
+    lineHeight: 34,
     paddingVertical: 5,
     width: width * 0.65,
   },
