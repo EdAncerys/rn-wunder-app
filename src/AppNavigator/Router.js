@@ -15,8 +15,9 @@ import UploadPassport from '../screens/onboardingOverSixteen/UploadPassport';
 import Visual from '../screens/onboardingOverSixteen/Visual';
 import Login from '../screens/onboardingOverSixteen/Login';
 import Home from '../screens/home/Home';
-// import HomeExpOne from '../screens/home/HomeExpOne';
-// import HomeExpTwo from '../screens/home/HomeExpTwo';
+import HomeExpOne from '../screens/home/HomeExpOne';
+import HomeExpTwo from '../screens/home/HomeExpTwo';
+import HomeExpThree from '../screens/home/HomeExpThree';
 
 const Stack = createStackNavigator();
 const Tab = createMaterialTopTabNavigator();
@@ -97,7 +98,7 @@ const Router = ({props}) => {
       /> */}
       <Stack.Screen
         name="Home"
-        component={Home}
+        component={HomeExpThree}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

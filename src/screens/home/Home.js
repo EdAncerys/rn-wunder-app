@@ -45,7 +45,7 @@ const Home = ({props}) => {
           marginLeft: 25,
           marginRight: 25,
         }}>
-        {/* <Text style={{fontSize: 30}}>{item.title}</Text> */}
+        <Text style={{fontSize: 30}}>{item.title}</Text>
       </View>
     );
   };

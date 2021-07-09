@@ -6,7 +6,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import Colors from '../../config/colors';
 import CustomButton from '../../components/CustomButton';
-import Background from '../../assets/images/home/home-background.png';
+import Background from '../../assets/images/home/home-exp-one-background.png';
 import PostSnapshot from '../../components/PostSnapshot';
 import Wunder from '../../assets/icons/wunder.png';
 import HeaderActions from '../../components/HeaderActions';
@@ -28,13 +28,12 @@ const styles = StyleSheet.create({
   },
   appActions: {
     flex: 2,
-    justifyContent: 'center',
     alignItems: 'flex-start',
     marginHorizontal: '5%',
+    paddingTop: '5%',
   },
   postContainer: {
-    flex: 3,
-    marginTop: '25%',
+    flex: 2,
     marginHorizontal: '5%',
   },
 });
