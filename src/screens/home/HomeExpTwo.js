@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     flex: 1,
     justifyContent: 'center',
-    paddingTop: '15%',
+    paddingTop: '10%',
     marginHorizontal: '5%',
   },
   appActions: {
