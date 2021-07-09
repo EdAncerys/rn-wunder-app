@@ -1,6 +1,4 @@
-import React, {useEffect} from 'react';
-import {useAuthState, useAuthDispatch, logOut} from '../../context/auth';
-import {useApiDispatch} from '../../context/api';
+import React from 'react';
 import {View, StyleSheet, ImageBackground, Image} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -8,8 +6,7 @@ import Colors from '../../config/colors';
 import CustomButton from '../../components/CustomButton';
 import Background from '../../assets/images/home/home-exp-three-background.png';
 import PostSnapshot from '../../components/PostSnapshot';
-import FoTe from '../../assets/icons/fote.png';
-import HeaderActions from '../../components/HeaderActions';
+import Profile from '../../assets/icons/fote.png';
 import AppActions from '../../components/AppActions';
 
 const styles = StyleSheet.create({
@@ -53,7 +50,7 @@ const HomeExpThree = ({navigation}) => {
 
         <View style={styles.postContainer}>
           <PostSnapshot
-            profileIcon={<Image source={FoTe} />}
+            profileIcon={<Image source={Profile} />}
             profileName="@friendsoftheearth"
             verified={true}
             title="Pembury Children’s Community"

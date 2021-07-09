@@ -8,7 +8,7 @@ import Colors from '../../config/colors';
 import CustomButton from '../../components/CustomButton';
 import Background from '../../assets/images/home/home-exp-one-background.png';
 import PostSnapshot from '../../components/PostSnapshot';
-import Wunder from '../../assets/icons/wunder.png';
+import Profile from '../../assets/icons/wunder.png';
 import HeaderActions from '../../components/HeaderActions';
 import AppActions from '../../components/AppActions';
 
@@ -68,7 +68,7 @@ const HomeExpOne = ({navigation}) => {
 
         <View style={styles.postContainer}>
           <PostSnapshot
-            profileIcon={<Image source={Wunder} />}
+            profileIcon={<Image source={Profile} />}
             profileName="@greatormondst"
             verified={true}
             title="Healthy Eating"

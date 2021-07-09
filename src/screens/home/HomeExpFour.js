@@ -3,10 +3,9 @@ import {View, StyleSheet, ImageBackground, Image} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import Colors from '../../config/colors';
-import Background from '../../assets/images/home/home-exp-two-background.png';
+import Background from '../../assets/images/home/home-exp-four-background.png';
 import PostSnapshot from '../../components/PostSnapshot';
-import Profile from '../../assets/icons/great-ormand.png';
-import AppNavigateActions from '../../components/AppNavigateActions';
+import Profile from '../../assets/icons/profile-vic.png';
 import AppActions from '../../components/AppActions';
 
 const styles = StyleSheet.create({
@@ -21,32 +20,28 @@ const styles = StyleSheet.create({
   headerContainer: {
     flex: 1,
     justifyContent: 'center',
-    paddingTop: '15%',
     marginHorizontal: '5%',
   },
   appActions: {
     flex: 2,
-    justifyContent: 'center',
     alignItems: 'flex-start',
     marginHorizontal: '5%',
+    paddingTop: '5%',
   },
   postContainer: {
-    flex: 3,
-    marginTop: '25%',
+    flex: 2,
     marginHorizontal: '5%',
   },
 });
 
-const HomeExpTwo = ({navigation}) => {
+const HomeExpFour = ({navigation}) => {
   return (
     <ImageBackground source={Background} style={styles.background}>
       <LinearGradient
         colors={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}
         start={{x: 0.4, y: 0.4}}
         style={styles.container}>
-        <View style={styles.headerContainer}>
-          <AppNavigateActions />
-        </View>
+        <View style={styles.headerContainer}></View>
 
         <View style={styles.appActions}>
           <AppActions />
@@ -55,10 +50,11 @@ const HomeExpTwo = ({navigation}) => {
         <View style={styles.postContainer}>
           <PostSnapshot
             profileIcon={<Image source={Profile} />}
-            profileName="@greatormondst"
+            profileName="@vic_azerrenca"
             verified={true}
-            title="The difference we make, together"
-            post="Helps us to transform the lives of seriously ill children. Every d"
+            title="Peaceful Walk this Morning"
+            post="The Pembury Children’s Community is a partnership led by the Co"
+            postTag="planet"
           />
         </View>
       </LinearGradient>
@@ -66,4 +62,4 @@ const HomeExpTwo = ({navigation}) => {
   );
 };
 
-export default HomeExpTwo;
+export default HomeExpFour;
