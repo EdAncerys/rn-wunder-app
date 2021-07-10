@@ -24,6 +24,7 @@ import HomeExpSix from '../screens/home/HomeExpSix';
 import HomeExpSeven from '../screens/home/HomeExpSeven';
 import HomeExpEight from '../screens/home/HomeExpEight';
 import HomeExpNine from '../screens/home/HomeExpNine';
+import FlatListScroll from '../screens/home/FlatListScroll';
 
 const Stack = createStackNavigator();
 const Tab = createMaterialTopTabNavigator();
@@ -104,7 +105,7 @@ const Router = ({props}) => {
       /> */}
       <Stack.Screen
         name="Home"
-        component={HomeExpTwo}
+        component={FlatListScroll}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
