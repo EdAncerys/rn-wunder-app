@@ -5,10 +5,8 @@ import {
   FlatList,
   Dimensions,
   Animated,
-  Text,
   View,
   StyleSheet,
-  SafeAreaView,
 } from 'react-native';
 const {width, height} = Dimensions.get('screen');
 import {
@@ -17,7 +15,6 @@ import {
   State,
 } from 'react-native-gesture-handler';
 
-// https://www.creative-flyers.com
 const DATA = [
   {
     title: 'Afro vibes',
@@ -167,8 +164,8 @@ export default function App() {
                     style={{
                       width: ITEM_WIDTH,
                       height: ITEM_HEIGHT,
-                      borderTopLeftRadius: ITEM_WIDTH / 8,
-                      borderTopRightRadius: ITEM_WIDTH / 8,
+                      borderTopLeftRadius: ITEM_WIDTH / 10,
+                      borderTopRightRadius: ITEM_WIDTH / 10,
                     }}
                   />
                 </Animated.View>
