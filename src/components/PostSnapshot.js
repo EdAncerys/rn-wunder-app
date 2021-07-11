@@ -58,7 +58,9 @@ const styles = StyleSheet.create({
 const serveProfileInfo = props => {
   return (
     <View style={styles.rowWrapper}>
-      <View>{props.profileIcon}</View>
+      <View>
+        <Image source={props.profileIcon} />
+      </View>
       <Text style={styles.profile}>{props.profileName}</Text>
       {props.verified && (
         <View>

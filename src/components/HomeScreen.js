@@ -54,7 +54,7 @@ const HomeScreen = ({
     donateActions || navigateActions ? {marginTop: '5%'} : {marginTop: '50%'};
 
   // SERVERS ---------------------------------------------------------
-  const serveDonate = props => {
+  const ServeDonate = props => {
     return (
       <View style={styles.headerContainer}>
         <DonateActions />
@@ -62,7 +62,7 @@ const HomeScreen = ({
     );
   };
 
-  const serveAppNavigate = props => {
+  const ServeAppNavigate = props => {
     return (
       <View style={styles.headerContainer}>
         <AppNavigateActions />
@@ -77,8 +77,8 @@ const HomeScreen = ({
         colors={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}
         start={{x: 0.4, y: 0.4}}
         style={styles.container}>
-        {donateActions && serveDonate()}
-        {navigateActions && serveAppNavigate()}
+        {donateActions && <ServeDonate />}
+        {navigateActions && <ServeAppNavigate />}
         <View style={{...styles.appActions, ...applyMarginActions}}>
           <AppActions />
         </View>
