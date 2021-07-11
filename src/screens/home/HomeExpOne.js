@@ -1,5 +1,4 @@
 import React from 'react';
-import {Image} from 'react-native';
 
 import Background from '../../assets/images/home/home-exp-one-background.png';
 import ProfileIcon from '../../assets/icons/profile-wunder.png';
@@ -9,7 +8,7 @@ const HomeExpOne = () => {
   return (
     <HomeScreen
       background={Background}
-      profileIcon={<Image source={ProfileIcon} />}
+      profileIcon={ProfileIcon}
       profileName="@wunder"
       verified={true}
       title="Healthy Eating"

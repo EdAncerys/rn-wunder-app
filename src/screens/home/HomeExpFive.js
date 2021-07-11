@@ -1,5 +1,4 @@
 import React from 'react';
-import {Image} from 'react-native';
 
 import Background from '../../assets/images/home/home-exp-five-background.png';
 import ProfileIcon from '../../assets/icons/profile-tesco.png';
@@ -9,7 +8,7 @@ const HomeExpFive = () => {
   return (
     <HomeScreen
       background={Background}
-      profileIcon={<Image source={ProfileIcon} />}
+      profileIcon={ProfileIcon}
       profileName="@friendsoftheearth"
       verified={true}
       title="Community Food Connection Scheme"

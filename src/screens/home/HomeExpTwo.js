@@ -1,5 +1,4 @@
 import React from 'react';
-import {Image} from 'react-native';
 
 import Background from '../../assets/images/home/home-exp-two-background.png';
 import ProfileIcon from '../../assets/icons/profile-ormand.png';
@@ -9,7 +8,7 @@ const HomeExpThree = () => {
   return (
     <HomeScreen
       background={Background}
-      profileIcon={<Image source={ProfileIcon} />}
+      profileIcon={ProfileIcon}
       profileName="@greatormondst"
       verified={true}
       title="The difference we make, together"
