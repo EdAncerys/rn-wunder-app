@@ -78,7 +78,7 @@ const ScreenAuth = ({navigation}) => {
   };
 
   // SERVERS ---------------------------------------------------------
-  const serveUserInfo = user => {
+  const ServeUserInfo = ({user}) => {
     if (user.role.type === 'authenticated') {
       return (
         <View style={styles.containerMessage}>
@@ -99,7 +99,7 @@ const ScreenAuth = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.screenTitle}>Auth Screen</Text>
-      {serveUserInfo(user)}
+      {<ServeUserInfo props={props} />}
       <View style={styles.containerForm}>
         <Text style={styles.title}>Log In</Text>
         <TextInput

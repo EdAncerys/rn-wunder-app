@@ -24,14 +24,14 @@ const styles = StyleSheet.create({
 });
 
 // SERVERS ---------------------------------------------------------
-const serveBtnTitle = props => {
+const ServeBtnTitle = ({props}) => {
   return (
     <Text style={{...styles.titleText, ...props.titleStyling}}>
       {props.title}
     </Text>
   );
 };
-const serveBtnImage = props => {
+const ServeBtnImage = ({props}) => {
   return (
     <View style={{...styles.imageContainer, ...props.imageStyling}}>
       {props.image}
@@ -44,8 +44,8 @@ const CustomButton = props => {
   return (
     <TouchableOpacity onPress={props.onPress}>
       <View style={{...styles.container, ...props.style}}>
-        {props.title && serveBtnTitle(props)}
-        {props.image && serveBtnImage(props)}
+        {props.title && <ServeBtnTitle props={props} />}
+        {props.image && <ServeBtnImage props={props} />}
       </View>
     </TouchableOpacity>
   );

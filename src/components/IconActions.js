@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 });
 
 // SERVERS ---------------------------------------------------------
-const serveActionIcon = props => {
+const ServeActionIcon = ({props}) => {
   return (
     <CustomButton
       image={props.actionImage}
@@ -29,7 +29,7 @@ const serveActionIcon = props => {
     />
   );
 };
-const serveActionTitle = props => {
+const ServeActionTitle = ({props}) => {
   return (
     <Text style={{...styles.actionText, ...props.actionTitleStyle}}>
       {props.actionTitle}
@@ -41,8 +41,8 @@ const serveActionTitle = props => {
 const IconActions = props => {
   return (
     <View style={styles.container}>
-      {props.actionImage && serveActionIcon(props)}
-      {props.actionTitle && serveActionTitle(props)}
+      {props.actionImage && <ServeActionIcon props={props} />}
+      {props.actionTitle && <ServeActionTitle props={props} />}
     </View>
   );
 };

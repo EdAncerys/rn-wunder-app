@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
 });
 
 // SERVERS ---------------------------------------------------------
-const serveProfileInfo = props => {
+const ServeProfileInfo = ({props}) => {
   return (
     <View style={styles.rowWrapper}>
       <View>
@@ -70,10 +70,10 @@ const serveProfileInfo = props => {
     </View>
   );
 };
-const servePostTitle = props => {
+const ServePostTitle = ({props}) => {
   return <Text style={styles.title}>{props.title}</Text>;
 };
-const servePost = props => {
+const ServePost = ({props}) => {
   const postTagIcon = props.postTag === 'planet' ? PlanetBadge : PeopleBadge;
 
   return (
@@ -101,9 +101,9 @@ const servePost = props => {
 const PostPreview = props => {
   return (
     <View style={styles.container}>
-      {serveProfileInfo(props)}
-      {props.title && servePostTitle(props)}
-      {props.post && servePost(props)}
+      {<ServeProfileInfo props={props} />} 
+      {props.title && <ServePostTitle props={props} />}
+      {props.post && <ServePost props={props} />}
     </View>
   );
 };
