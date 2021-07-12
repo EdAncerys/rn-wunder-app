@@ -197,7 +197,7 @@ export default function App() {
     const inputRange = [index - 1, index, index + 1];
     const translateY = scrollYAnimated.interpolate({
       inputRange,
-      outputRange: [ITEM_HEIGHT - 170, 0, 0],
+      outputRange: [ITEM_HEIGHT - ITEM_WIDTH / 2.5, 0, 0],
     });
     const scale = scrollYAnimated.interpolate({
       inputRange,

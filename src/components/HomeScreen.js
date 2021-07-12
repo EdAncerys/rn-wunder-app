@@ -19,20 +19,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   headerContainer: {
-    flex: 1.5,
+    position: 'absolute',
     justifyContent: 'center',
+    top: '6%',
     marginHorizontal: '5%',
   },
   appActions: {
-    flex: 4,
+    flex: 2,
     alignItems: 'flex-start',
     justifyContent: 'center',
     marginHorizontal: '5%',
+    marginTop: '30%',
   },
   postContainer: {
-    flex: 3,
+    flex: 1,
     marginHorizontal: '5%',
-    marginVertical: '5%',
   },
 });
 
@@ -50,9 +51,7 @@ const HomeScreen = ({
 }) => {
   const applyMarginPost = getInvolved
     ? {marginBottom: '55%'}
-    : {marginBottom: '30%'};
-  const applyMarginActions =
-    donateActions || navigateActions ? {marginTop: '5%'} : {marginTop: '50%'};
+    : {marginBottom: '35%'};
 
   // SERVERS ---------------------------------------------------------
   const ServeDonate = props => {
@@ -78,9 +77,7 @@ const HomeScreen = ({
         colors={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}
         start={{x: 0.4, y: 0.4}}
         style={styles.container}>
-        {donateActions && <ServeDonate />}
-        {navigateActions && <ServeAppNavigate />}
-        <View style={{...styles.appActions, ...applyMarginActions}}>
+        <View style={styles.appActions}>
           <AppActions />
         </View>
         <View style={{...styles.postContainer, ...applyMarginPost}}>
@@ -97,6 +94,8 @@ const HomeScreen = ({
           )}
         </View>
       </LinearGradient>
+      {donateActions && <ServeDonate />}
+      {navigateActions && <ServeAppNavigate />}
     </ImageBackground>
   );
 };

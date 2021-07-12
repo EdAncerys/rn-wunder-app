@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Dimensions} from 'react-native';
 
 import Colors from '../config/colors';
 import IconActions from './IconActions';
@@ -8,6 +8,7 @@ import SearchBlack from '../assets/icons/app/search-black.png';
 import ProjectsBlack from '../assets/icons/app/projects-black.png';
 import Profile from '../assets/icons/content/profile-general.png';
 import Create from '../assets/icons/app/create.png';
+const {width} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
   container: {
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     borderRadius: 20,
     backgroundColor: Colors.white,
-    marginTop: '10%',
+    width: width - width / 10,
   },
   searchIcon: {
     width: 40,
