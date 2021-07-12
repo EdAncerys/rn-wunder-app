@@ -13,8 +13,8 @@ import {
   logIn,
   logOut,
   signUp,
-} from '../context/auth';
-import {useApiDispatch} from '../context/api';
+} from '../../context/auth';
+import {useApiDispatch} from '../../context/api';
 
 const styles = StyleSheet.create({
   container: {

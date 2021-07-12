@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
 
 import Colors from '../config/colors';
-import LeftIcon from '../assets/icons/back-left.png';
+import LeftIcon from '../assets/icons/app/back-left.png';
 import CustomButton from './CustomButton';
 const {width} = Dimensions.get('screen');
 

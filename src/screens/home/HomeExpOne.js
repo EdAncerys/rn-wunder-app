@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Background from '../../assets/images/home/home-exp-one-background.png';
-import ProfileIcon from '../../assets/icons/profile-wunder.png';
+import ProfileIcon from '../../assets/icons/content/profile-wunder.png';
 import HomeScreen from '../../components/HomeScreen';
 
 const HomeExpOne = () => {

@@ -3,11 +3,11 @@ import {View, StyleSheet, Image} from 'react-native';
 
 import Colors from '../config/colors';
 import IconActions from './IconActions';
-import HomeBlack from '../assets/icons/home-black.png';
-import SearchBlack from '../assets/icons/search-black.png';
-import ProjectsBlack from '../assets/icons/projects-black.png';
-import Profile from '../assets/icons/profile.png';
-import Create from '../assets/icons/create.png';
+import HomeBlack from '../assets/icons/app/home-black.png';
+import SearchBlack from '../assets/icons/app/search-black.png';
+import ProjectsBlack from '../assets/icons/app/projects-black.png';
+import Profile from '../assets/icons/content/profile-general.png';
+import Create from '../assets/icons/app/create.png';
 
 const styles = StyleSheet.create({
   container: {

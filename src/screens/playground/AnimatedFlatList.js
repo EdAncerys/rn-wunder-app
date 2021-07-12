@@ -92,6 +92,7 @@ export default function App() {
     Animated.spring(scrollYAnimated, {
       toValue: scrollXIndex,
       useNativeDriver: true,
+      friction: 12,
     }).start();
   });
 

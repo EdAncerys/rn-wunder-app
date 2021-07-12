@@ -3,10 +3,10 @@ import {View, StyleSheet, Image} from 'react-native';
 
 import Colors from '../config/colors';
 import IconActions from './IconActions';
-import CommentIcon from '../assets/icons/comment-icon.png';
-import Apploud from '../assets/icons/applaud.png';
-import ShoutOut from '../assets/icons/shout-out.png';
-import Comment from '../assets/icons/comment.png';
+import CommentIcon from '../assets/icons/app/comment-icon.png';
+import Apploud from '../assets/icons/app/applaud.png';
+import ShoutOut from '../assets/icons/app/shout-out.png';
+import Comment from '../assets/icons/app/comment.png';
 
 const styles = StyleSheet.create({
   container: {

@@ -5,7 +5,7 @@ import Colors from '../../config/colors';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
 import LicenceImage from '../../assets/images/onboardingOverSixteen/upload-licence-front.png';
-import RightArrow from '../../assets/icons/right-arrow.png';
+import RightArrow from '../../assets/icons/app/right-arrow.png';
 
 const styles = StyleSheet.create({
   container: {

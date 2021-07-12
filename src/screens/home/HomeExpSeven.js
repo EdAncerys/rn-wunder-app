@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Background from '../../assets/images/home/home-exp-seven-background.png';
-import ProfileIcon from '../../assets/icons/profile-milli.png';
+import ProfileIcon from '../../assets/icons/content/rofile-milli.png';
 import HomeScreen from '../../components/HomeScreen';
 
 const HomeExpSeven = () => {

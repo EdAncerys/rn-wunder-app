@@ -2,8 +2,8 @@ import React from 'react';
 import {View, StyleSheet, Image} from 'react-native';
 
 import Colors from '../config/colors';
-import LeftIcon from '../assets/icons/notifications.png';
-import RightIcon from '../assets/icons/wallet.png';
+import LeftIcon from '../assets/icons/app/notifications.png';
+import RightIcon from '../assets/icons/app/wallet.png';
 import CustomButton from './CustomButton';
 
 const styles = StyleSheet.create({

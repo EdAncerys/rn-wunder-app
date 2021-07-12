@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Background from '../../assets/images/home/home-exp-three-background.png';
-import ProfileIcon from '../../assets/icons/profile-friends.png';
+import ProfileIcon from '../../assets/icons/content/profile-friends.png';
 import HomeScreen from '../../components/HomeScreen';
 
 const HomeExpThree = () => {

@@ -17,23 +17,23 @@ const {width, height} = Dimensions.get('screen');
 
 import HomeScreen from '../../components/HomeScreen';
 import BackgroundExpOne from '../../assets/images/home/home-exp-one-background.png';
-import ProfileIconOne from '../../assets/icons/profile-wunder.png';
+import ProfileIconOne from '../../assets/icons/content/profile-wunder.png';
 import BackgroundExpTwo from '../../assets/images/home/home-exp-two-background.png';
-import ProfileIconTwo from '../../assets/icons/profile-ormand.png';
+import ProfileIconTwo from '../../assets/icons/content/profile-ormand.png';
 import BackgroundExpThree from '../../assets/images/home/home-exp-three-background.png';
-import ProfileIconThree from '../../assets/icons/profile-friends.png';
+import ProfileIconThree from '../../assets/icons/content/profile-friends.png';
 import BackgroundExpFour from '../../assets/images/home/home-exp-four-background.png';
-import ProfileIconFour from '../../assets/icons/profile-vic.png';
+import ProfileIconFour from '../../assets/icons/content/profile-vic.png';
 import BackgroundExpFive from '../../assets/images/home/home-exp-five-background.png';
-import ProfileIconFive from '../../assets/icons/profile-tesco.png';
+import ProfileIconFive from '../../assets/icons/content/profile-tesco.png';
 import BackgroundExpSix from '../../assets/images/home/home-exp-six-background.png';
-import ProfileIconSix from '../../assets/icons/profile-sam.png';
+import ProfileIconSix from '../../assets/icons/content/profile-sam.png';
 import BackgroundExpSeven from '../../assets/images/home/home-exp-seven-background.png';
-import ProfileIconSeven from '../../assets/icons/profile-milli.png';
+import ProfileIconSeven from '../../assets/icons/content/profile-milli.png';
 import BackgroundExpEight from '../../assets/images/home/home-exp-eight-background.png';
-import ProfileIconEight from '../../assets/icons/profile-nora.png';
+import ProfileIconEight from '../../assets/icons/content/profile-nora.png';
 import BackgroundExpNine from '../../assets/images/home/home-exp-nine-background.png';
-import ProfileIconNine from '../../assets/icons/profile-nora.png';
+import ProfileIconNine from '../../assets/icons/content/profile-nora.png';
 
 const DATA = [
   {
@@ -159,10 +159,9 @@ export default function App() {
     setIndex(activeIndex);
   });
 
-  // Apply looping to render components
   React.useEffect(() => {
     if (index === data.length - 1) {
-      const newData = [...data, ...data];
+      const newData = [...data, ...data]; // Apply looping to render components
       setData(newData);
     }
   });
@@ -171,6 +170,7 @@ export default function App() {
     Animated.spring(scrollYAnimated, {
       toValue: scrollXIndex,
       useNativeDriver: true,
+      stiffness: 40,
     }).start();
   });
 

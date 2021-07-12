@@ -10,9 +10,9 @@ import {
 
 import Colors from '../config/colors';
 import CustomButton from '../components/CustomButton';
-import VerifiedBadge from '../assets/icons/verified-badge.png';
-import PeopleBadge from '../assets/icons/people-badge.png';
-import PlanetBadge from '../assets/icons/planet-badge.png';
+import VerifiedBadge from '../assets/icons/app/verified-badge.png';
+import PeopleBadge from '../assets/icons/app/people-badge.png';
+import PlanetBadge from '../assets/icons/app/planet-badge.png';
 const {width} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
