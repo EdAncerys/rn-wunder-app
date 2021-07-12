@@ -5,6 +5,7 @@ const Colors = {
   black: '#000000',
   lightBlack: '#222222',
   white: '#FFFFFF',
+  transparentWhite: 'rgba(255, 255, 255, 0.9)',
   screenFilter: 'rgba(0, 0, 0, .4)',
   gradientFilterTop: 'rgba(0, 0, 0, .1)',
   gradientFilterBottom: 'rgba(0, 0, 0, 0.7)',

@@ -15,6 +15,8 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontFamily: 'Sailec',
     fontSize: 16,
+    fontWeight: '700',
+    lineHeight: 23,
     padding: 12,
   },
   imageContainer: {

@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: 'center',
-    fontFamily: 'Sailec',
     fontSize: 15,
     paddingVertical: 5,
   },

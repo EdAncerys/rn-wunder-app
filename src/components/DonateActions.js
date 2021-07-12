@@ -1,10 +1,12 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import {View, StyleSheet, Dimensions} from 'react-native';
 
 import Colors from '../config/colors';
 import LeftIcon from '../assets/icons/app/notifications.png';
 import RightIcon from '../assets/icons/app/wallet.png';
 import CustomButton from './CustomButton';
+import DonatePopUp from '../components/DonatePopUp';
+
 const {width} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
@@ -17,27 +19,11 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
   },
-  donateContainer: {
-    position: 'absolute',
-    backgroundColor: Colors.lightBlack,
-    top: 200,
-    padding: 10,
-    width: width - width / 10,
-    height: width,
-  },
 });
 
 // SERVERS ---------------------------------------------------------
 const ServeDonate = () => {
-  return (
-    <View style={styles.donateContainer}>
-      <View>
-        <Text style={styles.title}>
-          Enter number of coin(s) you wish to donate
-        </Text>
-      </View>
-    </View>
-  );
+  return <DonatePopUp />;
 };
 
 // RETURN ---------------------------------------------------------
@@ -60,7 +46,7 @@ const DonateActions = props => {
             style={{backgroundColor: Colors.transparent}}
             image={RightIcon}
             imageStyling={styles.icon}
-            onPress={() => setDonate(true)}
+            onPress={() => setDonate(!donate)}
           />
         </View>
       </View>
