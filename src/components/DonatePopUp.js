@@ -18,19 +18,16 @@ const {width, height} = Dimensions.get('screen');
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: Colors.transparentWhite,
-    paddingHorizontal: 5,
-    paddingVertical: 16,
     width: width - width / 10,
     borderRadius: 30,
   },
   wrapper: {
-    width: '95%',
+    paddingHorizontal: 16,
+    paddingVertical: 16,
   },
   titleContainer: {
-    width: '75%',
+    paddingHorizontal: '10%',
   },
   title: {
     fontFamily: 'Sailec',
@@ -76,15 +73,66 @@ const styles = StyleSheet.create({
   },
 });
 
+// SERVERS ---------------------------------------------------------
+const ServeDonateInput = ({
+  setDonateAction,
+  setCoins,
+  setMsg,
+  setDonateCoins,
+}) => {
+  return (
+    <View style={styles.wrapper}>
+      <View style={styles.closeContainer}>
+        <CustomButton
+          style={{backgroundColor: Colors.transparent}}
+          image={CloseIcon}
+          imageStyling={styles.icon}
+          onPress={() => setDonateAction(false)}
+        />
+      </View>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>
+          Enter number of coin(s) you wish to donate
+        </Text>
+      </View>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.coinInput}
+          onChangeText={setCoins}
+          autoCapitalize="none"
+          keyboardType="numeric"
+          maxLength={6}
+        />
+      </View>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Leave a message!</Text>
+      </View>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={{...styles.coinInput, ...styles.textInput}}
+          onChangeText={setMsg}
+          autoCapitalize="none"
+          multiline={true}
+        />
+      </View>
+      <CustomButton
+        title="Donate Coin(s)"
+        onPress={() => setDonateCoins(true)}
+      />
+    </View>
+  );
+};
+
 const DonatePopUp = ({setDonateAction}) => {
-  const [donateCoins, setDonateCoins] = React.useState(0);
+  const [donateCoins, setDonateCoins] = React.useState(false);
+  const [coins, setCoins] = React.useState(0);
   const [msg, setMsg] = React.useState('');
 
+  // ANIMATION HANDLER -----------------------------------------------------
   const scrollYAnimated = React.useRef(
     new Animated.Value(height / 6.5),
   ).current;
 
-  // ANIMATION HANDLER -----------------------------------------------------
   React.useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
       Animated.spring(scrollYAnimated, {
@@ -117,50 +165,14 @@ const DonatePopUp = ({setDonateAction}) => {
           },
         ],
       }}>
-      <View style={styles.wrapper}>
-        <View style={styles.closeContainer}>
-          <CustomButton
-            style={{backgroundColor: Colors.transparent}}
-            image={CloseIcon}
-            imageStyling={styles.icon}
-            onPress={() => setDonateAction(false)}
-          />
-        </View>
-      </View>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>
-          Enter number of coin(s) you wish to donate
-        </Text>
-      </View>
-      <View style={styles.wrapper}>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.coinInput}
-            onChangeText={setDonateCoins}
-            autoCapitalize="none"
-            value={donateCoins}
-            keyboardType="numeric"
-            maxLength={6}
-          />
-        </View>
-      </View>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Leave a message!</Text>
-      </View>
-      <View style={styles.wrapper}>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={{...styles.coinInput, ...styles.textInput}}
-            onChangeText={setMsg}
-            autoCapitalize="none"
-            value={msg}
-            multiline={true}
-          />
-        </View>
-      </View>
-      <View style={styles.wrapper}>
-        <CustomButton title="Donate Coin(s)" />
-      </View>
+      {!donateCoins && (
+        <ServeDonateInput
+          setDonateAction={setDonateAction}
+          setCoins={setCoins}
+          setMsg={setMsg}
+          setDonateCoins={setDonateCoins}
+        />
+      )}
     </Animated.View>
   );
 };
