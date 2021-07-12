@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 
 import Colors from '../config/colors';
 
@@ -21,6 +21,10 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 5,
   },
+  icon: {
+    width: 24,
+    height: 24,
+  },
 });
 
 // SERVERS ---------------------------------------------------------
@@ -33,8 +37,11 @@ const ServeBtnTitle = ({props}) => {
 };
 const ServeBtnImage = ({props}) => {
   return (
-    <View style={{...styles.imageContainer, ...props.imageStyling}}>
-      {props.image}
+    <View style={styles.imageContainer}>
+      <Image
+        source={props.image}
+        style={{...styles.icon, ...props.imageStyling}}
+      />
     </View>
   );
 };

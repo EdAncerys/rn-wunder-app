@@ -43,8 +43,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Sailec',
     fontSize: 16,
     lineHeight: 24,
-    paddingVertical: 5,
     width: width * 0.7,
+  },
+  postTagIcon: {
+    width: 40,
+    height: 40,
   },
   postAction: {
     opacity: 0.8,
@@ -88,7 +91,8 @@ const ServePost = ({props}) => {
       </TouchableOpacity>
       <View style={styles.badge}>
         <CustomButton
-          image={<Image source={postTagIcon} />}
+          image={postTagIcon}
+          imageStyling={styles.postTagIcon}
           style={{backgroundColor: Colors.transparent}}
           onPress={() => alert('path')}
         />

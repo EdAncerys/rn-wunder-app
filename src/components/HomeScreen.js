@@ -24,14 +24,15 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
   },
   appActions: {
-    flex: 3,
+    flex: 4,
     alignItems: 'flex-start',
+    justifyContent: 'center',
     marginHorizontal: '5%',
-    marginTop: '5%',
   },
   postContainer: {
     flex: 3,
     marginHorizontal: '5%',
+    marginVertical: '5%',
   },
 });
 
@@ -49,7 +50,7 @@ const HomeScreen = ({
 }) => {
   const applyMarginPost = getInvolved
     ? {marginBottom: '55%'}
-    : {marginBottom: '20%'};
+    : {marginBottom: '30%'};
   const applyMarginActions =
     donateActions || navigateActions ? {marginTop: '5%'} : {marginTop: '50%'};
 

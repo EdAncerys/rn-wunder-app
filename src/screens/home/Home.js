@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   StatusBar,
-  Image,
   FlatList,
   Dimensions,
   Animated,
@@ -195,11 +194,10 @@ export default function App() {
   };
 
   const renderItem = ({item, index}) => {
-    console.log(item);
     const inputRange = [index - 1, index, index + 1];
     const translateY = scrollYAnimated.interpolate({
       inputRange,
-      outputRange: [ITEM_HEIGHT - 200, 0, 0],
+      outputRange: [ITEM_HEIGHT - 170, 0, 0],
     });
     const scale = scrollYAnimated.interpolate({
       inputRange,

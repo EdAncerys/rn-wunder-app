@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, StyleSheet, Image} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
 import Colors from '../config/colors';
 import IconActions from './IconActions';
@@ -19,10 +19,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     marginTop: '10%',
   },
-  icon: {
-    width: 24,
-    height: 24,
-  },
   searchIcon: {
     width: 40,
     height: 40,
@@ -34,7 +30,7 @@ const AppNavigateActions = props => {
     <View style={styles.container}>
       <View>
         <IconActions
-          actionImage={<Image source={HomeBlack} style={styles.icon} />}
+          image={HomeBlack}
           actionTitle="home"
           actionTitleStyle={{color: Colors.black}}
           onPress={() => alert('path')}
@@ -42,7 +38,7 @@ const AppNavigateActions = props => {
       </View>
       <View>
         <IconActions
-          actionImage={<Image source={SearchBlack} style={styles.icon} />}
+          image={SearchBlack}
           actionTitle="search"
           actionTitleStyle={{color: Colors.black}}
           onPress={() => alert('path')}
@@ -50,13 +46,14 @@ const AppNavigateActions = props => {
       </View>
       <View>
         <IconActions
-          actionImage={<Image source={Create} style={styles.searchIcon} />}
+          image={Create}
+          imageStyling={styles.searchIcon}
           onPress={() => alert('path')}
         />
       </View>
       <View>
         <IconActions
-          actionImage={<Image source={ProjectsBlack} style={styles.icon} />}
+          image={ProjectsBlack}
           actionTitle="projects"
           actionTitleStyle={{color: Colors.black}}
           onPress={() => alert('path')}
@@ -64,7 +61,7 @@ const AppNavigateActions = props => {
       </View>
       <View>
         <IconActions
-          actionImage={<Image source={Profile} style={styles.icon} />}
+          image={Profile}
           actionTitle="profile"
           actionTitleStyle={{color: Colors.black}}
           onPress={() => alert('path')}

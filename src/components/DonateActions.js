@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, StyleSheet, Image} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
 import Colors from '../config/colors';
 import LeftIcon from '../assets/icons/app/notifications.png';
@@ -11,6 +11,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  icon: {
+    width: 32,
+    height: 32,
+  },
 });
 
 const DonateActions = props => {
@@ -19,14 +23,16 @@ const DonateActions = props => {
       <View>
         <CustomButton
           style={{backgroundColor: Colors.transparent}}
-          image={<Image source={LeftIcon} />}
+          image={LeftIcon}
+          imageStyling={styles.icon}
           onPress={() => alert('path')}
         />
       </View>
       <View>
         <CustomButton
           style={{backgroundColor: Colors.transparent}}
-          image={<Image source={RightIcon} />}
+          image={RightIcon}
+          imageStyling={styles.icon}
           onPress={() => alert('path')}
         />
       </View>

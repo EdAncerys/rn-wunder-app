@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, StyleSheet, Image} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 
 import Colors from '../config/colors';
 import IconActions from './IconActions';
@@ -21,33 +21,29 @@ const styles = StyleSheet.create({
     borderColor: Colors.white,
     backgroundColor: Colors.blurFilter,
   },
-  icon: {
-    width: 24,
-    height: 24,
-  },
 });
 
 const actions = [
   {
-    image: <Image source={CommentIcon} style={styles.icon} />,
+    image: CommentIcon,
     count: 346,
     onPress: () => alert('path'),
     id: 1,
   },
   {
-    image: <Image source={Apploud} />,
+    image: Apploud,
     count: 99,
     onPress: () => alert('path'),
     id: 2,
   },
   {
-    image: <Image source={ShoutOut} />,
+    image: ShoutOut,
     count: 99,
     onPress: () => alert('path'),
     id: 3,
   },
   {
-    image: <Image source={Comment} />,
+    image: Comment,
     count: 99,
     onPress: () => alert('path'),
     id: 4,
@@ -62,7 +58,7 @@ const AppActions = props => {
           return (
             <IconActions
               key={action.id}
-              actionImage={action.image}
+              image={action.image}
               actionTitle={action.count}
               onPress={action.onPress}
             />

@@ -61,7 +61,8 @@ const UploadPassport = ({navigation}) => {
 
       <View style={styles.actionsContainer}>
         <CustomButton
-          image={<Image source={RightArrow} />}
+          image={RightArrow}
+          imageStyling={{paddingVertical: 16, paddingHorizontal: 35}}
           // onPress={() => navigation.navigate('AgeIdentity')}
           onPress={() => alert('path')}
         />

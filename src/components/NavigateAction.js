@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
+import {View, Text, StyleSheet, Dimensions} from 'react-native';
 
 import Colors from '../config/colors';
 import LeftIcon from '../assets/icons/app/back-left.png';
@@ -29,7 +29,7 @@ const NavigateAction = ({title, onPress}) => {
     <View style={styles.container}>
       <CustomButton
         onPress={onPress}
-        image={<Image source={LeftIcon} />}
+        image={LeftIcon}
         style={{backgroundColor: Colors.transparent}}
       />
       <View style={styles.textContainer}>
