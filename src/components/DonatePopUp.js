@@ -5,9 +5,8 @@ import {
   TextInput,
   StyleSheet,
   Dimensions,
-  Platform,
+  Animated,
   Keyboard,
-  KeyboardAvoidingView,
 } from 'react-native';
 
 import Colors from '../config/colors';
@@ -58,14 +57,23 @@ const styles = StyleSheet.create({
 const DonatePopUp = ({props}) => {
   const [donateCoins, setDonateCoins] = React.useState(0);
   const [msg, setMsg] = React.useState('');
-  const [keyboardOffset, setKeyboardOffset] = React.useState(height / 3);
 
+  const scrollYAnimated = React.useRef(new Animated.Value(height / 3)).current;
+
+  // ANIMATION HANDLER -----------------------------------------------------
   React.useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
-      setKeyboardOffset(height / 10);
+      Animated.spring(scrollYAnimated, {
+        toValue: height / 10,
+        stiffness: 45,
+      }).start();
     });
     const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
-      setKeyboardOffset(height / 3);
+      Animated.spring(scrollYAnimated, {
+        toValue: height / 3,
+        useNativeDriver: false,
+        stiffness: 80,
+      }).start();
     });
 
     return () => {
@@ -74,47 +82,53 @@ const DonatePopUp = ({props}) => {
     };
   }, []);
 
+  // RETURN ---------------------------------------------------------
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-      <View style={{...styles.container, top: keyboardOffset}}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>
-            Enter number of coin(s) you wish to donate
-          </Text>
-        </View>
-        <View style={styles.wrapper}>
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={styles.coinInput}
-              onChangeText={setDonateCoins}
-              autoCapitalize="none"
-              value={donateCoins}
-              keyboardType="numeric"
-              maxLength={6}
-            />
-          </View>
-        </View>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>Leave a message!</Text>
-        </View>
-        <View style={styles.wrapper}>
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={{...styles.coinInput, ...styles.textInput}}
-              onChangeText={setMsg}
-              autoCapitalize="none"
-              value={msg}
-              multiline
-              numberOfLines={6}
-            />
-          </View>
-        </View>
-        <View style={styles.wrapper}>
-          <CustomButton title="Donate Coin(s)" />
+    <Animated.View
+      style={{
+        ...styles.container,
+        transform: [
+          {
+            translateY: scrollYAnimated,
+          },
+        ],
+      }}>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>
+          Enter number of coin(s) you wish to donate
+        </Text>
+      </View>
+      <View style={styles.wrapper}>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.coinInput}
+            onChangeText={setDonateCoins}
+            autoCapitalize="none"
+            value={donateCoins}
+            keyboardType="numeric"
+            maxLength={6}
+          />
         </View>
       </View>
-    </KeyboardAvoidingView>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Leave a message!</Text>
+      </View>
+      <View style={styles.wrapper}>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={{...styles.coinInput, ...styles.textInput}}
+            onChangeText={setMsg}
+            autoCapitalize="none"
+            value={msg}
+            multiline
+            numberOfLines={6}
+          />
+        </View>
+      </View>
+      <View style={styles.wrapper}>
+        <CustomButton title="Donate Coin(s)" />
+      </View>
+    </Animated.View>
   );
 };
 

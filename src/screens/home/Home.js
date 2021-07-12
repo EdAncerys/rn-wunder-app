@@ -150,11 +150,11 @@ const ITEM_HEIGHT = height;
 
 export default function App() {
   const [data, setData] = React.useState(DATA);
-  const scrollXIndex = React.useRef(new Animated.Value(0)).current;
+  const scrollYIndex = React.useRef(new Animated.Value(0)).current;
   const scrollYAnimated = React.useRef(new Animated.Value(0)).current;
   const [index, setIndex] = React.useState(0);
   const setActiveIndex = React.useCallback(activeIndex => {
-    scrollXIndex.setValue(activeIndex);
+    scrollYIndex.setValue(activeIndex);
     setIndex(activeIndex);
   });
 
@@ -167,7 +167,7 @@ export default function App() {
 
   React.useEffect(() => {
     Animated.spring(scrollYAnimated, {
-      toValue: scrollXIndex,
+      toValue: scrollYIndex,
       useNativeDriver: true,
       stiffness: 45,
     }).start();
