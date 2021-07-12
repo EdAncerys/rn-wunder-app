@@ -49,7 +49,7 @@ const HomeScreen = ({
 }) => {
   const applyMarginPost = getInvolved
     ? {marginBottom: '55%'}
-    : {marginBottom: '5%'};
+    : {marginBottom: '20%'};
   const applyMarginActions =
     donateActions || navigateActions ? {marginTop: '5%'} : {marginTop: '50%'};
 

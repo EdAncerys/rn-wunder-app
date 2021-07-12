@@ -170,7 +170,7 @@ export default function App() {
     Animated.spring(scrollYAnimated, {
       toValue: scrollXIndex,
       useNativeDriver: true,
-      stiffness: 40,
+      stiffness: 45,
     }).start();
   });
 
@@ -199,7 +199,7 @@ export default function App() {
     const inputRange = [index - 1, index, index + 1];
     const translateY = scrollYAnimated.interpolate({
       inputRange,
-      outputRange: [ITEM_HEIGHT - 150, 0, 0],
+      outputRange: [ITEM_HEIGHT - 200, 0, 0],
     });
     const scale = scrollYAnimated.interpolate({
       inputRange,
