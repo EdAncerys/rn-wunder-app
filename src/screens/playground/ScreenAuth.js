@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import * as React from 'react';
 import {
   SafeAreaView,
   Text,
@@ -48,11 +48,11 @@ const ScreenAuth = ({navigation}) => {
   const dispatchApi = useApiDispatch();
   const {jwt, user} = useAuthState();
 
-  const [logInEmail, setLogInEmail] = useState('');
-  const [logInPassword, setLogInPassword] = useState('');
+  const [logInEmail, setLogInEmail] = React.useState('');
+  const [logInPassword, setLogInPassword] = React.useState('');
 
-  const [signUpEmail, setSignUpEmail] = useState('');
-  const [signUpPassword, setSignUpPassword] = useState('');
+  const [signUpEmail, setSignUpEmail] = React.useState('');
+  const [signUpPassword, setSignUpPassword] = React.useState('');
 
   // HANDLERS ---------------------------------------------------------
   const handleLogIn = () => {

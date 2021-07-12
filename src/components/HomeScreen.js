@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {View, StyleSheet, ImageBackground} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 

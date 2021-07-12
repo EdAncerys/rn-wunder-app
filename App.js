@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {AuthProvider} from './src/context/auth';
 import {ApiProvider} from './src/context/api';

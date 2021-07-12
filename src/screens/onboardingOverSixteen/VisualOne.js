@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 
 import Background from '../../assets/images/onboardingOverSixteen/visual-one-background.png';
 import VisualScreenComponent from '../../components/VisualScreenComponent';
 
-const VisualOne = ({ navigation }) => {
+const VisualOne = ({navigation}) => {
   return (
     <VisualScreenComponent
       background={Background}

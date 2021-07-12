@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import * as React from 'react';
 import {useAuthState, useAuthDispatch, logIn} from '../../context/auth';
 import {useApiDispatch} from '../../context/api';
 
@@ -57,8 +57,8 @@ const UploadIdentity = ({navigation}) => {
   const {jwt, user} = useAuthState();
   console.log(user);
 
-  const [logInEmail, setLogInEmail] = useState('');
-  const [logInPassword, setLogInPassword] = useState('');
+  const [logInEmail, setLogInEmail] = React.useState('');
+  const [logInPassword, setLogInPassword] = React.useState('');
 
   // HANDLERS ---------------------------------------------------------
   const handleLogIn = () => {
@@ -73,7 +73,7 @@ const UploadIdentity = ({navigation}) => {
     setLogInPassword('');
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     navigation.navigate('Home');
   }, [user]);
 

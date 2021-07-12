@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import Background from '../../assets/images/home/home-exp-five-background.png';
 import ProfileIcon from '../../assets/icons/content/profile-tesco.png';
