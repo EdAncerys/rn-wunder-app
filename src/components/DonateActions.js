@@ -22,13 +22,13 @@ const styles = StyleSheet.create({
 });
 
 // SERVERS ---------------------------------------------------------
-const ServeDonate = () => {
-  return <DonatePopUp />;
+const ServeDonate = ({setDonateAction}) => {
+  return <DonatePopUp setDonateAction={setDonateAction} />;
 };
 
 // RETURN ---------------------------------------------------------
 const DonateActions = props => {
-  const [donate, setDonate] = React.useState(false);
+  const [donateAction, setDonateAction] = React.useState(false);
 
   return (
     <View>
@@ -46,11 +46,11 @@ const DonateActions = props => {
             style={{backgroundColor: Colors.transparent}}
             image={RightIcon}
             imageStyling={styles.icon}
-            onPress={() => setDonate(!donate)}
+            onPress={() => setDonateAction(!donateAction)}
           />
         </View>
       </View>
-      {donate && <ServeDonate />}
+      {donateAction && <ServeDonate setDonateAction={setDonateAction} />}
     </View>
   );
 };

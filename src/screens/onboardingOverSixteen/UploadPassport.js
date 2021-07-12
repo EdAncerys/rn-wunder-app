@@ -5,7 +5,7 @@ import Colors from '../../config/colors';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
 import PassportImage from '../../assets/images/onboardingOverSixteen/upload-passport.png';
-import RightArrow from '../../assets/icons/app/right-arrow.png';
+import RightArrow from '../../assets/icons/app/right-arrow-white.png';
 
 const styles = StyleSheet.create({
   container: {
