@@ -123,6 +123,55 @@ const ServeDonateInput = ({
   );
 };
 
+const ServeConfirmDonation = ({
+  setDonateAction,
+  setCoins,
+  setMsg,
+  setDonateCoins,
+}) => {
+  return (
+    <View style={styles.wrapper}>
+      <View style={styles.closeContainer}>
+        <CustomButton
+          style={{backgroundColor: Colors.transparent}}
+          image={CloseIcon}
+          imageStyling={styles.icon}
+          onPress={() => setDonateAction(false)}
+        />
+      </View>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>
+          Enter number of coin(s) you wish to donate
+        </Text>
+      </View>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.coinInput}
+          onChangeText={setCoins}
+          autoCapitalize="none"
+          keyboardType="numeric"
+          maxLength={6}
+        />
+      </View>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>Leave a message!</Text>
+      </View>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={{...styles.coinInput, ...styles.textInput}}
+          onChangeText={setMsg}
+          autoCapitalize="none"
+          multiline={true}
+        />
+      </View>
+      <CustomButton
+        title="Confirm Coin(s)"
+        onPress={() => setDonateCoins(true)}
+      />
+    </View>
+  );
+};
+
 const DonatePopUp = ({setDonateAction}) => {
   const [donateCoins, setDonateCoins] = React.useState(false);
   const [coins, setCoins] = React.useState(0);
