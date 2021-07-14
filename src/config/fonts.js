@@ -65,6 +65,12 @@ const Fonts = {
     fontWeight: '700',
     lineHeight: 34,
   },
+  N_400_45: {
+    fontFamily: 'Sailec',
+    fontSize: 45,
+    fontWeight: '400',
+    lineHeight: 63,
+  },
 };
 
 export default Fonts;

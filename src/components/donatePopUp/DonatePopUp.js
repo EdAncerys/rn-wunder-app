@@ -9,10 +9,10 @@ import {
   Keyboard,
 } from 'react-native';
 
-import Colors from '../config/colors';
-import Fonts from '../config/fonts';
-import CloseIcon from '../assets/icons/app/close-black.png';
-import CustomButton from './CustomButton';
+import Colors from '../../config/colors';
+import Fonts from '../../config/fonts';
+import CloseIcon from '../../assets/icons/app/close-black.png';
+import CustomButton from '../CustomButton';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -51,14 +51,18 @@ const styles = StyleSheet.create({
   },
   coinInput: {
     ...Fonts.N_400_20,
-    paddingVertical: 6,
+    paddingVertical: 5,
+    textAlign: 'center',
+    textAlignVertical: 'top',
   },
   textInput: {
     ...Fonts.N_400_15,
     textAlign: 'left',
+    height: 80,
   },
-  closeContainer: {
-    alignSelf: 'flex-end',
+  actionContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   icon: {
     width: 16,
@@ -69,13 +73,15 @@ const styles = StyleSheet.create({
 // SERVERS ---------------------------------------------------------
 const ServeDonateInput = ({
   setDonateAction,
+  coins,
   setCoins,
+  msg,
   setMsg,
   setDonateCoins,
 }) => {
   return (
     <View style={styles.wrapper}>
-      <View style={styles.closeContainer}>
+      <View style={{...styles.actionContainer, alignSelf: 'flex-end'}}>
         <CustomButton
           style={{backgroundColor: Colors.transparent}}
           image={CloseIcon}
@@ -91,10 +97,10 @@ const ServeDonateInput = ({
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.coinInput}
+          value={coins}
           onChangeText={setCoins}
           autoCapitalize="none"
           keyboardType="numeric"
-          maxLength={6}
         />
       </View>
       <View style={styles.titleContainer}>
@@ -103,9 +109,10 @@ const ServeDonateInput = ({
       <View style={styles.inputContainer}>
         <TextInput
           style={{...styles.coinInput, ...styles.textInput}}
+          value={msg}
           onChangeText={setMsg}
           autoCapitalize="none"
-          multiline={true}
+          multiline
         />
       </View>
       <CustomButton
@@ -118,13 +125,19 @@ const ServeDonateInput = ({
 
 const ServeConfirmDonation = ({
   setDonateAction,
-  setCoins,
-  setMsg,
-  setDonateCoins,
+  coins,
+  msg,
+  setConfirmCoins,
 }) => {
   return (
     <View style={styles.wrapper}>
-      <View style={styles.closeContainer}>
+      <View style={styles.actionContainer}>
+        <CustomButton
+          style={{backgroundColor: Colors.transparent}}
+          image={CloseIcon}
+          imageStyling={styles.icon}
+          onPress={() => setDonateAction(false)}
+        />
         <CustomButton
           style={{backgroundColor: Colors.transparent}}
           image={CloseIcon}
@@ -133,33 +146,17 @@ const ServeConfirmDonation = ({
         />
       </View>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>
-          Enter number of coin(s) you wish to donate
-        </Text>
-      </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.coinInput}
-          onChangeText={setCoins}
-          autoCapitalize="none"
-          keyboardType="numeric"
-          maxLength={6}
-        />
+        <Text style={styles.title}>Confirm your donation</Text>
       </View>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>Leave a message!</Text>
+        <Text style={styles.title}>{coins}</Text>
       </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={{...styles.coinInput, ...styles.textInput}}
-          onChangeText={setMsg}
-          autoCapitalize="none"
-          multiline={true}
-        />
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>{msg}</Text>
       </View>
       <CustomButton
         title="Confirm Coin(s)"
-        onPress={() => setDonateCoins(true)}
+        onPress={() => setConfirmCoins(true)}
       />
     </View>
   );
@@ -167,7 +164,8 @@ const ServeConfirmDonation = ({
 
 const DonatePopUp = ({setDonateAction}) => {
   const [donateCoins, setDonateCoins] = React.useState(false);
-  const [coins, setCoins] = React.useState(0);
+  const [confirmCoins, setConfirmCoins] = React.useState(false);
+  const [coins, setCoins] = React.useState('');
   const [msg, setMsg] = React.useState('');
 
   // ANIMATION HANDLER -----------------------------------------------------
@@ -179,6 +177,7 @@ const DonatePopUp = ({setDonateAction}) => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
       Animated.spring(scrollYAnimated, {
         toValue: height / 12,
+        useNativeDriver: false,
         stiffness: 45,
       }).start();
     });
@@ -210,9 +209,19 @@ const DonatePopUp = ({setDonateAction}) => {
       {!donateCoins && (
         <ServeDonateInput
           setDonateAction={setDonateAction}
+          coins={coins}
           setCoins={setCoins}
+          msg={msg}
           setMsg={setMsg}
           setDonateCoins={setDonateCoins}
+        />
+      )}
+      {donateCoins && (
+        <ServeConfirmDonation
+          setDonateAction={setDonateAction}
+          coins={coins}
+          msg={msg}
+          setConfirmCoins={setConfirmCoins}
         />
       )}
     </Animated.View>

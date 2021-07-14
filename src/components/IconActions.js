@@ -11,8 +11,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 8,
   },
-  actionText: {
+  actionTitle: {
     ...Fonts.N_400_9,
+    color: Colors.white,
     marginTop: 8,
   },
 });
@@ -31,7 +32,7 @@ const ServeActionIcon = ({props}) => {
 };
 const ServeActionTitle = ({props}) => {
   return (
-    <Text style={{...styles.actionText, ...props.actionTitleStyle}}>
+    <Text style={{...styles.actionTitle, ...props.actionTitleStyle}}>
       {props.actionTitle}
     </Text>
   );
