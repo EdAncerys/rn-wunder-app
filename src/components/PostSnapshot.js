@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import Colors from '../config/colors';
+import Fonts from '../config/fonts';
 import CustomButton from '../components/CustomButton';
 import VerifiedBadge from '../assets/icons/app/verified-badge.png';
 import PeopleBadge from '../assets/icons/app/people-badge.png';
@@ -31,12 +32,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
   },
   title: {
-    color: Colors.white,
-    fontFamily: 'Sailec-Bold',
-    fontSize: 26,
-    lineHeight: 34,
-    paddingVertical: 5,
-    width: width * 0.7,
+    ...{
+      color: Colors.white,
+      paddingVertical: 5,
+      width: width * 0.7,
+    },
+    ...Fonts._34,
   },
   post: {
     color: Colors.planet,
@@ -56,6 +57,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+console.log(Fonts._16);
 
 // SERVERS ---------------------------------------------------------
 const ServeProfileInfo = ({props}) => {
