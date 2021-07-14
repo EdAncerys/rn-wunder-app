@@ -2,6 +2,7 @@ import * as React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
 
 import Colors from '../../config/colors';
+import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
 import LicenceImage from '../../assets/images/onboardingOverSixteen/upload-licence-front.png';
@@ -31,9 +32,8 @@ const styles = StyleSheet.create({
     paddingTop: '10%',
   },
   titleText: {
+    ...Fonts.N_700_16,
     color: Colors.white,
-    fontFamily: 'Sailec',
-    fontSize: 16,
   },
   navigateActionContainer: {
     paddingTop: '20%',

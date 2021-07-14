@@ -2,6 +2,7 @@ import * as React from 'react';
 import {View, StyleSheet, ImageBackground, Image} from 'react-native';
 
 import Colors from '../../config/colors';
+import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import Background from '../../assets/images/onboardingOverSixteen/splash-screen-background.png';
 import Logo from '../../assets/images/onboardingOverSixteen/splash-screen-logo.png';
@@ -26,9 +27,8 @@ const styles = StyleSheet.create({
     paddingBottom: 72,
   },
   startActionText: {
+    ...Fonts.N_700_16,
     color: Colors.white,
-    fontFamily: 'Sailec',
-    fontSize: 16,
   },
 });
 

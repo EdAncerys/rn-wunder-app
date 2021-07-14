@@ -2,6 +2,7 @@ import * as React from 'react';
 import {View, Text, StyleSheet, ImageBackground} from 'react-native';
 
 import Colors from '../config/colors';
+import Fonts from '../config/fonts';
 import CustomButton from './CustomButton';
 
 const styles = StyleSheet.create({
@@ -20,9 +21,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: '5%',
   },
   skipText: {
+    ...Fonts.N_700_12,
     color: Colors.white,
-    fontFamily: 'Sailec',
-    fontSize: 12,
     opacity: 0.6,
   },
   titleContainer: {
@@ -30,9 +30,8 @@ const styles = StyleSheet.create({
     paddingTop: '75%',
   },
   titleText: {
+    ...Fonts.N_700_28,
     color: Colors.white,
-    fontFamily: 'Sailec',
-    fontSize: 29,
     textAlign: 'center',
   },
   dot: {

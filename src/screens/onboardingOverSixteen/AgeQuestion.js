@@ -5,6 +5,7 @@ import Colors from '../../config/colors';
 import Background from '../../assets/images/onboardingOverSixteen/age-question-background.png';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
+import Fonts from '../../config/fonts';
 
 const styles = StyleSheet.create({
   container: {
@@ -37,9 +38,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textDivider: {
+    ...Fonts.N_500_12,
     color: Colors.white,
-    fontFamily: 'Sailec',
-    fontSize: 12,
   },
   dash: {
     borderBottomColor: Colors.white,
@@ -48,9 +48,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
   titleText: {
+    ...Fonts.N_700_28,
     color: Colors.white,
-    fontFamily: 'Sailec',
-    fontSize: 28,
   },
   navigateActionContainer: {
     paddingTop: '15%',

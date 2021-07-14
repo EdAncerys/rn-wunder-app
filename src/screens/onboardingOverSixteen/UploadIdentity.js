@@ -2,6 +2,7 @@ import * as React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
 import Colors from '../../config/colors';
+import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
 
@@ -42,9 +43,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textDivider: {
+    ...Fonts.N_500_12,
     color: Colors.white,
-    fontFamily: 'Sailec',
-    fontSize: 12,
   },
   dash: {
     borderBottomColor: Colors.white,
@@ -53,14 +53,12 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
   titleText: {
+    ...Fonts.N_700_28,
     color: Colors.white,
-    fontFamily: 'Sailec',
-    fontSize: 28,
   },
   infoText: {
+    ...Fonts.N_500_12,
     color: Colors.white,
-    fontFamily: 'Sailec',
-    fontSize: 12,
   },
   navigateActionContainer: {
     paddingTop: '20%',

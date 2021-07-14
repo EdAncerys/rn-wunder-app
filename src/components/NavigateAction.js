@@ -2,6 +2,7 @@ import * as React from 'react';
 import {View, Text, StyleSheet, Dimensions} from 'react-native';
 
 import Colors from '../config/colors';
+import Fonts from '../config/fonts';
 import LeftIcon from '../assets/icons/app/left-white.png';
 import CustomButton from './CustomButton';
 const {width} = Dimensions.get('screen');
@@ -13,10 +14,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
+    ...Fonts.N_700_16,
     color: Colors.white,
     textAlign: 'right',
-    fontFamily: 'Sailec',
-    fontSize: 16,
     paddingRight: width / 3,
   },
   textContainer: {

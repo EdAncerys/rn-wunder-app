@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import Colors from '../config/colors';
+import Fonts from '../config/fonts';
 import CloseIcon from '../assets/icons/app/close-black.png';
 import CustomButton from './CustomButton';
 
@@ -30,11 +31,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: '10%',
   },
   title: {
-    fontFamily: 'Sailec',
-    fontWeight: '500',
+    ...Fonts.N_500_22,
     textAlign: 'center',
-    fontSize: 22,
-    lineHeight: 27.5,
   },
   inputContainer: {
     backgroundColor: Colors.white,
@@ -52,17 +50,12 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
   },
   coinInput: {
-    fontFamily: 'Sailec',
-    textAlign: 'center',
-    fontWeight: '400',
+    ...Fonts.N_400_20,
     paddingVertical: 6,
-    fontSize: 20,
   },
   textInput: {
+    ...Fonts.N_400_15,
     textAlign: 'left',
-    fontSize: 15,
-    lineHeight: 25,
-    height: 80,
   },
   closeContainer: {
     alignSelf: 'flex-end',

@@ -26,24 +26,19 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   profile: {
+    ...Fonts.N_500_16,
     color: Colors.white,
-    fontFamily: 'Sailec',
-    fontSize: 16,
     paddingHorizontal: 8,
   },
   title: {
-    ...{
-      color: Colors.white,
-      paddingVertical: 5,
-      width: width * 0.7,
-    },
-    ...Fonts._34,
+    ...Fonts.N_700_34,
+    color: Colors.white,
+    paddingVertical: 5,
+    width: width * 0.7,
   },
   post: {
+    ...Fonts.N_400_16,
     color: Colors.planet,
-    fontFamily: 'Sailec',
-    fontSize: 16,
-    lineHeight: 24,
     width: width * 0.7,
   },
   postTagIcon: {

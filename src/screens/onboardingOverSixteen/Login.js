@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 
 import Colors from '../../config/colors';
+import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 
 const styles = StyleSheet.create({
@@ -29,11 +30,10 @@ const styles = StyleSheet.create({
     marginVertical: '20%',
   },
   headerText: {
+    ...Fonts.N_700_34,
+    color: Colors.white,
     textAlign: 'center',
     marginVertical: 10,
-    fontSize: 36,
-    fontFamily: 'Sailec',
-    color: Colors.white,
   },
   textInput: {
     borderColor: '#000000',
@@ -43,11 +43,10 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
   },
   infoText: {
+    ...Fonts.N_700_12,
+    color: Colors.white,
     textAlign: 'center',
     marginVertical: 10,
-    color: Colors.white,
-    fontFamily: 'Sailec',
-    fontSize: 12,
   },
 });
 

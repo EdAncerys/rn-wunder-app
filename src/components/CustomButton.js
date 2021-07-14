@@ -2,6 +2,7 @@ import * as React from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 
 import Colors from '../config/colors';
+import Fonts from '../config/fonts';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,11 +13,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   titleText: {
+    ...Fonts.N_700_16,
     color: Colors.white,
-    fontFamily: 'Sailec',
-    fontSize: 16,
-    fontWeight: '700',
-    lineHeight: 23,
     padding: 12,
   },
   imageContainer: {

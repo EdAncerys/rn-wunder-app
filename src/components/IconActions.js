@@ -2,6 +2,7 @@ import * as React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
 import Colors from '../config/colors';
+import Fonts from '../config/fonts';
 import CustomButton from './CustomButton';
 
 const styles = StyleSheet.create({
@@ -11,9 +12,7 @@ const styles = StyleSheet.create({
     margin: 8,
   },
   actionText: {
-    color: Colors.white,
-    fontFamily: 'Sailec',
-    fontSize: 10,
+    ...Fonts.N_400_9,
     marginTop: 8,
   },
 });
