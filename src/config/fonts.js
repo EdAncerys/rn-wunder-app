@@ -5,6 +5,12 @@ const Fonts = {
     fontWeight: '400',
     lineHeight: 13,
   },
+  N_400_10: {
+    fontFamily: 'Sailec',
+    fontSize: 10,
+    fontWeight: '400',
+    lineHeight: 15,
+  },
   N_500_12: {
     fontFamily: 'Sailec',
     fontSize: 12,
