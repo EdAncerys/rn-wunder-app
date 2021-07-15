@@ -165,7 +165,8 @@ const DATA_THIS_WEEK = [
 ];
 
 // SERVERS ---------------------------------------------------------
-const renderItem = ({item}) => {
+const renderItem = ({item, index}) => {
+  const placeDivider = (index + 1) % 4 === 0;
   const notificationImg = item.notificationImg;
   const donate = item.action === 'donate';
   const apploud = item.action === 'apploud';
@@ -230,6 +231,7 @@ const renderItem = ({item}) => {
         {notificationImg && <ServeNotification />}
         {!notificationImg && <ServeFollow onPress={() => alert('path')} />}
       </TouchableOpacity>
+      {placeDivider && <View style={styles.divider}></View>}
     </ScrollView>
   );
 };
@@ -262,7 +264,6 @@ const ServeData = ({data, title}) => {
         keyExtractor={(_, index) => String(index)}
         renderItem={renderItem}
       />
-      <View style={styles.divider}></View>
     </View>
   );
 };
