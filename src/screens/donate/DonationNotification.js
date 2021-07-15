@@ -8,6 +8,7 @@ import {
   ScrollView,
   FlatList,
   ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
 
 import Colors from '../../config/colors';
@@ -164,16 +165,56 @@ const DATA_THIS_WEEK = [
 ];
 
 // SERVERS ---------------------------------------------------------
-const renderItem = ({item, index}) => {
+const renderItem = ({item}) => {
   const notificationImg = item.notificationImg;
   const donate = item.action === 'donate';
   const apploud = item.action === 'apploud';
   const following = item.action === 'following';
-  const follow = item.action === 'follow';
+
+  const ServeNotification = ({props}) => {
+    return (
+      <ImageBackground
+        source={item.notificationImg}
+        style={styles.imgContainerBackground}>
+        <View style={styles.imgWrapper}>
+          {donate && <Text style={styles.msgCoins}>{item.coins}</Text>}
+          {apploud && (
+            <Image source={item.actionIcon} style={styles.actionIcon} />
+          )}
+        </View>
+      </ImageBackground>
+    );
+  };
+
+  const ServeFollow = ({onPress}) => {
+    return (
+      <CustomButton
+        title={item.action}
+        style={{
+          borderRadius: 6,
+          backgroundColor: following ? Colors.secondary : Colors.primary,
+          shadowColor: Colors.lightBlack,
+          shadowOffset: {
+            width: 0,
+            height: 1,
+          },
+          elevation: 1,
+          shadowOpacity: 0.25,
+          shadowRadius: 3,
+        }}
+        titleStyling={{
+          ...Fonts.N_700_10,
+          paddingHorizontal: 16,
+          paddingVertical: 5,
+        }}
+        onPress={onPress}
+      />
+    );
+  };
 
   return (
     <ScrollView>
-      <View style={styles.notificationContainer}>
+      <TouchableOpacity style={styles.notificationContainer}>
         <View style={styles.avatarContainer}>
           <Image source={item.avatar} />
         </View>
@@ -186,42 +227,9 @@ const renderItem = ({item, index}) => {
           </View>
           <Text style={styles.notificationMsg}>{item.notificationMsg}</Text>
         </View>
-        {notificationImg && (
-          <ImageBackground
-            source={item.notificationImg}
-            style={styles.imgContainerBackground}>
-            <View style={styles.imgWrapper}>
-              {donate && <Text style={styles.msgCoins}>{item.coins}</Text>}
-              {apploud && (
-                <Image source={item.actionIcon} style={styles.actionIcon} />
-              )}
-            </View>
-          </ImageBackground>
-        )}
-        {!notificationImg && (
-          <CustomButton
-            title={item.action}
-            style={{
-              borderRadius: 6,
-              backgroundColor: following ? Colors.secondary : Colors.primary,
-              shadowColor: Colors.lightBlack,
-              shadowOffset: {
-                width: 0,
-                height: 1,
-              },
-              elevation: 1,
-              shadowOpacity: 0.25,
-              shadowRadius: 3,
-            }}
-            titleStyling={{
-              ...Fonts.N_700_10,
-              paddingHorizontal: 16,
-              paddingVertical: 5,
-            }}
-            onPress={() => alert('path')}
-          />
-        )}
-      </View>
+        {notificationImg && <ServeNotification />}
+        {!notificationImg && <ServeFollow onPress={() => alert('path')} />}
+      </TouchableOpacity>
     </ScrollView>
   );
 };
