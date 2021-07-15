@@ -34,6 +34,22 @@ import ProfileIconEight from '../../assets/icons/content/profile-nora.png';
 import BackgroundExpNine from '../../assets/images/home/home-exp-nine-background.png';
 import ProfileIconNine from '../../assets/icons/content/profile-nora.png';
 
+const ITEM_WIDTH = width;
+const ITEM_HEIGHT = height;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  screenContainer: {
+    width: width,
+    height: height,
+    borderTopLeftRadius: ITEM_WIDTH / 10,
+    borderTopRightRadius: ITEM_WIDTH / 10,
+    overflow: 'hidden',
+  },
+});
+
 const DATA = [
   {
     background: BackgroundExpOne,
@@ -145,10 +161,7 @@ const DATA = [
   },
 ];
 
-const ITEM_WIDTH = width;
-const ITEM_HEIGHT = height;
-
-export default function App() {
+const Home = () => {
   const [data, setData] = React.useState(DATA);
   const scrollYIndex = React.useRef(new Animated.Value(0)).current;
   const scrollYAnimated = React.useRef(new Animated.Value(0)).current;
@@ -269,17 +282,6 @@ export default function App() {
       </FlingGestureHandler>
     </FlingGestureHandler>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  screenContainer: {
-    width: width,
-    height: height,
-    borderTopLeftRadius: ITEM_WIDTH / 10,
-    borderTopRightRadius: ITEM_WIDTH / 10,
-    overflow: 'hidden',
-  },
-});
+export default Home;

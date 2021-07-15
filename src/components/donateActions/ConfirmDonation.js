@@ -74,7 +74,7 @@ const ConfirmDonation = ({
         <Text style={styles.coins}>{coins}</Text>
       </View>
       <View style={styles.msgContainer}>
-        <ScrollView>
+        <ScrollView contentInsetAdjustmentBehavior="automatic">
           <Text style={styles.msg}>{msg}</Text>
         </ScrollView>
       </View>

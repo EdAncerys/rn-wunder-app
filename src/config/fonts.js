@@ -23,6 +23,18 @@ const Fonts = {
     fontWeight: '700',
     lineHeight: 17,
   },
+  N_400_14: {
+    fontFamily: 'Sailec',
+    fontSize: 14,
+    fontWeight: '400',
+    lineHeight: 19,
+  },
+  N_500_14: {
+    fontFamily: 'Sailec',
+    fontSize: 14,
+    fontWeight: '500',
+    lineHeight: 17,
+  },
   N_400_15: {
     fontFamily: 'Sailec',
     fontSize: 15,

@@ -4,6 +4,8 @@ const Colors = {
   planet: '#65D1E8',
   black: '#000000',
   lightBlack: '#222222',
+  silver: '#CECECE',
+  lightSilver: '#BBBBBB',
   white: '#FFFFFF',
   transparentWhite: 'rgba(255, 255, 255, 0.9)',
   screenFilter: 'rgba(0, 0, 0, .4)',

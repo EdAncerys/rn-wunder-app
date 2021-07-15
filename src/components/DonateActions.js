@@ -5,7 +5,7 @@ import Colors from '../config/colors';
 import LeftIcon from '../assets/icons/app/notifications.png';
 import RightIcon from '../assets/icons/app/wallet.png';
 import CustomButton from './CustomButton';
-import DonatePopUp from './donatePopUp/DonatePopUp';
+import DonatePopUp from './donateActions/DonatePopUp';
 
 const {width} = Dimensions.get('screen');
 

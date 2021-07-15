@@ -10,9 +10,10 @@ import UploadPassport from '../screens/onboardingOverSixteen/UploadPassport';
 import Visual from '../screens/onboardingOverSixteen/Visual';
 import Login from '../screens/onboardingOverSixteen/Login';
 import Home from '../screens/home/Home';
+import DonationNotification from '../screens/donate/DonationNotification';
 
 const Stack = createStackNavigator();
-const Router = ({props}) => {
+const Router = ({navigation}) => {
   return (
     <Stack.Navigator initialRouteName="SplashScreen">
       {/* <Stack.Screen
@@ -54,10 +55,15 @@ const Router = ({props}) => {
         name="Login"
         component={Login}
         options={{headerShown: false}}
-      /> */}
+      />
       <Stack.Screen
         name="Home"
         component={Home}
+        options={{headerShown: false}}
+      /> */}
+      <Stack.Screen
+        name="DonationNotification"
+        component={DonationNotification}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
