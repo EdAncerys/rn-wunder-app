@@ -18,8 +18,7 @@ const styles = StyleSheet.create({
     padding: 12,
   },
   imageContainer: {
-    paddingVertical: 5,
-    paddingHorizontal: 5,
+    padding: 5,
   },
   icon: {
     width: 24,

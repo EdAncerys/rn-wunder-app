@@ -14,10 +14,16 @@ import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import LeftBlack from '../../assets/icons/app/left-black.png';
+import Applaud from '../../assets/icons/app/applaud.png';
 import ProfileBeth from '../../assets/icons/content/profile-beth.png';
-import NotificationsImgOne from '../../assets/icons/content/notification-img-one.png';
 import ProfileSarah from '../../assets/icons/content/profile-sarah.png';
+import ProfileYvonne from '../../assets/icons/content/profile-yvonne.png';
+import ProfileSusanna from '../../assets/icons/content/profile-susanna.png';
+import ProfileMatt from '../../assets/icons/content/profile-matt.png';
+import NotificationsImgOne from '../../assets/icons/content/notification-img-one.png';
 import NotificationsImgTwo from '../../assets/icons/content/notification-img-two.png';
+import NotificationsImgThree from '../../assets/icons/content/notification-img-three.png';
+import NotificationsImgFour from '../../assets/icons/content/notification-img-four.png';
 
 const styles = StyleSheet.create({
   background: {
@@ -41,7 +47,7 @@ const styles = StyleSheet.create({
   divider: {
     borderColor: Colors.silver,
     borderBottomWidth: 1,
-    marginVertical: '2%',
+    marginVertical: '3%',
   },
   contentContainer: {
     paddingHorizontal: '8%',
@@ -49,7 +55,8 @@ const styles = StyleSheet.create({
   },
   notificationContainer: {
     flexDirection: 'row',
-    marginVertical: '3%',
+    alignItems: 'center',
+    marginVertical: '2%',
   },
   avatarContainer: {
     marginRight: 10,
@@ -76,21 +83,32 @@ const styles = StyleSheet.create({
   },
   title: {
     ...Fonts.N_500_14,
-    marginVertical: '3.5%',
+    marginVertical: '2%',
   },
   name: {
     ...Fonts.N_400_14,
   },
+  createdAt: {
+    marginLeft: '2%',
+  },
   notificationMsg: {
     ...Fonts.N_400_10,
     color: Colors.lightSilver,
+  },
+  actionIcon: {
+    width: 16,
+    height: 14.7,
+  },
+  btnContainer: {
+    // borderRadius: 6,
+    overflow: 'hidden',
   },
 });
 
 const DATA_MOST_RECENT = [
   {
     name: 'Beth Hall',
-    createdAt: 'Nov 17th, 2020',
+    createdAt: '34m',
     notificationMsg: 'Donated 30 coins to: Community Food Con...',
     avatar: ProfileBeth,
     notificationImg: NotificationsImgOne,
@@ -99,7 +117,7 @@ const DATA_MOST_RECENT = [
   },
   {
     name: 'Sarah Alderidge',
-    createdAt: 'Nov 17th, 2020',
+    createdAt: '1h',
     notificationMsg: 'Donated 5 coins to: Daily meditation for a...',
     avatar: ProfileSarah,
     notificationImg: NotificationsImgTwo,
@@ -108,8 +126,51 @@ const DATA_MOST_RECENT = [
   },
 ];
 
+const DATA_THIS_WEEK = [
+  {
+    name: 'Joe Gardner & 10 others',
+    createdAt: '1d',
+    notificationMsg: 'Applauded your post: Daily meditation for...',
+    avatar: ProfileBeth,
+    notificationImg: NotificationsImgTwo,
+    action: 'apploud',
+    actionIcon: Applaud,
+  },
+  {
+    name: 'Yvonne Chin',
+    createdAt: '1d',
+    notificationMsg: 'Applauded your post: Morning Beach Clean...',
+    avatar: ProfileYvonne,
+    notificationImg: NotificationsImgOne,
+    action: 'apploud',
+    actionIcon: Applaud,
+  },
+  {
+    name: 'Susanna Fontè',
+    createdAt: '2d',
+    notificationMsg: 'Started following you!',
+    avatar: ProfileSusanna,
+    action: 'following',
+  },
+  {
+    name: 'Matt Williams',
+    createdAt: '3d',
+    notificationMsg: 'Donated 10 coins to: Daily meditation for...',
+    avatar: ProfileMatt,
+    notificationImg: NotificationsImgOne,
+    action: 'donate',
+    coins: '10',
+  },
+];
+
 // SERVERS ---------------------------------------------------------
-const renderMostRecent = ({item, index}) => {
+const renderItem = ({item, index}) => {
+  const notificationImg = item.notificationImg;
+  const donate = item.action === 'donate';
+  const apploud = item.action === 'apploud';
+  const following = item.action === 'following';
+  const follow = item.action === 'follow';
+
   return (
     <ScrollView>
       <View style={styles.notificationContainer}>
@@ -117,18 +178,49 @@ const renderMostRecent = ({item, index}) => {
           <Image source={item.avatar} />
         </View>
         <View style={styles.msgContainer}>
-          <Text style={styles.name}>{item.name}</Text>
+          <View style={styles.notificationContainer}>
+            <Text style={styles.name}>{item.name}</Text>
+            <Text style={{...styles.notificationMsg, ...styles.createdAt}}>
+              {item.createdAt}
+            </Text>
+          </View>
           <Text style={styles.notificationMsg}>{item.notificationMsg}</Text>
         </View>
-        <View style={styles.imgContainer}>
+        {notificationImg && (
           <ImageBackground
             source={item.notificationImg}
             style={styles.imgContainerBackground}>
             <View style={styles.imgWrapper}>
-              <Text style={styles.msgCoins}>{item.coins}</Text>
+              {donate && <Text style={styles.msgCoins}>{item.coins}</Text>}
+              {apploud && (
+                <Image source={item.actionIcon} style={styles.actionIcon} />
+              )}
             </View>
           </ImageBackground>
-        </View>
+        )}
+        {!notificationImg && (
+          <CustomButton
+            title={item.action}
+            style={{
+              borderRadius: 6,
+              backgroundColor: following ? Colors.secondary : Colors.primary,
+              shadowColor: Colors.lightBlack,
+              shadowOffset: {
+                width: 0,
+                height: 1,
+              },
+              elevation: 1,
+              shadowOpacity: 0.25,
+              shadowRadius: 3,
+            }}
+            titleStyling={{
+              ...Fonts.N_700_10,
+              paddingHorizontal: 16,
+              paddingVertical: 5,
+            }}
+            onPress={() => alert('path')}
+          />
+        )}
       </View>
     </ScrollView>
   );
@@ -160,7 +252,7 @@ const ServeData = ({data, title}) => {
       <FlatList
         data={data}
         keyExtractor={(_, index) => String(index)}
-        renderItem={renderMostRecent}
+        renderItem={renderItem}
       />
       <View style={styles.divider}></View>
     </View>
@@ -170,12 +262,14 @@ const ServeData = ({data, title}) => {
 // RETURN ---------------------------------------------------------
 const DonationNotification = ({navigation}) => {
   const [dataMostRecent, setDataMostRecent] = React.useState(DATA_MOST_RECENT);
+  const [dataThisWeek, setThisWeek] = React.useState(DATA_THIS_WEEK);
 
   return (
     <View>
       <StatusBar hidden />
       <ServeNavigation />
       <ServeData data={dataMostRecent} title="most recent" />
+      <ServeData data={dataThisWeek} title="this week" />
     </View>
   );
 };
