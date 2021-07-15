@@ -9,18 +9,23 @@ import {
   FlatList,
   ImageBackground,
   TouchableOpacity,
+  SafeAreaView,
 } from 'react-native';
 
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import LeftBlack from '../../assets/icons/app/left-black.png';
+import Comment from '../../assets/icons/app/comment.png';
 import Applaud from '../../assets/icons/app/applaud.png';
 import ProfileBeth from '../../assets/icons/content/profile-beth.png';
 import ProfileSarah from '../../assets/icons/content/profile-sarah.png';
 import ProfileYvonne from '../../assets/icons/content/profile-yvonne.png';
 import ProfileSusanna from '../../assets/icons/content/profile-susanna.png';
 import ProfileMatt from '../../assets/icons/content/profile-matt.png';
+import ProfileFiona from '../../assets/icons/content/profile-fiona.png';
+import ProfileKim from '../../assets/icons/content/profile-kim.png';
+import ProfileJoseph from '../../assets/icons/content/profile-joseph.png';
 import NotificationsImgOne from '../../assets/icons/content/notification-img-one.png';
 import NotificationsImgTwo from '../../assets/icons/content/notification-img-two.png';
 import NotificationsImgThree from '../../assets/icons/content/notification-img-three.png';
@@ -36,7 +41,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: '5%',
-    marginTop: 50,
+    marginVertical: '3%',
   },
   navigationTitleContainer: {
     flex: 1,
@@ -60,10 +65,14 @@ const styles = StyleSheet.create({
     marginVertical: '2%',
   },
   avatarContainer: {
-    marginRight: 10,
+    width: 40,
+    height: 40,
+    marginRight: 8,
   },
   msgContainer: {
     flex: 1,
+    justifyContent: 'center',
+    marginHorizontal: 8,
   },
   imgContainerBackground: {
     width: 32,
@@ -100,9 +109,9 @@ const styles = StyleSheet.create({
     width: 16,
     height: 14.7,
   },
-  btnContainer: {
-    // borderRadius: 6,
-    overflow: 'hidden',
+  multipleAvatar: {
+    width: 26,
+    height: 26,
   },
 });
 
@@ -129,10 +138,12 @@ const DATA_MOST_RECENT = [
 
 const DATA_THIS_WEEK = [
   {
+    multiple: true,
     name: 'Joe Gardner & 10 others',
     createdAt: '1d',
     notificationMsg: 'Applauded your post: Daily meditation for...',
-    avatar: ProfileBeth,
+    avatar: ProfileYvonne,
+    avatarSecondary: ProfileJoseph,
     notificationImg: NotificationsImgTwo,
     action: 'apploud',
     actionIcon: Applaud,
@@ -142,7 +153,7 @@ const DATA_THIS_WEEK = [
     createdAt: '1d',
     notificationMsg: 'Applauded your post: Morning Beach Clean...',
     avatar: ProfileYvonne,
-    notificationImg: NotificationsImgOne,
+    notificationImg: NotificationsImgThree,
     action: 'apploud',
     actionIcon: Applaud,
   },
@@ -162,6 +173,31 @@ const DATA_THIS_WEEK = [
     action: 'donate',
     coins: '10',
   },
+  {
+    name: 'Fiona Piscek',
+    createdAt: '1w',
+    notificationMsg: 'Started following you!',
+    avatar: ProfileFiona,
+    action: 'follow',
+  },
+  {
+    name: 'Kim Smith',
+    createdAt: '1w',
+    notificationMsg: 'Commented on your post: Wow!',
+    avatar: ProfileKim,
+    notificationImg: NotificationsImgFour,
+    action: 'comment',
+    actionIcon: Comment,
+  },
+  {
+    name: 'Joseph Gonzalez',
+    createdAt: '1w',
+    notificationMsg: 'Applauded your post: Treeplanting with the...',
+    avatar: ProfileJoseph,
+    notificationImg: NotificationsImgFour,
+    action: 'apploud',
+    actionIcon: Applaud,
+  },
 ];
 
 // SERVERS ---------------------------------------------------------
@@ -169,7 +205,6 @@ const renderItem = ({item, index}) => {
   const placeDivider = (index + 1) % 4 === 0;
   const notificationImg = item.notificationImg;
   const donate = item.action === 'donate';
-  const apploud = item.action === 'apploud';
   const following = item.action === 'following';
 
   const ServeNotification = ({props}) => {
@@ -179,7 +214,7 @@ const renderItem = ({item, index}) => {
         style={styles.imgContainerBackground}>
         <View style={styles.imgWrapper}>
           {donate && <Text style={styles.msgCoins}>{item.coins}</Text>}
-          {apploud && (
+          {!donate && (
             <Image source={item.actionIcon} style={styles.actionIcon} />
           )}
         </View>
@@ -193,6 +228,7 @@ const renderItem = ({item, index}) => {
         title={item.action}
         style={{
           borderRadius: 6,
+          minWidth: 80,
           backgroundColor: following ? Colors.secondary : Colors.primary,
           shadowColor: Colors.lightBlack,
           shadowOffset: {
@@ -213,11 +249,30 @@ const renderItem = ({item, index}) => {
     );
   };
 
+  const ServeMultipleAvatar = ({item}) => {
+    return (
+      <View>
+        <Image source={item.avatar} style={styles.multipleAvatar} />
+        <Image
+          source={item.avatarSecondary}
+          style={{
+            ...styles.multipleAvatar,
+            top: -13,
+            left: 14,
+          }}
+        />
+      </View>
+    );
+  };
+
   return (
     <ScrollView>
-      <TouchableOpacity style={styles.notificationContainer}>
+      <TouchableOpacity
+        style={styles.notificationContainer}
+        onPress={() => alert('profile')}>
         <View style={styles.avatarContainer}>
-          <Image source={item.avatar} />
+          {!item.multiple && <Image source={item.avatar} />}
+          {item.multiple && <ServeMultipleAvatar item={item} />}
         </View>
         <View style={styles.msgContainer}>
           <View style={styles.notificationContainer}>
@@ -255,9 +310,10 @@ const ServeNavigation = ({props}) => {
   );
 };
 
-const ServeData = ({data, title}) => {
+const ServeData = ({data, title, divider}) => {
   return (
     <View style={styles.contentContainer}>
+      {divider && <View style={styles.divider}></View>}
       <Text style={styles.title}>{title}</Text>
       <FlatList
         data={data}
@@ -269,17 +325,17 @@ const ServeData = ({data, title}) => {
 };
 
 // RETURN ---------------------------------------------------------
-const DonationNotification = ({navigation}) => {
+const DonationNotification = ({props}) => {
   const [dataMostRecent, setDataMostRecent] = React.useState(DATA_MOST_RECENT);
   const [dataThisWeek, setThisWeek] = React.useState(DATA_THIS_WEEK);
 
   return (
-    <View>
+    <SafeAreaView>
       <StatusBar hidden />
       <ServeNavigation />
       <ServeData data={dataMostRecent} title="most recent" />
-      <ServeData data={dataThisWeek} title="this week" />
-    </View>
+      <ServeData data={dataThisWeek} title="this week" divider />
+    </SafeAreaView>
   );
 };
 
