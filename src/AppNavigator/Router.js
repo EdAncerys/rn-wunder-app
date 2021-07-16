@@ -13,6 +13,7 @@ import Home from '../screens/home/Home';
 import DonationNotification from '../screens/donate/DonationNotification';
 import Name from '../screens/onboardingUnderSixteen/Name';
 import Email from '../screens/onboardingUnderSixteen/Email';
+import Mobile from '../screens/onboardingUnderSixteen/Mobile';
 
 const Stack = createStackNavigator();
 const Router = ({navigation}) => {
@@ -76,6 +77,11 @@ const Router = ({navigation}) => {
       <Stack.Screen
         name="Email"
         component={Email}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Mobile"
+        component={Mobile}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

@@ -15,7 +15,7 @@ import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
-import HandsetRed from '../../assets/icons/app/handset-red.png';
+import EmailRed from '../../assets/icons/app/email-red.png';
 
 const styles = StyleSheet.create({
   container: {
@@ -101,7 +101,7 @@ const UploadIdentity = ({navigation}) => {
             </View>
             <View style={styles.inputWrapper}>
               <TextInput
-                placeholder="Email address"
+                placeholder="Mobile number"
                 placeholderTextColor={Colors.lightSilver}
                 onChangeText={setEmail}
                 autoCapitalize="none"
@@ -110,11 +110,12 @@ const UploadIdentity = ({navigation}) => {
               />
             </View>
             <CustomButton
-              title="Use their mobile number"
-              imageRight={HandsetRed}
+              title="Use their email address"
+              imageRight={EmailRed}
               style={{backgroundColor: Colors.transparent}}
               titleStyling={{...Fonts.N_700_12, color: Colors.gray}}
-              onPress={() => navigation.navigate('Mobile')}
+              imageStyling={{width: 24, height: 17.6}}
+              onPress={() => navigation.navigate('Email')}
             />
           </View>
           <View style={styles.actionsContainer}>
