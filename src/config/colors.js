@@ -5,6 +5,7 @@ const Colors = {
   planet: '#65D1E8',
   black: '#000000',
   lightBlack: '#222222',
+  gray: '#828282',
   silver: '#CECECE',
   lightSilver: '#BBBBBB',
   white: '#FFFFFF',

@@ -69,9 +69,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
-  navigateBtn: {
-    backgroundColor: Colors.transparent,
-  },
 });
 
 const UploadIdentity = ({navigation}) => {
@@ -115,14 +112,15 @@ const UploadIdentity = ({navigation}) => {
             <CustomButton
               title="Use their mobile number"
               imageRight={HandsetRed}
-              style={styles.navigateBtn}
-              // onPress={() => navigation.navigate('UploadLicenceFront')}
+              style={{backgroundColor: Colors.transparent}}
+              titleStyling={{...Fonts.N_700_12, color: Colors.gray}}
+              onPress={() => navigation.navigate('UploadLicenceFront')}
             />
           </View>
           <View style={styles.actionsContainer}>
             <View style={styles.actionsWrapper}>
               <CustomButton
-                title="Driving Licence"
+                title="Continue"
                 inactive={btnInactive}
                 onPress={() => navigation.navigate('UploadLicenceFront')}
               />
