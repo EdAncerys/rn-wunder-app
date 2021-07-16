@@ -15,7 +15,7 @@ import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
-import HandsetRed from '../../assets/icons/app/handset-red.png';
+import EmailRed from '../../assets/icons/app/email-red.png';
 
 const styles = StyleSheet.create({
   container: {
@@ -66,14 +66,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const Email = ({navigation}) => {
-  const [email, setEmail] = React.useState('');
+const Mobile = ({navigation}) => {
+  const [mobile, setMobile] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
 
   React.useEffect(() => {
     setBtnInactive(true);
-    if (!!email) setBtnInactive(false);
-  }, [email]);
+    if (!!mobile) setBtnInactive(false);
+  }, [mobile]);
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -90,24 +90,25 @@ const Email = ({navigation}) => {
           </View>
           <View style={styles.formContainer}>
             <View style={styles.titleContainer}>
-              <Text style={styles.title}>What’s your email address?</Text>
+              <Text style={styles.title}>What’s your mobile number?</Text>
             </View>
             <View style={styles.inputWrapper}>
               <TextInput
-                placeholder="Email address"
+                placeholder="Mobile number"
                 placeholderTextColor={Colors.lightSilver}
-                onChangeText={setEmail}
+                onChangeText={setMobile}
                 autoCapitalize="none"
-                value={email}
+                value={mobile}
                 style={styles.inputContainer}
               />
             </View>
             <CustomButton
-              title="Use your mobile number"
-              imageRight={HandsetRed}
+              title="Use your email address"
+              imageRight={EmailRed}
               style={{backgroundColor: Colors.transparent}}
               titleStyling={{...Fonts.N_700_12, color: Colors.gray}}
-              onPress={() => navigation.navigate('Mobile')}
+              imageStyling={{width: 24, height: 17.6}}
+              onPress={() => navigation.navigate('Email')}
             />
           </View>
           <View style={styles.actionsContainer}>
@@ -115,7 +116,7 @@ const Email = ({navigation}) => {
               <CustomButton
                 title="Continue"
                 inactive={btnInactive}
-                onPress={() => navigation.navigate('VerifyEmail')}
+                onPress={() => navigation.navigate('VerifyMobile')}
               />
             </View>
           </View>
@@ -125,4 +126,4 @@ const Email = ({navigation}) => {
   );
 };
 
-export default Email;
+export default Mobile;
