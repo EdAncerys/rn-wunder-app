@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: '10%',
-    marginVertical: '9.5%',
+    marginVertical: '8%',
   },
   title: {
     ...Fonts.N_700_16,
@@ -71,14 +71,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const UploadIdentity = ({navigation}) => {
-  const [email, setEmail] = React.useState('');
+const Mobile = ({navigation}) => {
+  const [mobile, setMobile] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
 
   React.useEffect(() => {
     setBtnInactive(true);
-    if (!!email) setBtnInactive(false);
-  }, [email]);
+    if (!!mobile) setBtnInactive(false);
+  }, [mobile]);
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -103,9 +103,9 @@ const UploadIdentity = ({navigation}) => {
               <TextInput
                 placeholder="Mobile number"
                 placeholderTextColor={Colors.lightSilver}
-                onChangeText={setEmail}
+                onChangeText={setMobile}
                 autoCapitalize="none"
-                value={email}
+                value={mobile}
                 style={styles.inputContainer}
               />
             </View>
@@ -123,7 +123,7 @@ const UploadIdentity = ({navigation}) => {
               <CustomButton
                 title="Continue"
                 inactive={btnInactive}
-                onPress={() => navigation.navigate('')}
+                onPress={() => navigation.navigate('VerifyOTPEmail')}
               />
             </View>
           </View>
@@ -133,4 +133,4 @@ const UploadIdentity = ({navigation}) => {
   );
 };
 
-export default UploadIdentity;
+export default Mobile;

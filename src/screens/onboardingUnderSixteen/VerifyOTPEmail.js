@@ -37,20 +37,31 @@ const styles = StyleSheet.create({
   titleContainer: {
     justifyContent: 'center',
     alignItems: 'center',
+    marginHorizontal: '10%',
     marginVertical: '8%',
   },
   title: {
     ...Fonts.N_700_16,
-    color: Colors.white,
     textAlign: 'center',
+    marginVertical: '4%',
+    color: Colors.white,
+  },
+  info: {
+    ...Fonts.N_500_12,
+    textAlign: 'center',
+    color: Colors.lightSilver,
   },
   inputWrapper: {
-    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '80%',
   },
   inputContainer: {
-    ...Fonts.N_400_12,
+    ...Fonts.N_700_24,
+    textAlign: 'center',
+    width: 56,
     marginVertical: '2%',
-    padding: 15,
+    padding: 13,
     borderRadius: 4,
     backgroundColor: Colors.white,
   },
@@ -68,15 +79,20 @@ const styles = StyleSheet.create({
   },
 });
 
-const Name = ({navigation}) => {
-  const [firstName, setFirstName] = React.useState('');
-  const [lastName, setLastName] = React.useState('');
+const VerifyOTPEmail = ({navigation}) => {
+  const [codeOne, setCodeOne] = React.useState('');
+  const [codeTwo, setCodeTwo] = React.useState('');
+  const [codeThree, setCodeThree] = React.useState('');
+  const [codeFour, setCodeFour] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
+
+  console.log(codeOne, codeTwo, codeThree, codeFour, btnInactive);
 
   React.useEffect(() => {
     setBtnInactive(true);
-    if (!!firstName && !!lastName) setBtnInactive(false);
-  }, [firstName, lastName]);
+    if (!!codeOne && !!codeTwo && !!codeThree && !!codeFour)
+      setBtnInactive(false);
+  }, [codeOne, codeTwo, codeThree, codeFour]);
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -87,30 +103,54 @@ const Name = ({navigation}) => {
         <View style={styles.wrapper}>
           <View style={styles.navigateActionContainer}>
             <NavigateAction
-              title="Step 1 of 7"
-              onPress={() => navigation.navigate('AgeQuestion')}
+              title="Step 3 of 7"
+              onPress={() => navigation.navigate('Email')}
             />
           </View>
           <View style={styles.formContainer}>
             <View style={styles.titleContainer}>
-              <Text style={styles.title}>What is your name?</Text>
+              <Text style={styles.title}>Input Access Code</Text>
+              <Text style={styles.info}>
+                Please input the access code provided from your parent or
+                guardian
+              </Text>
             </View>
             <View style={styles.inputWrapper}>
               <TextInput
-                placeholder="First Name"
                 placeholderTextColor={Colors.lightSilver}
-                onChangeText={setFirstName}
-                autoCapitalize="none"
-                value={firstName}
+                onChangeText={setCodeOne}
+                value={codeOne}
                 style={styles.inputContainer}
+                autoCapitalize="none"
+                keyboardType="numeric"
+                maxLength={1}
               />
               <TextInput
-                placeholder="Last Name"
                 placeholderTextColor={Colors.lightSilver}
-                onChangeText={setLastName}
-                secureTextEntry={true}
-                value={lastName}
+                onChangeText={setCodeTwo}
+                value={codeTwo}
                 style={styles.inputContainer}
+                autoCapitalize="none"
+                keyboardType="numeric"
+                maxLength={1}
+              />
+              <TextInput
+                placeholderTextColor={Colors.lightSilver}
+                onChangeText={setCodeThree}
+                value={codeThree}
+                style={styles.inputContainer}
+                autoCapitalize="none"
+                keyboardType="numeric"
+                maxLength={1}
+              />
+              <TextInput
+                placeholderTextColor={Colors.lightSilver}
+                onChangeText={setCodeFour}
+                value={codeFour}
+                style={styles.inputContainer}
+                autoCapitalize="none"
+                keyboardType="numeric"
+                maxLength={1}
               />
             </View>
           </View>
@@ -119,7 +159,7 @@ const Name = ({navigation}) => {
               <CustomButton
                 title="Continue"
                 inactive={btnInactive}
-                onPress={() => navigation.navigate('Email')}
+                onPress={() => navigation.navigate('')}
               />
             </View>
           </View>
@@ -129,4 +169,4 @@ const Name = ({navigation}) => {
   );
 };
 
-export default Name;
+export default VerifyOTPEmail;

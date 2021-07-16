@@ -14,6 +14,7 @@ import DonationNotification from '../screens/donate/DonationNotification';
 import Name from '../screens/onboardingUnderSixteen/Name';
 import Email from '../screens/onboardingUnderSixteen/Email';
 import Mobile from '../screens/onboardingUnderSixteen/Mobile';
+import VerifyOTPEmail from '../screens/onboardingUnderSixteen/VerifyOTPEmail';
 
 const Stack = createStackNavigator();
 const Router = ({navigation}) => {
@@ -82,6 +83,11 @@ const Router = ({navigation}) => {
       <Stack.Screen
         name="Mobile"
         component={Mobile}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="VerifyOTPEmail"
+        component={VerifyOTPEmail}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

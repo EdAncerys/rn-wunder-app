@@ -84,6 +84,7 @@ const DonateInput = ({
           onChangeText={setCoins}
           autoCapitalize="none"
           keyboardType="numeric"
+          maxLength={6}
         />
       </View>
       <View style={styles.titleContainer}>

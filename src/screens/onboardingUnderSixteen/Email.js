@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: '10%',
-    marginVertical: '9.5%',
+    marginVertical: '8%',
   },
   title: {
     ...Fonts.N_700_16,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const UploadIdentity = ({navigation}) => {
+const Email = ({navigation}) => {
   const [email, setEmail] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
 
@@ -122,7 +122,7 @@ const UploadIdentity = ({navigation}) => {
               <CustomButton
                 title="Continue"
                 inactive={btnInactive}
-                onPress={() => navigation.navigate('')}
+                onPress={() => navigation.navigate('VerifyOTPEmail')}
               />
             </View>
           </View>
@@ -132,4 +132,4 @@ const UploadIdentity = ({navigation}) => {
   );
 };
 
-export default UploadIdentity;
+export default Email;
