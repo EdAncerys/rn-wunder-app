@@ -16,6 +16,7 @@ import EmailOTP from '../screens/onboardingUnderSixteen/EmailOTP';
 import MobileOTP from '../screens/onboardingUnderSixteen/MobileOTP';
 import VerifyOTPEmail from '../screens/onboardingUnderSixteen/VerifyOTPEmail';
 import Yay from '../screens/onboardingUnderSixteen/Yay';
+import Email from '../screens/onboardingUnderSixteen/Email';
 
 const Stack = createStackNavigator();
 const Router = ({navigation}) => {
@@ -89,6 +90,11 @@ const Router = ({navigation}) => {
       <Stack.Screen
         name="VerifyOTPEmail"
         component={VerifyOTPEmail}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Email"
+        component={Email}
         options={{headerShown: false}}
       />
       <Stack.Screen name="Yay" component={Yay} options={{headerShown: false}} />

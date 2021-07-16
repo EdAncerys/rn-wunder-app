@@ -74,7 +74,7 @@ const Yay = ({navigation}) => {
               imageLeft={RightArrowWhite}
               style={{paddingHorizontal: 24, paddingVertical: 16}}
               imageStyling={{height: 18}}
-              onPress={() => navigation.navigate('')}
+              onPress={() => navigation.navigate('Email')}
             />
           </View>
         </View>
