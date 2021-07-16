@@ -1,5 +1,11 @@
 import * as React from 'react';
-import {View, StyleSheet, ImageBackground, Image} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ImageBackground,
+  Image,
+  StatusBar,
+} from 'react-native';
 
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
@@ -35,6 +41,7 @@ const styles = StyleSheet.create({
 const SplashScreen = ({navigation}) => {
   return (
     <ImageBackground source={Background} style={styles.imgBackground}>
+      <StatusBar hidden />
       <View style={styles.container}>
         <View style={styles.logoContainer}>
           <Image source={Logo} />

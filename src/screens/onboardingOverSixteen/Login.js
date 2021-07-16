@@ -1,5 +1,10 @@
 import * as React from 'react';
-import {useAuthState, useAuthDispatch, logIn} from '../../context/auth';
+import {
+  useAuthState,
+  useAuthDispatch,
+  logIn,
+  StatusBar,
+} from '../../context/auth';
 import {useApiDispatch} from '../../context/api';
 
 import {
@@ -80,6 +85,7 @@ const UploadIdentity = ({navigation}) => {
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
+      <StatusBar hidden />
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.contentWrapper}>
           <View style={styles.headerContainer}>

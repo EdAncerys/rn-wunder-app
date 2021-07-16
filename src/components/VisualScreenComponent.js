@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, ImageBackground} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground, StatusBar} from 'react-native';
 
 import Colors from '../config/colors';
 import Fonts from '../config/fonts';
@@ -47,6 +47,7 @@ const VisualScreenComponent = ({
 }) => {
   return (
     <ImageBackground source={background} style={styles.imgBackground}>
+      <StatusBar hidden />
       <View style={styles.container}>
         <View style={styles.skipAction}>
           <CustomButton

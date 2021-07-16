@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, StatusBar} from 'react-native';
 
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
 const UploadIdentity = ({navigation}) => {
   return (
     <View style={styles.container}>
+      <StatusBar hidden />
       <View style={styles.navigateActionContainer}>
         <NavigateAction
           title="Step 1 of 7"

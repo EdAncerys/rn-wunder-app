@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, StatusBar} from 'react-native';
 
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
 const UploadPassport = ({navigation}) => {
   return (
     <View style={styles.container}>
+      <StatusBar hidden />
       <View style={styles.navigateActionContainer}>
         <NavigateAction
           title="Step 2 of 7"

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, ImageBackground} from 'react-native';
+import {View, Text, StyleSheet, ImageBackground, StatusBar} from 'react-native';
 
 import Colors from '../../config/colors';
 import Background from '../../assets/images/onboardingOverSixteen/age-question-background.png';
@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
 const AgeQuestion = ({navigation}) => {
   return (
     <ImageBackground source={Background} style={styles.imgBackground}>
+      <StatusBar hidden />
       <View style={styles.container}>
         <View style={styles.navigateActionContainer}>
           <NavigateAction
