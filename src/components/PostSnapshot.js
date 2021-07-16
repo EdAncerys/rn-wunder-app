@@ -53,8 +53,6 @@ const styles = StyleSheet.create({
   },
 });
 
-console.log(Fonts._16);
-
 // SERVERS ---------------------------------------------------------
 const ServeProfileInfo = ({props}) => {
   return (

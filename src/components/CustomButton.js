@@ -9,8 +9,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    overflow: 'hidden',
     backgroundColor: Colors.primary,
     borderRadius: 10,
+  },
+  containerInactive: {
+    opacity: 0.2,
   },
   titleText: {
     ...Fonts.N_700_16,
@@ -45,15 +49,35 @@ const ServeBtnImage = ({props}) => {
   );
 };
 
+const ServeBtnFeedback = ({props, children}) => {
+  console.log(props.inactive);
+
+  let visualFeedback = (
+    <TouchableOpacity onPress={props.onPress}>
+      <View style={{...styles.container, ...props.style}}>{children}</View>
+    </TouchableOpacity>
+  );
+  if (props.inactive)
+    visualFeedback = (
+      <View
+        style={{
+          ...styles.container,
+          ...styles.containerInactive,
+          ...props.style,
+        }}>
+        {children}
+      </View>
+    );
+  return visualFeedback;
+};
+
 // RETURN ---------------------------------------------------------
 const CustomButton = props => {
   return (
-    <TouchableOpacity onPress={props.onPress}>
-      <View style={{...styles.container, ...props.style}}>
-        {props.title && <ServeBtnTitle props={props} />}
-        {props.image && <ServeBtnImage props={props} />}
-      </View>
-    </TouchableOpacity>
+    <ServeBtnFeedback props={props}>
+      {props.title && <ServeBtnTitle props={props} />}
+      {props.image && <ServeBtnImage props={props} />}
+    </ServeBtnFeedback>
   );
 };
 
