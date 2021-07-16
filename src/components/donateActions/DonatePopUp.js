@@ -17,8 +17,8 @@ const {width, height} = Dimensions.get('screen');
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    backgroundColor: Colors.transparentWhite,
     width: width - width / 10,
+    backgroundColor: Colors.transparentWhite,
     borderRadius: 30,
   },
 });

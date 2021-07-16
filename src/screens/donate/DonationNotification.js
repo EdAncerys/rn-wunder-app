@@ -291,13 +291,13 @@ const renderItem = ({item, index}) => {
   );
 };
 
-const ServeNavigation = ({props}) => {
+const ServeNavigation = ({onPress}) => {
   return (
     <View>
       <View style={styles.navigationContainer}>
         <CustomButton
           image={LeftBlack}
-          onPress={() => navigation.navigate('Home')}
+          onPress={onPress}
           style={{backgroundColor: Colors.transparent}}
           imageStyling={{width: 12, height: 20}}
         />
@@ -325,14 +325,14 @@ const ServeData = ({data, title, divider}) => {
 };
 
 // RETURN ---------------------------------------------------------
-const DonationNotification = ({props}) => {
+const DonationNotification = ({navigation}) => {
   const [dataMostRecent, setDataMostRecent] = React.useState(DATA_MOST_RECENT);
   const [dataThisWeek, setThisWeek] = React.useState(DATA_THIS_WEEK);
 
   return (
     <SafeAreaView>
       <StatusBar hidden />
-      <ServeNavigation />
+      <ServeNavigation onPress={() => navigation.navigate('Home')} />
       <ServeData data={dataMostRecent} title="most recent" />
       <ServeData data={dataThisWeek} title="this week" divider />
     </SafeAreaView>

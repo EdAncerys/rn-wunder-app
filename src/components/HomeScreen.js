@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
 });
 
 const HomeScreen = ({
+  navigation,
   background,
   profileIcon,
   profileName,
@@ -54,18 +55,18 @@ const HomeScreen = ({
     : {marginBottom: '35%'};
 
   // SERVERS ---------------------------------------------------------
-  const ServeDonate = props => {
+  const ServeDonate = ({navigation}) => {
     return (
       <View style={styles.headerContainer}>
-        <DonateActions />
+        <DonateActions navigation={navigation} />
       </View>
     );
   };
 
-  const ServeAppNavigate = props => {
+  const ServeAppNavigate = ({navigation}) => {
     return (
       <View style={styles.headerContainer}>
-        <AppNavigateActions />
+        <AppNavigateActions navigation={navigation} />
       </View>
     );
   };
@@ -94,8 +95,8 @@ const HomeScreen = ({
           )}
         </View>
       </LinearGradient>
-      {donateActions && <ServeDonate />}
-      {navigateActions && <ServeAppNavigate />}
+      {donateActions && <ServeDonate navigation={navigation} />}
+      {navigateActions && <ServeAppNavigate navigation={navigation} />}
     </ImageBackground>
   );
 };

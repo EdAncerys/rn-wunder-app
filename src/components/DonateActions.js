@@ -27,7 +27,7 @@ const ServeDonate = ({setDonateAction}) => {
 };
 
 // RETURN ---------------------------------------------------------
-const DonateActions = props => {
+const DonateActions = ({navigation}) => {
   const [donateAction, setDonateAction] = React.useState(false);
 
   return (
@@ -38,7 +38,7 @@ const DonateActions = props => {
             style={{backgroundColor: Colors.transparent}}
             image={LeftIcon}
             imageStyling={styles.icon}
-            onPress={() => alert('path')}
+            onPress={() => navigation.navigate('DonationNotification')}
           />
         </View>
         <View>

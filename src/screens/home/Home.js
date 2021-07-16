@@ -161,7 +161,7 @@ const DATA = [
   },
 ];
 
-const Home = () => {
+const Home = ({navigation}) => {
   const [data, setData] = React.useState(DATA);
   const scrollYIndex = React.useRef(new Animated.Value(0)).current;
   const scrollYAnimated = React.useRef(new Animated.Value(0)).current;
@@ -191,6 +191,7 @@ const Home = () => {
     return (
       <View style={styles.screenContainer}>
         <HomeScreen
+          navigation={navigation}
           background={item.background}
           profileIcon={item.profileIcon}
           profileName={item.profileName}

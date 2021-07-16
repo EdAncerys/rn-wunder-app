@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const AppNavigateActions = props => {
+const AppNavigateActions = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View>
@@ -34,7 +34,7 @@ const AppNavigateActions = props => {
           image={HomeBlack}
           actionTitle="home"
           actionTitleStyle={{color: Colors.black}}
-          onPress={() => alert('path')}
+          onPress={() => navigation.navigate('Home')}
         />
       </View>
       <View>
