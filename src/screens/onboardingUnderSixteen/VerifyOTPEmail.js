@@ -24,11 +24,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: '5%',
   },
-  imgBackground: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
-  },
   formContainer: {
     flex: 4,
     alignItems: 'center',
@@ -86,8 +81,6 @@ const VerifyOTPEmail = ({navigation}) => {
   const [codeFour, setCodeFour] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
 
-  console.log(codeOne, codeTwo, codeThree, codeFour, btnInactive);
-
   React.useEffect(() => {
     setBtnInactive(true);
     if (!!codeOne && !!codeTwo && !!codeThree && !!codeFour)
@@ -104,7 +97,7 @@ const VerifyOTPEmail = ({navigation}) => {
           <View style={styles.navigateActionContainer}>
             <NavigateAction
               title="Step 3 of 7"
-              onPress={() => navigation.navigate('Email')}
+              onPress={() => navigation.navigate('EmailOTP')}
             />
           </View>
           <View style={styles.formContainer}>
@@ -159,7 +152,7 @@ const VerifyOTPEmail = ({navigation}) => {
               <CustomButton
                 title="Continue"
                 inactive={btnInactive}
-                onPress={() => navigation.navigate('')}
+                onPress={() => navigation.navigate('Yay')}
               />
             </View>
           </View>

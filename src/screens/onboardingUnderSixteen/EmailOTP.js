@@ -15,7 +15,7 @@ import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
-import EmailRed from '../../assets/icons/app/email-red.png';
+import HandsetRed from '../../assets/icons/app/handset-red.png';
 
 const styles = StyleSheet.create({
   container: {
@@ -25,11 +25,6 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
     marginHorizontal: '5%',
-  },
-  imgBackground: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
   },
   formContainer: {
     flex: 4,
@@ -71,14 +66,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const Mobile = ({navigation}) => {
-  const [mobile, setMobile] = React.useState('');
+const EmailOTP = ({navigation}) => {
+  const [email, setEmail] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
 
   React.useEffect(() => {
     setBtnInactive(true);
-    if (!!mobile) setBtnInactive(false);
-  }, [mobile]);
+    if (!!email) setBtnInactive(false);
+  }, [email]);
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -101,21 +96,20 @@ const Mobile = ({navigation}) => {
             </View>
             <View style={styles.inputWrapper}>
               <TextInput
-                placeholder="Mobile number"
+                placeholder="Email address"
                 placeholderTextColor={Colors.lightSilver}
-                onChangeText={setMobile}
+                onChangeText={setEmail}
                 autoCapitalize="none"
-                value={mobile}
+                value={email}
                 style={styles.inputContainer}
               />
             </View>
             <CustomButton
-              title="Use their email address"
-              imageRight={EmailRed}
+              title="Use their mobile number"
+              imageRight={HandsetRed}
               style={{backgroundColor: Colors.transparent}}
               titleStyling={{...Fonts.N_700_12, color: Colors.gray}}
-              imageStyling={{width: 24, height: 17.6}}
-              onPress={() => navigation.navigate('Email')}
+              onPress={() => navigation.navigate('MobileOTP')}
             />
           </View>
           <View style={styles.actionsContainer}>
@@ -133,4 +127,4 @@ const Mobile = ({navigation}) => {
   );
 };
 
-export default Mobile;
+export default EmailOTP;

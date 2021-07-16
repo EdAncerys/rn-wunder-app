@@ -24,11 +24,6 @@ const styles = StyleSheet.create({
     flex: 1,
     marginHorizontal: '5%',
   },
-  imgBackground: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
-  },
   formContainer: {
     flex: 4,
     alignItems: 'center',
@@ -119,7 +114,7 @@ const Name = ({navigation}) => {
               <CustomButton
                 title="Continue"
                 inactive={btnInactive}
-                onPress={() => navigation.navigate('Email')}
+                onPress={() => navigation.navigate('EmailOTP')}
               />
             </View>
           </View>

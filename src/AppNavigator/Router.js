@@ -12,9 +12,10 @@ import Login from '../screens/onboardingOverSixteen/Login';
 import Home from '../screens/home/Home';
 import DonationNotification from '../screens/donate/DonationNotification';
 import Name from '../screens/onboardingUnderSixteen/Name';
-import Email from '../screens/onboardingUnderSixteen/Email';
-import Mobile from '../screens/onboardingUnderSixteen/Mobile';
+import EmailOTP from '../screens/onboardingUnderSixteen/EmailOTP';
+import MobileOTP from '../screens/onboardingUnderSixteen/MobileOTP';
 import VerifyOTPEmail from '../screens/onboardingUnderSixteen/VerifyOTPEmail';
+import Yay from '../screens/onboardingUnderSixteen/Yay';
 
 const Stack = createStackNavigator();
 const Router = ({navigation}) => {
@@ -76,13 +77,13 @@ const Router = ({navigation}) => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="Email"
-        component={Email}
+        name="EmailOTP"
+        component={EmailOTP}
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="Mobile"
-        component={Mobile}
+        name="MobileOTP"
+        component={MobileOTP}
         options={{headerShown: false}}
       />
       <Stack.Screen
@@ -90,6 +91,7 @@ const Router = ({navigation}) => {
         component={VerifyOTPEmail}
         options={{headerShown: false}}
       />
+      <Stack.Screen name="Yay" component={Yay} options={{headerShown: false}} />
     </Stack.Navigator>
   );
 };
