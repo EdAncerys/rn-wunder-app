@@ -29,7 +29,7 @@ const NavigateAction = ({title, onPress}) => {
     <View style={styles.container}>
       <CustomButton
         onPress={onPress}
-        image={LeftIcon}
+        imageLeft={LeftIcon}
         style={{backgroundColor: Colors.transparent}}
       />
       <View style={styles.textContainer}>

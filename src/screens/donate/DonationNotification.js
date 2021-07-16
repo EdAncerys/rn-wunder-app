@@ -296,7 +296,7 @@ const ServeNavigation = ({onPress}) => {
     <View>
       <View style={styles.navigationContainer}>
         <CustomButton
-          image={LeftBlack}
+          imageLeft={LeftBlack}
           onPress={onPress}
           style={{backgroundColor: Colors.transparent}}
           imageStyling={{width: 12, height: 20}}

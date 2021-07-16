@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
   title: {
     ...Fonts.N_700_16,
     color: Colors.white,
+    textAlign: 'center',
   },
   inputWrapper: {
     width: '100%',

@@ -39,12 +39,11 @@ const ServeBtnTitle = ({props}) => {
   );
 };
 const ServeBtnImage = ({props}) => {
+  const image = props.imageLeft || props.imageRight;
+
   return (
     <View style={styles.imageContainer}>
-      <Image
-        source={props.image}
-        style={{...styles.icon, ...props.imageStyling}}
-      />
+      <Image source={image} style={{...styles.icon, ...props.imageStyling}} />
     </View>
   );
 };
@@ -75,8 +74,9 @@ const ServeBtnFeedback = ({props, children}) => {
 const CustomButton = props => {
   return (
     <ServeBtnFeedback props={props}>
+      {props.imageRight && <ServeBtnImage props={props} />}
       {props.title && <ServeBtnTitle props={props} />}
-      {props.image && <ServeBtnImage props={props} />}
+      {props.imageLeft && <ServeBtnImage props={props} />}
     </ServeBtnFeedback>
   );
 };

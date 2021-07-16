@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet,
   TextInput,
+  Image,
   StatusBar,
   TouchableWithoutFeedback,
   Keyboard,
@@ -14,6 +15,7 @@ import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
+import HandsetRed from '../../assets/icons/app/handset-red.png';
 
 const styles = StyleSheet.create({
   container: {
@@ -37,11 +39,13 @@ const styles = StyleSheet.create({
   titleContainer: {
     justifyContent: 'center',
     alignItems: 'center',
+    marginHorizontal: '10%',
     marginVertical: '9.5%',
   },
   title: {
     ...Fonts.N_700_16,
     color: Colors.white,
+    textAlign: 'center',
   },
   inputWrapper: {
     width: '100%',
@@ -65,17 +69,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
+  navigateBtn: {
+    backgroundColor: Colors.transparent,
+  },
 });
 
 const UploadIdentity = ({navigation}) => {
-  const [firstName, setFirstName] = React.useState('');
-  const [lastName, setLastName] = React.useState('');
+  const [email, setEmail] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
 
   React.useEffect(() => {
     setBtnInactive(true);
-    if (!!firstName && !!lastName) setBtnInactive(false);
-  }, [firstName, lastName]);
+    if (!!email) setBtnInactive(false);
+  }, [email]);
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -98,22 +104,20 @@ const UploadIdentity = ({navigation}) => {
             </View>
             <View style={styles.inputWrapper}>
               <TextInput
-                placeholder="First Name"
+                placeholder="Email address"
                 placeholderTextColor={Colors.lightSilver}
-                onChangeText={setFirstName}
+                onChangeText={setEmail}
                 autoCapitalize="none"
-                value={firstName}
-                style={styles.inputContainer}
-              />
-              <TextInput
-                placeholder="Last Name"
-                placeholderTextColor={Colors.lightSilver}
-                onChangeText={setLastName}
-                secureTextEntry={true}
-                value={lastName}
+                value={email}
                 style={styles.inputContainer}
               />
             </View>
+            <CustomButton
+              title="Use their mobile number"
+              imageRight={HandsetRed}
+              style={styles.navigateBtn}
+              // onPress={() => navigation.navigate('UploadLicenceFront')}
+            />
           </View>
           <View style={styles.actionsContainer}>
             <View style={styles.actionsWrapper}>
