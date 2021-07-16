@@ -86,13 +86,15 @@ const UploadIdentity = ({navigation}) => {
         <View style={styles.wrapper}>
           <View style={styles.navigateActionContainer}>
             <NavigateAction
-              title="Step 1 of 7"
-              onPress={() => navigation.navigate('AgeQuestion')}
+              title="Step 2 of 7"
+              onPress={() => navigation.navigate('Name')}
             />
           </View>
           <View style={styles.formContainer}>
             <View style={styles.titleContainer}>
-              <Text style={styles.title}>What is your name?</Text>
+              <Text style={styles.title}>
+                Please input your parent or guardians contact info
+              </Text>
             </View>
             <View style={styles.inputWrapper}>
               <TextInput
@@ -116,9 +118,9 @@ const UploadIdentity = ({navigation}) => {
           <View style={styles.actionsContainer}>
             <View style={styles.actionsWrapper}>
               <CustomButton
-                title="Continue"
+                title="Driving Licence"
                 inactive={btnInactive}
-                onPress={() => navigation.navigate('Email')}
+                onPress={() => navigation.navigate('UploadLicenceFront')}
               />
             </View>
           </View>

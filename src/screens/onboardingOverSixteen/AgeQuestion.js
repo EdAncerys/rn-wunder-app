@@ -91,8 +91,7 @@ const AgeQuestion = ({navigation}) => {
             }}>
             <CustomButton
               title="Under 16"
-              // onPress={() => navigation.navigate('AgeIdentity')}
-              onPress={() => alert('path')}
+              onPress={() => navigation.navigate('Name')}
             />
           </View>
         </View>

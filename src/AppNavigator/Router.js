@@ -12,12 +12,13 @@ import Login from '../screens/onboardingOverSixteen/Login';
 import Home from '../screens/home/Home';
 import DonationNotification from '../screens/donate/DonationNotification';
 import Name from '../screens/onboardingUnderSixteen/Name';
+import Email from '../screens/onboardingUnderSixteen/Email';
 
 const Stack = createStackNavigator();
 const Router = ({navigation}) => {
   return (
     <Stack.Navigator initialRouteName="SplashScreen">
-      {/* <Stack.Screen
+      <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}
         options={{headerShown: false}}
@@ -66,10 +67,15 @@ const Router = ({navigation}) => {
         name="DonationNotification"
         component={DonationNotification}
         options={{headerShown: false}}
-      /> */}
+      />
       <Stack.Screen
         name="Name"
         component={Name}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Email"
+        component={Email}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
