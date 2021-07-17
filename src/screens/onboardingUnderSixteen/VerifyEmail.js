@@ -92,6 +92,11 @@ const VerifyEmail = ({navigation}) => {
       setBtnInactive(false);
   }, [codeOne, codeTwo, codeThree, codeFour]);
 
+  // HANDLERS ---------------------------------------------------------
+  const handleContinue = () => {
+    navigation.navigate('Username');
+  };
+
   // RETURN ---------------------------------------------------------
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -158,7 +163,7 @@ const VerifyEmail = ({navigation}) => {
               <CustomButton
                 title="Continue"
                 inactive={btnInactive}
-                onPress={() => navigation.navigate('Username')}
+                onPress={() => handleContinue()}
               />
             </View>
           </View>
