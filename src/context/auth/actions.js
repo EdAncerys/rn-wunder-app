@@ -87,6 +87,9 @@ export const tempDataStorage = async ({
 }) => {
   try {
     console.log('tempData triggered'); //debug
+    console.log('dispatchAuth: ', dispatchAuth);
+    console.log('dispatchApi: ', dispatchApi);
+    console.log('tempData: ', tempData);
     //0. clear api errors
     setError({dispatchApi, errorMessage: null});
     //1. clear tempData
@@ -96,7 +99,7 @@ export const tempDataStorage = async ({
     //2. add tempData to context and async storage
     console.log(`tempData`, tempData); //debug
     setTempData({dispatchAuth, tempData});
-    await AsyncStorage.setItem('tempData', tempData);
+    await AsyncStorage.setItem('tempData', JSON.stringify(tempData));
   } catch (err) {
     console.log('err', JSON.stringify(err)); //debug
     errorHandler({dispatchApi, errorObject: err});

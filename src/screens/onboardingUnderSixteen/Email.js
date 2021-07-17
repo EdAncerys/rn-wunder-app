@@ -9,11 +9,7 @@ import {
   Keyboard,
   KeyboardAvoidingView,
 } from 'react-native';
-import {
-  useAuthState,
-  useAuthDispatch,
-  tempDataStorage,
-} from '../../context/auth';
+import {useAuthDispatch, tempDataStorage} from '../../context/auth';
 import {useApiDispatch} from '../../context/api';
 
 import Colors from '../../config/colors';
@@ -74,8 +70,6 @@ const styles = StyleSheet.create({
 const Email = ({navigation}) => {
   const dispatchAuth = useAuthDispatch();
   const dispatchApi = useApiDispatch();
-  const {tempData} = useAuthState();
-  console.log(tempData);
 
   const [email, setEmail] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
@@ -88,7 +82,7 @@ const Email = ({navigation}) => {
   // HANDLERS ---------------------------------------------------------
   const handleContinue = () => {
     const tempData = {email: email};
-    tempDataStorage(dispatchAuth, dispatchApi, tempData);
+    tempDataStorage({dispatchAuth, dispatchApi, tempData});
     setEmail('');
     navigation.navigate('VerifyEmail');
   };

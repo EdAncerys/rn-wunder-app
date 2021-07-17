@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
 
 const VerifyEmail = ({navigation}) => {
   const {tempData} = useAuthState();
-  console.log(tempData);
+  const email = tempData.email;
+
   const [codeOne, setCodeOne] = React.useState('');
   const [codeTwo, setCodeTwo] = React.useState('');
   const [codeThree, setCodeThree] = React.useState('');
@@ -107,8 +108,9 @@ const VerifyEmail = ({navigation}) => {
             <View style={styles.titleContainer}>
               <Text style={styles.title}>Verify your account</Text>
               <Text style={styles.info}>
-                Please use the one time password sent to {tempData}
+                Please use the one time password sent to
               </Text>
+              <Text style={styles.info}>{email}</Text>
             </View>
             <View style={styles.inputWrapper}>
               <TextInput
