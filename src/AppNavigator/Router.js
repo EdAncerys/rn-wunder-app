@@ -21,6 +21,7 @@ import Mobile from '../screens/onboardingUnderSixteen/Mobile';
 import VerifyEmail from '../screens/onboardingUnderSixteen/VerifyEmail';
 import Username from '../screens/onboardingUnderSixteen/Username';
 import Location from '../screens/onboardingUnderSixteen/Location';
+import AccountCreated from '../screens/onboardingUnderSixteen/AccountCreated';
 
 const Stack = createStackNavigator();
 const Router = ({navigation}) => {
@@ -96,7 +97,7 @@ const Router = ({navigation}) => {
         component={VerifyOTPEmail}
         options={{headerShown: false}}
       /> */}
-      <Stack.Screen name="Yay" component={Yay} options={{headerShown: false}} />
+      {/* <Stack.Screen name="Yay" component={Yay} options={{headerShown: false}} />
       <Stack.Screen
         name="Email"
         component={Email}
@@ -120,6 +121,11 @@ const Router = ({navigation}) => {
       <Stack.Screen
         name="Location"
         component={Location}
+        options={{headerShown: false}}
+      /> */}
+      <Stack.Screen
+        name="AccountCreated"
+        component={AccountCreated}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
