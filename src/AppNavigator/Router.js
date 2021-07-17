@@ -20,6 +20,7 @@ import Email from '../screens/onboardingUnderSixteen/Email';
 import Mobile from '../screens/onboardingUnderSixteen/Mobile';
 import VerifyEmail from '../screens/onboardingUnderSixteen/VerifyEmail';
 import Username from '../screens/onboardingUnderSixteen/Username';
+import Location from '../screens/onboardingUnderSixteen/Location';
 
 const Stack = createStackNavigator();
 const Router = ({navigation}) => {
@@ -114,6 +115,11 @@ const Router = ({navigation}) => {
       <Stack.Screen
         name="Username"
         component={Username}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Location"
+        component={Location}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
