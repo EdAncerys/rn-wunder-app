@@ -88,6 +88,7 @@ const Email = ({navigation}) => {
     navigation.navigate('VerifyEmail');
   };
 
+  // RETURN ---------------------------------------------------------
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <KeyboardAvoidingView

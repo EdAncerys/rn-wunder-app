@@ -76,6 +76,7 @@ const Location = ({navigation}) => {
     navigation.navigate('AccountCreated');
   };
 
+  // RETURN ---------------------------------------------------------
   return (
     <ImageBackground source={Background} style={styles.imgBackground}>
       <StatusBar hidden />

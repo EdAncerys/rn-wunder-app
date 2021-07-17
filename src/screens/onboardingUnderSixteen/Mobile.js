@@ -10,6 +10,8 @@ import {
   Keyboard,
   KeyboardAvoidingView,
 } from 'react-native';
+import {useAuthDispatch, tempDataStorage} from '../../context/auth';
+import {useApiDispatch} from '../../context/api';
 
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
@@ -68,6 +70,9 @@ const styles = StyleSheet.create({
 });
 
 const Mobile = ({navigation}) => {
+  const dispatchAuth = useAuthDispatch();
+  const dispatchApi = useApiDispatch();
+
   const [mobile, setMobile] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
 
@@ -76,6 +81,15 @@ const Mobile = ({navigation}) => {
     if (!!mobile) setBtnInactive(false);
   }, [mobile]);
 
+  // HANDLERS ---------------------------------------------------------
+  const handleContinue = () => {
+    const tempData = {mobile: mobile};
+    tempDataStorage({dispatchAuth, dispatchApi, tempData});
+    setEmail('');
+    navigation.navigate('VerifyMobile');
+  };
+
+  // RETURN ---------------------------------------------------------
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <KeyboardAvoidingView
@@ -101,6 +115,7 @@ const Mobile = ({navigation}) => {
                 autoCapitalize="none"
                 value={mobile}
                 style={styles.inputContainer}
+                keyboardType="numeric"
               />
             </View>
             <CustomButton

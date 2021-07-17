@@ -80,6 +80,7 @@ const Username = ({navigation}) => {
     navigation.navigate('Location');
   };
 
+  // RETURN ---------------------------------------------------------
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <KeyboardAvoidingView

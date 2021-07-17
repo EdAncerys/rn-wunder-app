@@ -97,7 +97,7 @@ const Router = ({navigation}) => {
         component={VerifyOTPEmail}
         options={{headerShown: false}}
       /> */}
-      {/* <Stack.Screen name="Yay" component={Yay} options={{headerShown: false}} />
+      <Stack.Screen name="Yay" component={Yay} options={{headerShown: false}} />
       <Stack.Screen
         name="Email"
         component={Email}
@@ -122,7 +122,7 @@ const Router = ({navigation}) => {
         name="Location"
         component={Location}
         options={{headerShown: false}}
-      /> */}
+      />
       <Stack.Screen
         name="AccountCreated"
         component={AccountCreated}

@@ -88,6 +88,7 @@ const VerifyOTPEmail = ({navigation}) => {
       setBtnInactive(false);
   }, [codeOne, codeTwo, codeThree, codeFour]);
 
+  // RETURN ---------------------------------------------------------
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <KeyboardAvoidingView

@@ -76,6 +76,7 @@ const EmailOTP = ({navigation}) => {
     if (!!email) setBtnInactive(false);
   }, [email]);
 
+  // RETURN ---------------------------------------------------------
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <KeyboardAvoidingView

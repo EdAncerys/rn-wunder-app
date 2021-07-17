@@ -76,6 +76,7 @@ const MobileOTP = ({navigation}) => {
     if (!!mobile) setBtnInactive(false);
   }, [mobile]);
 
+  // RETURN ---------------------------------------------------------
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <KeyboardAvoidingView
@@ -103,6 +104,7 @@ const MobileOTP = ({navigation}) => {
                 autoCapitalize="none"
                 value={mobile}
                 style={styles.inputContainer}
+                keyboardType="numeric"
               />
             </View>
             <CustomButton

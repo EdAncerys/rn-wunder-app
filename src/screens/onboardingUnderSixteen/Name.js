@@ -74,6 +74,7 @@ const Name = ({navigation}) => {
     if (!!firstName && !!lastName) setBtnInactive(false);
   }, [firstName, lastName]);
 
+  // RETURN ---------------------------------------------------------
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <KeyboardAvoidingView
