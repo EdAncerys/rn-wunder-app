@@ -6,6 +6,7 @@ import {
   Image,
   StatusBar,
   ImageBackground,
+  SafeAreaView,
 } from 'react-native';
 
 import Colors from '../../config/colors';
@@ -65,7 +66,6 @@ const styles = StyleSheet.create({
   },
   navigateActionContainer: {
     flex: 1,
-    justifyContent: 'center',
     marginTop: '5%',
   },
 });
@@ -80,12 +80,12 @@ const Location = ({navigation}) => {
   return (
     <ImageBackground source={Background} style={styles.imgBackground}>
       <StatusBar hidden />
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <View style={styles.wrapper}>
           <View style={styles.navigateActionContainer}>
             <NavigateAction
               title="Step 7 of 7"
-              onPress={() => navigation.navigate('VerifyEmail')}
+              onPress={() => navigation.navigate('Username')}
             />
           </View>
           <View style={styles.contentContainer}>
@@ -117,7 +117,7 @@ const Location = ({navigation}) => {
             </View>
           </View>
         </View>
-      </View>
+      </SafeAreaView>
     </ImageBackground>
   );
 };

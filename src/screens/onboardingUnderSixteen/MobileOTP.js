@@ -4,7 +4,7 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  Image,
+  SafeAreaView,
   StatusBar,
   TouchableWithoutFeedback,
   Keyboard,
@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
   },
   navigateActionContainer: {
     flex: 1,
-    justifyContent: 'center',
     marginTop: '5%',
   },
 });
@@ -83,7 +82,7 @@ const MobileOTP = ({navigation}) => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.container}>
         <StatusBar hidden />
-        <View style={styles.wrapper}>
+        <SafeAreaView style={styles.wrapper}>
           <View style={styles.navigateActionContainer}>
             <NavigateAction
               title="Step 2 of 7"
@@ -125,7 +124,7 @@ const MobileOTP = ({navigation}) => {
               />
             </View>
           </View>
-        </View>
+        </SafeAreaView>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );

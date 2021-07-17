@@ -28,7 +28,7 @@ const Stack = createStackNavigator();
 const Router = ({navigation}) => {
   return (
     <Stack.Navigator initialRouteName="SplashScreen">
-      {/* <Stack.Screen
+      <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}
         options={{headerShown: false}}
@@ -77,8 +77,8 @@ const Router = ({navigation}) => {
         name="DonationNotification"
         component={DonationNotification}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="Name"
         component={Name}
         options={{headerShown: false}}
@@ -97,7 +97,7 @@ const Router = ({navigation}) => {
         name="VerifyOTPEmail"
         component={VerifyOTPEmail}
         options={{headerShown: false}}
-      /> */}
+      />
       <Stack.Screen name="Yay" component={Yay} options={{headerShown: false}} />
       <Stack.Screen
         name="Email"
@@ -125,15 +125,15 @@ const Router = ({navigation}) => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="AccountCreated"
-        component={AccountCreated}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
         name="VerifyMobile"
         component={VerifyMobile}
         options={{headerShown: false}}
       />
+      {/* <Stack.Screen
+        name="AccountCreated"
+        component={AccountCreated}
+        options={{headerShown: false}}
+      /> */}
     </Stack.Navigator>
   );
 };

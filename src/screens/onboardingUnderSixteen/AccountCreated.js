@@ -6,6 +6,7 @@ import {
   Image,
   StatusBar,
   ImageBackground,
+  SafeAreaView,
 } from 'react-native';
 
 import Colors from '../../config/colors';
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     flex: 4,
     alignItems: 'center',
-    paddingTop: '55%',
+    paddingTop: '45%',
   },
   iconContainer: {
     marginVertical: '5%',
@@ -63,7 +64,7 @@ const AccountCreated = ({navigation}) => {
   return (
     <ImageBackground source={Background} style={styles.imgBackground}>
       <StatusBar hidden />
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <View style={styles.wrapper}>
           <View style={styles.contentContainer}>
             <View style={styles.iconContainer}>
@@ -80,7 +81,7 @@ const AccountCreated = ({navigation}) => {
             </View>
           </View>
         </View>
-      </View>
+      </SafeAreaView>
     </ImageBackground>
   );
 };

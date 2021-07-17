@@ -8,13 +8,13 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
+  SafeAreaView,
 } from 'react-native';
 
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
-import HandsetRed from '../../assets/icons/app/handset-red.png';
 
 const styles = StyleSheet.create({
   container: {
@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
   },
   navigateActionContainer: {
     flex: 1,
-    justifyContent: 'center',
     marginTop: '5%',
   },
 });
@@ -87,7 +86,7 @@ const Username = ({navigation}) => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.container}>
         <StatusBar hidden />
-        <View style={styles.wrapper}>
+        <SafeAreaView style={styles.wrapper}>
           <View style={styles.navigateActionContainer}>
             <NavigateAction
               title="Step 6 of 7"
@@ -118,7 +117,7 @@ const Username = ({navigation}) => {
               />
             </View>
           </View>
-        </View>
+        </SafeAreaView>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );

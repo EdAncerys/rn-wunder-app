@@ -7,6 +7,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   KeyboardAvoidingView,
+  SafeAreaView,
 } from 'react-native';
 
 import Colors from '../../config/colors';
@@ -58,7 +59,7 @@ const Yay = ({navigation}) => {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.container}>
         <StatusBar hidden />
-        <View style={styles.wrapper}>
+        <SafeAreaView style={styles.wrapper}>
           <View style={styles.msgContainer}>
             <View style={styles.titleContainer}>
               <Text style={{fontSize: 80, marginVertical: '5%'}}>🎉</Text>
@@ -77,7 +78,7 @@ const Yay = ({navigation}) => {
               onPress={() => navigation.navigate('Email')}
             />
           </View>
-        </View>
+        </SafeAreaView>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );
