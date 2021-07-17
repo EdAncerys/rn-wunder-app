@@ -18,6 +18,7 @@ import VerifyOTPEmail from '../screens/onboardingUnderSixteen/VerifyOTPEmail';
 import Yay from '../screens/onboardingUnderSixteen/Yay';
 import Email from '../screens/onboardingUnderSixteen/Email';
 import Mobile from '../screens/onboardingUnderSixteen/Mobile';
+import VerifyEmail from '../screens/onboardingUnderSixteen/VerifyEmail';
 
 const Stack = createStackNavigator();
 const Router = ({navigation}) => {
@@ -73,7 +74,7 @@ const Router = ({navigation}) => {
         component={DonationNotification}
         options={{headerShown: false}}
       /> */}
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Name"
         component={Name}
         options={{headerShown: false}}
@@ -92,7 +93,8 @@ const Router = ({navigation}) => {
         name="VerifyOTPEmail"
         component={VerifyOTPEmail}
         options={{headerShown: false}}
-      />
+      /> */}
+      <Stack.Screen name="Yay" component={Yay} options={{headerShown: false}} />
       <Stack.Screen
         name="Email"
         component={Email}
@@ -103,7 +105,11 @@ const Router = ({navigation}) => {
         component={Mobile}
         options={{headerShown: false}}
       />
-      <Stack.Screen name="Yay" component={Yay} options={{headerShown: false}} />
+      <Stack.Screen
+        name="VerifyEmail"
+        component={VerifyEmail}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 };

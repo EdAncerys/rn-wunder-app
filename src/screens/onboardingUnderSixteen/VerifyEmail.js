@@ -9,18 +9,12 @@ import {
   Keyboard,
   KeyboardAvoidingView,
 } from 'react-native';
-import {
-  useAuthState,
-  useAuthDispatch,
-  tempDataStorage,
-} from '../../context/auth';
-import {useApiDispatch} from '../../context/api';
+import {useAuthState} from '../../context/auth';
 
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
-import HandsetRed from '../../assets/icons/app/handset-red.png';
 
 const styles = StyleSheet.create({
   container: {
@@ -44,16 +38,26 @@ const styles = StyleSheet.create({
   },
   title: {
     ...Fonts.N_700_16,
-    color: Colors.white,
     textAlign: 'center',
+    marginVertical: '4%',
+    color: Colors.white,
+  },
+  info: {
+    ...Fonts.N_500_12,
+    textAlign: 'center',
+    color: Colors.lightSilver,
   },
   inputWrapper: {
-    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '80%',
   },
   inputContainer: {
-    ...Fonts.N_400_12,
-    marginVertical: 10,
-    padding: 15,
+    ...Fonts.N_700_24,
+    textAlign: 'center',
+    width: 56,
+    marginVertical: '2%',
+    padding: 13,
     borderRadius: 4,
     backgroundColor: Colors.white,
   },
@@ -71,27 +75,20 @@ const styles = StyleSheet.create({
   },
 });
 
-const Email = ({navigation}) => {
-  const dispatchAuth = useAuthDispatch();
-  const dispatchApi = useApiDispatch();
+const VerifyEmail = ({navigation}) => {
   const {tempData} = useAuthState();
   console.log(tempData);
-
-  const [email, setEmail] = React.useState('');
+  const [codeOne, setCodeOne] = React.useState('');
+  const [codeTwo, setCodeTwo] = React.useState('');
+  const [codeThree, setCodeThree] = React.useState('');
+  const [codeFour, setCodeFour] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
 
   React.useEffect(() => {
     setBtnInactive(true);
-    if (!!email) setBtnInactive(false);
-  }, [email]);
-
-  // HANDLERS ---------------------------------------------------------
-  const handleContinue = () => {
-    const tempData = {email: email};
-    tempDataStorage(dispatchAuth, dispatchApi, tempData);
-    setEmail('');
-    navigation.navigate('VerifyEmail');
-  };
+    if (!!codeOne && !!codeTwo && !!codeThree && !!codeFour)
+      setBtnInactive(false);
+  }, [codeOne, codeTwo, codeThree, codeFour]);
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -102,38 +99,62 @@ const Email = ({navigation}) => {
         <View style={styles.wrapper}>
           <View style={styles.navigateActionContainer}>
             <NavigateAction
-              title="Step 4 of 7"
-              onPress={() => navigation.navigate('Yay')}
+              title="Step 5 of 7"
+              onPress={() => navigation.navigate('Email')}
             />
           </View>
           <View style={styles.formContainer}>
             <View style={styles.titleContainer}>
-              <Text style={styles.title}>What’s your email address?</Text>
+              <Text style={styles.title}>Verify your account</Text>
+              <Text style={styles.info}>
+                Please use the one time password sent to {tempData}
+              </Text>
             </View>
             <View style={styles.inputWrapper}>
               <TextInput
-                placeholder="Email address"
                 placeholderTextColor={Colors.lightSilver}
-                onChangeText={setEmail}
-                autoCapitalize="none"
-                value={email}
+                onChangeText={setCodeOne}
+                value={codeOne}
                 style={styles.inputContainer}
+                autoCapitalize="none"
+                keyboardType="numeric"
+                maxLength={1}
+              />
+              <TextInput
+                placeholderTextColor={Colors.lightSilver}
+                onChangeText={setCodeTwo}
+                value={codeTwo}
+                style={styles.inputContainer}
+                autoCapitalize="none"
+                keyboardType="numeric"
+                maxLength={1}
+              />
+              <TextInput
+                placeholderTextColor={Colors.lightSilver}
+                onChangeText={setCodeThree}
+                value={codeThree}
+                style={styles.inputContainer}
+                autoCapitalize="none"
+                keyboardType="numeric"
+                maxLength={1}
+              />
+              <TextInput
+                placeholderTextColor={Colors.lightSilver}
+                onChangeText={setCodeFour}
+                value={codeFour}
+                style={styles.inputContainer}
+                autoCapitalize="none"
+                keyboardType="numeric"
+                maxLength={1}
               />
             </View>
-            <CustomButton
-              title="Use your mobile number"
-              imageRight={HandsetRed}
-              style={{backgroundColor: Colors.transparent}}
-              titleStyling={{...Fonts.N_700_12, color: Colors.gray}}
-              onPress={() => navigation.navigate('Mobile')}
-            />
           </View>
           <View style={styles.actionsContainer}>
             <View style={styles.actionsWrapper}>
               <CustomButton
                 title="Continue"
                 inactive={btnInactive}
-                onPress={() => handleContinue()}
+                onPress={() => navigation.navigate('Yay')}
               />
             </View>
           </View>
@@ -143,4 +164,4 @@ const Email = ({navigation}) => {
   );
 };
 
-export default Email;
+export default VerifyEmail;
