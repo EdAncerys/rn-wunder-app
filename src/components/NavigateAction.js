@@ -13,27 +13,30 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  text: {
+  titleText: {
     ...Fonts.N_700_16,
-    color: Colors.white,
-    textAlign: 'right',
-    paddingRight: width / 3,
+    color: Colors.lightSilver,
+    textAlign: 'center',
   },
   textContainer: {
     flex: 1,
+    paddingRight: 12,
   },
 });
 
-const NavigateAction = ({title, onPress}) => {
+const NavigateAction = props => {
   return (
     <View style={styles.container}>
       <CustomButton
-        onPress={onPress}
+        onPress={props.onPress}
         imageLeft={LeftIcon}
         style={{backgroundColor: Colors.transparent}}
+        imageStyling={{width: 12, height: 20}}
       />
       <View style={styles.textContainer}>
-        <Text style={styles.text}>{title}</Text>
+        <Text style={{...styles.titleText, ...props.titleStyling}}>
+          {props.title}
+        </Text>
       </View>
     </View>
   );

@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
   navigateActionContainer: {
     flex: 1,
     justifyContent: 'center',
+    marginTop: '5%',
   },
 });
 

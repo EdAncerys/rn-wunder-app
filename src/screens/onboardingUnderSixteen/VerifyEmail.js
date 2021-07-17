@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
   navigateActionContainer: {
     flex: 1,
     justifyContent: 'center',
+    marginTop: '5%',
   },
 });
 
@@ -156,7 +157,7 @@ const VerifyEmail = ({navigation}) => {
               <CustomButton
                 title="Continue"
                 inactive={btnInactive}
-                onPress={() => navigation.navigate('Yay')}
+                onPress={() => navigation.navigate('Username')}
               />
             </View>
           </View>

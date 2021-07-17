@@ -14,6 +14,7 @@ import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
+import HandsetRed from '../../assets/icons/app/handset-red.png';
 
 const styles = StyleSheet.create({
   container: {
@@ -32,6 +33,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     justifyContent: 'center',
     alignItems: 'center',
+    marginHorizontal: '10%',
     marginVertical: '8%',
   },
   title: {
@@ -44,7 +46,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     ...Fonts.N_400_12,
-    marginVertical: '2%',
+    marginVertical: 10,
     padding: 15,
     borderRadius: 4,
     backgroundColor: Colors.white,
@@ -64,15 +66,19 @@ const styles = StyleSheet.create({
   },
 });
 
-const Name = ({navigation}) => {
-  const [firstName, setFirstName] = React.useState('');
-  const [lastName, setLastName] = React.useState('');
+const Username = ({navigation}) => {
+  const [username, setUsername] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
 
   React.useEffect(() => {
     setBtnInactive(true);
-    if (!!firstName && !!lastName) setBtnInactive(false);
-  }, [firstName, lastName]);
+    if (!!username) setBtnInactive(false);
+  }, [username]);
+
+  // HANDLERS ---------------------------------------------------------
+  const handleContinue = () => {
+    navigation.navigate('Location');
+  };
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -83,29 +89,21 @@ const Name = ({navigation}) => {
         <View style={styles.wrapper}>
           <View style={styles.navigateActionContainer}>
             <NavigateAction
-              title="Step 1 of 7"
-              onPress={() => navigation.navigate('AgeQuestion')}
+              title="Step 6 of 7"
+              onPress={() => navigation.navigate('VerifyEmail')}
             />
           </View>
           <View style={styles.formContainer}>
             <View style={styles.titleContainer}>
-              <Text style={styles.title}>What is your name?</Text>
+              <Text style={styles.title}>Create your username</Text>
             </View>
             <View style={styles.inputWrapper}>
               <TextInput
-                placeholder="First Name"
+                placeholder="Username"
                 placeholderTextColor={Colors.lightSilver}
-                onChangeText={setFirstName}
+                onChangeText={setUsername}
                 autoCapitalize="none"
-                value={firstName}
-                style={styles.inputContainer}
-              />
-              <TextInput
-                placeholder="Last Name"
-                placeholderTextColor={Colors.lightSilver}
-                onChangeText={setLastName}
-                secureTextEntry={true}
-                value={lastName}
+                value={username}
                 style={styles.inputContainer}
               />
             </View>
@@ -115,7 +113,7 @@ const Name = ({navigation}) => {
               <CustomButton
                 title="Continue"
                 inactive={btnInactive}
-                onPress={() => navigation.navigate('EmailOTP')}
+                onPress={() => handleContinue()}
               />
             </View>
           </View>
@@ -125,4 +123,4 @@ const Name = ({navigation}) => {
   );
 };
 
-export default Name;
+export default Username;
