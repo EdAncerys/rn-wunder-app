@@ -49,9 +49,8 @@ const ServeBtnImage = ({props}) => {
 };
 
 const ServeBtnFeedback = ({props, children}) => {
-
   let visualFeedback = (
-    <TouchableOpacity onPress={props.onPress}>
+    <TouchableOpacity onPress={props.onPress} style={{...props.shadow}}>
       <View style={{...styles.container, ...props.style}}>{children}</View>
     </TouchableOpacity>
   );

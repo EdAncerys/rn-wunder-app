@@ -12,6 +12,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 
+import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
@@ -230,14 +231,16 @@ const renderItem = ({item, index}) => {
           borderRadius: 6,
           minWidth: 80,
           backgroundColor: following ? Colors.secondary : Colors.primary,
+        }}
+        shadow={{
           shadowColor: Colors.lightBlack,
           shadowOffset: {
             width: 0,
-            height: 1,
+            height: 2,
           },
-          elevation: 1,
           shadowOpacity: 0.25,
           shadowRadius: 3,
+          elevation: 2,
         }}
         titleStyling={{
           ...Fonts.N_700_10,
@@ -330,12 +333,12 @@ const DonationNotification = ({navigation}) => {
   const [dataThisWeek, setThisWeek] = React.useState(DATA_THIS_WEEK);
 
   return (
-    <SafeAreaView>
+    <ScreenWrapper>
       <StatusBar hidden />
       <ServeNavigation onPress={() => navigation.navigate('Home')} />
       <ServeData data={dataMostRecent} title="most recent" />
       <ServeData data={dataThisWeek} title="this week" divider />
-    </SafeAreaView>
+    </ScreenWrapper>
   );
 };
 

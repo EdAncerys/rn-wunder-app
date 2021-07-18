@@ -69,11 +69,11 @@ const Router = ({navigation}) => {
         component={Login}
         options={{headerShown: false}}
       /> */}
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Home"
         component={Home}
         options={{headerShown: false}}
-      />
+      /> */}
       <Stack.Screen
         name="DonationNotification"
         component={DonationNotification}
