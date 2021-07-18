@@ -1,18 +1,9 @@
 import * as React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  SafeAreaView,
-  StatusBar,
-  TouchableWithoutFeedback,
-  Keyboard,
-  KeyboardAvoidingView,
-} from 'react-native';
+import {View, Text, StyleSheet, TextInput} from 'react-native';
 import {useAuthDispatch, tempDataStorage} from '../../context/auth';
 import {useApiDispatch} from '../../context/api';
 
+import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
@@ -20,10 +11,6 @@ import NavigateAction from '../../components/NavigateAction';
 import EmailRed from '../../assets/icons/app/email-red.png';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.lightBlack,
-  },
   wrapper: {
     flex: 1,
     marginHorizontal: '5%',
@@ -31,7 +18,6 @@ const styles = StyleSheet.create({
   formContainer: {
     flex: 4,
     alignItems: 'center',
-    paddingTop: '15%',
   },
   titleContainer: {
     justifyContent: 'center',
@@ -90,54 +76,49 @@ const Mobile = ({navigation}) => {
 
   // RETURN ---------------------------------------------------------
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.container}>
-        <StatusBar hidden />
-        <SafeAreaView style={styles.wrapper}>
-          <View style={styles.navigateActionContainer}>
-            <NavigateAction
-              title="Step 4 of 7"
-              onPress={() => navigation.navigate('Yay')}
+    <ScreenWrapper filter={Colors.lightBlack}>
+      <View style={styles.wrapper}>
+        <View style={styles.navigateActionContainer}>
+          <NavigateAction
+            title="Step 4 of 7"
+            onPress={() => navigation.navigate('Yay')}
+          />
+        </View>
+        <View style={styles.formContainer}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>What’s your mobile number?</Text>
+          </View>
+          <View style={styles.inputWrapper}>
+            <TextInput
+              placeholder="Mobile number"
+              placeholderTextColor={Colors.lightSilver}
+              onChangeText={setMobile}
+              autoCapitalize="none"
+              value={mobile}
+              style={styles.inputContainer}
+              keyboardType="numeric"
             />
           </View>
-          <View style={styles.formContainer}>
-            <View style={styles.titleContainer}>
-              <Text style={styles.title}>What’s your mobile number?</Text>
-            </View>
-            <View style={styles.inputWrapper}>
-              <TextInput
-                placeholder="Mobile number"
-                placeholderTextColor={Colors.lightSilver}
-                onChangeText={setMobile}
-                autoCapitalize="none"
-                value={mobile}
-                style={styles.inputContainer}
-                keyboardType="numeric"
-              />
-            </View>
+          <CustomButton
+            title="Use your email address"
+            imageRight={EmailRed}
+            style={{backgroundColor: Colors.transparent}}
+            titleStyling={{...Fonts.N_700_12, color: Colors.gray}}
+            imageStyling={{width: 24, height: 17.6}}
+            onPress={() => navigation.navigate('Email')}
+          />
+        </View>
+        <View style={styles.actionsContainer}>
+          <View style={styles.actionsWrapper}>
             <CustomButton
-              title="Use your email address"
-              imageRight={EmailRed}
-              style={{backgroundColor: Colors.transparent}}
-              titleStyling={{...Fonts.N_700_12, color: Colors.gray}}
-              imageStyling={{width: 24, height: 17.6}}
-              onPress={() => navigation.navigate('Email')}
+              title="Continue"
+              inactive={btnInactive}
+              onPress={() => handleContinue()}
             />
           </View>
-          <View style={styles.actionsContainer}>
-            <View style={styles.actionsWrapper}>
-              <CustomButton
-                title="Continue"
-                inactive={btnInactive}
-                onPress={() => handleContinue()}
-              />
-            </View>
-          </View>
-        </SafeAreaView>
-      </KeyboardAvoidingView>
-    </TouchableWithoutFeedback>
+        </View>
+      </View>
+    </ScreenWrapper>
   );
 };
 

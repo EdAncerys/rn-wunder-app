@@ -74,67 +74,67 @@ const Router = ({navigation}) => {
         component={Home}
         options={{headerShown: false}}
       /> */}
-      <Stack.Screen
+      {/* <Stack.Screen
         name="DonationNotification"
         component={DonationNotification}
         options={{headerShown: false}}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name="Name"
         component={Name}
         options={{headerShown: false}}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name="EmailOTP"
         component={EmailOTP}
         options={{headerShown: false}}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name="MobileOTP"
         component={MobileOTP}
         options={{headerShown: false}}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name="VerifyOTPEmail"
         component={VerifyOTPEmail}
         options={{headerShown: false}}
-      />
-      <Stack.Screen name="Yay" component={Yay} options={{headerShown: false}} />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen name="Yay" component={Yay} options={{headerShown: false}} /> */}
+      {/* <Stack.Screen
         name="Email"
         component={Email}
         options={{headerShown: false}}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name="Mobile"
         component={Mobile}
         options={{headerShown: false}}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name="VerifyEmail"
         component={VerifyEmail}
         options={{headerShown: false}}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name="Username"
         component={Username}
         options={{headerShown: false}}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name="Location"
         component={Location}
         options={{headerShown: false}}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name="VerifyMobile"
         component={VerifyMobile}
         options={{headerShown: false}}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name="AccountCreated"
         component={AccountCreated}
         options={{headerShown: false}}
-      />
+      /> */}
       <Stack.Screen
         name="Interests"
         component={Interests}

@@ -10,16 +10,13 @@ import {
   SafeAreaView,
 } from 'react-native';
 
+import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import RightArrowWhite from '../../assets/icons/app/right-arrow-white.png';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.lightBlack,
-  },
   wrapper: {
     flex: 1,
     marginHorizontal: '5%',
@@ -54,33 +51,28 @@ const styles = StyleSheet.create({
 
 const Yay = ({navigation}) => {
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.container}>
-        <StatusBar hidden />
-        <SafeAreaView style={styles.wrapper}>
-          <View style={styles.msgContainer}>
-            <View style={styles.titleContainer}>
-              <Text style={{fontSize: 80, marginVertical: '5%'}}>🎉</Text>
-              <Text style={styles.title}>Yay! Welcome!</Text>
-              <Text style={styles.info}>
-                You have been authorized by Wünder and can now create an account
-                and enjoy the experience.
-              </Text>
-            </View>
+    <ScreenWrapper filter={Colors.lightBlack}>
+      <View style={styles.wrapper}>
+        <View style={styles.msgContainer}>
+          <View style={styles.titleContainer}>
+            <Text style={{fontSize: 80, marginVertical: '5%'}}>🎉</Text>
+            <Text style={styles.title}>Yay! Welcome!</Text>
+            <Text style={styles.info}>
+              You have been authorized by Wünder and can now create an account
+              and enjoy the experience.
+            </Text>
           </View>
-          <View style={styles.actionsContainer}>
-            <CustomButton
-              imageLeft={RightArrowWhite}
-              style={{paddingHorizontal: 24, paddingVertical: 16}}
-              imageStyling={{height: 18}}
-              onPress={() => navigation.navigate('Email')}
-            />
-          </View>
-        </SafeAreaView>
-      </KeyboardAvoidingView>
-    </TouchableWithoutFeedback>
+        </View>
+        <View style={styles.actionsContainer}>
+          <CustomButton
+            imageLeft={RightArrowWhite}
+            style={{paddingHorizontal: 24, paddingVertical: 10}}
+            imageStyling={{width: 24, height: 18}}
+            onPress={() => navigation.navigate('Email')}
+          />
+        </View>
+      </View>
+    </ScreenWrapper>
   );
 };
 

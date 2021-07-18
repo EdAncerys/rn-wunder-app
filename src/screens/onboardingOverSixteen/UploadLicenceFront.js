@@ -59,7 +59,7 @@ const UploadLicenceFront = ({navigation}) => {
       <View style={styles.actionsContainer}>
         <CustomButton
           imageLeft={RightArrow}
-          style={{paddingVertical: 16, paddingHorizontal: 24}}
+          style={{paddingVertical: 10, paddingHorizontal: 24}}
           imageStyling={{width: 24, height: 18}}
           // onPress={() => navigation.navigate('AgeIdentity')}
           onPress={() => alert('path')}

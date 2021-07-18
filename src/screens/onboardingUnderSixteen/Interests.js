@@ -106,7 +106,7 @@ const Interests = ({navigation}) => {
             <CustomButton
               imageLeft={RightArrowWhite}
               onPress={() => handleContinue()}
-              style={{paddingHorizontal: 24, paddingVertical: 16}}
+              style={{paddingHorizontal: 24, paddingVertical: 10}}
               imageStyling={{width: 24, height: 18}}
             />
           </View>

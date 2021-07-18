@@ -11,16 +11,13 @@ import {
   SafeAreaView,
 } from 'react-native';
 
+import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.lightBlack,
-  },
   wrapper: {
     flex: 1,
     marginHorizontal: '5%',
@@ -28,7 +25,6 @@ const styles = StyleSheet.create({
   formContainer: {
     flex: 4,
     alignItems: 'center',
-    paddingTop: '15%',
   },
   titleContainer: {
     justifyContent: 'center',
@@ -90,77 +86,71 @@ const VerifyOTPEmail = ({navigation}) => {
 
   // RETURN ---------------------------------------------------------
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.container}>
-        <StatusBar hidden />
-        <SafeAreaView style={styles.wrapper}>
-          <View style={styles.navigateActionContainer}>
-            <NavigateAction
-              title="Step 3 of 7"
-              onPress={() => navigation.navigate('EmailOTP')}
+    <ScreenWrapper filter={Colors.lightBlack}>
+      <View style={styles.wrapper}>
+        <View style={styles.navigateActionContainer}>
+          <NavigateAction
+            title="Step 3 of 7"
+            onPress={() => navigation.navigate('EmailOTP')}
+          />
+        </View>
+        <View style={styles.formContainer}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>Input Access Code</Text>
+            <Text style={styles.info}>
+              Please input the access code provided from your parent or guardian
+            </Text>
+          </View>
+          <View style={styles.inputWrapper}>
+            <TextInput
+              placeholderTextColor={Colors.lightSilver}
+              onChangeText={setCodeOne}
+              value={codeOne}
+              style={styles.inputContainer}
+              autoCapitalize="none"
+              keyboardType="numeric"
+              maxLength={1}
+            />
+            <TextInput
+              placeholderTextColor={Colors.lightSilver}
+              onChangeText={setCodeTwo}
+              value={codeTwo}
+              style={styles.inputContainer}
+              autoCapitalize="none"
+              keyboardType="numeric"
+              maxLength={1}
+            />
+            <TextInput
+              placeholderTextColor={Colors.lightSilver}
+              onChangeText={setCodeThree}
+              value={codeThree}
+              style={styles.inputContainer}
+              autoCapitalize="none"
+              keyboardType="numeric"
+              maxLength={1}
+            />
+            <TextInput
+              placeholderTextColor={Colors.lightSilver}
+              onChangeText={setCodeFour}
+              value={codeFour}
+              style={styles.inputContainer}
+              autoCapitalize="none"
+              keyboardType="numeric"
+              maxLength={1}
             />
           </View>
-          <View style={styles.formContainer}>
-            <View style={styles.titleContainer}>
-              <Text style={styles.title}>Input Access Code</Text>
-              <Text style={styles.info}>
-                Please input the access code provided from your parent or
-                guardian
-              </Text>
-            </View>
-            <View style={styles.inputWrapper}>
-              <TextInput
-                placeholderTextColor={Colors.lightSilver}
-                onChangeText={setCodeOne}
-                value={codeOne}
-                style={styles.inputContainer}
-                autoCapitalize="none"
-                keyboardType="numeric"
-                maxLength={1}
-              />
-              <TextInput
-                placeholderTextColor={Colors.lightSilver}
-                onChangeText={setCodeTwo}
-                value={codeTwo}
-                style={styles.inputContainer}
-                autoCapitalize="none"
-                keyboardType="numeric"
-                maxLength={1}
-              />
-              <TextInput
-                placeholderTextColor={Colors.lightSilver}
-                onChangeText={setCodeThree}
-                value={codeThree}
-                style={styles.inputContainer}
-                autoCapitalize="none"
-                keyboardType="numeric"
-                maxLength={1}
-              />
-              <TextInput
-                placeholderTextColor={Colors.lightSilver}
-                onChangeText={setCodeFour}
-                value={codeFour}
-                style={styles.inputContainer}
-                autoCapitalize="none"
-                keyboardType="numeric"
-                maxLength={1}
-              />
-            </View>
+        </View>
+        <View style={styles.actionsContainer}>
+          <View style={styles.actionsWrapper}>
+            <CustomButton
+              title="Continue"
+              inactive={btnInactive}
+              onPress={() => navigation.navigate('Yay')}
+            />
           </View>
-          <View style={styles.actionsContainer}>
-            <View style={styles.actionsWrapper}>
-              <CustomButton
-                title="Continue"
-                inactive={btnInactive}
-                onPress={() => navigation.navigate('Yay')}
-              />
-            </View>
-          </View>
-        </SafeAreaView>
-      </KeyboardAvoidingView>
-    </TouchableWithoutFeedback>
+        </View>
+      </View>
+    </ScreenWrapper>
   );
 };
 

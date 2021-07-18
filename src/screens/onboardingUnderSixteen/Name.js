@@ -1,26 +1,13 @@
 import * as React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  StatusBar,
-  TouchableWithoutFeedback,
-  Keyboard,
-  KeyboardAvoidingView,
-  SafeAreaView,
-} from 'react-native';
+import {View, Text, StyleSheet, TextInput} from 'react-native';
 
+import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.lightBlack,
-  },
   wrapper: {
     flex: 1,
     marginHorizontal: '5%',
@@ -28,7 +15,6 @@ const styles = StyleSheet.create({
   formContainer: {
     flex: 4,
     alignItems: 'center',
-    paddingTop: '15%',
   },
   titleContainer: {
     justifyContent: 'center',
@@ -76,53 +62,48 @@ const Name = ({navigation}) => {
 
   // RETURN ---------------------------------------------------------
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.container}>
-        <StatusBar hidden />
-        <SafeAreaView style={styles.wrapper}>
-          <View style={styles.navigateActionContainer}>
-            <NavigateAction
-              title="Step 1 of 7"
-              onPress={() => navigation.navigate('AgeQuestion')}
+    <ScreenWrapper filter={Colors.lightBlack}>
+      <View style={styles.wrapper}>
+        <View style={styles.navigateActionContainer}>
+          <NavigateAction
+            title="Step 1 of 7"
+            onPress={() => navigation.navigate('AgeQuestion')}
+          />
+        </View>
+        <View style={styles.formContainer}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>What is your name?</Text>
+          </View>
+          <View style={styles.inputWrapper}>
+            <TextInput
+              placeholder="First Name"
+              placeholderTextColor={Colors.lightSilver}
+              onChangeText={setFirstName}
+              autoCapitalize="none"
+              value={firstName}
+              style={styles.inputContainer}
+            />
+            <TextInput
+              placeholder="Last Name"
+              placeholderTextColor={Colors.lightSilver}
+              onChangeText={setLastName}
+              secureTextEntry={true}
+              value={lastName}
+              style={styles.inputContainer}
             />
           </View>
-          <View style={styles.formContainer}>
-            <View style={styles.titleContainer}>
-              <Text style={styles.title}>What is your name?</Text>
-            </View>
-            <View style={styles.inputWrapper}>
-              <TextInput
-                placeholder="First Name"
-                placeholderTextColor={Colors.lightSilver}
-                onChangeText={setFirstName}
-                autoCapitalize="none"
-                value={firstName}
-                style={styles.inputContainer}
-              />
-              <TextInput
-                placeholder="Last Name"
-                placeholderTextColor={Colors.lightSilver}
-                onChangeText={setLastName}
-                secureTextEntry={true}
-                value={lastName}
-                style={styles.inputContainer}
-              />
-            </View>
+        </View>
+        <View style={styles.actionsContainer}>
+          <View style={styles.actionsWrapper}>
+            <CustomButton
+              title="Continue"
+              inactive={btnInactive}
+              onPress={() => navigation.navigate('EmailOTP')}
+            />
           </View>
-          <View style={styles.actionsContainer}>
-            <View style={styles.actionsWrapper}>
-              <CustomButton
-                title="Continue"
-                inactive={btnInactive}
-                onPress={() => navigation.navigate('EmailOTP')}
-              />
-            </View>
-          </View>
-        </SafeAreaView>
-      </KeyboardAvoidingView>
-    </TouchableWithoutFeedback>
+        </View>
+      </View>
+    </ScreenWrapper>
   );
 };
 

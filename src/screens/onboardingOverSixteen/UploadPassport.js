@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, Image, StatusBar} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -59,7 +59,7 @@ const UploadLicenceFront = ({navigation}) => {
       <View style={styles.actionsContainer}>
         <CustomButton
           imageLeft={RightArrow}
-          style={{paddingVertical: 16, paddingHorizontal: 24}}
+          style={{paddingVertical: 10, paddingHorizontal: 24}}
           imageStyling={{width: 24, height: 18}}
           // onPress={() => navigation.navigate('AgeIdentity')}
           onPress={() => alert('path')}

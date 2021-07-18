@@ -1,29 +1,13 @@
 import * as React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  StatusBar,
-  ImageBackground,
-  SafeAreaView,
-} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 
+import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import Background from '../../assets/images/onboardingUnderSixteen/account-created-background.png';
 import IconConfirmed from '../../assets/icons/app/confirmed.png';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.screenFilter,
-  },
-  imgBackground: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
-  },
   wrapper: {
     flex: 1,
     marginHorizontal: '5%',
@@ -62,27 +46,24 @@ const styles = StyleSheet.create({
 
 const AccountCreated = ({navigation}) => {
   return (
-    <ImageBackground source={Background} style={styles.imgBackground}>
-      <StatusBar hidden />
-      <SafeAreaView style={styles.container}>
-        <View style={styles.wrapper}>
-          <View style={styles.contentContainer}>
-            <View style={styles.iconContainer}>
-              <Image source={IconConfirmed} />
-            </View>
-            <View style={styles.titleContainer}>
-              <Text style={styles.title}>Account Created!</Text>
-            </View>
-            <View style={styles.msgContainer}>
-              <Text style={styles.msg}>
-                We are checking your information and will get back to you as
-                soon as possible allowing you to progress to the app.
-              </Text>
-            </View>
+    <ScreenWrapper image={Background} filter={Colors.screenFilter}>
+      <View style={styles.wrapper}>
+        <View style={styles.contentContainer}>
+          <View style={styles.iconContainer}>
+            <Image source={IconConfirmed} />
+          </View>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>Account Created!</Text>
+          </View>
+          <View style={styles.msgContainer}>
+            <Text style={styles.msg}>
+              We are checking your information and will get back to you as soon
+              as possible allowing you to progress to the app.
+            </Text>
           </View>
         </View>
-      </SafeAreaView>
-    </ImageBackground>
+      </View>
+    </ScreenWrapper>
   );
 };
 
