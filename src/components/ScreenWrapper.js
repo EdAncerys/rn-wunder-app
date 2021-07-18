@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   ImageBackground,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import Colors from '../config/colors';
 
@@ -43,14 +44,23 @@ const ServeImgBackground = ({props}) => {
 };
 const ServeScreenView = ({props}) => {
   const screenFilter = props.filter || Colors.transparent;
+  const gradientFilter = props.gradient || [
+    Colors.transparent,
+    Colors.transparent,
+  ];
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
       <View style={{flex: 1, backgroundColor: screenFilter}}>
-        {!props.statusBar && <StatusBar hidden />}
-        <SafeAreaView style={styles.wrapper}>{props.children}</SafeAreaView>
+        <LinearGradient
+          colors={gradientFilter}
+          start={{x: 0.4, y: 0.4}}
+          style={styles.container}>
+          {!props.statusBar && <StatusBar hidden />}
+          <SafeAreaView style={styles.wrapper}>{props.children}</SafeAreaView>
+        </LinearGradient>
       </View>
     </KeyboardAvoidingView>
   );

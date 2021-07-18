@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {View, StyleSheet, ImageBackground} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import {View, StyleSheet} from 'react-native';
 
+import ScreenWrapper from './ScreenWrapper';
 import Colors from '../config/colors';
 import CustomButton from './CustomButton';
 import PostSnapshot from './PostSnapshot';
@@ -12,11 +12,6 @@ import AppNavigateActions from './AppNavigateActions';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  background: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
   },
   headerContainer: {
     position: 'absolute',
@@ -29,7 +24,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'center',
     marginHorizontal: '5%',
-    marginTop: '30%',
+    marginTop: '35%',
   },
   postContainer: {
     flex: 1,
@@ -51,7 +46,7 @@ const HomeScreen = ({
   navigateActions,
 }) => {
   const applyMarginPost = getInvolved
-    ? {marginBottom: '55%'}
+    ? {marginBottom: '50%'}
     : {marginBottom: '35%'};
 
   // SERVERS ---------------------------------------------------------
@@ -73,31 +68,28 @@ const HomeScreen = ({
 
   // RETURN ---------------------------------------------------------
   return (
-    <ImageBackground source={background} style={styles.background}>
-      <LinearGradient
-        colors={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}
-        start={{x: 0.4, y: 0.4}}
-        style={styles.container}>
-        <View style={styles.appActions}>
-          <AppActions />
-        </View>
-        <View style={{...styles.postContainer, ...applyMarginPost}}>
-          <PostSnapshot
-            profileIcon={profileIcon}
-            profileName={profileName}
-            verified={verified}
-            title={title}
-            post={post}
-            postTag={postTag}
-          />
-          {getInvolved && (
-            <CustomButton title="get involved" onPress={() => alert('path')} />
-          )}
-        </View>
-      </LinearGradient>
+    <ScreenWrapper
+      image={background}
+      gradient={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}>
+      <View style={styles.appActions}>
+        <AppActions />
+      </View>
+      <View style={{...styles.postContainer, ...applyMarginPost}}>
+        <PostSnapshot
+          profileIcon={profileIcon}
+          profileName={profileName}
+          verified={verified}
+          title={title}
+          post={post}
+          postTag={postTag}
+        />
+        {getInvolved && (
+          <CustomButton title="get involved" onPress={() => alert('path')} />
+        )}
+      </View>
       {donateActions && <ServeDonate navigation={navigation} />}
       {navigateActions && <ServeAppNavigate navigation={navigation} />}
-    </ImageBackground>
+    </ScreenWrapper>
   );
 };
 

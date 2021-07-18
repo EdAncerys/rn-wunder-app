@@ -8,6 +8,7 @@ import {
   StatusBar,
 } from 'react-native';
 
+import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import Background from '../../assets/images/onboardingOverSixteen/splash-screen-background.png';
@@ -15,75 +16,64 @@ import Logo from '../../assets/images/onboardingOverSixteen/splash-screen-logo.p
 import CustomButton from '../../components/CustomButton';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.screenFilter,
-  },
-  imgBackground: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
-  },
   logoContainer: {
-    flex: 1,
+    flex: 3,
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: '30%',
   },
   actionsContainer: {
+    flex: 1.5,
+    justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: '18%',
   },
-  createAccountContainer: {
+  actionWrapper: {
     width: '90%',
-    marginBottom: 23,
+    marginBottom: '5%',
   },
   dividerContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 10,
+    marginVertical: '2%',
   },
   textDivider: {
     ...Fonts.N_700_12,
     color: Colors.white,
   },
   dash: {
-    borderBottomColor: Colors.white,
+    borderBottomColor: Colors.matFilter,
     width: 16,
-    borderBottomWidth: 1,
+    borderBottomWidth: 2.5,
     marginHorizontal: 8,
   },
 });
 
 const CreateAccountScreen = ({navigation}) => {
   return (
-    <ImageBackground source={Background} style={styles.imgBackground}>
-      <StatusBar hidden />
-      <View style={styles.container}>
-        <View style={styles.logoContainer}>
-          <Image source={Logo} />
-        </View>
+    <ScreenWrapper image={Background} filter={Colors.screenFilter}>
+      <View style={styles.logoContainer}>
+        <Image source={Logo} />
+      </View>
 
-        <View style={styles.actionsContainer}>
-          <View style={styles.createAccountContainer}>
-            <CustomButton
-              title="Create An Account"
-              onPress={() => navigation.navigate('AgeQuestion')}
-            />
-          </View>
-          <View style={styles.dividerContainer}>
-            <View style={styles.dash}></View>
-            <Text style={styles.textDivider}>Or</Text>
-            <View style={styles.dash}></View>
-          </View>
+      <View style={styles.actionsContainer}>
+        <View style={styles.actionWrapper}>
           <CustomButton
-            onPress={() => navigation.navigate('Login')}
-            title="Login to your account"
-            style={{backgroundColor: Colors.transparent}}
+            title="Create An Account"
+            onPress={() => navigation.navigate('AgeQuestion')}
           />
         </View>
+        <View style={styles.dividerContainer}>
+          <View style={styles.dash}></View>
+          <Text style={styles.textDivider}>Or</Text>
+          <View style={styles.dash}></View>
+        </View>
+        <CustomButton
+          onPress={() => navigation.navigate('Login')}
+          title="Login to your account"
+          style={{backgroundColor: Colors.transparent}}
+        />
       </View>
-    </ImageBackground>
+    </ScreenWrapper>
   );
 };
 

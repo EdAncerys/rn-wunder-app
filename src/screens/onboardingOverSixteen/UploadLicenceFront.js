@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {View, Text, StyleSheet, Image, StatusBar} from 'react-native';
 
+import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
@@ -9,42 +10,36 @@ import LicenceImage from '../../assets/images/onboardingOverSixteen/upload-licen
 import RightArrow from '../../assets/icons/app/right-arrow-white.png';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.lightBlack,
-  },
-  imgBackground: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
-  },
-  titleContainer: {
+  contentContainer: {
+    flex: 4,
     alignItems: 'center',
-    paddingTop: '30%',
   },
   actionsContainer: {
-    paddingBottom: '18%',
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
   },
   imageContainer: {
-    flex: 1,
+    marginVertical: '8%',
+    justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: '10%',
   },
-  titleText: {
+  title: {
     ...Fonts.N_700_16,
+    textAlign: 'center',
+    paddingHorizontal: '20%',
     color: Colors.white,
   },
   navigateActionContainer: {
-    paddingTop: '20%',
+    flex: 1,
+    marginTop: '5%',
     marginHorizontal: '5%',
   },
 });
 
 const UploadLicenceFront = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <StatusBar hidden />
+    <ScreenWrapper filter={Colors.lightBlack}>
       <View style={styles.navigateActionContainer}>
         <NavigateAction
           title="Step 2 of 7"
@@ -52,23 +47,25 @@ const UploadLicenceFront = ({navigation}) => {
         />
       </View>
 
-      <View style={styles.titleContainer}>
-        <Text style={styles.titleText}>Upload a clear picture of the</Text>
-        <Text style={styles.titleText}>front of your licence</Text>
-      </View>
-      <View style={styles.imageContainer}>
-        <Image source={LicenceImage} />
+      <View style={styles.contentContainer}>
+        <Text style={styles.title}>
+          Upload a clear picture of the front of your licence
+        </Text>
+        <View style={styles.imageContainer}>
+          <Image source={LicenceImage} />
+        </View>
       </View>
 
       <View style={styles.actionsContainer}>
         <CustomButton
           imageLeft={RightArrow}
-          imageStyling={{paddingVertical: 16, paddingHorizontal: 35}}
+          style={{paddingVertical: 16, paddingHorizontal: 24}}
+          imageStyling={{width: 24, height: 18}}
           // onPress={() => navigation.navigate('AgeIdentity')}
           onPress={() => alert('path')}
         />
       </View>
-    </View>
+    </ScreenWrapper>
   );
 };
 

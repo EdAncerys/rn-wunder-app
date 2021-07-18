@@ -34,41 +34,41 @@ const Router = ({navigation}) => {
         component={SplashScreen}
         options={{headerShown: false}}
       /> */}
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Visual"
         component={Visual}
         options={{headerShown: false}}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name="CreateAccountScreen"
         component={CreateAccountScreen}
         options={{headerShown: false}}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name="AgeQuestion"
         component={AgeQuestion}
         options={{headerShown: false}}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name="UploadIdentity"
         component={UploadIdentity}
         options={{headerShown: false}}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name="UploadLicenceFront"
         component={UploadLicenceFront}
         options={{headerShown: false}}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name="UploadPassport"
         component={UploadPassport}
         options={{headerShown: false}}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name="Login"
         component={Login}
         options={{headerShown: false}}
-      />
+      /> */}
       <Stack.Screen
         name="Home"
         component={Home}

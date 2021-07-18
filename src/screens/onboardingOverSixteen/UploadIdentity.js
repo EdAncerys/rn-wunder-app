@@ -1,35 +1,27 @@
 import * as React from 'react';
 import {View, Text, StyleSheet, StatusBar} from 'react-native';
 
+import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.lightBlack,
-  },
-  imgBackground: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
-  },
   titleContainer: {
-    flex: 1,
+    flex: 3,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: '30%',
   },
   infoTextContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: '5%',
+    marginTop: '5%',
   },
   actionsContainer: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: '18%',
   },
   overSixteenContainer: {
     width: '90%',
@@ -47,13 +39,15 @@ const styles = StyleSheet.create({
     color: Colors.white,
   },
   dash: {
-    borderBottomColor: Colors.white,
+    borderBottomColor: Colors.matFilter,
     width: 16,
-    borderBottomWidth: 1,
+    borderBottomWidth: 2.5,
     marginHorizontal: 8,
   },
-  titleText: {
+  title: {
     ...Fonts.N_700_28,
+    textAlign: 'center',
+    marginHorizontal: '20%',
     color: Colors.white,
   },
   infoText: {
@@ -61,15 +55,15 @@ const styles = StyleSheet.create({
     color: Colors.white,
   },
   navigateActionContainer: {
-    paddingTop: '20%',
+    flex: 1,
+    marginTop: '5%',
     marginHorizontal: '5%',
   },
 });
 
 const UploadIdentity = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <StatusBar hidden />
+    <ScreenWrapper filter={Colors.lightBlack}>
       <View style={styles.navigateActionContainer}>
         <NavigateAction
           title="Step 1 of 7"
@@ -77,9 +71,9 @@ const UploadIdentity = ({navigation}) => {
         />
       </View>
       <View style={styles.titleContainer}>
-        <Text style={styles.titleText}>Choose your form</Text>
-        <Text style={styles.titleText}>of ID to verify</Text>
-        <Text style={styles.titleText}>yourself</Text>
+        <Text style={styles.title}>
+          Choose your form of ID to verify yourself
+        </Text>
         <View style={styles.infoTextContainer}>
           <Text style={styles.infoText}>
             You wont be able to create an account until we have
@@ -113,7 +107,7 @@ const UploadIdentity = ({navigation}) => {
           />
         </View>
       </View>
-    </View>
+    </ScreenWrapper>
   );
 };
 

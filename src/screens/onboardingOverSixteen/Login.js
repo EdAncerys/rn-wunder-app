@@ -1,23 +1,10 @@
 import * as React from 'react';
-import {
-  useAuthState,
-  useAuthDispatch,
-  logIn,
-  StatusBar,
-} from '../../context/auth';
+import {useAuthState, useAuthDispatch, logIn} from '../../context/auth';
 import {useApiDispatch} from '../../context/api';
 
-import {
-  View,
-  KeyboardAvoidingView,
-  TextInput,
-  StyleSheet,
-  Text,
-  Platform,
-  TouchableWithoutFeedback,
-  Keyboard,
-} from 'react-native';
+import {View, TextInput, StyleSheet, Text} from 'react-native';
 
+import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
@@ -42,9 +29,9 @@ const styles = StyleSheet.create({
   },
   textInput: {
     borderColor: '#000000',
-    borderBottomWidth: 1,
+    borderRadius: 5,
     padding: 15,
-    marginBottom: 40,
+    marginBottom: 20,
     backgroundColor: Colors.white,
   },
   infoText: {
@@ -55,11 +42,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const UploadIdentity = ({navigation}) => {
+const Login = ({navigation}) => {
   const dispatchAuth = useAuthDispatch();
   const dispatchApi = useApiDispatch();
-  const {jwt, user} = useAuthState();
-  console.log(user);
+  const {jwt} = useAuthState();
 
   const [logInEmail, setLogInEmail] = React.useState('');
   const [logInPassword, setLogInPassword] = React.useState('');
@@ -78,46 +64,41 @@ const UploadIdentity = ({navigation}) => {
   };
 
   React.useEffect(() => {
-    navigation.navigate('Home');
-  }, [user]);
+    if (jwt) navigation.navigate('Home');
+  }, [jwt]);
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={styles.container}>
-      <StatusBar hidden />
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.contentWrapper}>
-          <View style={styles.headerContainer}>
-            <Text style={styles.headerText}>Login Screen</Text>
-            <Text style={styles.headerText}>Layout TBC</Text>
-            <View style={styles.infoTextContainer}>
-              <Text style={styles.infoText}>
-                * login screen & process to be confirmed
-              </Text>
-            </View>
-          </View>
-          <TextInput
-            placeholder="email"
-            onChangeText={setLogInEmail}
-            autoCapitalize="none"
-            value={logInEmail}
-            style={styles.textInput}
-          />
-          <TextInput
-            placeholder="password"
-            onChangeText={setLogInPassword}
-            secureTextEntry={true}
-            value={logInPassword}
-            style={styles.textInput}
-          />
-          <View>
-            <CustomButton title="Login" onPress={handleLogIn} />
+    <ScreenWrapper filter={Colors.lightBlack}>
+      <View style={styles.contentWrapper}>
+        <View style={styles.headerContainer}>
+          <Text style={styles.headerText}>Login Screen</Text>
+          <Text style={styles.headerText}>Layout TBC</Text>
+          <View style={styles.infoTextContainer}>
+            <Text style={styles.infoText}>
+              * login screen & process to be confirmed
+            </Text>
           </View>
         </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+        <TextInput
+          placeholder="email"
+          onChangeText={setLogInEmail}
+          autoCapitalize="none"
+          value={logInEmail}
+          style={styles.textInput}
+        />
+        <TextInput
+          placeholder="password"
+          onChangeText={setLogInPassword}
+          secureTextEntry={true}
+          value={logInPassword}
+          style={styles.textInput}
+        />
+        <View>
+          <CustomButton title="Login" onPress={handleLogIn} />
+        </View>
+      </View>
+    </ScreenWrapper>
   );
 };
 
-export default UploadIdentity;
+export default Login;

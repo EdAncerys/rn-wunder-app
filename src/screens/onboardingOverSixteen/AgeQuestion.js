@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {View, Text, StyleSheet, ImageBackground, StatusBar} from 'react-native';
 
+import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Background from '../../assets/images/onboardingOverSixteen/age-question-background.png';
 import CustomButton from '../../components/CustomButton';
@@ -8,23 +9,15 @@ import NavigateAction from '../../components/NavigateAction';
 import Fonts from '../../config/fonts';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.screenFilter,
-  },
-  imgBackground: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
-  },
   titleContainer: {
-    flex: 1,
+    flex: 4,
     justifyContent: 'center',
     alignItems: 'center',
   },
   actionsContainer: {
+    flex: 2,
+    justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: '18%',
   },
   overSixteenContainer: {
     width: '90%',
@@ -42,61 +35,59 @@ const styles = StyleSheet.create({
     color: Colors.white,
   },
   dash: {
-    borderBottomColor: Colors.white,
+    borderBottomColor: Colors.matFilter,
     width: 16,
-    borderBottomWidth: 1,
+    borderBottomWidth: 2.5,
     marginHorizontal: 8,
   },
-  titleText: {
+  title: {
     ...Fonts.N_700_28,
     color: Colors.white,
   },
   navigateActionContainer: {
-    paddingTop: '15%',
+    flex: 1,
+    marginTop: '5%',
     marginHorizontal: '5%',
   },
 });
 
 const AgeQuestion = ({navigation}) => {
   return (
-    <ImageBackground source={Background} style={styles.imgBackground}>
-      <StatusBar hidden />
-      <View style={styles.container}>
-        <View style={styles.navigateActionContainer}>
-          <NavigateAction
-            onPress={() => navigation.navigate('CreateAccountScreen')}
+    <ScreenWrapper image={Background} filter={Colors.screenFilter}>
+      <View style={styles.navigateActionContainer}>
+        <NavigateAction
+          onPress={() => navigation.navigate('CreateAccountScreen')}
+        />
+      </View>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>What best</Text>
+        <Text style={styles.title}>describes you?</Text>
+      </View>
+
+      <View style={styles.actionsContainer}>
+        <View style={styles.overSixteenContainer}>
+          <CustomButton
+            title="Over 16"
+            onPress={() => navigation.navigate('UploadIdentity')}
           />
         </View>
-        <View style={styles.titleContainer}>
-          <Text style={styles.titleText}>What best</Text>
-          <Text style={styles.titleText}>describes you?</Text>
+        <View style={styles.dividerContainer}>
+          <View style={styles.dash}></View>
+          <Text style={styles.textDivider}>Or</Text>
+          <View style={styles.dash}></View>
         </View>
-
-        <View style={styles.actionsContainer}>
-          <View style={styles.overSixteenContainer}>
-            <CustomButton
-              title="Over 16"
-              onPress={() => navigation.navigate('UploadIdentity')}
-            />
-          </View>
-          <View style={styles.dividerContainer}>
-            <View style={styles.dash}></View>
-            <Text style={styles.textDivider}>Or</Text>
-            <View style={styles.dash}></View>
-          </View>
-          <View
-            style={{
-              ...styles.overSixteenContainer,
-              ...styles.underSixteenContainer,
-            }}>
-            <CustomButton
-              title="Under 16"
-              onPress={() => navigation.navigate('Name')}
-            />
-          </View>
+        <View
+          style={{
+            ...styles.overSixteenContainer,
+            ...styles.underSixteenContainer,
+          }}>
+          <CustomButton
+            title="Under 16"
+            onPress={() => navigation.navigate('Name')}
+          />
         </View>
       </View>
-    </ImageBackground>
+    </ScreenWrapper>
   );
 };
 
