@@ -23,6 +23,7 @@ import Username from '../screens/onboardingUnderSixteen/Username';
 import Location from '../screens/onboardingUnderSixteen/Location';
 import AccountCreated from '../screens/onboardingUnderSixteen/AccountCreated';
 import VerifyMobile from '../screens/onboardingUnderSixteen/VerifyMobile';
+import Interests from '../screens/onboardingUnderSixteen/Interests';
 
 const Stack = createStackNavigator();
 const Router = ({navigation}) => {
@@ -129,11 +130,16 @@ const Router = ({navigation}) => {
         component={VerifyMobile}
         options={{headerShown: false}}
       />
-      {/* <Stack.Screen
+      <Stack.Screen
         name="AccountCreated"
         component={AccountCreated}
         options={{headerShown: false}}
-      /> */}
+      />
+      <Stack.Screen
+        name="Interests"
+        component={Interests}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 };

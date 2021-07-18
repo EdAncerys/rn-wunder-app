@@ -78,7 +78,8 @@ const styles = StyleSheet.create({
 
 const VerifyEmail = ({navigation}) => {
   const {tempData} = useAuthState();
-  const email = tempData.email;
+  let email;
+  if (tempData) email = tempData.email;
 
   const [codeOne, setCodeOne] = React.useState('');
   const [codeTwo, setCodeTwo] = React.useState('');

@@ -7,6 +7,7 @@ import {
   StatusBar,
 } from 'react-native';
 
+import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
@@ -40,21 +41,18 @@ const styles = StyleSheet.create({
 
 const SplashScreen = ({navigation}) => {
   return (
-    <ImageBackground source={Background} style={styles.imgBackground}>
-      <StatusBar hidden />
-      <View style={styles.container}>
-        <View style={styles.logoContainer}>
-          <Image source={Logo} />
-        </View>
-        <View style={styles.actionsContainer}>
-          <CustomButton
-            onPress={() => navigation.navigate('Visual')}
-            title="Tap to Start"
-            style={{backgroundColor: Colors.transparent}}
-          />
-        </View>
+    <ScreenWrapper image={Background} filter={Colors.screenFilter}>
+      <View style={styles.logoContainer}>
+        <Image source={Logo} />
       </View>
-    </ImageBackground>
+      <View style={styles.actionsContainer}>
+        <CustomButton
+          onPress={() => navigation.navigate('Visual')}
+          title="Tap to Start"
+          style={{backgroundColor: Colors.transparent}}
+        />
+      </View>
+    </ScreenWrapper>
   );
 };
 

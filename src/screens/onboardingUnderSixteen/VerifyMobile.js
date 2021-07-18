@@ -78,7 +78,8 @@ const styles = StyleSheet.create({
 
 const VerifyMobile = ({navigation}) => {
   const {tempData} = useAuthState();
-  const mobile = tempData.mobile;
+  let mobile;
+  if (tempData) mobile = tempData.mobile;
 
   const [codeOne, setCodeOne] = React.useState('');
   const [codeTwo, setCodeTwo] = React.useState('');
