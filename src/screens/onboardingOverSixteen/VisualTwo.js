@@ -7,8 +7,7 @@ const VisualTwo = ({navigation}) => {
   return (
     <VisualScreenComponent
       background={Background}
-      rowOneText="Challenge yourself to"
-      rowTwoText="do more for society"
+      title="Challenge yourself to do more for society"
       navigation={navigation}
     />
   );

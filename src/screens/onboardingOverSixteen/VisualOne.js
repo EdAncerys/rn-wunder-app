@@ -7,8 +7,7 @@ const VisualOne = ({navigation}) => {
   return (
     <VisualScreenComponent
       background={Background}
-      rowOneText="Discover exiting news"
-      rowTwoText="positive content"
+      title="Discover exiting news positive content"
       navigation={navigation}
     />
   );

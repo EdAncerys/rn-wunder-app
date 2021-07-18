@@ -1,23 +1,16 @@
 import * as React from 'react';
 import {View, Text, StyleSheet, ImageBackground, StatusBar} from 'react-native';
 
+import ScreenWrapper from '../components/ScreenWrapper';
 import Colors from '../config/colors';
 import Fonts from '../config/fonts';
 import CustomButton from './CustomButton';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.screenFilter,
-  },
-  imgBackground: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
-  },
   skipAction: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'flex-end',
-    paddingTop: '15%',
     paddingHorizontal: '5%',
   },
   skipText: {
@@ -26,10 +19,12 @@ const styles = StyleSheet.create({
     opacity: 0.6,
   },
   titleContainer: {
-    flex: 1,
-    paddingTop: '75%',
+    flex: 8,
+    justifyContent: 'center',
+    paddingHorizontal: '12%',
+    marginBottom: '35%',
   },
-  titleText: {
+  title: {
     ...Fonts.N_700_28,
     color: Colors.white,
     textAlign: 'center',
@@ -39,33 +34,24 @@ const styles = StyleSheet.create({
   },
 });
 
-const VisualScreenComponent = ({
-  background,
-  rowOneText,
-  rowTwoText,
-  navigation,
-}) => {
+const VisualScreenComponent = ({background, title, navigation}) => {
   return (
-    <ImageBackground source={background} style={styles.imgBackground}>
-      <StatusBar hidden />
-      <View style={styles.container}>
-        <View style={styles.skipAction}>
-          <CustomButton
-            onPress={() => navigation.navigate('CreateAccountScreen')}
-            title="skip"
-            style={{backgroundColor: Colors.transparent}}
-            titleStyling={{fontSize: 12}}
-          />
-        </View>
-        <View style={styles.titleContainer}>
-          <Text style={styles.titleText}>{rowOneText}</Text>
-          <Text style={styles.titleText}>
-            {rowTwoText}
-            <Text style={styles.dot}>.</Text>
-          </Text>
-        </View>
+    <ScreenWrapper image={background} filter={Colors.screenFilter}>
+      <View style={styles.skipAction}>
+        <CustomButton
+          onPress={() => navigation.navigate('CreateAccountScreen')}
+          title="skip"
+          style={{backgroundColor: Colors.transparent}}
+          titleStyling={{fontSize: 12}}
+        />
       </View>
-    </ImageBackground>
+      <View style={styles.titleContainer}>
+        <Text style={styles.title}>
+          {title}
+          <Text style={styles.dot}>.</Text>
+        </Text>
+      </View>
+    </ScreenWrapper>
   );
 };
 

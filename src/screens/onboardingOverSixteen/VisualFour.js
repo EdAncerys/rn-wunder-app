@@ -7,8 +7,7 @@ const VisualFour = ({navigation}) => {
   return (
     <VisualScreenComponent
       background={Background}
-      rowOneText="Invite your friends to"
-      rowTwoText="join the challenge"
+      title="Invite your friends to join the challenge"
       navigation={navigation}
     />
   );

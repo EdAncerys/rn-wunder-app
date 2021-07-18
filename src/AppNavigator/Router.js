@@ -29,11 +29,11 @@ const Stack = createStackNavigator();
 const Router = ({navigation}) => {
   return (
     <Stack.Navigator initialRouteName="SplashScreen">
-      <Stack.Screen
+      {/* <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}
         options={{headerShown: false}}
-      />
+      /> */}
       <Stack.Screen
         name="Visual"
         component={Visual}

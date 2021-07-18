@@ -39,7 +39,8 @@ const Visual = ({navigation}) => {
       autoplay={true}
       paginationStyle={styles.pagination}
       dotStyle={styles.dot}
-      activeDotStyle={styles.activeDot}>
+      activeDotStyle={styles.activeDot}
+      autoplayTimeout={4}>
       <VisualOne navigation={navigation} />
       <VisualTwo navigation={navigation} />
       <VisualThree navigation={navigation} />

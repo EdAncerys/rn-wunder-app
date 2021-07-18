@@ -7,8 +7,7 @@ const VisualThree = ({navigation}) => {
   return (
     <VisualScreenComponent
       background={Background}
-      rowOneText="Join events promoting"
-      rowTwoText="good initiatives"
+      title="Join events promoting good initiatives"
       navigation={navigation}
     />
   );

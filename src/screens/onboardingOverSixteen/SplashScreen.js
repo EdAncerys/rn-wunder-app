@@ -15,15 +15,6 @@ import Background from '../../assets/images/onboardingOverSixteen/splash-screen-
 import Logo from '../../assets/images/onboardingOverSixteen/splash-screen-logo.png';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.screenFilter,
-  },
-  imgBackground: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
-  },
   logoContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -31,7 +22,7 @@ const styles = StyleSheet.create({
   },
   actionsContainer: {
     alignItems: 'center',
-    paddingBottom: 72,
+    marginBottom: '8%',
   },
   startActionText: {
     ...Fonts.N_700_16,
