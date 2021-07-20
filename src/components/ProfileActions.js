@@ -3,10 +3,8 @@ import {View, StyleSheet} from 'react-native';
 
 import Colors from '../config/colors';
 import IconActions from './IconActions';
-import CommentIcon from '../assets/icons/app/comment-icon.png';
-import Apploud from '../assets/icons/app/applaud.png';
-import ShoutOut from '../assets/icons/app/shout-out.png';
-import Comment from '../assets/icons/app/comment.png';
+import Settings from '../assets/icons/app/settings.png';
+import Inbox from '../assets/icons/app/inbox.png';
 
 const styles = StyleSheet.create({
   container: {
@@ -25,32 +23,21 @@ const styles = StyleSheet.create({
 
 const actions = [
   {
-    image: CommentIcon,
-    count: 346,
-    onPress: () => alert('comment'),
+    image: Settings,
+    count: 'settings',
+    onPress: () => alert('settings'),
     id: 1,
   },
   {
-    image: Apploud,
-    count: 99,
-    onPress: () => alert('apploud'),
+    image: Inbox,
+    count: 'inbox',
+    onPress: () => alert('inbox'),
     id: 2,
-  },
-  {
-    image: ShoutOut,
-    count: 99,
-    onPress: () => alert('shoutOut'),
-    id: 3,
-  },
-  {
-    image: Comment,
-    count: 99,
-    onPress: () => alert('comment'),
-    id: 4,
+    imageStyling: {width: 24, height: 16},
   },
 ];
 
-const AppActions = props => {
+const ProfileActions = props => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
@@ -70,4 +57,4 @@ const AppActions = props => {
   );
 };
 
-export default AppActions;
+export default ProfileActions;

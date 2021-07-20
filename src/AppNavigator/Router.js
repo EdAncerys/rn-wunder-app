@@ -31,7 +31,7 @@ import MobileU16 from '../screens/onboardingUnderSixteen/MobileU16';
 import VerifyU16Mobile from '../screens/onboardingUnderSixteen/VerifyU16Mobile';
 import UsernameU16 from '../screens/onboardingUnderSixteen/UsernameU16';
 import LocationU16 from '../screens/onboardingUnderSixteen/LocationU16';
-
+import Profile from '../screens/profile/Profile';
 import Home from '../screens/home/Home';
 import DonationNotification from '../screens/donate/DonationNotification';
 
@@ -94,6 +94,11 @@ const Router = ({navigation}) => {
         component={Login}
         options={{headerShown: false}}
       /> */}
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name="Home"
         component={Home}
