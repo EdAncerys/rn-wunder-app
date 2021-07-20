@@ -53,26 +53,24 @@ const ServeScreenView = ({props}) => {
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
-      <View style={{flex: 1, backgroundColor: screenFilter}}>
-        <LinearGradient
-          colors={gradientFilter}
-          start={{x: 0.4, y: 0.4}}
-          style={styles.container}>
-          {!props.statusBar && <StatusBar hidden />}
-          <SafeAreaView style={styles.wrapper}>{props.children}</SafeAreaView>
-        </LinearGradient>
-      </View>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={{flex: 1, backgroundColor: screenFilter}}>
+          <LinearGradient
+            colors={gradientFilter}
+            start={{x: 0.4, y: 0.4}}
+            style={styles.container}>
+            {!props.statusBar && <StatusBar hidden />}
+            <SafeAreaView style={styles.wrapper}>{props.children}</SafeAreaView>
+          </LinearGradient>
+        </View>
+      </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
 };
 
 // RETURN ---------------------------------------------------------
 const ScreenWrapper = props => {
-  return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <ServeImgBackground props={props} />
-    </TouchableWithoutFeedback>
-  );
+  return <ServeImgBackground props={props} />;
 };
 
 export default ScreenWrapper;
