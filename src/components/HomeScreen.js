@@ -13,22 +13,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  headerContainer: {
-    position: 'absolute',
-    justifyContent: 'center',
-    top: '6%',
-    marginHorizontal: '5%',
-  },
-  appActions: {
-    flex: 2,
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    marginHorizontal: '5%',
-    marginTop: '35%',
-  },
-  postContainer: {
+  wrapper: {
     flex: 1,
     marginHorizontal: '5%',
+  },
+  donateContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  appNavigateContainer: {
+    flex: 2,
+    justifyContent: 'center',
+  },
+  appActions: {
+    flex: 4,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
+  postContainer: {
+    flex: 3,
+    justifyContent: 'flex-start',
   },
 });
 
@@ -47,12 +51,14 @@ const HomeScreen = ({
 }) => {
   const applyMarginPost = getInvolved
     ? {marginBottom: '50%'}
-    : {marginBottom: '35%'};
+    : {marginBottom: '25%'};
+  const applyMarginAppActions =
+    donateActions || navigateActions ? {marginTop: '0%'} : {marginTop: '40%'};
 
   // SERVERS ---------------------------------------------------------
   const ServeDonate = ({navigation}) => {
     return (
-      <View style={styles.headerContainer}>
+      <View style={styles.donateContainer}>
         <DonateActions navigation={navigation} />
       </View>
     );
@@ -60,7 +66,7 @@ const HomeScreen = ({
 
   const ServeAppNavigate = ({navigation}) => {
     return (
-      <View style={styles.headerContainer}>
+      <View style={styles.appNavigateContainer}>
         <AppNavigateActions navigation={navigation} />
       </View>
     );
@@ -71,24 +77,26 @@ const HomeScreen = ({
     <ScreenWrapper
       image={background}
       gradient={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}>
-      <View style={styles.appActions}>
-        <AppActions />
+      <View style={styles.wrapper}>
+        {donateActions && <ServeDonate navigation={navigation} />}
+        {navigateActions && <ServeAppNavigate navigation={navigation} />}
+        <View style={{...styles.appActions, ...applyMarginAppActions}}>
+          <AppActions />
+        </View>
+        <View style={{...styles.postContainer, ...applyMarginPost}}>
+          <PostSnapshot
+            profileIcon={profileIcon}
+            profileName={profileName}
+            verified={verified}
+            title={title}
+            post={post}
+            postTag={postTag}
+          />
+          {getInvolved && (
+            <CustomButton title="get involved" onPress={() => alert('path')} />
+          )}
+        </View>
       </View>
-      <View style={{...styles.postContainer, ...applyMarginPost}}>
-        <PostSnapshot
-          profileIcon={profileIcon}
-          profileName={profileName}
-          verified={verified}
-          title={title}
-          post={post}
-          postTag={postTag}
-        />
-        {getInvolved && (
-          <CustomButton title="get involved" onPress={() => alert('path')} />
-        )}
-      </View>
-      {donateActions && <ServeDonate navigation={navigation} />}
-      {navigateActions && <ServeAppNavigate navigation={navigation} />}
     </ScreenWrapper>
   );
 };

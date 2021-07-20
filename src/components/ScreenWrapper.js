@@ -50,21 +50,21 @@ const ServeScreenView = ({props}) => {
   ];
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    <LinearGradient
+      colors={gradientFilter}
+      start={{x: 0.4, y: 0.4}}
       style={styles.container}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={{flex: 1, backgroundColor: screenFilter}}>
-          <LinearGradient
-            colors={gradientFilter}
-            start={{x: 0.4, y: 0.4}}
-            style={styles.container}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.container}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={{flex: 1, backgroundColor: screenFilter}}>
             {!props.statusBar && <StatusBar hidden />}
             <SafeAreaView style={styles.wrapper}>{props.children}</SafeAreaView>
-          </LinearGradient>
-        </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+          </View>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    </LinearGradient>
   );
 };
 

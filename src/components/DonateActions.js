@@ -22,8 +22,13 @@ const styles = StyleSheet.create({
 });
 
 // SERVERS ---------------------------------------------------------
-const ServeDonate = ({setDonateAction}) => {
-  return <DonatePopUp setDonateAction={setDonateAction} />;
+const ServeDonate = ({donateAction, setDonateAction}) => {
+  return (
+    <DonatePopUp
+      donateAction={donateAction}
+      setDonateAction={setDonateAction}
+    />
+  );
 };
 
 // RETURN ---------------------------------------------------------
@@ -50,7 +55,12 @@ const DonateActions = ({navigation}) => {
           />
         </View>
       </View>
-      {donateAction && <ServeDonate setDonateAction={setDonateAction} />}
+      {donateAction && (
+        <ServeDonate
+          donateAction={donateAction}
+          setDonateAction={setDonateAction}
+        />
+      )}
     </View>
   );
 };

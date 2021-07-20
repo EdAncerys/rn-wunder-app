@@ -7,10 +7,6 @@ import CloseIcon from '../../assets/icons/app/close-black.png';
 import CustomButton from '../CustomButton';
 
 const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 16,
-    paddingVertical: 16,
-  },
   titleContainer: {
     paddingHorizontal: '10%',
   },
@@ -20,7 +16,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     backgroundColor: Colors.white,
-    marginVertical: 24,
+    marginVertical: '10%',
     borderRadius: 9,
     paddingVertical: 8,
     paddingHorizontal: 16,
@@ -63,7 +59,7 @@ const DonateInput = ({
   setDonateCoins,
 }) => {
   return (
-    <View style={styles.container}>
+    <View>
       <View style={{...styles.actionContainer, alignSelf: 'flex-end'}}>
         <CustomButton
           style={{backgroundColor: Colors.transparent}}

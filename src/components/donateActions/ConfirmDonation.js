@@ -9,8 +9,7 @@ import CustomButton from '../CustomButton';
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 16,
-    paddingVertical: 16,
+    width: '100%',
   },
   titleContainer: {
     paddingHorizontal: '20%',
@@ -20,15 +19,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   coinContainer: {
-    paddingVertical: 25,
+    marginVertical: 20,
   },
   coins: {
     ...Fonts.N_400_45,
     textAlign: 'center',
   },
   msgContainer: {
-    paddingVertical: 15,
     maxHeight: 150,
+    marginBottom: 20,
   },
   msg: {
     ...Fonts.N_400_15,
@@ -73,15 +72,17 @@ const ConfirmDonation = ({
       <View style={styles.coinContainer}>
         <Text style={styles.coins}>{coins}</Text>
       </View>
-      <View style={styles.msgContainer}>
-        <ScrollView contentInsetAdjustmentBehavior="automatic">
+      <ScrollView contentInsetAdjustmentBehavior="automatic">
+        <View style={styles.msgContainer}>
           <Text style={styles.msg}>{msg}</Text>
-        </ScrollView>
+        </View>
+      </ScrollView>
+      <View>
+        <CustomButton
+          title="Confirm Coin(s)"
+          onPress={() => setConfirmCoins(true)}
+        />
       </View>
-      <CustomButton
-        title="Confirm Coin(s)"
-        onPress={() => setConfirmCoins(true)}
-      />
     </View>
   );
 };

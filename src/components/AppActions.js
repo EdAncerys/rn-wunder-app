@@ -27,25 +27,25 @@ const actions = [
   {
     image: CommentIcon,
     count: 346,
-    onPress: () => alert('path'),
+    onPress: () => alert('comment'),
     id: 1,
   },
   {
     image: Apploud,
     count: 99,
-    onPress: () => alert('path'),
+    onPress: () => alert('apploud'),
     id: 2,
   },
   {
     image: ShoutOut,
     count: 99,
-    onPress: () => alert('path'),
+    onPress: () => alert('shoutOut'),
     id: 3,
   },
   {
     image: Comment,
     count: 99,
-    onPress: () => alert('path'),
+    onPress: () => alert('comment'),
     id: 4,
   },
 ];
