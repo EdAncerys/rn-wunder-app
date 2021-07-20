@@ -8,6 +8,7 @@ import UploadIdentity from '../screens/onboardingOverSixteen/UploadIdentity';
 import UploadLicenceFront from '../screens/onboardingOverSixteen/UploadLicenceFront';
 import UploadLicenceBack from '../screens/onboardingOverSixteen/UploadLicenceBack';
 import UploadPassport from '../screens/onboardingOverSixteen/UploadPassport';
+import UploadPictureOfYourself from '../screens/onboardingOverSixteen/UploadPictureOfYourself';
 import Visual from '../screens/onboardingOverSixteen/Visual';
 import Login from '../screens/onboardingOverSixteen/Login';
 import Home from '../screens/home/Home';
@@ -63,6 +64,11 @@ const Router = ({navigation}) => {
       <Stack.Screen
         name="UploadLicenceBack"
         component={UploadLicenceBack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="UploadPictureOfYourself"
+        component={UploadPictureOfYourself}
         options={{headerShown: false}}
       />
       <Stack.Screen

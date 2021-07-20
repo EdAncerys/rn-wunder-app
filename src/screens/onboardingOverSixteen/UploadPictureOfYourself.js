@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, Image, StatusBar} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
-import LicenceImage from '../../assets/images/onboardingOverSixteen/upload-licence.png';
+import LicenceImage from '../../assets/images/onboardingOverSixteen/upload-passport.png';
 import RightArrow from '../../assets/icons/app/right-arrow-white.png';
 
 const styles = StyleSheet.create({
@@ -30,6 +30,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: '20%',
     color: Colors.white,
   },
+  msg: {
+    ...Fonts.N_500_12,
+    textAlign: 'center',
+    paddingHorizontal: '20%',
+    color: Colors.silver,
+  },
   navigateActionContainer: {
     flex: 1,
     marginTop: '5%',
@@ -37,7 +43,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const UploadLicenceBack = ({navigation}) => {
+const UploadPictureOfYourself = ({navigation}) => {
   return (
     <ScreenWrapper filter={Colors.lightBlack}>
       <View style={styles.navigateActionContainer}>
@@ -49,11 +55,15 @@ const UploadLicenceBack = ({navigation}) => {
 
       <View style={styles.contentContainer}>
         <Text style={styles.title}>
-          Upload a clear picture of the back of your licence
+          Upload a picture of yourself holding up your licence
         </Text>
         <View style={styles.imageContainer}>
           <Image source={LicenceImage} />
         </View>
+        <Text style={styles.msg}>
+          Ensure your ID doesn’t cover any part of your face the picture is
+          clear
+        </Text>
       </View>
 
       <View style={styles.actionsContainer}>
@@ -61,11 +71,11 @@ const UploadLicenceBack = ({navigation}) => {
           imageLeft={RightArrow}
           style={{paddingVertical: 10, paddingHorizontal: 24}}
           imageStyling={{width: 24, height: 18}}
-          onPress={() => navigation.navigate('UploadPictureOfYourself')}
+          onPress={() => navigation.navigate('AgeIdentity')}
         />
       </View>
     </ScreenWrapper>
   );
 };
 
-export default UploadLicenceBack;
+export default UploadPictureOfYourself;
