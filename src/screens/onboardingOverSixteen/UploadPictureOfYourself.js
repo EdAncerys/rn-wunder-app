@@ -71,7 +71,7 @@ const UploadPictureOfYourself = ({navigation}) => {
           imageLeft={RightArrow}
           style={{paddingVertical: 10, paddingHorizontal: 24}}
           imageStyling={{width: 24, height: 18}}
-          onPress={() => navigation.navigate('AgeIdentity')}
+          onPress={() => navigation.navigate('Email')}
         />
       </View>
     </ScreenWrapper>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, Image, StatusBar} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -43,7 +43,7 @@ const UploadLicenceBack = ({navigation}) => {
       <View style={styles.navigateActionContainer}>
         <NavigateAction
           title="Step 3 of 7"
-          onPress={() => navigation.navigate('UploadIdentity')}
+          onPress={() => navigation.navigate('UploadLicenceFront')}
         />
       </View>
 

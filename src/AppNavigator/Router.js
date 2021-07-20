@@ -19,6 +19,7 @@ import MobileOTP from '../screens/onboardingUnderSixteen/MobileOTP';
 import VerifyOTPEmail from '../screens/onboardingUnderSixteen/VerifyOTPEmail';
 import Yay from '../screens/onboardingUnderSixteen/Yay';
 import Email from '../screens/onboardingOverSixteen/Email';
+import EmailU16 from '../screens/onboardingUnderSixteen/EmailU16';
 import Mobile from '../screens/onboardingOverSixteen/Mobile';
 import VerifyEmail from '../screens/onboardingOverSixteen/VerifyEmail';
 import Username from '../screens/onboardingOverSixteen/Username';
@@ -31,7 +32,7 @@ const Stack = createStackNavigator();
 const Router = ({navigation}) => {
   return (
     <Stack.Navigator initialRouteName="SplashScreen">
-      <Stack.Screen
+      {/* <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}
         options={{headerShown: false}}
@@ -45,7 +46,7 @@ const Router = ({navigation}) => {
         name="CreateAccountScreen"
         component={CreateAccountScreen}
         options={{headerShown: false}}
-      />
+      /> */}
       <Stack.Screen
         name="AgeQuestion"
         component={AgeQuestion}

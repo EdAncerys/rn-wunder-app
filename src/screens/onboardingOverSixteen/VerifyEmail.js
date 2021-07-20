@@ -73,6 +73,10 @@ const VerifyEmail = ({navigation}) => {
   const [codeFour, setCodeFour] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
 
+  const refCodeTwo = React.useRef();
+  const refCodeThree = React.useRef();
+  const refCodeFour = React.useRef();
+
   React.useEffect(() => {
     setBtnInactive(true);
     if (!!codeOne && !!codeTwo && !!codeThree && !!codeFour)
@@ -104,17 +108,33 @@ const VerifyEmail = ({navigation}) => {
           </View>
           <View style={styles.inputWrapper}>
             <TextInput
+              onChangeText={value => {
+                setCodeOne(value);
+                if (value.length === 1) {
+                  refCodeTwo.current.focus();
+                }
+              }}
+              returnKeyType="next"
+              blurOnSubmit={false}
               placeholderTextColor={Colors.lightSilver}
-              onChangeText={setCodeOne}
               value={codeOne}
               style={styles.inputContainer}
               autoCapitalize="none"
               keyboardType="numeric"
               maxLength={1}
+              autoFocus={true}
             />
             <TextInput
+              onChangeText={value => {
+                setCodeTwo(value);
+                if (value.length === 1) {
+                  refCodeThree.current.focus();
+                }
+              }}
+              returnKeyType="next"
+              blurOnSubmit={false}
+              ref={refCodeTwo}
               placeholderTextColor={Colors.lightSilver}
-              onChangeText={setCodeTwo}
               value={codeTwo}
               style={styles.inputContainer}
               autoCapitalize="none"
@@ -122,8 +142,16 @@ const VerifyEmail = ({navigation}) => {
               maxLength={1}
             />
             <TextInput
+              onChangeText={value => {
+                setCodeThree(value);
+                if (value.length === 1) {
+                  refCodeFour.current.focus();
+                }
+              }}
+              returnKeyType="next"
+              blurOnSubmit={false}
+              ref={refCodeThree}
               placeholderTextColor={Colors.lightSilver}
-              onChangeText={setCodeThree}
               value={codeThree}
               style={styles.inputContainer}
               autoCapitalize="none"
@@ -131,8 +159,9 @@ const VerifyEmail = ({navigation}) => {
               maxLength={1}
             />
             <TextInput
-              placeholderTextColor={Colors.lightSilver}
               onChangeText={setCodeFour}
+              ref={refCodeFour}
+              placeholderTextColor={Colors.lightSilver}
               value={codeFour}
               style={styles.inputContainer}
               autoCapitalize="none"

@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Email = ({navigation}) => {
+const Email = ({navigation, onPress}) => {
   const dispatchAuth = useAuthDispatch();
   const dispatchApi = useApiDispatch();
 
@@ -81,7 +81,9 @@ const Email = ({navigation}) => {
         <View style={styles.navigateActionContainer}>
           <NavigateAction
             title="Step 4 of 7"
-            onPress={() => navigation.navigate('Yay')}
+            onPress={() =>
+              onPress || navigation.navigate('UploadPictureOfYourself')
+            }
           />
         </View>
         <View style={styles.formContainer}>
@@ -94,6 +96,7 @@ const Email = ({navigation}) => {
               placeholderTextColor={Colors.lightSilver}
               onChangeText={setEmail}
               autoCapitalize="none"
+              keyboardType="email-address"
               value={email}
               style={styles.inputContainer}
             />

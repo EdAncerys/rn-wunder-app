@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Mobile = ({navigation}) => {
+const Mobile = ({navigation, onPress}) => {
   const dispatchAuth = useAuthDispatch();
   const dispatchApi = useApiDispatch();
 
@@ -81,7 +81,9 @@ const Mobile = ({navigation}) => {
         <View style={styles.navigateActionContainer}>
           <NavigateAction
             title="Step 4 of 7"
-            onPress={() => navigation.navigate('Yay')}
+            onPress={() =>
+              onPress || navigation.navigate('UploadPictureOfYourself')
+            }
           />
         </View>
         <View style={styles.formContainer}>
@@ -96,7 +98,7 @@ const Mobile = ({navigation}) => {
               autoCapitalize="none"
               value={mobile}
               style={styles.inputContainer}
-              keyboardType="numeric"
+              keyboardType="phone-pad"
             />
           </View>
           <CustomButton
