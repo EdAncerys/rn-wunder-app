@@ -1,4 +1,17 @@
 {
   "name": "WunderApp",
-  "displayName": "WunderApp"
+  "displayName": "wunder-app",
+  "privacy": "public",
+  "platforms": ["ios"],
+  "version": "0.0.1",
+  "orientation": "portrait",
+  "icon": "./",
+  "splash": {
+    "image": "./",
+    "resizeMode": "contain"
+  },
+  "updates": {
+    "fallbackToCachedTimeout": 0
+  },
+  "assetBundlePatterns": ["**/*"]
 }

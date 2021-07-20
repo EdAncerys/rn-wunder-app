@@ -16,125 +16,125 @@ import EmailOTP from '../screens/onboardingUnderSixteen/EmailOTP';
 import MobileOTP from '../screens/onboardingUnderSixteen/MobileOTP';
 import VerifyOTPEmail from '../screens/onboardingUnderSixteen/VerifyOTPEmail';
 import Yay from '../screens/onboardingUnderSixteen/Yay';
-import Email from '../screens/onboardingUnderSixteen/Email';
-import Mobile from '../screens/onboardingUnderSixteen/Mobile';
-import VerifyEmail from '../screens/onboardingUnderSixteen/VerifyEmail';
-import Username from '../screens/onboardingUnderSixteen/Username';
-import Location from '../screens/onboardingUnderSixteen/Location';
-import AccountCreated from '../screens/onboardingUnderSixteen/AccountCreated';
-import VerifyMobile from '../screens/onboardingUnderSixteen/VerifyMobile';
-import Interests from '../screens/onboardingUnderSixteen/Interests';
+import Email from '../screens/onboardingOverSixteen/Email';
+import Mobile from '../screens/onboardingOverSixteen/Mobile';
+import VerifyEmail from '../screens/onboardingOverSixteen/VerifyEmail';
+import Username from '../screens/onboardingOverSixteen/Username';
+import Location from '../screens/onboardingOverSixteen/Location';
+import AccountCreated from '../screens/onboardingOverSixteen/AccountCreated';
+import VerifyMobile from '../screens/onboardingOverSixteen/VerifyMobile';
+import Interests from '../screens/onboardingOverSixteen/Interests';
 
 const Stack = createStackNavigator();
 const Router = ({navigation}) => {
   return (
     <Stack.Navigator initialRouteName="SplashScreen">
-      {/* <Stack.Screen
+      <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="Visual"
         component={Visual}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="CreateAccountScreen"
         component={CreateAccountScreen}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="AgeQuestion"
         component={AgeQuestion}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="UploadIdentity"
         component={UploadIdentity}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="UploadLicenceFront"
         component={UploadLicenceFront}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="UploadPassport"
         component={UploadPassport}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="Login"
         component={Login}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="Home"
         component={Home}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="DonationNotification"
         component={DonationNotification}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="Name"
         component={Name}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="EmailOTP"
         component={EmailOTP}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="MobileOTP"
         component={MobileOTP}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="VerifyOTPEmail"
         component={VerifyOTPEmail}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen name="Yay" component={Yay} options={{headerShown: false}} /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen name="Yay" component={Yay} options={{headerShown: false}} />
+      <Stack.Screen
         name="Email"
         component={Email}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="Mobile"
         component={Mobile}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="VerifyEmail"
         component={VerifyEmail}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="Username"
         component={Username}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="Location"
         component={Location}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="VerifyMobile"
         component={VerifyMobile}
         options={{headerShown: false}}
-      /> */}
-      {/* <Stack.Screen
+      />
+      <Stack.Screen
         name="AccountCreated"
         component={AccountCreated}
         options={{headerShown: false}}
-      /> */}
+      />
       <Stack.Screen
         name="Interests"
         component={Interests}
