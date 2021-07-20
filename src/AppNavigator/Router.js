@@ -6,6 +6,7 @@ import CreateAccountScreen from '../screens/onboardingOverSixteen/CreateAccountS
 import AgeQuestion from '../screens/onboardingOverSixteen/AgeQuestion';
 import UploadIdentity from '../screens/onboardingOverSixteen/UploadIdentity';
 import UploadLicenceFront from '../screens/onboardingOverSixteen/UploadLicenceFront';
+import UploadLicenceBack from '../screens/onboardingOverSixteen/UploadLicenceBack';
 import UploadPassport from '../screens/onboardingOverSixteen/UploadPassport';
 import Visual from '../screens/onboardingOverSixteen/Visual';
 import Login from '../screens/onboardingOverSixteen/Login';
@@ -57,6 +58,11 @@ const Router = ({navigation}) => {
       <Stack.Screen
         name="UploadLicenceFront"
         component={UploadLicenceFront}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="UploadLicenceBack"
+        component={UploadLicenceBack}
         options={{headerShown: false}}
       />
       <Stack.Screen

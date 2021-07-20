@@ -37,19 +37,19 @@ const styles = StyleSheet.create({
   },
 });
 
-const UploadLicenceFront = ({navigation}) => {
+const UploadLicenceBack = ({navigation}) => {
   return (
     <ScreenWrapper filter={Colors.lightBlack}>
       <View style={styles.navigateActionContainer}>
         <NavigateAction
-          title="Step 2 of 7"
+          title="Step 3 of 7"
           onPress={() => navigation.navigate('UploadIdentity')}
         />
       </View>
 
       <View style={styles.contentContainer}>
         <Text style={styles.title}>
-          Upload a clear picture of the front of your licence
+          Upload a clear picture of the back of your licence
         </Text>
         <View style={styles.imageContainer}>
           <Image source={LicenceImage} />
@@ -61,11 +61,11 @@ const UploadLicenceFront = ({navigation}) => {
           imageLeft={RightArrow}
           style={{paddingVertical: 10, paddingHorizontal: 24}}
           imageStyling={{width: 24, height: 18}}
-          onPress={() => navigation.navigate('UploadLicenceBack')}
+          // onPress={() => navigation.navigate('UploadLicenceFront')}
         />
       </View>
     </ScreenWrapper>
   );
 };
 
-export default UploadLicenceFront;
+export default UploadLicenceBack;
