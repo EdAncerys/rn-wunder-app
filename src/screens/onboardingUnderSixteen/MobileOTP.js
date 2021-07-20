@@ -61,6 +61,12 @@ const MobileOTP = ({navigation}) => {
     if (!!mobile) setBtnInactive(false);
   }, [mobile]);
 
+  // HANDLERS ---------------------------------------------------------
+  const handleContinue = () => {
+    navigation.navigate('VerifyOTPU16');
+    setMobile('');
+  };
+
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper filter={Colors.lightBlack}>
@@ -85,7 +91,7 @@ const MobileOTP = ({navigation}) => {
               autoCapitalize="none"
               value={mobile}
               style={styles.inputContainer}
-              keyboardType="numeric"
+              keyboardType="phone-pad"
             />
           </View>
           <CustomButton
@@ -102,7 +108,7 @@ const MobileOTP = ({navigation}) => {
             <CustomButton
               title="Continue"
               inactive={btnInactive}
-              onPress={() => navigation.navigate('VerifyOTPEmail')}
+              onPress={() => handleContinue()}
             />
           </View>
         </View>

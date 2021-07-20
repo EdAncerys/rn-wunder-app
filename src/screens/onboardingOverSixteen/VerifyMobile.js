@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const VerifyMobile = ({navigation}) => {
+const VerifyMobile = ({navigation, backPath, continuePath}) => {
   const {tempData} = useAuthState();
   let mobile;
   if (tempData) mobile = tempData.mobile;
@@ -85,7 +85,7 @@ const VerifyMobile = ({navigation}) => {
 
   // HANDLERS ---------------------------------------------------------
   const handleContinue = () => {
-    navigation.navigate('Username');
+    navigation.navigate(continuePath || 'Username');
   };
 
   // RETURN ---------------------------------------------------------
@@ -95,7 +95,7 @@ const VerifyMobile = ({navigation}) => {
         <View style={styles.navigateActionContainer}>
           <NavigateAction
             title="Step 5 of 7"
-            onPress={() => navigation.navigate('Mobile')}
+            onPress={() => navigation.navigate(backPath || 'Mobile')}
           />
         </View>
         <View style={styles.formContainer}>

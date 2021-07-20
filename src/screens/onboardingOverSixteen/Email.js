@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Email = ({navigation, onPress}) => {
+const Email = ({navigation, backPath, continuePath}) => {
   const dispatchAuth = useAuthDispatch();
   const dispatchApi = useApiDispatch();
 
@@ -71,7 +71,7 @@ const Email = ({navigation, onPress}) => {
     const tempData = {email: email};
     tempDataStorage({dispatchAuth, dispatchApi, tempData});
     setEmail('');
-    navigation.navigate('VerifyEmail');
+    navigation.navigate(continuePath || 'VerifyEmail');
   };
 
   // RETURN ---------------------------------------------------------
@@ -82,7 +82,7 @@ const Email = ({navigation, onPress}) => {
           <NavigateAction
             title="Step 4 of 7"
             onPress={() =>
-              onPress || navigation.navigate('UploadPictureOfYourself')
+              navigation.navigate(backPath || 'UploadPictureOfYourself')
             }
           />
         </View>

@@ -66,10 +66,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const Location = ({navigation}) => {
+const Location = ({navigation, backPath, continuePath}) => {
   // HANDLERS ---------------------------------------------------------
   const handleContinue = () => {
-    navigation.navigate('AccountCreated');
+    navigation.navigate(continuePath || 'AccountCreated');
   };
 
   // RETURN ---------------------------------------------------------
@@ -79,7 +79,7 @@ const Location = ({navigation}) => {
         <View style={styles.navigateActionContainer}>
           <NavigateAction
             title="Step 7 of 7"
-            onPress={() => navigation.navigate('Username')}
+            onPress={() => navigation.navigate(backPath || 'Username')}
           />
         </View>
         <View style={styles.contentContainer}>

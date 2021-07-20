@@ -61,6 +61,12 @@ const EmailOTP = ({navigation}) => {
     if (!!email) setBtnInactive(false);
   }, [email]);
 
+  // HANDLERS ---------------------------------------------------------
+  const handleContinue = () => {
+    navigation.navigate('VerifyOTPU16');
+    setEmail('');
+  };
+
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper filter={Colors.lightBlack}>
@@ -85,6 +91,7 @@ const EmailOTP = ({navigation}) => {
               autoCapitalize="none"
               value={email}
               style={styles.inputContainer}
+              keyboardType="email-address"
             />
           </View>
           <CustomButton
@@ -100,7 +107,7 @@ const EmailOTP = ({navigation}) => {
             <CustomButton
               title="Continue"
               inactive={btnInactive}
-              onPress={() => navigation.navigate('VerifyOTPEmail')}
+              onPress={() => handleContinue()}
             />
           </View>
         </View>

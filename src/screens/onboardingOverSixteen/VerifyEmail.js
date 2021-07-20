@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const VerifyEmail = ({navigation}) => {
+const VerifyEmail = ({navigation, backPath, continuePath}) => {
   const {tempData} = useAuthState();
   let email;
   if (tempData) email = tempData.email;
@@ -85,7 +85,7 @@ const VerifyEmail = ({navigation}) => {
 
   // HANDLERS ---------------------------------------------------------
   const handleContinue = () => {
-    navigation.navigate('Username');
+    navigation.navigate(continuePath || 'Username');
   };
 
   // RETURN ---------------------------------------------------------
@@ -95,7 +95,7 @@ const VerifyEmail = ({navigation}) => {
         <View style={styles.navigateActionContainer}>
           <NavigateAction
             title="Step 5 of 7"
-            onPress={() => navigation.navigate('Email')}
+            onPress={() => navigation.navigate(backPath || 'Email')}
           />
         </View>
         <View style={styles.formContainer}>

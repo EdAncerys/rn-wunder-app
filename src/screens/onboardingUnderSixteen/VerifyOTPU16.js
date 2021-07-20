@@ -1,15 +1,5 @@
 import * as React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  StatusBar,
-  TouchableWithoutFeedback,
-  Keyboard,
-  KeyboardAvoidingView,
-  SafeAreaView,
-} from 'react-native';
+import {View, Text, StyleSheet, TextInput} from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -71,7 +61,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const VerifyOTPEmail = ({navigation}) => {
+const VerifyOTPU16 = ({navigation}) => {
   const [codeOne, setCodeOne] = React.useState('');
   const [codeTwo, setCodeTwo] = React.useState('');
   const [codeThree, setCodeThree] = React.useState('');
@@ -87,6 +77,11 @@ const VerifyOTPEmail = ({navigation}) => {
     if (!!codeOne && !!codeTwo && !!codeThree && !!codeFour)
       setBtnInactive(false);
   }, [codeOne, codeTwo, codeThree, codeFour]);
+
+  // HANDLERS ---------------------------------------------------------
+  const handleContinue = () => {
+    navigation.navigate('Yay');
+  };
 
   // RETURN ---------------------------------------------------------
   return (
@@ -121,6 +116,7 @@ const VerifyOTPEmail = ({navigation}) => {
               autoCapitalize="none"
               keyboardType="numeric"
               maxLength={1}
+              autoFocus={true}
             />
             <TextInput
               onChangeText={value => {
@@ -173,7 +169,7 @@ const VerifyOTPEmail = ({navigation}) => {
             <CustomButton
               title="Continue"
               inactive={btnInactive}
-              onPress={() => navigation.navigate('Yay')}
+              onPress={() => handleContinue()}
             />
           </View>
         </View>
@@ -182,4 +178,4 @@ const VerifyOTPEmail = ({navigation}) => {
   );
 };
 
-export default VerifyOTPEmail;
+export default VerifyOTPU16;

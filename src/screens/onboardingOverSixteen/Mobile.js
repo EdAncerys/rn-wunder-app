@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Mobile = ({navigation, onPress}) => {
+const Mobile = ({navigation, backPath, continuePath}) => {
   const dispatchAuth = useAuthDispatch();
   const dispatchApi = useApiDispatch();
 
@@ -71,7 +71,7 @@ const Mobile = ({navigation, onPress}) => {
     const tempData = {mobile: mobile};
     tempDataStorage({dispatchAuth, dispatchApi, tempData});
     setMobile('');
-    navigation.navigate('VerifyMobile');
+    navigation.navigate(continuePath || 'VerifyMobile');
   };
 
   // RETURN ---------------------------------------------------------
@@ -82,7 +82,7 @@ const Mobile = ({navigation, onPress}) => {
           <NavigateAction
             title="Step 4 of 7"
             onPress={() =>
-              onPress || navigation.navigate('UploadPictureOfYourself')
+              navigation.navigate(backPath || 'UploadPictureOfYourself')
             }
           />
         </View>

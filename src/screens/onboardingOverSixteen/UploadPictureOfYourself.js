@@ -43,13 +43,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const UploadPictureOfYourself = ({navigation}) => {
+const UploadPictureOfYourself = ({navigation, backPath}) => {
   return (
     <ScreenWrapper filter={Colors.lightBlack}>
       <View style={styles.navigateActionContainer}>
         <NavigateAction
           title="Step 3 of 7"
-          onPress={() => navigation.navigate('UploadIdentity')}
+          onPress={() => navigation.navigate(backPath || 'UploadLicenceBack')}
         />
       </View>
 

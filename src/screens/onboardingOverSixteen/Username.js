@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Username = ({navigation}) => {
+const Username = ({navigation, backPath, continuePath}) => {
   const [username, setUsername] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
 
@@ -62,7 +62,8 @@ const Username = ({navigation}) => {
 
   // HANDLERS ---------------------------------------------------------
   const handleContinue = () => {
-    navigation.navigate('Location');
+    navigation.navigate(continuePath || 'Location');
+    setUsername('');
   };
 
   // RETURN ---------------------------------------------------------
@@ -72,7 +73,7 @@ const Username = ({navigation}) => {
         <View style={styles.navigateActionContainer}>
           <NavigateAction
             title="Step 6 of 7"
-            onPress={() => navigation.navigate('VerifyEmail')}
+            onPress={() => navigation.navigate(backPath || 'VerifyEmail')}
           />
         </View>
         <View style={styles.formContainer}>

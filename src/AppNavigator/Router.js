@@ -2,37 +2,44 @@ import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import SplashScreen from '../screens/onboardingOverSixteen/SplashScreen';
+import Visual from '../screens/onboardingOverSixteen/Visual';
 import CreateAccountScreen from '../screens/onboardingOverSixteen/CreateAccountScreen';
 import AgeQuestion from '../screens/onboardingOverSixteen/AgeQuestion';
+import Login from '../screens/onboardingOverSixteen/Login';
 import UploadIdentity from '../screens/onboardingOverSixteen/UploadIdentity';
 import UploadLicenceFront from '../screens/onboardingOverSixteen/UploadLicenceFront';
 import UploadLicenceBack from '../screens/onboardingOverSixteen/UploadLicenceBack';
 import UploadPassport from '../screens/onboardingOverSixteen/UploadPassport';
+import UploadPictureOfYourselfUP from '../screens/onboardingOverSixteen/UploadPictureOfYourselfUP';
 import UploadPictureOfYourself from '../screens/onboardingOverSixteen/UploadPictureOfYourself';
-import Visual from '../screens/onboardingOverSixteen/Visual';
-import Login from '../screens/onboardingOverSixteen/Login';
-import Home from '../screens/home/Home';
-import DonationNotification from '../screens/donate/DonationNotification';
-import Name from '../screens/onboardingUnderSixteen/Name';
-import EmailOTP from '../screens/onboardingUnderSixteen/EmailOTP';
-import MobileOTP from '../screens/onboardingUnderSixteen/MobileOTP';
-import VerifyOTPEmail from '../screens/onboardingUnderSixteen/VerifyOTPEmail';
-import Yay from '../screens/onboardingUnderSixteen/Yay';
 import Email from '../screens/onboardingOverSixteen/Email';
-import EmailU16 from '../screens/onboardingUnderSixteen/EmailU16';
-import Mobile from '../screens/onboardingOverSixteen/Mobile';
 import VerifyEmail from '../screens/onboardingOverSixteen/VerifyEmail';
+import Mobile from '../screens/onboardingOverSixteen/Mobile';
+import VerifyMobile from '../screens/onboardingOverSixteen/VerifyMobile';
 import Username from '../screens/onboardingOverSixteen/Username';
 import Location from '../screens/onboardingOverSixteen/Location';
 import AccountCreated from '../screens/onboardingOverSixteen/AccountCreated';
-import VerifyMobile from '../screens/onboardingOverSixteen/VerifyMobile';
 import Interests from '../screens/onboardingOverSixteen/Interests';
+import Name from '../screens/onboardingUnderSixteen/Name';
+import MobileOTP from '../screens/onboardingUnderSixteen/MobileOTP';
+import EmailOTP from '../screens/onboardingUnderSixteen/EmailOTP';
+import VerifyOTPU16 from '../screens/onboardingUnderSixteen/VerifyOTPU16';
+import Yay from '../screens/onboardingUnderSixteen/Yay';
+import EmailU16 from '../screens/onboardingUnderSixteen/EmailU16';
+import VerifyU16Email from '../screens/onboardingUnderSixteen/VerifyU16Email';
+import MobileU16 from '../screens/onboardingUnderSixteen/MobileU16';
+import VerifyU16Mobile from '../screens/onboardingUnderSixteen/VerifyU16Mobile';
+import UsernameU16 from '../screens/onboardingUnderSixteen/UsernameU16';
+import LocationU16 from '../screens/onboardingUnderSixteen/LocationU16';
+
+import Home from '../screens/home/Home';
+import DonationNotification from '../screens/donate/DonationNotification';
 
 const Stack = createStackNavigator();
 const Router = ({navigation}) => {
   return (
     <Stack.Navigator initialRouteName="SplashScreen">
-      {/* <Stack.Screen
+      <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}
         options={{headerShown: false}}
@@ -46,7 +53,7 @@ const Router = ({navigation}) => {
         name="CreateAccountScreen"
         component={CreateAccountScreen}
         options={{headerShown: false}}
-      /> */}
+      />
       <Stack.Screen
         name="AgeQuestion"
         component={AgeQuestion}
@@ -70,6 +77,11 @@ const Router = ({navigation}) => {
       <Stack.Screen
         name="UploadPictureOfYourself"
         component={UploadPictureOfYourself}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="UploadPictureOfYourselfUP"
+        component={UploadPictureOfYourselfUP}
         options={{headerShown: false}}
       />
       <Stack.Screen
@@ -108,11 +120,41 @@ const Router = ({navigation}) => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="VerifyOTPEmail"
-        component={VerifyOTPEmail}
+        name="VerifyOTPU16"
+        component={VerifyOTPU16}
         options={{headerShown: false}}
       />
       <Stack.Screen name="Yay" component={Yay} options={{headerShown: false}} />
+      <Stack.Screen
+        name="EmailU16"
+        component={EmailU16}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="VerifyU16Email"
+        component={VerifyU16Email}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MobileU16"
+        component={MobileU16}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="VerifyU16Mobile"
+        component={VerifyU16Mobile}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="UsernameU16"
+        component={UsernameU16}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="LocationU16"
+        component={LocationU16}
+        options={{headerShown: false}}
+      />
       <Stack.Screen
         name="Email"
         component={Email}

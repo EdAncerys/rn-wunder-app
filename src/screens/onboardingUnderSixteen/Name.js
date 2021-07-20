@@ -60,6 +60,13 @@ const Name = ({navigation}) => {
     if (!!firstName && !!lastName) setBtnInactive(false);
   }, [firstName, lastName]);
 
+  // HANDLERS ---------------------------------------------------------
+  const handleContinue = () => {
+    navigation.navigate('EmailOTP');
+    setFirstName('');
+    setLastName('');
+  };
+
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper filter={Colors.lightBlack}>
@@ -98,7 +105,7 @@ const Name = ({navigation}) => {
             <CustomButton
               title="Continue"
               inactive={btnInactive}
-              onPress={() => navigation.navigate('EmailOTP')}
+              onPress={() => handleContinue()}
             />
           </View>
         </View>
