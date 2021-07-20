@@ -6,6 +6,7 @@ import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import Background from '../../assets/images/onboardingUnderSixteen/account-created-background.png';
 import IconConfirmed from '../../assets/icons/app/confirmed.png';
+import CustomButton from '../../components/CustomButton';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -62,6 +63,10 @@ const AccountCreated = ({navigation}) => {
             </Text>
           </View>
         </View>
+        <CustomButton
+          title="after approval..."
+          onPress={() => navigation.navigate('Profile')}
+        />
       </View>
     </ScreenWrapper>
   );

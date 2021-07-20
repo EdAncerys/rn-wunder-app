@@ -42,14 +42,14 @@ const AppNavigateActions = ({navigation}) => {
           image={SearchBlack}
           actionTitle="search"
           actionTitleStyle={{color: Colors.black}}
-          onPress={() => alert('path')}
+          onPress={() => alert('search')}
         />
       </View>
       <View>
         <IconActions
           image={Create}
           imageStyling={styles.searchIcon}
-          onPress={() => alert('path')}
+          onPress={() => alert('expand')}
         />
       </View>
       <View>
@@ -57,7 +57,7 @@ const AppNavigateActions = ({navigation}) => {
           image={ProjectsBlack}
           actionTitle="projects"
           actionTitleStyle={{color: Colors.black}}
-          onPress={() => alert('path')}
+          onPress={() => alert('projects')}
         />
       </View>
       <View>
@@ -65,7 +65,7 @@ const AppNavigateActions = ({navigation}) => {
           image={Profile}
           actionTitle="profile"
           actionTitleStyle={{color: Colors.black}}
-          onPress={() => alert('path')}
+          onPress={() => navigation.navigate('Profile')}
         />
       </View>
     </View>

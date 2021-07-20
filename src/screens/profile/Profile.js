@@ -1,8 +1,16 @@
 import * as React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
+import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import PostSnapshot from '../../components/PostSnapshot';
 import ProfileActions from '../../components/ProfileActions';
@@ -12,6 +20,10 @@ import AppNavigateActions from '../../components/AppNavigateActions';
 import Background from '../../assets/images/profile/profile-background.png';
 import Footer from '../../assets/images/profile/profile-footer.png';
 import ProfileIcon from '../../assets/icons/content/profile-beth.png';
+import Health from '../../assets/icons/app/health.png';
+import Paw from '../../assets/icons/app/paw.png';
+import WindTurbine from '../../assets/icons/app/wind-turbine.png';
+const {width, height} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
   container: {
@@ -19,62 +31,75 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     flex: 1,
-    marginHorizontal: '5%',
   },
   donateContainer: {
     flex: 1,
     justifyContent: 'center',
+    marginHorizontal: '5%',
   },
   appNavigateContainer: {
-    flex: 2,
-    justifyContent: 'center',
+    position: 'absolute',
+    bottom: -height / 12,
+    borderRadius: 30,
+    height: height / 5,
+    width: width,
+    marginBottom: '10%',
+    overflow: 'hidden',
   },
   appActions: {
     flex: 4,
     alignItems: 'flex-start',
     justifyContent: 'center',
+    marginHorizontal: '5%',
+    marginTop: '30%',
   },
   postContainer: {
     flex: 3,
     justifyContent: 'flex-start',
+    marginHorizontal: '5%',
+  },
+  rowWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 8,
+  },
+  backgroundImg: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+  },
+  post: {
+    ...Fonts.N_700_22,
+    color: Colors.white,
+  },
+  info: {
+    ...Fonts.N_400_13,
+    color: Colors.white,
+    marginVertical: 3,
+    width: width * 0.4,
+  },
+  postTagIcon: {
+    width: 40,
+    height: 40,
+  },
+  postAction: {
+    opacity: 0.8,
+  },
+  badge: {
+    flex: 1,
   },
 });
 
-const DATA = [
-  {
-    background: Background,
-    profileIcon: ProfileIcon,
-    profileName: '@wunder',
-    verified: true,
-    title: 'Healthy Eating',
-    post: 'It’s recommended that you eat at least 5 portions of a variety',
-    postTag: 'planet',
-    getInvolved: false,
-    donateActions: true,
-    navigateActions: false,
-  },
-];
+const DATA = {
+  background: Background,
+  profileIcon: ProfileIcon,
+  profileName: '@sarah_wills',
+  followers: '5k',
+  about: 'She/Her. Passionate about plants.',
+};
 
-const Profile = ({
-  navigation,
-  background,
-  profileIcon,
-  profileName,
-  verified,
-  title,
-  post,
-  postTag,
-  getInvolved,
-  donateActions,
-  navigateActions,
-}) => {
+const Profile = ({navigation}) => {
   const [data, setData] = React.useState(DATA);
-
-  const applyMarginPost = getInvolved
-    ? {marginBottom: '50%'}
-    : {marginBottom: '25%'};
-  const applyMarginAppActions =
-    donateActions || navigateActions ? {marginTop: '0%'} : {marginTop: '40%'};
 
   // SERVERS ---------------------------------------------------------
   const ServeDonate = ({navigation}) => {
@@ -88,7 +113,11 @@ const Profile = ({
   const ServeAppNavigate = ({navigation}) => {
     return (
       <View style={styles.appNavigateContainer}>
-        <AppNavigateActions navigation={navigation} />
+        <ImageBackground source={Footer} style={styles.backgroundImg}>
+          <View style={{marginHorizontal: '5%'}}>
+            <AppNavigateActions navigation={navigation} />
+          </View>
+        </ImageBackground>
       </View>
     );
   };
@@ -100,10 +129,50 @@ const Profile = ({
       gradient={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}>
       <View style={styles.wrapper}>
         <ServeDonate navigation={navigation} />
-        <View style={{...styles.appActions, ...applyMarginAppActions}}>
+        <View style={styles.appActions}>
           <ProfileActions />
         </View>
-        <View style={{...styles.postContainer, ...applyMarginPost}}></View>
+        <View style={styles.postContainer}>
+          <View style={styles.rowWrapper}>
+            <TouchableOpacity onPress={() => alert('profile')}>
+              <View>
+                <Text style={styles.post}>{data.profileName}</Text>
+                <Text style={styles.info}>{data.followers} followers</Text>
+                <Text style={styles.info}>{data.about}</Text>
+              </View>
+            </TouchableOpacity>
+            <View
+              style={{
+                flexDirection: 'row',
+                flex: 1,
+                justifyContent: 'space-around',
+                alignItems: 'center',
+              }}>
+              <View style={styles.badge}>
+                <CustomButton
+                  imageLeft={Paw}
+                  style={{backgroundColor: Colors.transparent}}
+                  onPress={() => alert('paw')}
+                />
+              </View>
+              <View style={styles.badge}>
+                <CustomButton
+                  imageLeft={WindTurbine}
+                  style={{backgroundColor: Colors.transparent}}
+                  imageStyling={{width: 23, height: 32}}
+                  onPress={() => alert('wind')}
+                />
+              </View>
+              <View style={styles.badge}>
+                <CustomButton
+                  imageLeft={Health}
+                  style={{backgroundColor: Colors.transparent}}
+                  onPress={() => alert('health')}
+                />
+              </View>
+            </View>
+          </View>
+        </View>
         <ServeAppNavigate navigation={navigation} />
       </View>
     </ScreenWrapper>

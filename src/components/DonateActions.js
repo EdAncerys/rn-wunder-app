@@ -2,6 +2,7 @@ import * as React from 'react';
 import {View, StyleSheet, Dimensions} from 'react-native';
 
 import Colors from '../config/colors';
+import Fonts from '../config/fonts';
 import LeftIcon from '../assets/icons/app/notifications.png';
 import RightIcon from '../assets/icons/app/wallet.png';
 import CustomButton from './CustomButton';
@@ -18,6 +19,18 @@ const styles = StyleSheet.create({
   icon: {
     width: 32,
     height: 32,
+  },
+  profileContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  personalTitle: {
+    ...Fonts.N_400_16,
+    color: Colors.white,
+  },
+  professionalTitle: {
+    ...Fonts.N_400_16,
+    color: Colors.lightSilver,
   },
 });
 
@@ -44,6 +57,22 @@ const DonateActions = ({navigation}) => {
             imageLeft={LeftIcon}
             imageStyling={styles.icon}
             onPress={() => navigation.navigate('DonationNotification')}
+          />
+        </View>
+        <View style={styles.profileContainer}>
+          <CustomButton
+            style={{backgroundColor: Colors.transparent}}
+            title="Personal"
+            titleStyling={styles.personalTitle}
+            // onPress={() => navigation.navigate('DonationNotification')}
+            onPress={() => alert('Personal')}
+          />
+          <CustomButton
+            style={{backgroundColor: Colors.transparent}}
+            title="Professional"
+            titleStyling={styles.professionalTitle}
+            // onPress={() => navigation.navigate('DonationNotification')}
+            onPress={() => alert('Professional')}
           />
         </View>
         <View>
