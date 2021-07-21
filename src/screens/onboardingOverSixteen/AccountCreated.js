@@ -63,10 +63,13 @@ const AccountCreated = ({navigation}) => {
             </Text>
           </View>
         </View>
-        <CustomButton
-          title="after approval..."
-          onPress={() => navigation.navigate('Profile')}
-        />
+
+        <View style={{alignItems: 'center'}}>
+          <CustomButton
+            title="once approved..."
+            onPress={() => navigation.navigate('Profile')}
+          />
+        </View>
       </View>
     </ScreenWrapper>
   );

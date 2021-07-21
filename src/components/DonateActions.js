@@ -43,9 +43,29 @@ const ServeDonate = ({donateAction, setDonateAction}) => {
     />
   );
 };
+const ServeNavigateProfile = ({props}) => {
+  return (
+    <View style={styles.profileContainer}>
+      <CustomButton
+        style={{backgroundColor: Colors.transparent}}
+        title="Personal"
+        titleStyling={styles.personalTitle}
+        // onPress={() => navigation.navigate('DonationNotification')}
+        onPress={() => alert('Personal')}
+      />
+      <CustomButton
+        style={{backgroundColor: Colors.transparent}}
+        title="Professional"
+        titleStyling={styles.professionalTitle}
+        // onPress={() => navigation.navigate('DonationNotification')}
+        onPress={() => alert('Professional')}
+      />
+    </View>
+  );
+};
 
 // RETURN ---------------------------------------------------------
-const DonateActions = ({navigation}) => {
+const DonateActions = ({navigation, profile}) => {
   const [donateAction, setDonateAction] = React.useState(false);
 
   return (
@@ -59,22 +79,7 @@ const DonateActions = ({navigation}) => {
             onPress={() => navigation.navigate('DonationNotification')}
           />
         </View>
-        <View style={styles.profileContainer}>
-          <CustomButton
-            style={{backgroundColor: Colors.transparent}}
-            title="Personal"
-            titleStyling={styles.personalTitle}
-            // onPress={() => navigation.navigate('DonationNotification')}
-            onPress={() => alert('Personal')}
-          />
-          <CustomButton
-            style={{backgroundColor: Colors.transparent}}
-            title="Professional"
-            titleStyling={styles.professionalTitle}
-            // onPress={() => navigation.navigate('DonationNotification')}
-            onPress={() => alert('Professional')}
-          />
-        </View>
+        {profile && <ServeNavigateProfile />}
         <View>
           <CustomButton
             style={{backgroundColor: Colors.transparent}}

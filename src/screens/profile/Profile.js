@@ -105,7 +105,7 @@ const Profile = ({navigation}) => {
   const ServeDonate = ({navigation}) => {
     return (
       <View style={styles.donateContainer}>
-        <DonateActions navigation={navigation} />
+        <DonateActions navigation={navigation} profile />
       </View>
     );
   };
