@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, ImageBackground, StatusBar} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -7,6 +7,7 @@ import Background from '../../assets/images/onboardingOverSixteen/age-question-b
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
 import Fonts from '../../config/fonts';
+import Icons from '../../config/icons';
 
 const styles = StyleSheet.create({
   titleContainer: {

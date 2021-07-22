@@ -31,36 +31,31 @@ const styles = StyleSheet.create({
 });
 
 // SERVERS ---------------------------------------------------------
-const ServeBtnTitle = ({props}) => {
-  return (
-    <Text style={{...styles.titleText, ...props.titleStyling}}>
-      {props.title}
-    </Text>
-  );
+const ServeBtnTitle = ({title, titleStyling}) => {
+  return <Text style={{...styles.titleText, ...titleStyling}}>{title}</Text>;
 };
-const ServeBtnImage = ({props}) => {
-  const image = props.imageLeft || props.imageRight;
+const ServeBtnImage = ({imageLeft, imageRight, imageStyling}) => {
+  const image = imageLeft || imageRight;
 
   return (
     <View style={styles.imageContainer}>
-      <Image source={image} style={{...styles.icon, ...props.imageStyling}} />
+      <Image source={image} style={{...styles.icon, ...imageStyling}} />
     </View>
   );
 };
-
-const ServeBtnFeedback = ({props, children}) => {
+const ServeBtnFeedback = ({onPress, shadow, style, inactive, children}) => {
   let visualFeedback = (
-    <TouchableOpacity onPress={props.onPress} style={{...props.shadow}}>
-      <View style={{...styles.container, ...props.style}}>{children}</View>
+    <TouchableOpacity onPress={onPress} style={{...shadow}}>
+      <View style={{...styles.container, ...style}}>{children}</View>
     </TouchableOpacity>
   );
-  if (props.inactive)
+  if (inactive)
     visualFeedback = (
       <View
         style={{
           ...styles.container,
           ...styles.containerInactive,
-          ...props.style,
+          ...style,
         }}>
         {children}
       </View>
@@ -69,12 +64,30 @@ const ServeBtnFeedback = ({props, children}) => {
 };
 
 // RETURN ---------------------------------------------------------
-const CustomButton = props => {
+const CustomButton = ({
+  title,
+  imageLeft,
+  imageRight,
+  onPress,
+  shadow,
+  style,
+  titleStyling,
+  imageStyling,
+  inactive,
+}) => {
   return (
-    <ServeBtnFeedback props={props}>
-      {props.imageRight && <ServeBtnImage props={props} />}
-      {props.title && <ServeBtnTitle props={props} />}
-      {props.imageLeft && <ServeBtnImage props={props} />}
+    <ServeBtnFeedback
+      onPress={onPress}
+      shadow={shadow}
+      style={style}
+      inactive={inactive}>
+      {imageRight && (
+        <ServeBtnImage imageRight={imageRight} imageStyling={imageStyling} />
+      )}
+      {title && <ServeBtnTitle title={title} titleStyling={titleStyling} />}
+      {imageLeft && (
+        <ServeBtnImage imageLeft={imageLeft} imageStyling={imageStyling} />
+      )}
     </ServeBtnFeedback>
   );
 };
