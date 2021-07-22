@@ -41,12 +41,6 @@ const Fonts = {
     fontWeight: '400',
     lineHeight: 19,
   },
-  N_500_14: {
-    fontFamily: 'Sailec',
-    fontSize: 14,
-    fontWeight: '500',
-    lineHeight: 17,
-  },
   N_400_15: {
     fontFamily: 'Sailec',
     fontSize: 15,
@@ -57,12 +51,6 @@ const Fonts = {
     fontFamily: 'Sailec',
     fontSize: 16,
     fontWeight: '400',
-    lineHeight: 23,
-  },
-  N_500_16: {
-    fontFamily: 'Sailec',
-    fontSize: 16,
-    fontWeight: '500',
     lineHeight: 23,
   },
   N_700_16: {
@@ -116,10 +104,3 @@ const Fonts = {
 };
 
 export default Fonts;
-
-// 1_2_3
-// 1 -font family
-// 2 - font weight
-// 3 - font font size
-// N - normal font size
-// B - bold font size

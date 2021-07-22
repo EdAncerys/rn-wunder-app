@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   profile: {
-    ...Fonts.N_500_16,
+    ...Fonts.N_400_16,
     color: Colors.white,
     paddingHorizontal: 8,
   },

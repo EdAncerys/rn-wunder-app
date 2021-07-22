@@ -182,7 +182,7 @@ const Home = ({navigation}) => {
     Animated.spring(scrollYAnimated, {
       toValue: scrollYIndex,
       useNativeDriver: true,
-      stiffness: 45,
+      friction: 15,
     }).start();
   });
 

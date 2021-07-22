@@ -13,6 +13,7 @@ import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import Background from '../../assets/images/onboardingOverSixteen/splash-screen-background.png';
 import Logo from '../../assets/images/onboardingOverSixteen/splash-screen-logo.png';
+import Email from '../../assets/icons/app/email.svg';
 
 const styles = StyleSheet.create({
   logoContainer: {

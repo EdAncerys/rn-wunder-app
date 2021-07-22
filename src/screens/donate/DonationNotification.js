@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     color: Colors.white,
   },
   title: {
-    ...Fonts.N_500_14,
+    ...Fonts.N_400_14,
     marginVertical: '2%',
   },
   name: {
