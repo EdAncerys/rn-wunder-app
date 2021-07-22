@@ -68,9 +68,9 @@ const UploadPictureOfYourself = ({navigation, backPath}) => {
 
       <View style={styles.actionsContainer}>
         <CustomButton
-          imageLeft={RightArrow}
+          iconLeft={RightArrow}
           style={{paddingVertical: 10, paddingHorizontal: 24}}
-          imageStyling={{width: 24, height: 18}}
+          iconStyling={{width: 24, height: 18}}
           onPress={() => navigation.navigate('Email')}
         />
       </View>

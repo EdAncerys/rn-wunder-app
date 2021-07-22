@@ -63,8 +63,8 @@ const DonateInput = ({
       <View style={{...styles.actionContainer, alignSelf: 'flex-end'}}>
         <CustomButton
           style={{backgroundColor: Colors.transparent}}
-          imageLeft={CloseIcon}
-          imageStyling={styles.icon}
+          iconLeft={CloseIcon}
+          iconStyling={styles.icon}
           onPress={() => setDonateAction(false)}
         />
       </View>

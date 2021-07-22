@@ -48,7 +48,7 @@ const AppNavigateActions = ({navigation}) => {
       <View>
         <IconActions
           image={Create}
-          imageStyling={styles.searchIcon}
+          iconStyling={styles.searchIcon}
           onPress={() => alert('expand')}
         />
       </View>

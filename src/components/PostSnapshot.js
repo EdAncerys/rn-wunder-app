@@ -87,8 +87,8 @@ const ServePost = ({props}) => {
       </TouchableOpacity>
       <View style={styles.badge}>
         <CustomButton
-          imageLeft={postTagIcon}
-          imageStyling={styles.postTagIcon}
+          iconLeft={postTagIcon}
+          iconStyling={styles.postTagIcon}
           style={{backgroundColor: Colors.transparent}}
           onPress={() => alert('path')}
         />

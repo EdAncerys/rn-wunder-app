@@ -150,22 +150,22 @@ const Profile = ({navigation}) => {
               }}>
               <View style={styles.badge}>
                 <CustomButton
-                  imageLeft={Paw}
+                  iconLeft={Paw}
                   style={{backgroundColor: Colors.transparent}}
                   onPress={() => alert('paw')}
                 />
               </View>
               <View style={styles.badge}>
                 <CustomButton
-                  imageLeft={WindTurbine}
+                  iconLeft={WindTurbine}
                   style={{backgroundColor: Colors.transparent}}
-                  imageStyling={{width: 23, height: 32}}
+                  iconStyling={{width: 23, height: 32}}
                   onPress={() => alert('wind')}
                 />
               </View>
               <View style={styles.badge}>
                 <CustomButton
-                  imageLeft={Health}
+                  iconLeft={Health}
                   style={{backgroundColor: Colors.transparent}}
                   onPress={() => alert('health')}
                 />

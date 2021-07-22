@@ -96,7 +96,7 @@ const EmailOTP = ({navigation}) => {
           </View>
           <CustomButton
             title="Use their mobile number"
-            imageRight={HandsetRed}
+            iconRight={HandsetRed}
             style={{backgroundColor: Colors.transparent}}
             titleStyling={{...Fonts.N_700_12, color: Colors.gray}}
             onPress={() => navigation.navigate('MobileOTP')}

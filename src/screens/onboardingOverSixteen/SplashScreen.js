@@ -7,7 +7,6 @@ import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import Background from '../../assets/images/onboardingOverSixteen/splash-screen-background.png';
 import Logo from '../../assets/images/onboardingOverSixteen/splash-screen-logo.png';
-import {Applaud} from '../../config/icons';
 
 const styles = StyleSheet.create({
   logoContainer: {
@@ -38,7 +37,6 @@ const SplashScreen = ({navigation}) => {
           style={{backgroundColor: Colors.transparent}}
         />
       </View>
-      <Applaud />
     </ScreenWrapper>
   );
 };

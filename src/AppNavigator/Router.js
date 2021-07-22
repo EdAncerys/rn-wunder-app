@@ -44,7 +44,7 @@ const Router = ({navigation}) => {
         component={SplashScreen}
         options={{headerShown: false}}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Visual"
         component={Visual}
         options={{headerShown: false}}
@@ -199,7 +199,7 @@ const Router = ({navigation}) => {
         name="Interests"
         component={Interests}
         options={{headerShown: false}}
-      />
+      /> */}
     </Stack.Navigator>
   );
 };

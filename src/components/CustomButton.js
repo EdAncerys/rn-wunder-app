@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 
 import Colors from '../config/colors';
 import Fonts from '../config/fonts';
+import * as Icons from '../config/icons';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     color: Colors.white,
     padding: 12,
   },
-  imageContainer: {
+  iconContainer: {
     padding: 5,
   },
   icon: {
@@ -34,12 +35,13 @@ const styles = StyleSheet.create({
 const ServeBtnTitle = ({title, titleStyling}) => {
   return <Text style={{...styles.titleText, ...titleStyling}}>{title}</Text>;
 };
-const ServeBtnImage = ({imageLeft, imageRight, imageStyling}) => {
-  const image = imageLeft || imageRight;
+const ServeIcon = ({iconLeft, iconRight, iconWidth, iconHeight, iconFill}) => {
+  const iconName = iconLeft || iconRight;
+  const SvgIcon = Icons[iconName];
 
   return (
-    <View style={styles.imageContainer}>
-      <Image source={image} style={{...styles.icon, ...imageStyling}} />
+    <View style={styles.iconContainer}>
+      <SvgIcon width={iconWidth} height={iconHeight} fill={iconFill} />
     </View>
   );
 };
@@ -66,13 +68,15 @@ const ServeBtnFeedback = ({onPress, shadow, style, inactive, children}) => {
 // RETURN ---------------------------------------------------------
 const CustomButton = ({
   title,
-  imageLeft,
-  imageRight,
+  iconLeft,
+  iconRight,
   onPress,
   shadow,
   style,
   titleStyling,
-  imageStyling,
+  iconFill,
+  iconWidth,
+  iconHeight,
   inactive,
 }) => {
   return (
@@ -81,12 +85,22 @@ const CustomButton = ({
       shadow={shadow}
       style={style}
       inactive={inactive}>
-      {imageRight && (
-        <ServeBtnImage imageRight={imageRight} imageStyling={imageStyling} />
+      {iconLeft && (
+        <ServeIcon
+          iconLeft={iconLeft}
+          iconFill={iconFill}
+          iconWidth={iconWidth}
+          iconHeight={iconHeight}
+        />
       )}
       {title && <ServeBtnTitle title={title} titleStyling={titleStyling} />}
-      {imageLeft && (
-        <ServeBtnImage imageLeft={imageLeft} imageStyling={imageStyling} />
+      {iconRight && (
+        <ServeIcon
+          iconRight={iconRight}
+          iconFill={iconFill}
+          iconWidth={iconWidth}
+          iconHeight={iconHeight}
+        />
       )}
     </ServeBtnFeedback>
   );

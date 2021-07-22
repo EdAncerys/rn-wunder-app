@@ -299,10 +299,10 @@ const ServeNavigation = ({onPress}) => {
     <View>
       <View style={styles.navigationContainer}>
         <CustomButton
-          imageLeft={LeftBlack}
+          iconLeft={LeftBlack}
           onPress={onPress}
           style={{backgroundColor: Colors.transparent}}
-          imageStyling={{width: 12, height: 20}}
+          iconStyling={{width: 12, height: 20}}
         />
         <View style={styles.navigationTitleContainer}>
           <Text style={styles.navigationTitle}>Notifications</Text>

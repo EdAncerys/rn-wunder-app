@@ -61,7 +61,7 @@ const AppActions = props => {
               image={action.image}
               actionTitle={action.count}
               onPress={action.onPress}
-              imageStyling={action.imageStyling}
+              iconStyling={action.iconStyling}
             />
           );
         })}

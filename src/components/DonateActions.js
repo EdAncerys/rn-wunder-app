@@ -74,8 +74,8 @@ const DonateActions = ({navigation, profile}) => {
         <View>
           <CustomButton
             style={{backgroundColor: Colors.transparent}}
-            imageLeft={LeftIcon}
-            imageStyling={styles.icon}
+            iconLeft={LeftIcon}
+            iconStyling={styles.icon}
             onPress={() => navigation.navigate('DonationNotification')}
           />
         </View>
@@ -83,8 +83,8 @@ const DonateActions = ({navigation, profile}) => {
         <View>
           <CustomButton
             style={{backgroundColor: Colors.transparent}}
-            imageLeft={RightIcon}
-            imageStyling={styles.icon}
+            iconLeft={RightIcon}
+            iconStyling={styles.icon}
             onPress={() => setDonateAction(!donateAction)}
           />
         </View>

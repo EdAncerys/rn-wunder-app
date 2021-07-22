@@ -103,10 +103,10 @@ const Mobile = ({navigation, backPath, continuePath}) => {
           </View>
           <CustomButton
             title="Use your email address"
-            imageRight={EmailRed}
+            iconRight={EmailRed}
             style={{backgroundColor: Colors.transparent}}
             titleStyling={{...Fonts.N_700_12, color: Colors.gray}}
-            imageStyling={{width: 24, height: 17.6}}
+            iconStyling={{width: 24, height: 17.6}}
             onPress={() => navigation.navigate('Email')}
           />
         </View>

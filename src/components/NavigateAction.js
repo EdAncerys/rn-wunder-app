@@ -29,9 +29,9 @@ const NavigateAction = props => {
     <View style={styles.container}>
       <CustomButton
         onPress={props.onPress}
-        imageLeft={LeftIcon}
+        iconLeft={LeftIcon}
         style={{backgroundColor: Colors.transparent}}
-        imageStyling={{width: 12, height: 20}}
+        iconStyling={{width: 12, height: 20}}
       />
       <View style={styles.textContainer}>
         <Text style={{...styles.titleText, ...props.titleStyling}}>

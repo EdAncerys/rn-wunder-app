@@ -33,7 +33,7 @@ const actions = [
     count: 'inbox',
     onPress: () => alert('inbox'),
     id: 2,
-    imageStyling: {width: 24, height: 16},
+    iconStyling: {width: 24, height: 16},
   },
 ];
 
@@ -48,7 +48,7 @@ const ProfileActions = props => {
               image={action.image}
               actionTitle={action.count}
               onPress={action.onPress}
-              imageStyling={action.imageStyling}
+              iconStyling={action.iconStyling}
             />
           );
         })}

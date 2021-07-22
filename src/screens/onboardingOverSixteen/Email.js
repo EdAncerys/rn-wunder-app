@@ -103,7 +103,7 @@ const Email = ({navigation, backPath, continuePath}) => {
           </View>
           <CustomButton
             title="Use your mobile number"
-            imageRight={HandsetRed}
+            iconRight={HandsetRed}
             style={{backgroundColor: Colors.transparent}}
             titleStyling={{...Fonts.N_700_12, color: Colors.gray}}
             onPress={() => navigation.navigate('Mobile')}

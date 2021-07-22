@@ -104,10 +104,10 @@ const Interests = ({navigation}) => {
           </View>
           <View style={styles.actionsContainer}>
             <CustomButton
-              imageLeft={RightArrowWhite}
+              iconLeft={RightArrowWhite}
               onPress={() => handleContinue()}
               style={{paddingHorizontal: 24, paddingVertical: 10}}
-              imageStyling={{width: 24, height: 18}}
+              iconStyling={{width: 24, height: 18}}
             />
           </View>
         </SafeAreaView>

@@ -22,11 +22,11 @@ const styles = StyleSheet.create({
 const ServeActionIcon = ({props}) => {
   return (
     <CustomButton
-      imageLeft={props.image}
+      iconLeft={props.image}
       onPress={props.onPress}
       style={{backgroundColor: Colors.transparent}}
       titleStyling={{...props.titleStyling}}
-      imageStyling={{...props.imageStyling}}
+      iconStyling={{...props.iconStyling}}
     />
   );
 };

@@ -55,14 +55,14 @@ const ConfirmDonation = ({
       <View style={styles.actionContainer}>
         <CustomButton
           style={{backgroundColor: Colors.transparent}}
-          imageLeft={LeftBlack}
-          imageStyling={styles.icon}
+          iconLeft={LeftBlack}
+          iconStyling={styles.icon}
           onPress={() => setDonateCoins(false)}
         />
         <CustomButton
           style={{backgroundColor: Colors.transparent}}
-          imageLeft={CloseIcon}
-          imageStyling={styles.icon}
+          iconLeft={CloseIcon}
+          iconStyling={styles.icon}
           onPress={() => setDonateAction(false)}
         />
       </View>
