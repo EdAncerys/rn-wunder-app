@@ -3,8 +3,6 @@ import {View, StyleSheet, Dimensions} from 'react-native';
 
 import Colors from '../config/colors';
 import Fonts from '../config/fonts';
-import LeftIcon from '../assets/icons/app/notifications.png';
-import RightIcon from '../assets/icons/app/wallet.png';
 import CustomButton from './CustomButton';
 import DonatePopUp from './donateActions/DonatePopUp';
 
@@ -73,8 +71,15 @@ const DonateActions = ({navigation, profile}) => {
       <View style={styles.container}>
         <View>
           <CustomButton
-            style={{backgroundColor: Colors.transparent}}
-            iconLeft={LeftIcon}
+            style={{
+              backgroundColor: Colors.secondary,
+              padding: 10,
+              borderRadius: 100,
+            }}
+            iconLeft="NotificationsLine"
+            iconWidth={18.5}
+            iconHeight={20}
+            iconFill={Colors.white}
             iconStyling={styles.icon}
             onPress={() => navigation.navigate('DonationNotification')}
           />
@@ -82,8 +87,15 @@ const DonateActions = ({navigation, profile}) => {
         {profile && <ServeNavigateProfile />}
         <View>
           <CustomButton
-            style={{backgroundColor: Colors.transparent}}
-            iconLeft={RightIcon}
+            style={{
+              backgroundColor: Colors.secondary,
+              padding: 10,
+              borderRadius: 100,
+            }}
+            iconLeft="Wallet"
+            iconWidth={20}
+            iconHeight={20}
+            iconFill={Colors.white}
             iconStyling={styles.icon}
             onPress={() => setDonateAction(!donateAction)}
           />

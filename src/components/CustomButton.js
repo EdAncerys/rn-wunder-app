@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 import Colors from '../config/colors';
 import Fonts from '../config/fonts';
@@ -24,10 +24,6 @@ const styles = StyleSheet.create({
   },
   iconContainer: {
     padding: 5,
-  },
-  icon: {
-    width: 24,
-    height: 24,
   },
 });
 

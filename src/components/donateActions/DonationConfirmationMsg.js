@@ -9,10 +9,8 @@ import {
 
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
-import CloseIcon from '../../assets/icons/app/close-black.png';
-import LeftBlack from '../../assets/icons/app/left-black.png';
 import CustomButton from '../CustomButton';
-import Tick from '../../assets/icons/app/tick.png';
+import Confirmed from '../../assets/icons/confirmed.png';
 
 const styles = StyleSheet.create({
   container: {
@@ -50,13 +48,13 @@ const DonationConfirmationMsg = ({setDonateAction, setConfirmCoins}) => {
         <View style={styles.actionContainer}>
           <CustomButton
             style={{backgroundColor: Colors.transparent}}
-            iconLeft={LeftBlack}
+            iconLeft="ChevronLeft"
             iconStyling={styles.icon}
             onPress={() => setConfirmCoins(false)}
           />
           <CustomButton
             style={{backgroundColor: Colors.transparent}}
-            iconLeft={CloseIcon}
+            iconLeft="Cross"
             iconStyling={styles.icon}
             onPress={() => setDonateAction(false)}
           />
@@ -65,7 +63,7 @@ const DonationConfirmationMsg = ({setDonateAction, setConfirmCoins}) => {
           <Text style={styles.title}>Thank you for your donation!</Text>
         </View>
         <View style={styles.imageContainer}>
-          <Image source={Tick} />
+          <Image source={Confirmed} />
         </View>
         <View>
           <Text style={styles.msg}>

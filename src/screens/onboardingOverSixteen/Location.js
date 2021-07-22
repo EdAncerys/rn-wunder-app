@@ -7,7 +7,7 @@ import Fonts from '../../config/fonts';
 import Background from '../../assets/images/onboardingUnderSixteen/location-background.png';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
-import IconLocation from '../../assets/icons/app/location.png';
+import IconLocation from '../../assets/icons/location.png';
 
 const styles = StyleSheet.create({
   container: {

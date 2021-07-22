@@ -13,7 +13,6 @@ import {
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
-import RightArrowWhite from '../../assets/icons/app/right-arrow-white.png';
 
 const styles = StyleSheet.create({
   container: {
@@ -104,7 +103,8 @@ const Interests = ({navigation}) => {
           </View>
           <View style={styles.actionsContainer}>
             <CustomButton
-              iconLeft={RightArrowWhite}
+              iconLeft="ChevronRight"
+              iconFill={Colors.white}
               onPress={() => handleContinue()}
               style={{paddingHorizontal: 24, paddingVertical: 10}}
               iconStyling={{width: 24, height: 18}}

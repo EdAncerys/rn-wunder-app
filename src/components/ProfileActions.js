@@ -2,9 +2,7 @@ import * as React from 'react';
 import {View, StyleSheet} from 'react-native';
 
 import Colors from '../config/colors';
-import IconActions from './IconActions';
-import Settings from '../assets/icons/app/settings.png';
-import Inbox from '../assets/icons/app/inbox.png';
+import CustomButton from './CustomButton';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,44 +12,40 @@ const styles = StyleSheet.create({
   wrapper: {
     minWidth: 40,
     minHeight: 40,
-    borderWidth: 2,
+    paddingHorizontal: 5,
+    paddingVertical: 5,
     borderRadius: 24,
-    borderColor: Colors.white,
-    backgroundColor: Colors.blurFilter,
+    backgroundColor: Colors.secondary,
+  },
+  iconContainer: {
+    marginVertical: 5,
   },
 });
-
-const actions = [
-  {
-    image: Settings,
-    count: 'settings',
-    onPress: () => alert('settings'),
-    id: 1,
-  },
-  {
-    image: Inbox,
-    count: 'inbox',
-    onPress: () => alert('inbox'),
-    id: 2,
-    iconStyling: {width: 24, height: 16},
-  },
-];
 
 const ProfileActions = props => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        {actions.map(action => {
-          return (
-            <IconActions
-              key={action.id}
-              image={action.image}
-              actionTitle={action.count}
-              onPress={action.onPress}
-              iconStyling={action.iconStyling}
-            />
-          );
-        })}
+        <View style={styles.iconContainer}>
+          <CustomButton
+            iconLeft="Settings"
+            iconWidth={24}
+            iconHeight={24}
+            iconFill={Colors.white}
+            onPress={() => alert('inbox')}
+            style={{backgroundColor: Colors.transparent}}
+          />
+        </View>
+        <View style={styles.iconContainer}>
+          <CustomButton
+            iconLeft="Shoutout"
+            iconWidth={24}
+            iconHeight={20}
+            iconFill={Colors.white}
+            onPress={() => alert('inbox')}
+            style={{backgroundColor: Colors.transparent}}
+          />
+        </View>
       </View>
     </View>
   );

@@ -2,11 +2,8 @@ import * as React from 'react';
 import {View, StyleSheet} from 'react-native';
 
 import Colors from '../config/colors';
+import CustomButton from '../components/CustomButton';
 import IconActions from './IconActions';
-import CommentIcon from '../assets/icons/app/comment-icon.png';
-import Apploud from '../assets/icons/app/applaud.png';
-import ShoutOut from '../assets/icons/app/shout-out.png';
-import Comment from '../assets/icons/app/comment.png';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,55 +13,64 @@ const styles = StyleSheet.create({
   wrapper: {
     minWidth: 40,
     minHeight: 40,
-    borderWidth: 2,
+    paddingHorizontal: 5,
+    paddingVertical: 5,
     borderRadius: 24,
-    borderColor: Colors.white,
-    backgroundColor: Colors.blurFilter,
+    backgroundColor: Colors.secondary,
+  },
+  iconContainer: {
+    marginVertical: 5,
   },
 });
 
-const actions = [
-  {
-    image: CommentIcon,
-    count: 346,
-    onPress: () => alert('comment'),
-    id: 1,
-  },
-  {
-    image: Apploud,
-    count: 99,
-    onPress: () => alert('apploud'),
-    id: 2,
-  },
-  {
-    image: ShoutOut,
-    count: 99,
-    onPress: () => alert('shoutOut'),
-    id: 3,
-  },
-  {
-    image: Comment,
-    count: 99,
-    onPress: () => alert('comment'),
-    id: 4,
-  },
-];
+// const DATA = [
+//   {
+//     icon: 'Comment',
+//     count: 346,
+//     onPress: () => alert('comment'),
+//     iconFill: {Colors.white}
+//   },
+//   {
+//     icon: 'Apploud',
+//     count: 99,
+//     onPress: () => alert('apploud'),
+//   },
+//   {
+//     icon: 'Shoutout',
+//     count: 99,
+//     onPress: () => alert('shoutOut'),
+//   },
+//   {
+//     icon: 'Comment',
+//     count: 99,
+//     onPress: () => alert('comment'),
+//   },
+// ];
 
-const AppActions = props => {
+const AppActions = () => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        {actions.map(action => {
-          return (
-            <IconActions
-              key={action.id}
-              image={action.image}
-              actionTitle={action.count}
-              onPress={action.onPress}
-              iconStyling={action.iconStyling}
-            />
-          );
-        })}
+        <View style={styles.iconContainer}>
+          <CustomButton
+            iconLeft="Settings"
+            iconWidth={24}
+            iconHeight={24}
+            iconFill={Colors.white}
+            onPress={() => alert('inbox')}
+            style={{backgroundColor: Colors.transparent}}
+          />
+        </View>
+        <View style={styles.iconContainer}>
+          <CustomButton
+            iconLeft="Shoutout"
+            iconWidth={24}
+            iconHeight={20}
+            iconFill={Colors.white}
+            onPress={() => alert('inbox')}
+            style={{backgroundColor: Colors.transparent}}
+          />
+        </View>
       </View>
     </View>
   );

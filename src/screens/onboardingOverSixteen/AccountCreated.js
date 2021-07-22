@@ -5,7 +5,7 @@ import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import Background from '../../assets/images/onboardingUnderSixteen/account-created-background.png';
-import IconConfirmed from '../../assets/icons/app/confirmed.png';
+import AccountCreatedImg from '../../assets/icons/account-created.png';
 import CustomButton from '../../components/CustomButton';
 
 const styles = StyleSheet.create({
@@ -51,7 +51,7 @@ const AccountCreated = ({navigation}) => {
       <View style={styles.wrapper}>
         <View style={styles.contentContainer}>
           <View style={styles.iconContainer}>
-            <Image source={IconConfirmed} />
+            <Image source={AccountCreatedImg} />
           </View>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>Account Created!</Text>
@@ -64,9 +64,11 @@ const AccountCreated = ({navigation}) => {
           </View>
         </View>
 
-        <View style={{alignItems: 'center'}}>
+        <View style={{alignItems: 'center', marginBottom: '5%'}}>
           <CustomButton
-            title="once approved..."
+            iconLeft="ArrowRight"
+            iconWidth={24}
+            style={{paddingVertical: 10, paddingHorizontal: 24}}
             onPress={() => navigation.navigate('Profile')}
           />
         </View>

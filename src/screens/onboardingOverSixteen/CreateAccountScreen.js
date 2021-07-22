@@ -1,18 +1,11 @@
 import * as React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ImageBackground,
-  Image,
-  StatusBar,
-} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import Background from '../../assets/images/onboardingOverSixteen/splash-screen-background.png';
-import Logo from '../../assets/images/onboardingOverSixteen/splash-screen-logo.png';
+import Logo from '../../assets/images/onboardingOverSixteen/create-account-screen-logo.png';
 import CustomButton from '../../components/CustomButton';
 
 const styles = StyleSheet.create({
@@ -20,7 +13,7 @@ const styles = StyleSheet.create({
     flex: 3,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: '30%',
+    paddingTop: '35%',
   },
   actionsContainer: {
     flex: 1.5,

@@ -1,5 +1,10 @@
 import * as React from 'react';
+import {View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
+import Colors from '../config/colors';
+import {Home, Search, Create, Projects, People} from '../config/icons';
 
 import SplashScreen from '../screens/onboardingOverSixteen/SplashScreen';
 import Visual from '../screens/onboardingOverSixteen/Visual';
@@ -32,19 +37,91 @@ import VerifyU16Mobile from '../screens/onboardingUnderSixteen/VerifyU16Mobile';
 import UsernameU16 from '../screens/onboardingUnderSixteen/UsernameU16';
 import LocationU16 from '../screens/onboardingUnderSixteen/LocationU16';
 import Profile from '../screens/profile/Profile';
-import Home from '../screens/home/Home';
+import HomeScreen from '../screens/home/Home';
 import DonationNotification from '../screens/donate/DonationNotification';
+
+const Tab = createBottomTabNavigator();
+const TabNavigator = ({navigation}) => {
+  return (
+    <Tab.Navigator
+      tabBarOptions={{
+        style: {
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+          paddingTop: 14,
+          paddingBottom: 30,
+          backgroundColor: Colors.white,
+          position: 'absolute',
+          bottom: 0,
+          height: 90,
+        },
+        activeTintColor: Colors.primary,
+        inactiveTintColor: Colors.lightBlack,
+      }}>
+      <Tab.Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarLabel: 'home',
+          tabBarIcon: ({color}) => <Home width={28} height={28} fill={color} />,
+        }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={Profile}
+        options={{
+          tabBarLabel: 'search',
+          tabBarIcon: ({color}) => (
+            <Search width={28} height={28} fill={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Home"
+        component={Profile}
+        options={{
+          tabBarLabel: '',
+          tabBarIcon: ({color}) => (
+            <View style={{marginTop: 14}}>
+              <Create width={36} height={36} fill={color} />
+            </View>
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Projects"
+        component={Profile}
+        options={{
+          tabBarLabel: 'projects',
+          tabBarIcon: ({color}) => (
+            <Projects width={28} height={28} fill={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="People"
+        component={Profile}
+        options={{
+          tabBarLabel: 'people',
+          tabBarIcon: ({color}) => (
+            <People width={28} height={28} fill={color} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+};
 
 const Stack = createStackNavigator();
 const Router = ({navigation}) => {
   return (
     <Stack.Navigator initialRouteName="SplashScreen">
-      <Stack.Screen
+      {/* <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}
         options={{headerShown: false}}
       />
-      {/* <Stack.Screen
+      <Stack.Screen
         name="Visual"
         component={Visual}
         options={{headerShown: false}}
@@ -93,15 +170,15 @@ const Router = ({navigation}) => {
         name="Login"
         component={Login}
         options={{headerShown: false}}
-      />
+      /> */}
       <Stack.Screen
         name="Profile"
-        component={Profile}
+        component={TabNavigator}
         options={{headerShown: false}}
       />
       <Stack.Screen
         name="Home"
-        component={Home}
+        component={HomeScreen}
         options={{headerShown: false}}
       />
       <Stack.Screen
@@ -199,7 +276,7 @@ const Router = ({navigation}) => {
         name="Interests"
         component={Interests}
         options={{headerShown: false}}
-      /> */}
+      />
     </Stack.Navigator>
   );
 };

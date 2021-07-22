@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Background from '../../assets/images/home/home-exp-nine-background.png';
-import ProfileIcon from '../../assets/icons/content/profile-nora.png';
+import ProfileIcon from '../../assets/dummyAssets/profile-nora.png';
 import HomeScreen from '../../components/HomeScreen';
 
 const HomeExpNine = () => {

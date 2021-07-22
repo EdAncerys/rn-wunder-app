@@ -3,7 +3,6 @@ import {View, Text, StyleSheet, TextInput} from 'react-native';
 
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
-import CloseIcon from '../../assets/icons/app/close-black.png';
 import CustomButton from '../CustomButton';
 
 const styles = StyleSheet.create({
@@ -63,7 +62,7 @@ const DonateInput = ({
       <View style={{...styles.actionContainer, alignSelf: 'flex-end'}}>
         <CustomButton
           style={{backgroundColor: Colors.transparent}}
-          iconLeft={CloseIcon}
+          iconLeft="Cross"
           iconStyling={styles.icon}
           onPress={() => setDonateAction(false)}
         />

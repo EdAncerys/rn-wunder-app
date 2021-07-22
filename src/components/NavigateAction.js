@@ -1,11 +1,9 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 import Colors from '../config/colors';
 import Fonts from '../config/fonts';
-import LeftIcon from '../assets/icons/app/left-white.png';
 import CustomButton from './CustomButton';
-const {width} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
   container: {
@@ -29,7 +27,9 @@ const NavigateAction = props => {
     <View style={styles.container}>
       <CustomButton
         onPress={props.onPress}
-        iconLeft={LeftIcon}
+        iconLeft="ChevronLeft"
+        iconWidth={12}
+        iconFill={Colors.white}
         style={{backgroundColor: Colors.transparent}}
         iconStyling={{width: 12, height: 20}}
       />

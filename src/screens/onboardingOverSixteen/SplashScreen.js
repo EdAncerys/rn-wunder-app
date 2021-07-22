@@ -6,13 +6,14 @@ import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import Background from '../../assets/images/onboardingOverSixteen/splash-screen-background.png';
-import Logo from '../../assets/images/onboardingOverSixteen/splash-screen-logo.png';
+import Logo from '../../assets/images/onboardingOverSixteen/logo.png';
 
 const styles = StyleSheet.create({
   logoContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: '5%',
   },
   actionsContainer: {
     alignItems: 'center',

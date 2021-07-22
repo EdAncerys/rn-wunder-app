@@ -6,7 +6,6 @@ import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
-import HandsetRed from '../../assets/icons/app/handset-red.png';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -96,7 +95,8 @@ const EmailOTP = ({navigation}) => {
           </View>
           <CustomButton
             title="Use their mobile number"
-            iconRight={HandsetRed}
+            iconLeft="Handset"
+            iconFill={Colors.primary}
             style={{backgroundColor: Colors.transparent}}
             titleStyling={{...Fonts.N_700_12, color: Colors.gray}}
             onPress={() => navigation.navigate('MobileOTP')}

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Background from '../../assets/images/home/home-exp-four-background.png';
-import ProfileIcon from '../../assets/icons/content/profile-vic.png';
+import ProfileIcon from '../../assets/dummyAssets/profile-vic.png';
 import HomeScreen from '../../components/HomeScreen';
 
 const HomeExpFour = () => {

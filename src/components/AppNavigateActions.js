@@ -3,11 +3,7 @@ import {View, StyleSheet, Dimensions} from 'react-native';
 
 import Colors from '../config/colors';
 import IconActions from './IconActions';
-import HomeBlack from '../assets/icons/app/home-black.png';
-import SearchBlack from '../assets/icons/app/search-black.png';
-import ProjectsBlack from '../assets/icons/app/projects-black.png';
-import Profile from '../assets/icons/content/profile-general.png';
-import Create from '../assets/icons/app/create.png';
+import Profile from '../assets/dummyAssets/profile-general.png';
 const {width} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
@@ -31,7 +27,7 @@ const AppNavigateActions = ({navigation}) => {
     <View style={styles.container}>
       <View>
         <IconActions
-          image={HomeBlack}
+          icon="Home"
           actionTitle="home"
           actionTitleStyle={{color: Colors.black}}
           onPress={() => navigation.navigate('Home')}
@@ -39,7 +35,7 @@ const AppNavigateActions = ({navigation}) => {
       </View>
       <View>
         <IconActions
-          image={SearchBlack}
+          icon="Search"
           actionTitle="search"
           actionTitleStyle={{color: Colors.black}}
           onPress={() => alert('search')}
@@ -47,14 +43,14 @@ const AppNavigateActions = ({navigation}) => {
       </View>
       <View>
         <IconActions
-          image={Create}
+          icon="Create"
           iconStyling={styles.searchIcon}
           onPress={() => alert('expand')}
         />
       </View>
       <View>
         <IconActions
-          image={ProjectsBlack}
+          icon="Projects"
           actionTitle="projects"
           actionTitleStyle={{color: Colors.black}}
           onPress={() => alert('projects')}
@@ -62,7 +58,7 @@ const AppNavigateActions = ({navigation}) => {
       </View>
       <View>
         <IconActions
-          image={Profile}
+          icon="Profile"
           actionTitle="profile"
           actionTitleStyle={{color: Colors.black}}
           onPress={() => navigation.navigate('Profile')}

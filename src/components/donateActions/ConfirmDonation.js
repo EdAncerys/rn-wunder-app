@@ -3,8 +3,6 @@ import {View, Text, StyleSheet, ScrollView} from 'react-native';
 
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
-import CloseIcon from '../../assets/icons/app/close-black.png';
-import LeftBlack from '../../assets/icons/app/left-black.png';
 import CustomButton from '../CustomButton';
 
 const styles = StyleSheet.create({
@@ -55,13 +53,13 @@ const ConfirmDonation = ({
       <View style={styles.actionContainer}>
         <CustomButton
           style={{backgroundColor: Colors.transparent}}
-          iconLeft={LeftBlack}
+          iconLeft="ChevronLeft"
           iconStyling={styles.icon}
           onPress={() => setDonateCoins(false)}
         />
         <CustomButton
           style={{backgroundColor: Colors.transparent}}
-          iconLeft={CloseIcon}
+          iconLeft="Cross"
           iconStyling={styles.icon}
           onPress={() => setDonateAction(false)}
         />

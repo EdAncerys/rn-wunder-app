@@ -12,17 +12,13 @@ import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
-import PostSnapshot from '../../components/PostSnapshot';
 import ProfileActions from '../../components/ProfileActions';
 import DonateActions from '../../components/DonateActions';
 import AppNavigateActions from '../../components/AppNavigateActions';
 
 import Background from '../../assets/images/profile/profile-background.png';
 import Footer from '../../assets/images/profile/profile-footer.png';
-import ProfileIcon from '../../assets/icons/content/profile-beth.png';
-import Health from '../../assets/icons/app/health.png';
-import Paw from '../../assets/icons/app/paw.png';
-import WindTurbine from '../../assets/icons/app/wind-turbine.png';
+import ProfileIcon from '../../assets/dummyAssets/profile-beth.png';
 const {width, height} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
@@ -150,14 +146,16 @@ const Profile = ({navigation}) => {
               }}>
               <View style={styles.badge}>
                 <CustomButton
-                  iconLeft={Paw}
+                  iconLeft="Paw"
+                  iconFill={Colors.white}
                   style={{backgroundColor: Colors.transparent}}
                   onPress={() => alert('paw')}
                 />
               </View>
               <View style={styles.badge}>
                 <CustomButton
-                  iconLeft={WindTurbine}
+                  iconLeft="WindTurbine"
+                  iconFill={Colors.white}
                   style={{backgroundColor: Colors.transparent}}
                   iconStyling={{width: 23, height: 32}}
                   onPress={() => alert('wind')}
@@ -165,7 +163,8 @@ const Profile = ({navigation}) => {
               </View>
               <View style={styles.badge}>
                 <CustomButton
-                  iconLeft={Health}
+                  iconLeft="Health"
+                  iconFill={Colors.white}
                   style={{backgroundColor: Colors.transparent}}
                   onPress={() => alert('health')}
                 />

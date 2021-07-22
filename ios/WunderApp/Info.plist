@@ -30,6 +30,8 @@
 		<dict>
 			<key>localhost</key>
 			<dict>
+				<key>New item</key>
+				<string></string>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
 			</dict>

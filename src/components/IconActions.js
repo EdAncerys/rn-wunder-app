@@ -22,7 +22,9 @@ const styles = StyleSheet.create({
 const ServeActionIcon = ({props}) => {
   return (
     <CustomButton
-      iconLeft={props.image}
+      iconLeft={props.icon}
+      iconWidth={props.iconWidth}
+      iconFill={Colors.white}
       onPress={props.onPress}
       style={{backgroundColor: Colors.transparent}}
       titleStyling={{...props.titleStyling}}
@@ -42,7 +44,7 @@ const ServeActionTitle = ({props}) => {
 const IconActions = props => {
   return (
     <View style={styles.container}>
-      {props.image && <ServeActionIcon props={props} />}
+      {props.icon && <ServeActionIcon props={props} />}
       {props.actionTitle && <ServeActionTitle props={props} />}
     </View>
   );

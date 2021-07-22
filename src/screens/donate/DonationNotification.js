@@ -15,22 +15,20 @@ import {
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
+import * as Icons from '../../config/icons';
 import CustomButton from '../../components/CustomButton';
-import LeftBlack from '../../assets/icons/app/left-black.png';
-import Comment from '../../assets/icons/app/comment.png';
-import Applaud from '../../assets/icons/app/applaud.png';
-import ProfileBeth from '../../assets/icons/content/profile-beth.png';
-import ProfileSarah from '../../assets/icons/content/profile-sarah.png';
-import ProfileYvonne from '../../assets/icons/content/profile-yvonne.png';
-import ProfileSusanna from '../../assets/icons/content/profile-susanna.png';
-import ProfileMatt from '../../assets/icons/content/profile-matt.png';
-import ProfileFiona from '../../assets/icons/content/profile-fiona.png';
-import ProfileKim from '../../assets/icons/content/profile-kim.png';
-import ProfileJoseph from '../../assets/icons/content/profile-joseph.png';
-import NotificationsImgOne from '../../assets/icons/content/notification-img-one.png';
-import NotificationsImgTwo from '../../assets/icons/content/notification-img-two.png';
-import NotificationsImgThree from '../../assets/icons/content/notification-img-three.png';
-import NotificationsImgFour from '../../assets/icons/content/notification-img-four.png';
+import ProfileBeth from '../../assets/dummyAssets/profile-beth.png';
+import ProfileSarah from '../../assets/dummyAssets/profile-sarah.png';
+import ProfileYvonne from '../../assets/dummyAssets/profile-yvonne.png';
+import ProfileSusanna from '../../assets/dummyAssets/profile-susanna.png';
+import ProfileMatt from '../../assets/dummyAssets/profile-matt.png';
+import ProfileFiona from '../../assets/dummyAssets/profile-fiona.png';
+import ProfileKim from '../../assets/dummyAssets/profile-kim.png';
+import ProfileJoseph from '../../assets/dummyAssets/profile-joseph.png';
+import NotificationsImgOne from '../../assets/dummyAssets/notification-img-one.png';
+import NotificationsImgTwo from '../../assets/dummyAssets/notification-img-two.png';
+import NotificationsImgThree from '../../assets/dummyAssets/notification-img-three.png';
+import NotificationsImgFour from '../../assets/dummyAssets/notification-img-four.png';
 
 const styles = StyleSheet.create({
   background: {
@@ -147,7 +145,7 @@ const DATA_THIS_WEEK = [
     avatarSecondary: ProfileJoseph,
     notificationImg: NotificationsImgTwo,
     action: 'apploud',
-    actionIcon: Applaud,
+    actionIcon: 'Applaud',
   },
   {
     name: 'Yvonne Chin',
@@ -156,7 +154,7 @@ const DATA_THIS_WEEK = [
     avatar: ProfileYvonne,
     notificationImg: NotificationsImgThree,
     action: 'apploud',
-    actionIcon: Applaud,
+    actionIcon: 'Applaud',
   },
   {
     name: 'Susanna Fontè',
@@ -188,7 +186,7 @@ const DATA_THIS_WEEK = [
     avatar: ProfileKim,
     notificationImg: NotificationsImgFour,
     action: 'comment',
-    actionIcon: Comment,
+    actionIcon: 'Comment',
   },
   {
     name: 'Joseph Gonzalez',
@@ -197,7 +195,7 @@ const DATA_THIS_WEEK = [
     avatar: ProfileJoseph,
     notificationImg: NotificationsImgFour,
     action: 'apploud',
-    actionIcon: Applaud,
+    actionIcon: 'Applaud',
   },
 ];
 
@@ -209,15 +207,15 @@ const renderItem = ({item, index}) => {
   const following = item.action === 'following';
 
   const ServeNotification = ({props}) => {
+    const SvgIcon = Icons[item.actionIcon];
+
     return (
       <ImageBackground
         source={item.notificationImg}
         style={styles.imgContainerBackground}>
         <View style={styles.imgWrapper}>
           {donate && <Text style={styles.msgCoins}>{item.coins}</Text>}
-          {!donate && (
-            <Image source={item.actionIcon} style={styles.actionIcon} />
-          )}
+          {!donate && <SvgIcon fill={Colors.white} />}
         </View>
       </ImageBackground>
     );
@@ -230,7 +228,7 @@ const renderItem = ({item, index}) => {
         style={{
           borderRadius: 6,
           minWidth: 80,
-          backgroundColor: following ? Colors.secondary : Colors.primary,
+          backgroundColor: following ? Colors.success : Colors.primary,
         }}
         shadow={{
           shadowColor: Colors.lightBlack,
@@ -299,7 +297,7 @@ const ServeNavigation = ({onPress}) => {
     <View>
       <View style={styles.navigationContainer}>
         <CustomButton
-          iconLeft={LeftBlack}
+          iconLeft="ChevronLeft"
           onPress={onPress}
           style={{backgroundColor: Colors.transparent}}
           iconStyling={{width: 12, height: 20}}

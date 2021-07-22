@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Background from '../../assets/images/home/home-exp-six-background.png';
-import ProfileIcon from '../../assets/icons/content/profile-sam.png';
+import ProfileIcon from '../../assets/dummyAssets/profile-sam.png';
 import HomeScreen from '../../components/HomeScreen';
 
 const HomeExpSix = () => {

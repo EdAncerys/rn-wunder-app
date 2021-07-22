@@ -7,7 +7,6 @@ import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
 import LicenceImage from '../../assets/images/onboardingOverSixteen/upload-passport.png';
-import RightArrow from '../../assets/icons/app/right-arrow-white.png';
 
 const styles = StyleSheet.create({
   contentContainer: {
@@ -68,9 +67,9 @@ const UploadPictureOfYourself = ({navigation, backPath}) => {
 
       <View style={styles.actionsContainer}>
         <CustomButton
-          iconLeft={RightArrow}
+          iconLeft="ArrowRight"
+          iconWidth={24}
           style={{paddingVertical: 10, paddingHorizontal: 24}}
-          iconStyling={{width: 24, height: 18}}
           onPress={() => navigation.navigate('Email')}
         />
       </View>

@@ -6,7 +6,6 @@ import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
-import EmailRed from '../../assets/icons/app/email-red.png';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -96,7 +95,9 @@ const MobileOTP = ({navigation}) => {
           </View>
           <CustomButton
             title="Use their email address"
-            iconRight={EmailRed}
+            iconLeft="Email"
+            iconWidth={22}
+            iconFill={Colors.primary}
             style={{backgroundColor: Colors.transparent}}
             titleStyling={{...Fonts.N_700_12, color: Colors.gray}}
             iconStyling={{width: 24, height: 17.6}}

@@ -1,10 +1,11 @@
 const Colors = {
   primary: '#FD1053',
   primaryDisabled: '#4E1E2C',
-  secondary: '#0CF29E',
+  secondary: 'rgba(255, 69, 112, 0.5)',
   planet: '#65D1E8',
   black: '#000000',
   lightBlack: '#222222',
+  success: '#0CF29E',
   gray: '#828282',
   silver: '#CECECE',
   lightSilver: '#BBBBBB',

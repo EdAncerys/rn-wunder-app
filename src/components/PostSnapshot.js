@@ -10,10 +10,8 @@ import {
 
 import Colors from '../config/colors';
 import Fonts from '../config/fonts';
+import {Verified} from '../config/icons';
 import CustomButton from '../components/CustomButton';
-import VerifiedBadge from '../assets/icons/app/verified-badge.png';
-import PeopleBadge from '../assets/icons/app/people-badge.png';
-import PlanetBadge from '../assets/icons/app/planet-badge.png';
 const {width} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
@@ -63,7 +61,7 @@ const ServeProfileInfo = ({props}) => {
       <Text style={styles.profile}>{props.profileName}</Text>
       {props.verified && (
         <View>
-          <Image source={VerifiedBadge} />
+          <Verified />
         </View>
       )}
     </View>
@@ -73,7 +71,7 @@ const ServePostTitle = ({props}) => {
   return <Text style={styles.title}>{props.title}</Text>;
 };
 const ServePost = ({props}) => {
-  const postTagIcon = props.postTag === 'planet' ? PlanetBadge : PeopleBadge;
+  const postTagIcon = props.postTag === 'planet' ? 'Planet' : 'People';
 
   return (
     <View style={styles.rowWrapper}>
