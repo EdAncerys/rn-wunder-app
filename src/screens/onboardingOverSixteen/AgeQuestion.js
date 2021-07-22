@@ -7,7 +7,6 @@ import Background from '../../assets/images/onboardingOverSixteen/age-question-b
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
 import Fonts from '../../config/fonts';
-import Icons from '../../config/icons';
 
 const styles = StyleSheet.create({
   titleContainer: {

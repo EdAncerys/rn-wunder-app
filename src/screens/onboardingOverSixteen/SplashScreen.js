@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  View,
-  StyleSheet,
-  ImageBackground,
-  Image,
-  StatusBar,
-} from 'react-native';
+import {View, StyleSheet, Image} from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -13,7 +7,7 @@ import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import Background from '../../assets/images/onboardingOverSixteen/splash-screen-background.png';
 import Logo from '../../assets/images/onboardingOverSixteen/splash-screen-logo.png';
-import Email from '../../assets/icons/app/email.svg';
+import {Applaud} from '../../config/icons';
 
 const styles = StyleSheet.create({
   logoContainer: {
@@ -44,6 +38,7 @@ const SplashScreen = ({navigation}) => {
           style={{backgroundColor: Colors.transparent}}
         />
       </View>
+      <Applaud />
     </ScreenWrapper>
   );
 };
