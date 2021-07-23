@@ -51,6 +51,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  verified: {
+    backgroundColor: Colors.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 100,
+    width: 15,
+    height: 15,
+  },
 });
 
 // SERVERS ---------------------------------------------------------
@@ -62,7 +70,7 @@ const ServeProfileInfo = ({props}) => {
       </View>
       <Text style={styles.profile}>{props.profileName}</Text>
       {props.verified && (
-        <View>
+        <View style={styles.verified}>
           <Verified width={20} height={20} fill={Colors.primary} />
         </View>
       )}
@@ -87,18 +95,22 @@ const ServePost = ({props}) => {
         </View>
       </TouchableOpacity>
       <View style={styles.badge}>
-        <View>
+        <View
+          style={{
+            backgroundColor: iconColor,
+            padding: 8.75,
+            borderRadius: 100,
+          }}>
           <CustomButton
             iconLeft={postTagIcon}
             iconFill={Colors.white}
-            iconWidth={28}
+            iconWidth={25}
+            iconHeight={25}
             iconStyling={styles.postTagIcon}
             style={{
-              backgroundColor: iconColor,
-              paddingHorizontal: 7,
-              borderRadius: 100,
+              backgroundColor: Colors.transparent,
             }}
-            onPress={() => alert('path')}
+            onPress={() => alert(postTagIcon)}
           />
         </View>
       </View>

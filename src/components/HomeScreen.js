@@ -86,7 +86,7 @@ const HomeScreen = ({
             <View style={styles.getInvolvedActions}>
               <CustomButton
                 title="get involved"
-                onPress={() => alert('path')}
+                onPress={() => alert('get involved')}
               />
             </View>
           )}
