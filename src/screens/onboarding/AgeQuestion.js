@@ -64,6 +64,12 @@ const AgeQuestion = ({navigation}) => {
     navigation.navigate('UploadIdentity');
   };
 
+  const handleAccountUnderSixteen = () => {
+    const tempData = {overSixteen: false};
+    tempDataStorage({dispatchAuth, dispatchApi, tempData});
+    navigation.navigate('Name');
+  };
+
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper image={Background} filter={Colors.screenFilter}>
@@ -96,7 +102,7 @@ const AgeQuestion = ({navigation}) => {
           }}>
           <CustomButton
             title="Under 16"
-            onPress={() => navigation.navigate('Name')}
+            onPress={() => handleAccountUnderSixteen()}
           />
         </View>
       </View>

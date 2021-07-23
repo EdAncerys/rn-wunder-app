@@ -57,11 +57,10 @@ const UploadLicenceFront = ({navigation}) => {
 
       <View style={styles.actionsContainer}>
         <CustomButton
-          iconLeft="Minus"
-          iconRight="ChevronRight"
+          iconLeft="ArrowRight"
+          iconWidth={24}
           style={{paddingVertical: 10, paddingHorizontal: 24}}
-          iconStyling={{width: 24, height: 18}}
-          onPress={() => navigation.navigate('UploadPictureOfYourselfUP')}
+          onPress={() => navigation.navigate('UploadPictureOfYourself')}
         />
       </View>
     </ScreenWrapper>

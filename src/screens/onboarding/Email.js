@@ -57,25 +57,32 @@ const styles = StyleSheet.create({
   },
 });
 
-const Email = ({navigation, backPath, continuePath}) => {
+const Email = ({navigation}) => {
   const dispatchAuth = useAuthDispatch();
   const dispatchApi = useApiDispatch();
   const {tempData} = useAuthState();
 
   const [email, setEmail] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
+  const [backPath, setBackPath] = React.useState(false);
 
   React.useEffect(() => {
     setBtnInactive(true);
     if (!!email) setBtnInactive(false);
   }, [email]);
 
+  React.useEffect(() => {
+    setBtnInactive(true);
+    console.log(tempData.overSixteen);
+    if (!tempData.overSixteen) setBackPath('Yay');
+  }, [tempData]);
+
   // HANDLERS ---------------------------------------------------------
   const handleContinue = data => {
     const tempData = {...data, ...{email: email}};
     tempDataStorage({dispatchAuth, dispatchApi, tempData});
     setEmail('');
-    navigation.navigate(continuePath || 'VerifyEmail');
+    navigation.navigate('VerifyEmail');
   };
 
   // RETURN ---------------------------------------------------------

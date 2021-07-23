@@ -60,7 +60,7 @@ const Yay = ({navigation}) => {
             iconFill={Colors.white}
             style={{paddingHorizontal: 24, paddingVertical: 10}}
             iconStyling={{width: 24, height: 18}}
-            onPress={() => navigation.navigate('EmailU16')}
+            onPress={() => navigation.navigate('Email')}
           />
         </View>
       </View>

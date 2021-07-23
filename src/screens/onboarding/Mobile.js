@@ -57,25 +57,31 @@ const styles = StyleSheet.create({
   },
 });
 
-const Mobile = ({navigation, backPath, continuePath}) => {
+const Mobile = ({navigation}) => {
   const dispatchAuth = useAuthDispatch();
   const dispatchApi = useApiDispatch();
   const {tempData} = useAuthState();
 
   const [mobile, setMobile] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
+  const [backPath, setBackPath] = React.useState(false);
 
   React.useEffect(() => {
     setBtnInactive(true);
     if (!!mobile) setBtnInactive(false);
   }, [mobile]);
 
+  React.useEffect(() => {
+    setBtnInactive(true);
+    if (!tempData.overSixteen) setBackPath('Yay');
+  }, [tempData]);
+
   // HANDLERS ---------------------------------------------------------
   const handleContinue = data => {
     const tempData = {...data, ...{mobile: mobile}};
     tempDataStorage({dispatchAuth, dispatchApi, tempData});
     setMobile('');
-    navigation.navigate(continuePath || 'VerifyMobile');
+    navigation.navigate('VerifyMobile');
   };
 
   // RETURN ---------------------------------------------------------
