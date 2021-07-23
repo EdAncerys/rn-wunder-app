@@ -59,8 +59,8 @@ const TabNavigator = ({navigation}) => {
         inactiveTintColor: Colors.lightBlack,
       }}>
       <Tab.Screen
-        name="Profile"
-        component={Profile}
+        name="Home"
+        component={Home}
         options={{
           tabBarLabel: 'home',
           tabBarIcon: ({color}) => <Home width={28} height={28} fill={color} />,
@@ -77,8 +77,8 @@ const TabNavigator = ({navigation}) => {
         }}
       />
       <Tab.Screen
-        name="Home"
-        component={Profile}
+        name="GetInvolved"
+        component={Home}
         options={{
           tabBarLabel: '',
           tabBarIcon: ({color}) => (

@@ -215,7 +215,7 @@ const renderItem = ({item, index}) => {
         style={styles.imgContainerBackground}>
         <View style={styles.imgWrapper}>
           {donate && <Text style={styles.msgCoins}>{item.coins}</Text>}
-          {!donate && <SvgIcon fill={Colors.white} />}
+          {!donate && <SvgIcon width={14} fill={Colors.white} />}
         </View>
       </ImageBackground>
     );
@@ -285,7 +285,7 @@ const renderItem = ({item, index}) => {
           <Text style={styles.notificationMsg}>{item.notificationMsg}</Text>
         </View>
         {notificationImg && <ServeNotification />}
-        {!notificationImg && <ServeFollow onPress={() => alert('path')} />}
+        {!notificationImg && <ServeFollow onPress={() => alert(item.action)} />}
       </TouchableOpacity>
       {placeDivider && <View style={styles.divider}></View>}
     </ScrollView>
@@ -298,9 +298,10 @@ const ServeNavigation = ({onPress}) => {
       <View style={styles.navigationContainer}>
         <CustomButton
           iconLeft="ChevronLeft"
+          iconWidth={12}
+          iconHeight={20}
           onPress={onPress}
           style={{backgroundColor: Colors.transparent}}
-          iconStyling={{width: 12, height: 20}}
         />
         <View style={styles.navigationTitleContainer}>
           <Text style={styles.navigationTitle}>Notifications</Text>
@@ -333,7 +334,7 @@ const DonationNotification = ({navigation}) => {
   return (
     <ScreenWrapper>
       <StatusBar hidden />
-      <ServeNavigation onPress={() => navigation.navigate('Home')} />
+      <ServeNavigation onPress={() => navigation.goBack()} />
       <ServeData data={dataMostRecent} title="most recent" />
       <ServeData data={dataThisWeek} title="this week" divider />
     </ScreenWrapper>

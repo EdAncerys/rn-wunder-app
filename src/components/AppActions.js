@@ -3,7 +3,6 @@ import {View, StyleSheet} from 'react-native';
 
 import Colors from '../config/colors';
 import CustomButton from '../components/CustomButton';
-import IconActions from './IconActions';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,30 +21,6 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
 });
-
-// const DATA = [
-//   {
-//     icon: 'Comment',
-//     count: 346,
-//     onPress: () => alert('comment'),
-//     iconFill: {Colors.white}
-//   },
-//   {
-//     icon: 'Apploud',
-//     count: 99,
-//     onPress: () => alert('apploud'),
-//   },
-//   {
-//     icon: 'Shoutout',
-//     count: 99,
-//     onPress: () => alert('shoutOut'),
-//   },
-//   {
-//     icon: 'Comment',
-//     count: 99,
-//     onPress: () => alert('comment'),
-//   },
-// ];
 
 const AppActions = () => {
   return (
