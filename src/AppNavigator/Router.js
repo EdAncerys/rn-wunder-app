@@ -4,7 +4,13 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import Colors from '../config/colors';
-import {Home, Search, Create, Projects, People} from '../config/icons';
+import {
+  Home as HomeIcon,
+  Search,
+  Create,
+  Projects,
+  People,
+} from '../config/icons';
 
 import SplashScreen from '../screens/onboardingOverSixteen/SplashScreen';
 import Visual from '../screens/onboardingOverSixteen/Visual';
@@ -37,7 +43,7 @@ import VerifyU16Mobile from '../screens/onboardingUnderSixteen/VerifyU16Mobile';
 import UsernameU16 from '../screens/onboardingUnderSixteen/UsernameU16';
 import LocationU16 from '../screens/onboardingUnderSixteen/LocationU16';
 import Profile from '../screens/profile/Profile';
-import HomeScreen from '../screens/home/Home';
+import Home from '../screens/home/Home';
 import DonationNotification from '../screens/donate/DonationNotification';
 
 const Tab = createBottomTabNavigator();
@@ -63,7 +69,9 @@ const TabNavigator = ({navigation}) => {
         component={Home}
         options={{
           tabBarLabel: 'home',
-          tabBarIcon: ({color}) => <Home width={28} height={28} fill={color} />,
+          tabBarIcon: ({color}) => (
+            <HomeIcon width={28} height={28} fill={color} />
+          ),
         }}
       />
       <Tab.Screen
@@ -172,13 +180,8 @@ const Router = ({navigation}) => {
         options={{headerShown: false}}
       /> */}
       <Stack.Screen
-        name="Profile"
+        name="TabNavigator"
         component={TabNavigator}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Home"
-        component={HomeScreen}
         options={{headerShown: false}}
       />
       <Stack.Screen

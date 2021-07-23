@@ -3,7 +3,6 @@ import {
   View,
   Text,
   StyleSheet,
-  ImageBackground,
   TouchableOpacity,
   Dimensions,
 } from 'react-native';
@@ -14,10 +13,8 @@ import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import ProfileActions from '../../components/ProfileActions';
 import DonateActions from '../../components/DonateActions';
-import AppNavigateActions from '../../components/AppNavigateActions';
 
 import Background from '../../assets/images/profile/profile-background.png';
-import Footer from '../../assets/images/profile/profile-footer.png';
 import ProfileIcon from '../../assets/dummyAssets/profile-beth.png';
 const {width, height} = Dimensions.get('screen');
 
@@ -106,18 +103,6 @@ const Profile = ({navigation}) => {
     );
   };
 
-  const ServeAppNavigate = ({navigation}) => {
-    return (
-      <View style={styles.appNavigateContainer}>
-        <ImageBackground source={Footer} style={styles.backgroundImg}>
-          <View style={{marginHorizontal: '5%'}}>
-            <AppNavigateActions navigation={navigation} />
-          </View>
-        </ImageBackground>
-      </View>
-    );
-  };
-
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper
@@ -172,7 +157,6 @@ const Profile = ({navigation}) => {
             </View>
           </View>
         </View>
-        <ServeAppNavigate navigation={navigation} />
       </View>
     </ScreenWrapper>
   );

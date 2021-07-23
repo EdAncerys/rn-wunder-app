@@ -80,7 +80,6 @@ const DonateActions = ({navigation, profile}) => {
             iconWidth={18.5}
             iconHeight={20}
             iconFill={Colors.white}
-            iconStyling={styles.icon}
             onPress={() => navigation.navigate('DonationNotification')}
           />
         </View>
@@ -96,7 +95,6 @@ const DonateActions = ({navigation, profile}) => {
             iconWidth={20}
             iconHeight={20}
             iconFill={Colors.white}
-            iconStyling={styles.icon}
             onPress={() => setDonateAction(!donateAction)}
           />
         </View>

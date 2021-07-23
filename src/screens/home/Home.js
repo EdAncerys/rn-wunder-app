@@ -61,7 +61,6 @@ const DATA = [
     postTag: 'planet',
     getInvolved: false,
     donateActions: true,
-    navigateActions: false,
   },
   {
     background: BackgroundExpTwo,
@@ -73,7 +72,6 @@ const DATA = [
     postTag: false,
     getInvolved: false,
     donateActions: false,
-    navigateActions: true,
   },
   {
     background: BackgroundExpThree,
@@ -85,7 +83,6 @@ const DATA = [
     postTag: 'planet',
     getInvolved: true,
     donateActions: false,
-    navigateActions: false,
   },
   {
     background: BackgroundExpFour,
@@ -97,7 +94,6 @@ const DATA = [
     postTag: 'planet',
     getInvolved: false,
     donateActions: false,
-    navigateActions: false,
   },
   {
     background: BackgroundExpFive,
@@ -109,7 +105,6 @@ const DATA = [
     postTag: 'planet',
     getInvolved: true,
     donateActions: false,
-    navigateActions: false,
   },
   {
     background: BackgroundExpSix,
@@ -121,7 +116,6 @@ const DATA = [
     postTag: 'planet',
     getInvolved: false,
     donateActions: false,
-    navigateActions: false,
   },
   {
     background: BackgroundExpSeven,
@@ -145,7 +139,6 @@ const DATA = [
     postTag: false,
     getInvolved: false,
     donateActions: false,
-    navigateActions: false,
   },
   {
     background: BackgroundExpNine,
@@ -157,7 +150,6 @@ const DATA = [
     postTag: false,
     getInvolved: false,
     donateActions: false,
-    navigateActions: false,
   },
 ];
 
@@ -211,7 +203,7 @@ const Home = ({navigation}) => {
     const inputRange = [index - 1, index, index + 1];
     const translateY = scrollYAnimated.interpolate({
       inputRange,
-      outputRange: [ITEM_HEIGHT - ITEM_WIDTH / 2.6, 0, 0],
+      outputRange: [ITEM_HEIGHT - ITEM_WIDTH / 2.3, 0, 0],
     });
     const scale = scrollYAnimated.interpolate({
       inputRange,

@@ -7,7 +7,6 @@ import CustomButton from './CustomButton';
 import PostSnapshot from './PostSnapshot';
 import AppActions from './AppActions';
 import DonateActions from './DonateActions';
-import AppNavigateActions from './AppNavigateActions';
 
 const styles = StyleSheet.create({
   container: {
@@ -34,6 +33,9 @@ const styles = StyleSheet.create({
     flex: 3,
     justifyContent: 'flex-start',
   },
+  getInvolvedActions: {
+    marginVertical: 5,
+  },
 });
 
 const HomeScreen = ({
@@ -47,27 +49,16 @@ const HomeScreen = ({
   postTag,
   getInvolved,
   donateActions,
-  navigateActions,
 }) => {
   const applyMarginPost = getInvolved
-    ? {marginBottom: '50%'}
-    : {marginBottom: '25%'};
-  const applyMarginAppActions =
-    donateActions || navigateActions ? {marginTop: '0%'} : {marginTop: '40%'};
+    ? {marginBottom: '30%'}
+    : {marginBottom: '5%'};
 
   // SERVERS ---------------------------------------------------------
   const ServeDonate = ({navigation}) => {
     return (
       <View style={styles.donateContainer}>
         <DonateActions navigation={navigation} />
-      </View>
-    );
-  };
-
-  const ServeAppNavigate = ({navigation}) => {
-    return (
-      <View style={styles.appNavigateContainer}>
-        <AppNavigateActions navigation={navigation} />
       </View>
     );
   };
@@ -79,9 +70,8 @@ const HomeScreen = ({
       gradient={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}>
       <View style={styles.wrapper}>
         {donateActions && <ServeDonate navigation={navigation} />}
-        {navigateActions && <ServeAppNavigate navigation={navigation} />}
-        <View style={{...styles.appActions, ...applyMarginAppActions}}>
-          <AppActions />
+        <View style={{...styles.appActions}}>
+          <AppActions Commend Applaud Shoutout Comment />
         </View>
         <View style={{...styles.postContainer, ...applyMarginPost}}>
           <PostSnapshot
@@ -93,7 +83,12 @@ const HomeScreen = ({
             postTag={postTag}
           />
           {getInvolved && (
-            <CustomButton title="get involved" onPress={() => alert('path')} />
+            <View style={styles.getInvolvedActions}>
+              <CustomButton
+                title="get involved"
+                onPress={() => alert('path')}
+              />
+            </View>
           )}
         </View>
       </View>

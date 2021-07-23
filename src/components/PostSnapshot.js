@@ -48,6 +48,8 @@ const styles = StyleSheet.create({
   },
   badge: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
@@ -61,7 +63,7 @@ const ServeProfileInfo = ({props}) => {
       <Text style={styles.profile}>{props.profileName}</Text>
       {props.verified && (
         <View>
-          <Verified />
+          <Verified width={20} height={20} fill={Colors.primary} />
         </View>
       )}
     </View>
@@ -72,6 +74,7 @@ const ServePostTitle = ({props}) => {
 };
 const ServePost = ({props}) => {
   const postTagIcon = props.postTag === 'planet' ? 'Planet' : 'People';
+  const iconColor = props.postTag === 'planet' ? Colors.planet : Colors.primary;
 
   return (
     <View style={styles.rowWrapper}>
@@ -84,12 +87,20 @@ const ServePost = ({props}) => {
         </View>
       </TouchableOpacity>
       <View style={styles.badge}>
-        <CustomButton
-          iconLeft={postTagIcon}
-          iconStyling={styles.postTagIcon}
-          style={{backgroundColor: Colors.transparent}}
-          onPress={() => alert('path')}
-        />
+        <View>
+          <CustomButton
+            iconLeft={postTagIcon}
+            iconFill={Colors.white}
+            iconWidth={28}
+            iconStyling={styles.postTagIcon}
+            style={{
+              backgroundColor: iconColor,
+              paddingHorizontal: 7,
+              borderRadius: 100,
+            }}
+            onPress={() => alert('path')}
+          />
+        </View>
       </View>
     </View>
   );
