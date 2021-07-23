@@ -1,5 +1,11 @@
 import * as React from 'react';
 import {View, Text, StyleSheet, TextInput} from 'react-native';
+import {
+  useAuthDispatch,
+  useAuthState,
+  tempDataStorage,
+} from '../../context/auth';
+import {useApiDispatch} from '../../context/api';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -51,19 +57,25 @@ const styles = StyleSheet.create({
   },
 });
 
-const Username = ({navigation, backPath, continuePath}) => {
-  const [username, setUsername] = React.useState('');
+const Email = ({navigation, backPath, continuePath}) => {
+  const dispatchAuth = useAuthDispatch();
+  const dispatchApi = useApiDispatch();
+  const {tempData} = useAuthState();
+
+  const [email, setEmail] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
 
   React.useEffect(() => {
     setBtnInactive(true);
-    if (!!username) setBtnInactive(false);
-  }, [username]);
+    if (!!email) setBtnInactive(false);
+  }, [email]);
 
   // HANDLERS ---------------------------------------------------------
-  const handleContinue = () => {
-    navigation.navigate(continuePath || 'Location');
-    setUsername('');
+  const handleContinue = data => {
+    const tempData = {...data, ...{email: email}};
+    tempDataStorage({dispatchAuth, dispatchApi, tempData});
+    setEmail('');
+    navigation.navigate(continuePath || 'VerifyEmail');
   };
 
   // RETURN ---------------------------------------------------------
@@ -72,31 +84,42 @@ const Username = ({navigation, backPath, continuePath}) => {
       <View style={styles.wrapper}>
         <View style={styles.navigateActionContainer}>
           <NavigateAction
-            title="Step 6 of 7"
-            onPress={() => navigation.navigate(backPath || 'VerifyEmail')}
+            title="Step 4 of 7"
+            onPress={() =>
+              navigation.navigate(backPath || 'UploadPictureOfYourself')
+            }
           />
         </View>
         <View style={styles.formContainer}>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>Create your username</Text>
+            <Text style={styles.title}>What’s your email address?</Text>
           </View>
           <View style={styles.inputWrapper}>
             <TextInput
-              placeholder="Username"
+              placeholder="Email address"
               placeholderTextColor={Colors.lightSilver}
-              onChangeText={setUsername}
+              onChangeText={setEmail}
               autoCapitalize="none"
-              value={username}
+              keyboardType="email-address"
+              value={email}
               style={styles.inputContainer}
             />
           </View>
+          <CustomButton
+            title="Use your mobile number"
+            iconLeft="Handset"
+            iconFill={Colors.primary}
+            style={{backgroundColor: Colors.transparent}}
+            titleStyling={{...Fonts.N_700_12, color: Colors.gray}}
+            onPress={() => navigation.navigate('Mobile')}
+          />
         </View>
         <View style={styles.actionsContainer}>
           <View style={styles.actionsWrapper}>
             <CustomButton
               title="Continue"
               inactive={btnInactive}
-              onPress={() => handleContinue()}
+              onPress={() => handleContinue((data = tempData))}
             />
           </View>
         </View>
@@ -105,4 +128,4 @@ const Username = ({navigation, backPath, continuePath}) => {
   );
 };
 
-export default Username;
+export default Email;

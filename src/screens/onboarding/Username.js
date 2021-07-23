@@ -1,7 +1,5 @@
 import * as React from 'react';
 import {View, Text, StyleSheet, TextInput} from 'react-native';
-import {useAuthDispatch, tempDataStorage} from '../../context/auth';
-import {useApiDispatch} from '../../context/api';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -53,24 +51,19 @@ const styles = StyleSheet.create({
   },
 });
 
-const Email = ({navigation, backPath, continuePath}) => {
-  const dispatchAuth = useAuthDispatch();
-  const dispatchApi = useApiDispatch();
-
-  const [email, setEmail] = React.useState('');
+const Username = ({navigation}) => {
+  const [username, setUsername] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
 
   React.useEffect(() => {
     setBtnInactive(true);
-    if (!!email) setBtnInactive(false);
-  }, [email]);
+    if (!!username) setBtnInactive(false);
+  }, [username]);
 
   // HANDLERS ---------------------------------------------------------
   const handleContinue = () => {
-    const tempData = {email: email};
-    tempDataStorage({dispatchAuth, dispatchApi, tempData});
-    setEmail('');
-    navigation.navigate(continuePath || 'VerifyEmail');
+    navigation.navigate('Location');
+    setUsername('');
   };
 
   // RETURN ---------------------------------------------------------
@@ -79,35 +72,24 @@ const Email = ({navigation, backPath, continuePath}) => {
       <View style={styles.wrapper}>
         <View style={styles.navigateActionContainer}>
           <NavigateAction
-            title="Step 4 of 7"
-            onPress={() =>
-              navigation.navigate(backPath || 'UploadPictureOfYourself')
-            }
+            title="Step 6 of 7"
+            onPress={() => navigation.goBack()}
           />
         </View>
         <View style={styles.formContainer}>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>What’s your email address?</Text>
+            <Text style={styles.title}>Create your username</Text>
           </View>
           <View style={styles.inputWrapper}>
             <TextInput
-              placeholder="Email address"
+              placeholder="Username"
               placeholderTextColor={Colors.lightSilver}
-              onChangeText={setEmail}
+              onChangeText={setUsername}
               autoCapitalize="none"
-              keyboardType="email-address"
-              value={email}
+              value={username}
               style={styles.inputContainer}
             />
           </View>
-          <CustomButton
-            title="Use your mobile number"
-            iconLeft="Handset"
-            iconFill={Colors.primary}
-            style={{backgroundColor: Colors.transparent}}
-            titleStyling={{...Fonts.N_700_12, color: Colors.gray}}
-            onPress={() => navigation.navigate('Mobile')}
-          />
         </View>
         <View style={styles.actionsContainer}>
           <View style={styles.actionsWrapper}>
@@ -123,4 +105,4 @@ const Email = ({navigation, backPath, continuePath}) => {
   );
 };
 
-export default Email;
+export default Username;

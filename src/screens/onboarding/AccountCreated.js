@@ -69,7 +69,9 @@ const AccountCreated = ({navigation}) => {
             iconLeft="ArrowRight"
             iconWidth={24}
             style={{paddingVertical: 10, paddingHorizontal: 24}}
-            onPress={() => navigation.navigate('Profile')}
+            onPress={() =>
+              navigation.navigate('TabNavigator', {screen: 'Home'})
+            }
           />
         </View>
       </View>

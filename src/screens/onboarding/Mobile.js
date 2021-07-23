@@ -1,6 +1,10 @@
 import * as React from 'react';
 import {View, Text, StyleSheet, TextInput} from 'react-native';
-import {useAuthDispatch, tempDataStorage} from '../../context/auth';
+import {
+  useAuthDispatch,
+  useAuthState,
+  tempDataStorage,
+} from '../../context/auth';
 import {useApiDispatch} from '../../context/api';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
@@ -56,6 +60,7 @@ const styles = StyleSheet.create({
 const Mobile = ({navigation, backPath, continuePath}) => {
   const dispatchAuth = useAuthDispatch();
   const dispatchApi = useApiDispatch();
+  const {tempData} = useAuthState();
 
   const [mobile, setMobile] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
@@ -66,8 +71,8 @@ const Mobile = ({navigation, backPath, continuePath}) => {
   }, [mobile]);
 
   // HANDLERS ---------------------------------------------------------
-  const handleContinue = () => {
-    const tempData = {mobile: mobile};
+  const handleContinue = data => {
+    const tempData = {...data, ...{mobile: mobile}};
     tempDataStorage({dispatchAuth, dispatchApi, tempData});
     setMobile('');
     navigation.navigate(continuePath || 'VerifyMobile');
@@ -116,7 +121,7 @@ const Mobile = ({navigation, backPath, continuePath}) => {
             <CustomButton
               title="Continue"
               inactive={btnInactive}
-              onPress={() => handleContinue()}
+              onPress={() => handleContinue((data = tempData))}
             />
           </View>
         </View>

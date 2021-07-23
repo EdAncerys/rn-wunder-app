@@ -12,36 +12,29 @@ import {
   People,
 } from '../config/icons';
 
-import SplashScreen from '../screens/onboardingOverSixteen/SplashScreen';
-import Visual from '../screens/onboardingOverSixteen/Visual';
-import CreateAccountScreen from '../screens/onboardingOverSixteen/CreateAccountScreen';
-import AgeQuestion from '../screens/onboardingOverSixteen/AgeQuestion';
-import Login from '../screens/onboardingOverSixteen/Login';
+import SplashScreen from '../screens/onboarding/SplashScreen';
+import Visual from '../screens/onboarding/Visual';
+import CreateAccountScreen from '../screens/onboarding/CreateAccountScreen';
+import AgeQuestion from '../screens/onboarding/AgeQuestion';
+import Login from '../screens/onboarding/Login';
 import UploadIdentity from '../screens/onboardingOverSixteen/UploadIdentity';
 import UploadLicenceFront from '../screens/onboardingOverSixteen/UploadLicenceFront';
 import UploadLicenceBack from '../screens/onboardingOverSixteen/UploadLicenceBack';
 import UploadPassport from '../screens/onboardingOverSixteen/UploadPassport';
-import UploadPictureOfYourselfUP from '../screens/onboardingOverSixteen/UploadPictureOfYourselfUP';
 import UploadPictureOfYourself from '../screens/onboardingOverSixteen/UploadPictureOfYourself';
-import Email from '../screens/onboardingOverSixteen/Email';
-import VerifyEmail from '../screens/onboardingOverSixteen/VerifyEmail';
-import Mobile from '../screens/onboardingOverSixteen/Mobile';
-import VerifyMobile from '../screens/onboardingOverSixteen/VerifyMobile';
-import Username from '../screens/onboardingOverSixteen/Username';
-import Location from '../screens/onboardingOverSixteen/Location';
-import AccountCreated from '../screens/onboardingOverSixteen/AccountCreated';
-import Interests from '../screens/onboardingOverSixteen/Interests';
+import Email from '../screens/onboarding/Email';
+import VerifyEmail from '../screens/onboarding/VerifyEmail';
+import Mobile from '../screens/onboarding/Mobile';
+import VerifyMobile from '../screens/onboarding/VerifyMobile';
+import Username from '../screens/onboarding/Username';
+import Location from '../screens/onboarding/Location';
+import AccountCreated from '../screens/onboarding/AccountCreated';
+import Interests from '../screens/onboarding/Interests';
 import Name from '../screens/onboardingUnderSixteen/Name';
 import MobileOTP from '../screens/onboardingUnderSixteen/MobileOTP';
 import EmailOTP from '../screens/onboardingUnderSixteen/EmailOTP';
 import VerifyOTPU16 from '../screens/onboardingUnderSixteen/VerifyOTPU16';
 import Yay from '../screens/onboardingUnderSixteen/Yay';
-import EmailU16 from '../screens/onboardingUnderSixteen/EmailU16';
-import VerifyU16Email from '../screens/onboardingUnderSixteen/VerifyU16Email';
-import MobileU16 from '../screens/onboardingUnderSixteen/MobileU16';
-import VerifyU16Mobile from '../screens/onboardingUnderSixteen/VerifyU16Mobile';
-import UsernameU16 from '../screens/onboardingUnderSixteen/UsernameU16';
-import LocationU16 from '../screens/onboardingUnderSixteen/LocationU16';
 import Profile from '../screens/profile/Profile';
 import Home from '../screens/home/Home';
 import DonationNotification from '../screens/donate/DonationNotification';
@@ -76,7 +69,7 @@ const TabNavigator = ({navigation}) => {
       />
       <Tab.Screen
         name="Search"
-        component={Profile}
+        component={Home}
         options={{
           tabBarLabel: 'search',
           tabBarIcon: ({color}) => (
@@ -98,7 +91,7 @@ const TabNavigator = ({navigation}) => {
       />
       <Tab.Screen
         name="Projects"
-        component={Profile}
+        component={Home}
         options={{
           tabBarLabel: 'projects',
           tabBarIcon: ({color}) => (
@@ -124,7 +117,7 @@ const Stack = createStackNavigator();
 const Router = ({navigation}) => {
   return (
     <Stack.Navigator initialRouteName="SplashScreen">
-      {/* <Stack.Screen
+      <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}
         options={{headerShown: false}}
@@ -165,11 +158,6 @@ const Router = ({navigation}) => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="UploadPictureOfYourselfUP"
-        component={UploadPictureOfYourselfUP}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
         name="UploadPassport"
         component={UploadPassport}
         options={{headerShown: false}}
@@ -178,7 +166,7 @@ const Router = ({navigation}) => {
         name="Login"
         component={Login}
         options={{headerShown: false}}
-      /> */}
+      />
       <Stack.Screen
         name="TabNavigator"
         component={TabNavigator}
@@ -210,36 +198,6 @@ const Router = ({navigation}) => {
         options={{headerShown: false}}
       />
       <Stack.Screen name="Yay" component={Yay} options={{headerShown: false}} />
-      <Stack.Screen
-        name="EmailU16"
-        component={EmailU16}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="VerifyU16Email"
-        component={VerifyU16Email}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="MobileU16"
-        component={MobileU16}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="VerifyU16Mobile"
-        component={VerifyU16Mobile}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="UsernameU16"
-        component={UsernameU16}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="LocationU16"
-        component={LocationU16}
-        options={{headerShown: false}}
-      />
       <Stack.Screen
         name="Email"
         component={Email}

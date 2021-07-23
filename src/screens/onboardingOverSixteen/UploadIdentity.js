@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, StatusBar} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
+import {useAuthState} from '../../context/auth';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -62,6 +63,9 @@ const styles = StyleSheet.create({
 });
 
 const UploadIdentity = ({navigation}) => {
+  const {tempData} = useAuthState();
+  console.log(tempData);
+
   return (
     <ScreenWrapper filter={Colors.lightBlack}>
       <View style={styles.navigateActionContainer}>

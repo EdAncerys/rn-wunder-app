@@ -1,5 +1,7 @@
 import * as React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {useAuthDispatch, tempDataStorage} from '../../context/auth';
+import {useApiDispatch} from '../../context/api';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -52,6 +54,17 @@ const styles = StyleSheet.create({
 });
 
 const AgeQuestion = ({navigation}) => {
+  const dispatchAuth = useAuthDispatch();
+  const dispatchApi = useApiDispatch();
+
+  // HANDLERS ---------------------------------------------------------
+  const handleAccountOverSixteen = () => {
+    const tempData = {overSixteen: true};
+    tempDataStorage({dispatchAuth, dispatchApi, tempData});
+    navigation.navigate('UploadIdentity');
+  };
+
+  // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper image={Background} filter={Colors.screenFilter}>
       <View style={styles.navigateActionContainer}>
@@ -68,7 +81,7 @@ const AgeQuestion = ({navigation}) => {
         <View style={styles.overSixteenContainer}>
           <CustomButton
             title="Over 16"
-            onPress={() => navigation.navigate('UploadIdentity')}
+            onPress={() => handleAccountOverSixteen()}
           />
         </View>
         <View style={styles.dividerContainer}>
