@@ -108,8 +108,11 @@ const UploadLicenceFront = ({navigation}) => {
         includeBase64: false,
       },
       response => {
-        const image = response.assets[0];
-        setImage({uri: image.uri});
+        console.log(response);
+        const responseObj = response.assets || null;
+        if (!responseObj) return;
+        const image = responseObj[0];
+        setImage(image);
         setUploadOptions(false);
       },
     );
