@@ -8,6 +8,7 @@ import {
   KeyboardAvoidingView,
   SafeAreaView,
   ImageBackground,
+  ScrollView,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -60,7 +61,14 @@ const ServeScreenView = ({props}) => {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={{flex: 1, backgroundColor: screenFilter}}>
             {!props.statusBar && <StatusBar hidden />}
-            <SafeAreaView style={styles.wrapper}>{props.children}</SafeAreaView>
+            <SafeAreaView style={styles.wrapper}>
+              <ScrollView
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={{flexGrow: 1}}>
+                {props.children}
+              </ScrollView>
+            </SafeAreaView>
           </View>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
