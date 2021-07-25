@@ -10,20 +10,18 @@ import NavigateAction from '../../components/NavigateAction';
 import LicenceImage from '../../assets/images/onboardingOverSixteen/upload-licence.png';
 
 const styles = StyleSheet.create({
+  contentContainer: {
+    flex: 4,
+  },
   wrapper: {
     flex: 1,
     marginHorizontal: '5%',
   },
-  contentContainer: {
-    flex: 4,
-  },
   actionsContainer: {
-    flex: 1.5,
-    justifyContent: 'center',
-  },
-  imageContainer: {
-    marginVertical: '8%',
-    alignItems: 'center',
+    position: 'absolute',
+    width: '100%',
+    bottom: 0,
+    marginBottom: '5%',
   },
   image: {
     width: 280,
@@ -31,6 +29,10 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     overflow: 'hidden',
     resizeMode: 'cover',
+  },
+  imageContainer: {
+    marginVertical: '8%',
+    alignItems: 'center',
   },
   title: {
     ...Fonts.N_700_16,
@@ -48,7 +50,7 @@ const UploadLicenceFront = ({navigation}) => {
   const [image, setImage] = React.useState(false);
   const [uploadOptions, setUploadOptions] = React.useState(false);
   console.log(image);
-  const imgFile = image || LicenceImage;
+  const renderImg = image || LicenceImage;
 
   // SERVERS ---------------------------------------------------------
   const ServeActions = ({props}) => {
@@ -124,7 +126,7 @@ const UploadLicenceFront = ({navigation}) => {
             Upload a clear picture of the front of your licence
           </Text>
           <View style={styles.imageContainer}>
-            <Image source={imgFile} resizeMode="cover" style={styles.image} />
+            <Image source={renderImg} resizeMode="cover" style={styles.image} />
           </View>
         </View>
 
