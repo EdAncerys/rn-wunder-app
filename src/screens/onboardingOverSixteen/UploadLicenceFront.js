@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import {openCamera, openGallery} from '../../config/deviceCamera';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -65,7 +65,7 @@ const UploadLicenceFront = ({navigation}) => {
             borderBottomWidth: 1,
             borderColor: Colors.lightSilver,
           }}
-          onPress={openCamera}
+          onPress={handleCamera}
         />
         <CustomButton
           title="Photo & Video Gallery"
@@ -76,7 +76,7 @@ const UploadLicenceFront = ({navigation}) => {
             borderBottomLeftRadius: 10,
             borderBottomRightRadius: 10,
           }}
-          onPress={openGallery}
+          onPress={handleGallery}
         />
         <CustomButton
           title="Cancel"
@@ -95,35 +95,17 @@ const UploadLicenceFront = ({navigation}) => {
       return;
     }
     navigation.navigate('UploadLicenceBack');
-    setImage('');
+    setImage(null);
   };
 
-  const openGallery = () => {
-    launchImageLibrary(
-      {
-        mediaType: 'photo',
-        maxWidth: 300,
-        maxHeight: 300,
-        quality: 0.7,
-        includeBase64: false,
-      },
-      response => {
-        console.log(response);
-        const responseObj = response.assets || null;
-        if (!responseObj) return;
-        const image = responseObj[0];
-        setImage(image);
-        setUploadOptions(false);
-      },
-    );
+  const handleGallery = () => {
+    openGallery(setImage);
+    setUploadOptions(false);
   };
-  const openCamera = () => {
-    launchCamera(
-      {saveToPhotos: true, mediaType: 'photo', includeBase64: false},
-      response => {
-        console.log(response);
-      },
-    );
+
+  const handleCamera = () => {
+    openCamera(setImage);
+    setUploadOptions(false);
   };
 
   // RETURN ---------------------------------------------------------
