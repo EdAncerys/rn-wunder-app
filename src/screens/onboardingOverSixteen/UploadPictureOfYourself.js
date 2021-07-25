@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
+import {openCamera, openGallery} from '../../config/deviceCamera';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -13,10 +14,22 @@ const styles = StyleSheet.create({
     flex: 4,
     alignItems: 'center',
   },
-  actionsContainer: {
+  wrapper: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginHorizontal: '5%',
+  },
+  actionsContainer: {
+    position: 'absolute',
+    width: '100%',
+    bottom: 0,
+    marginBottom: '5%',
+  },
+  image: {
+    width: 280,
+    height: 360,
+    borderRadius: 12,
+    overflow: 'hidden',
+    resizeMode: 'cover',
   },
   imageContainer: {
     marginVertical: '8%',
@@ -43,35 +56,107 @@ const styles = StyleSheet.create({
 });
 
 const UploadPictureOfYourself = ({navigation}) => {
+  const [image, setImage] = React.useState(false);
+  const [uploadOptions, setUploadOptions] = React.useState(false);
+  console.log(image);
+  const renderImg = image || LicenceImage;
+
+  // SERVERS ---------------------------------------------------------
+  const ServeActions = ({props}) => {
+    return (
+      <View>
+        <CustomButton
+          title="Camera"
+          titleStyling={{...Fonts.N_400_20, color: Colors.lightBlue}}
+          style={{
+            backgroundColor: Colors.transparentMatWhite,
+            borderRadius: 0,
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
+            borderBottomWidth: 1,
+            borderColor: Colors.lightSilver,
+          }}
+          onPress={handleCamera}
+        />
+        <CustomButton
+          title="Photo & Video Gallery"
+          titleStyling={{...Fonts.N_400_20, color: Colors.lightBlue}}
+          style={{
+            backgroundColor: Colors.transparentMatWhite,
+            borderRadius: 0,
+            borderBottomLeftRadius: 10,
+            borderBottomRightRadius: 10,
+          }}
+          onPress={handleGallery}
+        />
+        <CustomButton
+          title="Cancel"
+          titleStyling={{...Fonts.N_400_20, color: Colors.lightBlue}}
+          style={{backgroundColor: Colors.white, marginVertical: 10}}
+          onPress={() => setUploadOptions(false)}
+        />
+      </View>
+    );
+  };
+
+  // HANDLERS ---------------------------------------------------------
+  const handleContinue = () => {
+    if (!image) {
+      setUploadOptions(true);
+      return;
+    }
+    navigation.navigate('Email');
+    setImage(null);
+  };
+
+  const handleGallery = () => {
+    openGallery(setImage);
+    setUploadOptions(false);
+  };
+
+  const handleCamera = () => {
+    openCamera(setImage);
+    setUploadOptions(false);
+  };
+
+  // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper filter={Colors.lightBlack}>
-      <View style={styles.navigateActionContainer}>
-        <NavigateAction
-          title="Step 3 of 7"
-          onPress={() => navigation.goBack()}
-        />
-      </View>
-
-      <View style={styles.contentContainer}>
-        <Text style={styles.title}>
-          Upload a picture of yourself holding up your licence
-        </Text>
-        <View style={styles.imageContainer}>
-          <Image source={LicenceImage} />
+      <View style={styles.wrapper}>
+        <View style={styles.navigateActionContainer}>
+          <NavigateAction
+            title="Step 3 of 7"
+            onPress={() => navigation.goBack()}
+          />
         </View>
-        <Text style={styles.msg}>
-          Ensure your ID doesn’t cover any part of your face the picture is
-          clear
-        </Text>
-      </View>
 
-      <View style={styles.actionsContainer}>
-        <CustomButton
-          iconLeft="ArrowRight"
-          iconWidth={24}
-          style={{paddingVertical: 10, paddingHorizontal: 24}}
-          onPress={() => navigation.navigate('Email')}
-        />
+        <View style={styles.contentContainer}>
+          <Text style={styles.title}>
+            Upload a picture of yourself holding up your licence
+          </Text>
+          <View style={styles.imageContainer}>
+            <Image source={renderImg} resizeMode="cover" style={styles.image} />
+          </View>
+          <Text style={styles.msg}>
+            Ensure your ID doesn’t cover any part of your face the picture is
+            clear
+          </Text>
+        </View>
+
+        <View style={styles.actionsContainer}>
+          {!uploadOptions && (
+            <View style={{alignItems: 'center'}}>
+              <CustomButton
+                iconLeft="ArrowRight"
+                iconWidth={24}
+                iconFill={Colors.white}
+                style={{paddingVertical: 10, paddingHorizontal: 24}}
+                onPress={handleContinue}
+              />
+            </View>
+          )}
+          {uploadOptions && <ServeActions />}
+        </View>
       </View>
     </ScreenWrapper>
   );
