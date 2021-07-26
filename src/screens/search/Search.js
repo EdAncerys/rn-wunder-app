@@ -21,7 +21,7 @@ import {
   People,
   Hash,
 } from '../../config/icons';
-import {searchPageData} from '../../config/data';
+import {SEARCH_PAGE_DATA} from '../../config/data';
 
 const {height, width} = Dimensions.get('window');
 
@@ -117,6 +117,8 @@ const ServePlanetIcon = () => {
 };
 
 const Search = ({navigation}) => {
+  const [data, setData] = React.useState(SEARCH_PAGE_DATA);
+
   const renderFlatListItem = ({item, index}) => (
     <TouchableOpacity
       style={{flexDirection: 'row'}}
@@ -152,7 +154,7 @@ const Search = ({navigation}) => {
   );
 
   const renderItems = () => {
-    const items = searchPageData.map(item => {
+    const items = data.map(item => {
       const {title, total, images} = item;
 
       return (
