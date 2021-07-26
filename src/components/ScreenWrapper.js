@@ -33,6 +33,20 @@ const styles = StyleSheet.create({
 });
 
 // SERVERS ---------------------------------------------------------
+const ServeScrollView = ({props}) => {
+  let screen = (
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      showsHorizontalScrollIndicator={false}
+      contentContainerStyle={{flexGrow: 1}}>
+      {props.children}
+    </ScrollView>
+  );
+
+  if (!props.scroll) screen = <View>{props.children}</View>;
+
+  return screen;
+};
 const ServeImgBackground = ({props}) => {
   let screen = <ServeScreenView props={props} />;
   if (props.image)
@@ -61,14 +75,7 @@ const ServeScreenView = ({props}) => {
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={{flex: 1, backgroundColor: screenFilter}}>
             {!props.statusBar && <StatusBar hidden />}
-            <SafeAreaView style={styles.wrapper}>
-              <ScrollView
-                showsVerticalScrollIndicator={false}
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={{flexGrow: 1}}>
-                {props.children}
-              </ScrollView>
-            </SafeAreaView>
+            <SafeAreaView style={styles.wrapper}>{props.children}</SafeAreaView>
           </View>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>

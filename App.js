@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {AuthProvider} from './src/context/auth';
 import {ApiProvider} from './src/context/api';
 
-import AppNavigator from './src/AppNavigator/Router';
+import {AppNavigator} from './src/AppNavigator/Router';
 
 const App = () => {
   return (

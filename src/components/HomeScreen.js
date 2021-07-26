@@ -50,10 +50,10 @@ const HomeScreen = ({
   getInvolved,
   donateActions,
 }) => {
-  const applyMarginPost =
-    getInvolved || !donateActions
-      ? {marginBottom: '20%'}
-      : {marginBottom: '5%'};
+  let applyMarginPost = {marginBottom: '15%'};
+  if (getInvolved) applyMarginPost = {marginBottom: '40%'};
+  if (donateActions) applyMarginPost = {marginBottom: '5%'};
+
   const applyMarginActions = donateActions
     ? {marginTop: '0%'}
     : {marginTop: '30%'};

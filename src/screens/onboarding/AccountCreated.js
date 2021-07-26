@@ -70,7 +70,7 @@ const AccountCreated = ({navigation}) => {
             iconWidth={24}
             style={{paddingVertical: 10, paddingHorizontal: 24}}
             onPress={() =>
-              navigation.navigate('TabNavigator', {screen: 'Home'})
+              navigation.navigate('AppStack', {screen: 'HomeStack'})
             }
           />
         </View>

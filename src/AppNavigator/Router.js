@@ -9,7 +9,7 @@ import {
   Search as SearchIcon,
   Create,
   Projects,
-  People,
+  Profile as ProfileIcon,
 } from '../config/icons';
 
 import SplashScreen from '../screens/onboarding/SplashScreen';
@@ -35,13 +35,32 @@ import MobileOTP from '../screens/onboardingUnderSixteen/MobileOTP';
 import EmailOTP from '../screens/onboardingUnderSixteen/EmailOTP';
 import VerifyOTPU16 from '../screens/onboardingUnderSixteen/VerifyOTPU16';
 import Yay from '../screens/onboardingUnderSixteen/Yay';
-import ProfileHome from '../screens/profile/ProfileHome';
+import Profile from '../screens/profile/Profile';
 import Home from '../screens/home/Home';
 import DonationNotification from '../screens/donate/DonationNotification';
 import Search from '../screens/search/Search';
 
+const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-const TabNavigator = ({navigation}) => {
+
+export const AppNavigator = () => {
+  return (
+    <Stack.Navigator initialRouteName="CreateAccountStack">
+      {/* <Stack.Screen
+        name="CreateAccountStack"
+        component={CreateAccountStack}
+        options={{headerShown: false}}
+      /> */}
+      <Stack.Screen
+        name="AppStack"
+        component={AppStack}
+        options={{headerShown: false}}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const AppStack = ({navigation}) => {
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -60,7 +79,7 @@ const TabNavigator = ({navigation}) => {
       }}>
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={HomeStack}
         options={{
           tabBarLabel: 'home',
           tabBarIcon: ({color}) => (
@@ -70,7 +89,7 @@ const TabNavigator = ({navigation}) => {
       />
       <Tab.Screen
         name="Search"
-        component={Search}
+        component={SearchStack}
         options={{
           tabBarLabel: 'search',
           tabBarIcon: ({color}) => (
@@ -79,8 +98,8 @@ const TabNavigator = ({navigation}) => {
         }}
       />
       <Tab.Screen
-        name="NewPost"
-        component={Home}
+        name="Add"
+        component={AddStack}
         options={{
           tabBarLabel: '',
           tabBarIcon: ({color}) => (
@@ -92,7 +111,7 @@ const TabNavigator = ({navigation}) => {
       />
       <Tab.Screen
         name="Projects"
-        component={Home}
+        component={ProjectStack}
         options={{
           tabBarLabel: 'projects',
           tabBarIcon: ({color}) => (
@@ -101,12 +120,12 @@ const TabNavigator = ({navigation}) => {
         }}
       />
       <Tab.Screen
-        name="People"
-        component={ProfileHome}
+        name="Profile"
+        component={ProfileStack}
         options={{
-          tabBarLabel: 'people',
+          tabBarLabel: 'profile',
           tabBarIcon: ({color}) => (
-            <People width={28} height={28} fill={color} />
+            <ProfileIcon width={28} height={28} fill={color} />
           ),
         }}
       />
@@ -114,11 +133,267 @@ const TabNavigator = ({navigation}) => {
   );
 };
 
-const Stack = createStackNavigator();
-const Router = ({navigation}) => {
+const HomeStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{headerShown: false}}
+      />
+      {/* <Stack.Screen
+        name="Project"
+        component={Projects}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="LinkAccountScreen"
+        component={LinkAccountScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="AccountCreated"
+        component={AccountCreated}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="OrganisationRegEmail"
+        component={OrganisationRegEmail}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="OrganisationNameWebsite"
+        component={OrganisationNameWebsite}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="OrganisationAddPicture"
+        component={OrganisationAddPicture}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="CreateEvent"
+        component={CreateEvent}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Inbox"
+        component={Inbox}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={Settings}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Notifications"
+        component={Notifications}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="PrivacyAndSecurity"
+        component={PrivacyAndSecurity}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ConnectToSocials"
+        component={ConnectToSocials}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="HelpAndSupport"
+        component={HelpAndSupport}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ManagePayments"
+        component={ManagePayments}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="About"
+        component={About}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Account"
+        component={Account}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="EditInterests"
+        component={EditInterests}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Wallet"
+        component={Wallet}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProjectDetail"
+        component={ProjectDetail}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Charity"
+        component={Charity}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProjectPage"
+        component={ProjectPage}
+        options={{headerShown: false}}
+      /> */}
+    </Stack.Navigator>
+  );
+};
+
+const SearchStack = ({navigation}) => {
+  return (
+    <Stack.Navigator initialRouteName="Search">
+      <Stack.Screen
+        name="Search"
+        component={Search}
+        options={{headerShown: false}}
+      />
+    </Stack.Navigator>
+  );
+};
+const AddStack = ({navigation}) => {
+  return (
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{headerShown: false}}
+      />
+    </Stack.Navigator>
+  );
+};
+const ProjectStack = ({navigation}) => {
+  return (
+    <Stack.Navigator initialRouteName="Search">
+      <Stack.Screen
+        name="Search"
+        component={Search}
+        options={{headerShown: false}}
+      />
+    </Stack.Navigator>
+  );
+};
+const ProfileStack = ({navigation}) => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{headerShown: false}}
+      />
+      {/* <Stack.Screen
+        name="LinkAccountScreen"
+        component={LinkAccountScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="AccountCreated"
+        component={AccountCreated}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="OrganisationRegEmail"
+        component={OrganisationRegEmail}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="OrganisationNameWebsite"
+        component={OrganisationNameWebsite}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="OrganisationAddPicture"
+        component={OrganisationAddPicture}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="CreateEvent"
+        component={CreateEvent}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Inbox"
+        component={Inbox}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={Settings}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Notifications"
+        component={Notifications}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="PrivacyAndSecurity"
+        component={PrivacyAndSecurity}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ConnectToSocials"
+        component={ConnectToSocials}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="HelpAndSupport"
+        component={HelpAndSupport}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ManagePayments"
+        component={ManagePayments}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="About"
+        component={About}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Account"
+        component={Account}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="EditInterests"
+        component={EditInterests}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Wallet"
+        component={Wallet}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Charity"
+        component={Charity}
+        options={{headerShown: false}}
+      /> */}
+    </Stack.Navigator>
+  );
+};
+
+const CreateAccountStack = ({navigation}) => {
   return (
     <Stack.Navigator initialRouteName="SplashScreen">
-      {/* <Stack.Screen
+      <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}
         options={{headerShown: false}}
@@ -166,11 +441,6 @@ const Router = ({navigation}) => {
       <Stack.Screen
         name="Login"
         component={Login}
-        options={{headerShown: false}}
-      /> */}
-      <Stack.Screen
-        name="TabNavigator"
-        component={TabNavigator}
         options={{headerShown: false}}
       />
       <Stack.Screen
@@ -242,5 +512,3 @@ const Router = ({navigation}) => {
     </Stack.Navigator>
   );
 };
-
-export default Router;

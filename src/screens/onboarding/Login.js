@@ -64,7 +64,7 @@ const Login = ({navigation}) => {
   };
 
   React.useEffect(() => {
-    if (jwt) navigation.navigate('TabNavigator', {screen: 'Home'});
+    if (jwt) navigation.navigate('AppStack', {screen: 'HomeStack'});
   }, [jwt]);
 
   return (

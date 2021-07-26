@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   FlatList,
   ImageBackground,
+  ScrollView,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -183,53 +184,55 @@ const Search = ({navigation}) => {
 
   return (
     <ScreenWrapper>
-      <View
-        style={{
-          flexDirection: 'row',
-          backgroundColor: 'lightgrey',
-          borderRadius: 40,
-          marginHorizontal: 20,
-          alignItems: 'center',
-          paddingHorizontal: 10,
-          justifyContent: 'space-between',
-        }}>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <View style={styles.iconBackground}>
-            <SearchIcon width={16} height={16} fill={Colors.white} />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View
+          style={{
+            flexDirection: 'row',
+            backgroundColor: 'lightgrey',
+            borderRadius: 40,
+            marginHorizontal: 20,
+            alignItems: 'center',
+            paddingHorizontal: 10,
+            justifyContent: 'space-between',
+          }}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View style={styles.iconBackground}>
+              <SearchIcon width={16} height={16} fill={Colors.white} />
+            </View>
+            <TextInput
+              style={styles.inputContainer}
+              placeholder="Looking for something specific?"
+              placeholderTextColor={Colors.lightBlack}
+              multiline={true}
+            />
           </View>
-          <TextInput
-            style={styles.inputContainer}
-            placeholder="Looking for something specific?"
-            placeholderTextColor={Colors.lightBlack}
-            multiline={true}
-          />
+          <Cross width={16} height={16} />
         </View>
-        <Cross width={16} height={16} />
-      </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          paddingHorizontal: 20,
-          marginTop: 20,
-        }}>
-        <TouchableOpacity>
-          <Text>Top</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text>Near Me</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text>Users</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text>Projects</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text>Hashtags</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={{marginBottom: 45}}>{renderItems()}</View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            paddingHorizontal: 20,
+            marginTop: 20,
+          }}>
+          <TouchableOpacity>
+            <Text>Top</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text>Near Me</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text>Users</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text>Projects</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text>Hashtags</Text>
+          </TouchableOpacity>
+        </View>
+        <View>{renderItems()}</View>
+      </ScrollView>
     </ScreenWrapper>
   );
 };
