@@ -6,7 +6,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Colors from '../config/colors';
 import {
   Home as HomeIcon,
-  Search,
+  Search as SearchIcon,
   Create,
   Projects,
   People,
@@ -38,6 +38,7 @@ import Yay from '../screens/onboardingUnderSixteen/Yay';
 import Profile from '../screens/profile/Profile';
 import Home from '../screens/home/Home';
 import DonationNotification from '../screens/donate/DonationNotification';
+import Search from '../screens/search/Search';
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = ({navigation}) => {
@@ -69,22 +70,22 @@ const TabNavigator = ({navigation}) => {
       />
       <Tab.Screen
         name="Search"
-        component={Home}
+        component={Search}
         options={{
           tabBarLabel: 'search',
           tabBarIcon: ({color}) => (
-            <Search width={28} height={28} fill={color} />
+            <SearchIcon width={28} height={28} fill={color} />
           ),
         }}
       />
       <Tab.Screen
-        name="GetInvolved"
+        name="NewPost"
         component={Home}
         options={{
           tabBarLabel: '',
           tabBarIcon: ({color}) => (
             <View style={{marginTop: 14}}>
-              <Create width={36} height={36} fill={color} />
+              <Create width={36} height={36} fill={Colors.primary} />
             </View>
           ),
         }}
