@@ -51,8 +51,8 @@ const HomeScreen = ({
   donateActions,
 }) => {
   const applyMarginPost = getInvolved
-    ? {marginBottom: '30%'}
-    : {marginBottom: '5%'};
+    ? {marginBottom: '15%'}
+    : {marginBottom: '10%'};
 
   // SERVERS ---------------------------------------------------------
   const ServeDonate = ({navigation}) => {

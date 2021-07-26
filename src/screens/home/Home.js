@@ -44,8 +44,6 @@ const styles = StyleSheet.create({
   screenContainer: {
     width: width,
     height: height,
-    borderTopLeftRadius: ITEM_WIDTH / 10,
-    borderTopRightRadius: ITEM_WIDTH / 10,
     overflow: 'hidden',
   },
 });
@@ -179,9 +177,16 @@ const Home = ({navigation}) => {
   });
 
   // SERVERS ---------------------------------------------------------
-  const ServeScreen = ({item}) => {
+  const ServeScreen = ({item, currentIndex}) => {
+    let screenBorder = {};
+    if (currentIndex !== index)
+      screenBorder = {
+        borderTopLeftRadius: ITEM_WIDTH / 10,
+        borderTopRightRadius: ITEM_WIDTH / 10,
+      };
+
     return (
-      <View style={styles.screenContainer}>
+      <View style={{...styles.screenContainer, ...screenBorder}}>
         <HomeScreen
           navigation={navigation}
           background={item.background}
@@ -201,15 +206,13 @@ const Home = ({navigation}) => {
 
   const renderItem = ({item, index}) => {
     const inputRange = [index - 1, index, index + 1];
+    let screenOverlap = ITEM_HEIGHT - 180;
+    console.log(screenOverlap);
     const translateY = scrollYAnimated.interpolate({
       inputRange,
-      outputRange: [ITEM_HEIGHT - ITEM_WIDTH / 2.3, 0, 0],
+      outputRange: [screenOverlap, 0, 0],
     });
     const scale = scrollYAnimated.interpolate({
-      inputRange,
-      outputRange: [1, 1, 0],
-    });
-    const opacity = scrollYAnimated.interpolate({
       inputRange,
       outputRange: [1, 1, 0],
     });
@@ -219,7 +222,6 @@ const Home = ({navigation}) => {
         style={{
           position: 'absolute',
           left: -ITEM_WIDTH / 2,
-          opacity,
           transform: [
             {
               translateY,
@@ -227,7 +229,7 @@ const Home = ({navigation}) => {
             {scale},
           ],
         }}>
-        <ServeScreen item={item} />
+        <ServeScreen item={item} currentIndex={index} />
       </Animated.View>
     );
   };

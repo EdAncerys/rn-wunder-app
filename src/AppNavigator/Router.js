@@ -117,7 +117,7 @@ const Stack = createStackNavigator();
 const Router = ({navigation}) => {
   return (
     <Stack.Navigator initialRouteName="SplashScreen">
-      <Stack.Screen
+      {/* <Stack.Screen
         name="SplashScreen"
         component={SplashScreen}
         options={{headerShown: false}}
@@ -166,7 +166,7 @@ const Router = ({navigation}) => {
         name="Login"
         component={Login}
         options={{headerShown: false}}
-      />
+      /> */}
       <Stack.Screen
         name="TabNavigator"
         component={TabNavigator}
