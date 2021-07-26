@@ -35,7 +35,7 @@ import MobileOTP from '../screens/onboardingUnderSixteen/MobileOTP';
 import EmailOTP from '../screens/onboardingUnderSixteen/EmailOTP';
 import VerifyOTPU16 from '../screens/onboardingUnderSixteen/VerifyOTPU16';
 import Yay from '../screens/onboardingUnderSixteen/Yay';
-import Profile from '../screens/profile/Profile';
+import ProfileHome from '../screens/profile/ProfileHome';
 import Home from '../screens/home/Home';
 import DonationNotification from '../screens/donate/DonationNotification';
 import Search from '../screens/search/Search';
@@ -102,7 +102,7 @@ const TabNavigator = ({navigation}) => {
       />
       <Tab.Screen
         name="People"
-        component={Profile}
+        component={ProfileHome}
         options={{
           tabBarLabel: 'people',
           tabBarIcon: ({color}) => (

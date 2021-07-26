@@ -172,7 +172,7 @@ const Search = ({navigation}) => {
             horizontal={true}
             data={images}
             renderItem={renderFlatListItem}
-            keyExtractor={(item, index) => String(index) + String(item.id)}
+            keyExtractor={(_, index) => String(index)}
             showsHorizontalScrollIndicator={false}
           />
         </View>

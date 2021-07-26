@@ -91,7 +91,7 @@ const DATA = {
   about: 'She/Her. Passionate about plants.',
 };
 
-const Profile = ({navigation}) => {
+const ProfileHome = ({navigation}) => {
   const [data, setData] = React.useState(DATA);
 
   // SERVERS ---------------------------------------------------------
@@ -162,4 +162,4 @@ const Profile = ({navigation}) => {
   );
 };
 
-export default Profile;
+export default ProfileHome;

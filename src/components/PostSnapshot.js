@@ -52,12 +52,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   verified: {
-    backgroundColor: Colors.white,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 100,
-    width: 15,
-    height: 15,
   },
 });
 
@@ -71,7 +67,9 @@ const ServeProfileInfo = ({props}) => {
       <Text style={styles.profile}>{props.profileName}</Text>
       {props.verified && (
         <View style={styles.verified}>
-          <Verified width={20} height={20} fill={Colors.primary} />
+          <View>
+            <Verified width={20} height={20} fill={Colors.primary} />
+          </View>
         </View>
       )}
     </View>
