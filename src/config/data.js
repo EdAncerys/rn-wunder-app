@@ -308,6 +308,17 @@ export const SEARCH_PAGE_DATA = [
 
 export const HOME_SCREEN_DATA = [
   {
+    background: require('../assets/images/home/home-exp-ten-background.png'),
+    profileIcon: require('../assets/dummyAssets/profile-wunder.png'),
+    profileName: '@wunder',
+    verified: true,
+    title: 'Live Outside',
+    post: 'Make sure you are getting out and about as much as possible m',
+    postTag: 'planet',
+    getInvolved: false,
+    donateActions: true,
+  },
+  {
     background: require('../assets/images/home/home-exp-one-background.png'),
     profileIcon: require('../assets/dummyAssets/profile-wunder.png'),
     profileName: '@wunder',

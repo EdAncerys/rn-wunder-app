@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
   },
   donateContainer: {
-    flex: 1,
+    flex: 0.8,
     justifyContent: 'center',
   },
   appNavigateContainer: {
@@ -50,9 +50,13 @@ const HomeScreen = ({
   getInvolved,
   donateActions,
 }) => {
-  const applyMarginPost = getInvolved
-    ? {marginBottom: '15%'}
-    : {marginBottom: '10%'};
+  const applyMarginPost =
+    getInvolved || !donateActions
+      ? {marginBottom: '20%'}
+      : {marginBottom: '5%'};
+  const applyMarginActions = donateActions
+    ? {marginTop: '0%'}
+    : {marginTop: '30%'};
 
   // SERVERS ---------------------------------------------------------
   const ServeDonate = ({navigation}) => {
@@ -70,7 +74,7 @@ const HomeScreen = ({
       gradient={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}>
       <View style={styles.wrapper}>
         {donateActions && <ServeDonate navigation={navigation} />}
-        <View style={{...styles.appActions}}>
+        <View style={{...styles.appActions, ...applyMarginActions}}>
           <AppActions Commend Applaud Shoutout Comment />
         </View>
         <View style={{...styles.postContainer, ...applyMarginPost}}>

@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   rowWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 8,
+    marginVertical: 8,
   },
   profile: {
     ...Fonts.N_400_16,
@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
   title: {
     ...Fonts.N_700_34,
     color: Colors.white,
-    paddingVertical: 5,
     width: width * 0.7,
   },
   post: {

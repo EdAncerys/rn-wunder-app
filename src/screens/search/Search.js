@@ -169,10 +169,10 @@ const Search = ({navigation}) => {
             <Text>{`${total} >`}</Text>
           </View>
           <FlatList
+            keyExtractor={(_, index) => String(index)}
             horizontal={true}
             data={images}
             renderItem={renderFlatListItem}
-            keyExtractor={(_, index) => String(index)}
             showsHorizontalScrollIndicator={false}
           />
         </View>
