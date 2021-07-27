@@ -43,6 +43,7 @@ import CreateProAccount from '../screens/profile/CreateProAccount';
 import OrganizationRegNumber from '../screens/profile/OrganizationRegNumber';
 import OrganizationEmail from '../screens/profile/OrganizationEmail';
 import ConfirmedProAccount from '../screens/profile/ConfirmedProAccount';
+import OrganizationName from '../screens/profile/OrganizationName';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -150,116 +151,6 @@ const HomeStack = () => {
         component={Home}
         options={{headerShown: false}}
       />
-      {/* <Stack.Screen
-        name="Project"
-        component={Projects}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Profile"
-        component={Profile}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="LinkAccountScreen"
-        component={LinkAccountScreen}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="AccountCreated"
-        component={AccountCreated}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="OrganisationRegEmail"
-        component={OrganisationRegEmail}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="OrganisationNameWebsite"
-        component={OrganisationNameWebsite}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="OrganisationAddPicture"
-        component={OrganisationAddPicture}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="CreateEvent"
-        component={CreateEvent}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Inbox"
-        component={Inbox}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Settings"
-        component={Settings}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Notifications"
-        component={Notifications}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="PrivacyAndSecurity"
-        component={PrivacyAndSecurity}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="ConnectToSocials"
-        component={ConnectToSocials}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="HelpAndSupport"
-        component={HelpAndSupport}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="ManagePayments"
-        component={ManagePayments}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="About"
-        component={About}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Account"
-        component={Account}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="EditInterests"
-        component={EditInterests}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Wallet"
-        component={Wallet}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="ProjectDetail"
-        component={ProjectDetail}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Charity"
-        component={Charity}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="ProjectPage"
-        component={ProjectPage}
-        options={{headerShown: false}}
-      /> */}
     </Stack.Navigator>
   );
 };
@@ -328,6 +219,11 @@ const ProfileStack = ({navigation}) => {
       <Stack.Screen
         name="ConfirmedProAccount"
         component={ConfirmedProAccount}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="OrganizationName"
+        component={OrganizationName}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
