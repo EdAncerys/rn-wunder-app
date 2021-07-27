@@ -53,14 +53,29 @@ const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="CreateAccountStack">
-      {/* <Stack.Screen
+      <Stack.Screen
         name="CreateAccountStack"
         component={CreateAccountStack}
         options={{headerShown: false}}
-      /> */}
+      />
       <Stack.Screen
         name="AppStack"
         component={AppStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="HomeStack"
+        component={HomeStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="SearchStack"
+        component={SearchStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProjectStack"
+        component={ProjectStack}
         options={{headerShown: false}}
       />
       <Stack.Screen
@@ -91,7 +106,7 @@ const AppStack = ({navigation}) => {
       }}>
       <Tab.Screen
         name="Home"
-        component={HomeStack}
+        component={Home}
         options={{
           tabBarLabel: 'home',
           tabBarIcon: () => <HomeIcon width={28} height={28} />,
@@ -99,7 +114,7 @@ const AppStack = ({navigation}) => {
       />
       <Tab.Screen
         name="Search"
-        component={SearchStack}
+        component={Search}
         options={{
           // tabBarVisible: false,
           tabBarLabel: 'search',
@@ -120,7 +135,7 @@ const AppStack = ({navigation}) => {
       />
       <Tab.Screen
         name="Projects"
-        component={ProjectStack}
+        component={Profile}
         options={{
           tabBarLabel: 'projects',
           tabBarIcon: () => <Projects width={28} height={28} />,
@@ -142,8 +157,8 @@ const HomeStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Home"
-        component={Home}
+        name="DonationNotification"
+        component={DonationNotification}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
@@ -153,11 +168,6 @@ const HomeStack = () => {
 const SearchStack = ({navigation}) => {
   return (
     <Stack.Navigator initialRouteName="Search">
-      <Stack.Screen
-        name="Home"
-        component={Home}
-        options={{headerShown: false}}
-      />
       <Stack.Screen
         name="Search"
         component={Search}
@@ -286,11 +296,6 @@ const CreateAccountStack = ({navigation}) => {
       <Stack.Screen
         name="Login"
         component={Login}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="DonationNotification"
-        component={DonationNotification}
         options={{headerShown: false}}
       />
       <Stack.Screen

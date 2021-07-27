@@ -54,12 +54,16 @@ const ConfirmDonation = ({
         <CustomButton
           style={{backgroundColor: Colors.transparent}}
           iconLeft="ChevronLeft"
+          iconWidth={16}
+          iconHeight={16}
           iconStyling={styles.icon}
           onPress={() => setDonateCoins(false)}
         />
         <CustomButton
           style={{backgroundColor: Colors.transparent}}
           iconLeft="Cross"
+          iconWidth={16}
+          iconHeight={16}
           iconStyling={styles.icon}
           onPress={() => setDonateAction(false)}
         />

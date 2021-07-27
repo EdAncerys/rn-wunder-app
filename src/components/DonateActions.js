@@ -100,7 +100,9 @@ const DonateActions = ({navigation, profile, screen}) => {
             iconWidth={18.5}
             iconHeight={20}
             iconFill={Colors.white}
-            onPress={() => navigation.navigate('DonationNotification')}
+            onPress={() =>
+              navigation.navigate('HomeStack', {screen: 'Notifications'})
+            }
           />
         </View>
         {profile && (
