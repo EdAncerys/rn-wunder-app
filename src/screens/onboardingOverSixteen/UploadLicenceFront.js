@@ -49,8 +49,8 @@ const styles = StyleSheet.create({
 const UploadLicenceFront = ({navigation}) => {
   const [image, setImage] = React.useState(false);
   const [uploadOptions, setUploadOptions] = React.useState(false);
-  console.log(image);
   const renderImg = image || LicenceImage;
+  const imgOpacity = uploadOptions ? 0.4 : 1;
 
   // SERVERS ---------------------------------------------------------
   const ServeActions = ({props}) => {
@@ -102,13 +102,16 @@ const UploadLicenceFront = ({navigation}) => {
 
   const handleGallery = () => {
     openGallery(setImage);
-    setUploadOptions(false);
   };
 
   const handleCamera = () => {
     openCamera(setImage);
-    setUploadOptions(false);
   };
+
+  React.useEffect(() => {
+    setUploadOptions(true);
+    if (image) setUploadOptions(false);
+  }, [image]);
 
   // RETURN ---------------------------------------------------------
   return (
@@ -126,7 +129,11 @@ const UploadLicenceFront = ({navigation}) => {
             Upload a clear picture of the front of your licence
           </Text>
           <View style={styles.imageContainer}>
-            <Image source={renderImg} resizeMode="cover" style={styles.image} />
+            <Image
+              source={renderImg}
+              resizeMode="cover"
+              style={{...styles.image, opacity: imgOpacity}}
+            />
           </View>
         </View>
 

@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
 const UploadPictureOfYourself = ({navigation}) => {
   const [image, setImage] = React.useState(false);
   const [uploadOptions, setUploadOptions] = React.useState(false);
-  console.log(image);
   const renderImg = image || LicenceImage;
+  const imgOpacity = uploadOptions ? 0.4 : 1;
 
   // SERVERS ---------------------------------------------------------
   const ServeActions = ({props}) => {
@@ -111,13 +111,16 @@ const UploadPictureOfYourself = ({navigation}) => {
 
   const handleGallery = () => {
     openGallery(setImage);
-    setUploadOptions(false);
   };
 
   const handleCamera = () => {
     openCamera(setImage);
-    setUploadOptions(false);
   };
+
+  React.useEffect(() => {
+    setUploadOptions(true);
+    if (image) setUploadOptions(false);
+  }, [image]);
 
   // RETURN ---------------------------------------------------------
   return (
@@ -135,7 +138,11 @@ const UploadPictureOfYourself = ({navigation}) => {
             Upload a picture of yourself holding up your licence
           </Text>
           <View style={styles.imageContainer}>
-            <Image source={renderImg} resizeMode="cover" style={styles.image} />
+            <Image
+              source={renderImg}
+              resizeMode="cover"
+              style={{...styles.image, opacity: imgOpacity}}
+            />
           </View>
           <Text style={styles.msg}>
             Ensure your ID doesn’t cover any part of your face the picture is

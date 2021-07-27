@@ -25,9 +25,9 @@ const styles = StyleSheet.create({
     marginBottom: '5%',
   },
   image: {
-    width: 280,
+    width: 180,
     height: 180,
-    borderRadius: 12,
+    borderRadius: 180 / 2,
     overflow: 'hidden',
     resizeMode: 'cover',
   },
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const UploadLicenceBack = ({navigation}) => {
+const OrganizationProfileImage = ({navigation}) => {
   const [image, setImage] = React.useState(false);
   const [uploadOptions, setUploadOptions] = React.useState(false);
   const renderImg = image || LicenceImage;
@@ -99,7 +99,7 @@ const UploadLicenceBack = ({navigation}) => {
       setUploadOptions(true);
       return;
     }
-    navigation.navigate('UploadPictureOfYourself');
+    navigation.navigate('Profile');
     setImage(null);
   };
 
@@ -122,14 +122,14 @@ const UploadLicenceBack = ({navigation}) => {
       <View style={styles.wrapper}>
         <View style={styles.navigateActionContainer}>
           <NavigateAction
-            title="Step 3 of 7"
-            onPress={() => navigation.navigate('UploadLicenceFront')}
+            title={image ? 'Step 6 of 6' : 'Step 5 of 6'}
+            onPress={() => navigation.navigate('OrganizationWebsite')}
           />
         </View>
 
         <View style={styles.contentContainer}>
           <Text style={styles.title}>
-            Upload a clear picture of the back of your licence
+            Add profile picture for your organisation
           </Text>
           <View style={styles.imageContainer}>
             <Image
@@ -142,13 +142,15 @@ const UploadLicenceBack = ({navigation}) => {
 
         <View style={styles.actionsContainer}>
           {!uploadOptions && (
-            <View style={{alignItems: 'center'}}>
+            <View>
               <CustomButton
-                iconLeft="ArrowRight"
-                iconWidth={24}
-                iconFill={Colors.white}
-                style={{paddingVertical: 10, paddingHorizontal: 24}}
-                onPress={handleContinue}
+                title="Create Profile"
+                onPress={() => handleContinue()}
+              />
+              <CustomButton
+                title="Not Now"
+                style={{backgroundColor: Colors.transparent, marginTop: 10}}
+                onPress={() => navigation.navigate('Profile')}
               />
             </View>
           )}
@@ -159,4 +161,4 @@ const UploadLicenceBack = ({navigation}) => {
   );
 };
 
-export default UploadLicenceBack;
+export default OrganizationProfileImage;

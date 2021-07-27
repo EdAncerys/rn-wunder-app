@@ -45,6 +45,7 @@ import OrganizationEmail from '../screens/profile/OrganizationEmail';
 import ConfirmedProAccount from '../screens/profile/ConfirmedProAccount';
 import OrganizationName from '../screens/profile/OrganizationName';
 import OrganizationWebsite from '../screens/profile/OrganizationWebsite';
+import OrganizationProfileImage from '../screens/profile/OrganizationProfileImage';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -231,6 +232,11 @@ const ProfileStack = ({navigation}) => {
       <Stack.Screen
         name="OrganizationWebsite"
         component={OrganizationWebsite}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="OrganizationProfileImage"
+        component={OrganizationProfileImage}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
