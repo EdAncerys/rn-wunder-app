@@ -94,9 +94,7 @@ const AppStack = ({navigation}) => {
         component={HomeStack}
         options={{
           tabBarLabel: 'home',
-          tabBarIcon: ({color}) => (
-            <HomeIcon width={28} height={28} fill={color} />
-          ),
+          tabBarIcon: () => <HomeIcon width={28} height={28} />,
         }}
       />
       <Tab.Screen
@@ -105,9 +103,7 @@ const AppStack = ({navigation}) => {
         options={{
           // tabBarVisible: false,
           tabBarLabel: 'search',
-          tabBarIcon: ({color}) => (
-            <SearchIcon width={28} height={28} fill={color} />
-          ),
+          tabBarIcon: () => <SearchIcon width={28} height={28} />,
         }}
       />
       <Tab.Screen
@@ -115,7 +111,7 @@ const AppStack = ({navigation}) => {
         component={AddStack}
         options={{
           tabBarLabel: '',
-          tabBarIcon: ({color}) => (
+          tabBarIcon: () => (
             <View style={{marginTop: 14}}>
               <Create width={36} height={36} fill={Colors.primary} />
             </View>
@@ -127,9 +123,7 @@ const AppStack = ({navigation}) => {
         component={ProjectStack}
         options={{
           tabBarLabel: 'projects',
-          tabBarIcon: ({color}) => (
-            <Projects width={28} height={28} fill={color} />
-          ),
+          tabBarIcon: () => <Projects width={28} height={28} />,
         }}
       />
       <Tab.Screen
@@ -137,9 +131,7 @@ const AppStack = ({navigation}) => {
         component={Profile}
         options={{
           tabBarLabel: 'profile',
-          tabBarIcon: ({color}) => (
-            <ProfileIcon width={28} height={28} fill={color} />
-          ),
+          tabBarIcon: () => <ProfileIcon width={28} height={28} />,
         }}
       />
     </Tab.Navigator>

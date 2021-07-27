@@ -231,7 +231,7 @@ const Search = ({navigation}) => {
             <Text>Hashtags</Text>
           </TouchableOpacity>
         </View>
-        <View>{renderItems()}</View>
+        <View style={{marginBottom: 60}}>{renderItems()}</View>
       </ScrollView>
     </ScreenWrapper>
   );
