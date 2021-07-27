@@ -37,11 +37,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: Colors.white,
   },
-  info: {
-    ...Fonts.N_400_10,
-    marginVertical: '2%',
-    color: Colors.lightSilver,
-  },
   actionsContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -56,19 +51,19 @@ const styles = StyleSheet.create({
   },
 });
 
-const OrganizationEmail = ({navigation}) => {
-  const [email, setEmail] = React.useState('');
+const OrganizationWebsite = ({navigation}) => {
+  const [website, setWebsite] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
 
   React.useEffect(() => {
     setBtnInactive(true);
-    if (!!email) setBtnInactive(false);
-  }, [email]);
+    if (!!website) setBtnInactive(false);
+  }, [website]);
 
   // HANDLERS ---------------------------------------------------------
   const handleContinue = () => {
-    navigation.navigate('ConfirmedProAccount');
-    setEmail('');
+    navigation.navigate('OrganizationProfileImage');
+    setWebsite('');
   };
 
   // RETURN ---------------------------------------------------------
@@ -77,31 +72,23 @@ const OrganizationEmail = ({navigation}) => {
       <View style={styles.wrapper}>
         <View style={styles.navigateActionContainer}>
           <NavigateAction
-            title="Step 2 of 6"
-            onPress={() => navigation.navigate('OrganizationRegNumber')}
+            title="Step 4 of 6"
+            onPress={() => navigation.navigate('OrganizationName')}
           />
         </View>
         <View style={styles.formContainer}>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>
-              What’s your organisation email address?
-            </Text>
+            <Text style={styles.title}>Link to your organisation website?</Text>
           </View>
           <View style={styles.inputWrapper}>
             <TextInput
-              placeholder="Email address"
+              placeholder="Organization website"
               placeholderTextColor={Colors.lightSilver}
-              onChangeText={setEmail}
+              onChangeText={setWebsite}
               autoCapitalize="none"
-              value={email}
+              value={website}
               style={styles.inputContainer}
-              keyboardType="email-address"
             />
-          </View>
-          <View>
-            <Text style={styles.info}>
-              Email must be a registered domain to be accepted
-            </Text>
           </View>
         </View>
         <View style={styles.actionsContainer}>
@@ -118,4 +105,4 @@ const OrganizationEmail = ({navigation}) => {
   );
 };
 
-export default OrganizationEmail;
+export default OrganizationWebsite;

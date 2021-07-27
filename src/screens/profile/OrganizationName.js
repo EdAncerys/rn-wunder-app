@@ -88,8 +88,6 @@ const OrganizationName = ({navigation}) => {
               autoCapitalize="none"
               value={name}
               style={styles.inputContainer}
-              keyboardType="numeric"
-              maxLength={6}
             />
           </View>
         </View>
