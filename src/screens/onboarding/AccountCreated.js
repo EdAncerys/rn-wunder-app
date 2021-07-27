@@ -1,11 +1,11 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
+import {Confirmed} from '../../config/icons';
 import Background from '../../assets/images/onboardingUnderSixteen/account-created-background.png';
-import AccountCreatedImg from '../../assets/icons/account-created.png';
 import CustomButton from '../../components/CustomButton';
 
 const styles = StyleSheet.create({
@@ -51,7 +51,7 @@ const AccountCreated = ({navigation}) => {
       <View style={styles.wrapper}>
         <View style={styles.contentContainer}>
           <View style={styles.iconContainer}>
-            <Image source={AccountCreatedImg} />
+            <Confirmed fill={Colors.white} fillOuter={Colors.primary} />
           </View>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>Account Created!</Text>

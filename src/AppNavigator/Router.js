@@ -41,6 +41,8 @@ import DonationNotification from '../screens/donate/DonationNotification';
 import Search from '../screens/search/Search';
 import CreateProAccount from '../screens/profile/CreateProAccount';
 import OrganizationRegNumber from '../screens/profile/OrganizationRegNumber';
+import OrganizationEmail from '../screens/profile/OrganizationEmail';
+import ConfirmedProAccount from '../screens/profile/ConfirmedProAccount';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -318,96 +320,16 @@ const ProfileStack = ({navigation}) => {
         component={OrganizationRegNumber}
         options={{headerShown: false}}
       />
-      {/* <Stack.Screen
-        name="LinkAccountScreen"
-        component={LinkAccountScreen}
+      <Stack.Screen
+        name="OrganizationEmail"
+        component={OrganizationEmail}
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="AccountCreated"
-        component={AccountCreated}
+        name="ConfirmedProAccount"
+        component={ConfirmedProAccount}
         options={{headerShown: false}}
       />
-      <Stack.Screen
-        name="OrganisationRegEmail"
-        component={OrganisationRegEmail}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="OrganisationNameWebsite"
-        component={OrganisationNameWebsite}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="OrganisationAddPicture"
-        component={OrganisationAddPicture}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="CreateEvent"
-        component={CreateEvent}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Inbox"
-        component={Inbox}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Settings"
-        component={Settings}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Notifications"
-        component={Notifications}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="PrivacyAndSecurity"
-        component={PrivacyAndSecurity}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="ConnectToSocials"
-        component={ConnectToSocials}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="HelpAndSupport"
-        component={HelpAndSupport}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="ManagePayments"
-        component={ManagePayments}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="About"
-        component={About}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Account"
-        component={Account}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="EditInterests"
-        component={EditInterests}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Wallet"
-        component={Wallet}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="Charity"
-        component={Charity}
-        options={{headerShown: false}}
-      /> */}
     </Stack.Navigator>
   );
 };

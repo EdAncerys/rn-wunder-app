@@ -37,6 +37,11 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: Colors.white,
   },
+  info: {
+    ...Fonts.N_400_10,
+    marginVertical: '2%',
+    color: Colors.lightSilver,
+  },
   actionsContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -51,19 +56,19 @@ const styles = StyleSheet.create({
   },
 });
 
-const OrganizationRegNumber = ({navigation}) => {
-  const [regNumber, setRegNumber] = React.useState('');
+const OrganizationEmail = ({navigation}) => {
+  const [email, setEmail] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
 
   React.useEffect(() => {
     setBtnInactive(true);
-    if (!!regNumber) setBtnInactive(false);
-  }, [regNumber]);
+    if (!!email) setBtnInactive(false);
+  }, [email]);
 
   // HANDLERS ---------------------------------------------------------
   const handleContinue = () => {
-    navigation.navigate('OrganizationEmail');
-    setRegNumber('');
+    navigation.navigate('ConfirmedProAccount');
+    setEmail('');
   };
 
   // RETURN ---------------------------------------------------------
@@ -73,26 +78,30 @@ const OrganizationRegNumber = ({navigation}) => {
         <View style={styles.navigateActionContainer}>
           <NavigateAction
             title="Step 1 of 6"
-            onPress={() => navigation.navigate('CreateProAccount')}
+            onPress={() => navigation.navigate('OrganizationRegNumber')}
           />
         </View>
         <View style={styles.formContainer}>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>
-              What’s your organisation registration number?
+              What’s your organisation email address?
             </Text>
           </View>
           <View style={styles.inputWrapper}>
             <TextInput
-              placeholder="Registration Number"
+              placeholder="Email address"
               placeholderTextColor={Colors.lightSilver}
-              onChangeText={setRegNumber}
+              onChangeText={setEmail}
               autoCapitalize="none"
-              value={regNumber}
+              value={email}
               style={styles.inputContainer}
-              keyboardType="numeric"
-              maxLength={6}
+              keyboardType="email-address"
             />
+          </View>
+          <View>
+            <Text style={styles.info}>
+              Email must be a registered domain to be accepted
+            </Text>
           </View>
         </View>
         <View style={styles.actionsContainer}>
@@ -109,4 +118,4 @@ const OrganizationRegNumber = ({navigation}) => {
   );
 };
 
-export default OrganizationRegNumber;
+export default OrganizationEmail;
