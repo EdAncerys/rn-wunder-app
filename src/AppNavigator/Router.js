@@ -40,6 +40,7 @@ import Home from '../screens/home/Home';
 import DonationNotification from '../screens/donate/DonationNotification';
 import Search from '../screens/search/Search';
 import CreateProAccount from '../screens/profile/CreateProAccount';
+import OrganizationRegNumber from '../screens/profile/OrganizationRegNumber';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -310,6 +311,11 @@ const ProfileStack = ({navigation}) => {
       <Stack.Screen
         name="CreateProAccount"
         component={CreateProAccount}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="OrganizationRegNumber"
+        component={OrganizationRegNumber}
         options={{headerShown: false}}
       />
       {/* <Stack.Screen

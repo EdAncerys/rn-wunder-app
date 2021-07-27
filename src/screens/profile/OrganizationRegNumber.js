@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     ...Fonts.N_700_16,
     color: Colors.white,
     textAlign: 'center',
+    marginHorizontal: '15%',
   },
   inputWrapper: {
     width: '100%',
@@ -50,21 +51,19 @@ const styles = StyleSheet.create({
   },
 });
 
-const Name = ({navigation}) => {
-  const [firstName, setFirstName] = React.useState('');
-  const [lastName, setLastName] = React.useState('');
+const OrganizationRegNumber = ({navigation}) => {
+  const [regNumber, setRegNumber] = React.useState('');
   const [btnInactive, setBtnInactive] = React.useState(true);
 
   React.useEffect(() => {
     setBtnInactive(true);
-    if (!!firstName && !!lastName) setBtnInactive(false);
-  }, [firstName, lastName]);
+    if (!!regNumber) setBtnInactive(false);
+  }, [regNumber]);
 
   // HANDLERS ---------------------------------------------------------
   const handleContinue = () => {
-    navigation.navigate('EmailOTP');
-    setFirstName('');
-    setLastName('');
+    navigation.navigate('OrganizationEmail');
+    setRegNumber('');
   };
 
   // RETURN ---------------------------------------------------------
@@ -73,30 +72,26 @@ const Name = ({navigation}) => {
       <View style={styles.wrapper}>
         <View style={styles.navigateActionContainer}>
           <NavigateAction
-            title="Step 1 of 7"
+            title="Step 1 of 6"
             onPress={() => navigation.navigate('AgeQuestion')}
           />
         </View>
         <View style={styles.formContainer}>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>What is your name?</Text>
+            <Text style={styles.title}>
+              What’s your organisation registration number?
+            </Text>
           </View>
           <View style={styles.inputWrapper}>
             <TextInput
-              placeholder="First Name"
+              placeholder="Registration Number"
               placeholderTextColor={Colors.lightSilver}
-              onChangeText={setFirstName}
+              onChangeText={setRegNumber}
               autoCapitalize="none"
-              value={firstName}
+              value={regNumber}
               style={styles.inputContainer}
-            />
-            <TextInput
-              placeholder="Last Name"
-              placeholderTextColor={Colors.lightSilver}
-              onChangeText={setLastName}
-              secureTextEntry={true}
-              value={lastName}
-              style={styles.inputContainer}
+              keyboardType="numeric"
+              maxLength={6}
             />
           </View>
         </View>
@@ -114,4 +109,4 @@ const Name = ({navigation}) => {
   );
 };
 
-export default Name;
+export default OrganizationRegNumber;

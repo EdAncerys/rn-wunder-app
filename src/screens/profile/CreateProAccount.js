@@ -65,7 +65,7 @@ const CreateProAccount = ({navigation}) => {
         <View style={styles.actionsContainer}>
           <CustomButton
             title="Create Account"
-            onPress={() => navigation.navigate('Email')}
+            onPress={() => navigation.navigate('OrganizationRegNumber')}
           />
         </View>
       </View>
