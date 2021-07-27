@@ -39,6 +39,7 @@ import Profile from '../screens/profile/Profile';
 import Home from '../screens/home/Home';
 import DonationNotification from '../screens/donate/DonationNotification';
 import Search from '../screens/search/Search';
+import CreateProAccount from '../screens/profile/CreateProAccount';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -54,6 +55,11 @@ export const AppNavigator = () => {
       <Stack.Screen
         name="AppStack"
         component={AppStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ProfileStack"
+        component={ProfileStack}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
@@ -121,7 +127,7 @@ const AppStack = ({navigation}) => {
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileStack}
+        component={Profile}
         options={{
           tabBarLabel: 'profile',
           tabBarIcon: ({color}) => (
@@ -259,6 +265,11 @@ const SearchStack = ({navigation}) => {
   return (
     <Stack.Navigator initialRouteName="Search">
       <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
         name="Search"
         component={Search}
         options={{headerShown: false}}
@@ -294,6 +305,11 @@ const ProfileStack = ({navigation}) => {
       <Stack.Screen
         name="Profile"
         component={Profile}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="CreateProAccount"
+        component={CreateProAccount}
         options={{headerShown: false}}
       />
       {/* <Stack.Screen

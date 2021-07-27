@@ -22,13 +22,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
   },
-  personalTitle: {
+  profileType: {
     ...Fonts.N_400_16,
-    color: Colors.white,
-  },
-  professionalTitle: {
-    ...Fonts.N_400_16,
-    color: Colors.lightSilver,
   },
 });
 
@@ -41,29 +36,43 @@ const ServeDonate = ({donateAction, setDonateAction}) => {
     />
   );
 };
-const ServeNavigateProfile = ({props}) => {
+const ServeNavigateProfile = ({navigation, professional}) => {
+  console.log(professional);
+
+  let titleActive = {color: Colors.white};
+  let titleInactive = {color: Colors.lightSilver};
+
   return (
     <View style={styles.profileContainer}>
       <CustomButton
         style={{backgroundColor: Colors.transparent}}
         title="Personal"
-        titleStyling={styles.personalTitle}
-        // onPress={() => navigation.navigate('DonationNotification')}
-        onPress={() => alert('Personal')}
+        titleStyling={{...styles.profileType, ...titleActive}}
+        onPress={() => navigation.navigate('AppStack', {screen: 'Profile'})}
       />
+      <View style={{justifyContent: 'center'}}>
+        <View
+          style={{
+            borderRightWidth: 2,
+            borderColor: Colors.white,
+            height: 35,
+          }}
+        />
+      </View>
       <CustomButton
         style={{backgroundColor: Colors.transparent}}
         title="Professional"
-        titleStyling={styles.professionalTitle}
-        // onPress={() => navigation.navigate('DonationNotification')}
-        onPress={() => alert('Professional')}
+        titleStyling={{...styles.profileType, ...titleInactive}}
+        onPress={() =>
+          navigation.navigate('ProfileStack', {screen: 'CreateProAccount'})
+        }
       />
     </View>
   );
 };
 
 // RETURN ---------------------------------------------------------
-const DonateActions = ({navigation, profile}) => {
+const DonateActions = ({navigation, profile, professional}) => {
   const [donateAction, setDonateAction] = React.useState(false);
 
   return (
@@ -83,7 +92,9 @@ const DonateActions = ({navigation, profile}) => {
             onPress={() => navigation.navigate('DonationNotification')}
           />
         </View>
-        {profile && <ServeNavigateProfile />}
+        {profile && (
+          <ServeNavigateProfile navigation={navigation} professional />
+        )}
         <View>
           <CustomButton
             style={{

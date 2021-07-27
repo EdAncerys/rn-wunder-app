@@ -5,9 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Dimensions,
-  ImageBackground,
   FlatList,
-  LinearGradient,
   Image,
   ScrollView,
 } from 'react-native';
@@ -24,9 +22,6 @@ import Background from '../../assets/images/profile/profile-background.png';
 const {width, height} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   wrapper: {
     flex: 1,
   },
@@ -42,7 +37,7 @@ const styles = StyleSheet.create({
     height: height / 2,
   },
   postContainer: {
-    height: 400,
+    height: height / 6,
     justifyContent: 'flex-start',
     marginHorizontal: '5%',
     height: height / 6,
@@ -51,11 +46,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 8,
-  },
-  backgroundImg: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
   },
   post: {
     ...Fonts.N_700_22,
@@ -66,13 +56,6 @@ const styles = StyleSheet.create({
     color: Colors.white,
     marginVertical: 3,
     width: width * 0.5,
-  },
-  postTagIcon: {
-    width: 40,
-    height: 40,
-  },
-  postAction: {
-    opacity: 0.8,
   },
   badge: {
     flex: 1,
@@ -93,20 +76,11 @@ const ProfileHome = ({navigation}) => {
   const [data, setData] = React.useState(PROFILE_DATA);
 
   // SERVERS ---------------------------------------------------------
-  const ServeDonate = ({navigation}) => {
-    return (
-      <View style={styles.donateContainer}>
-        <DonateActions navigation={navigation} profile />
-      </View>
-    );
-  };
-
   const renderFlatListItem = ({item, index}) => (
     <TouchableOpacity
       style={{flexDirection: 'row'}}
       onPress={() => {
-        toggleOverlay();
-        setFirstImage(index);
+        // setFirstImage(index);
       }}>
       <Image
         style={[
@@ -118,16 +92,17 @@ const ProfileHome = ({navigation}) => {
         ]}
         source={item.url}
       />
-      <View style={{backgroundColor: 'white', height: 200, width: 1}} />
     </TouchableOpacity>
   );
 
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper image={Background}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} horizontal={false}>
         <View style={styles.wrapper}>
-          <ServeDonate navigation={navigation} />
+          <View style={styles.donateContainer}>
+            <DonateActions navigation={navigation} profile />
+          </View>
           <View style={styles.appActions}>
             <ProfileActions />
           </View>
@@ -178,13 +153,14 @@ const ProfileHome = ({navigation}) => {
             </View>
           </View>
 
-          <View style={{flex: 4}}>
+          <View style={{marginBottom: 45}}>
             <FlatList
+              keyExtractor={(_, index) => String(index)}
               showsVerticalScrollIndicator={false}
               numColumns={3}
               data={IMAGE_DATA_ARRAY}
               renderItem={renderFlatListItem}
-              keyExtractor={(_, index) => String(index)}
+              nestedScrollEnabled={true}
             />
           </View>
         </View>
