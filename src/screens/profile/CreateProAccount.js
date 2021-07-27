@@ -43,12 +43,15 @@ const styles = StyleSheet.create({
   },
 });
 
-const CreateProAccount = ({navigation}) => {
+const CreateProAccount = ({navigation, route}) => {
+  const {screen} = route.params;
+  // console.log(screen);
+
   return (
     <ScreenWrapper filter={Colors.lightBlack}>
       <View style={styles.wrapper}>
         <View style={styles.donateContainer}>
-          <DonateActions profile professional navigation={navigation} />
+          <DonateActions navigation={navigation} profile screen={screen} />
         </View>
         <View style={styles.msgContainer}>
           <View style={styles.titleContainer}>

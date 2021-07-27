@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ProfileHome = ({navigation}) => {
+const Profile = ({navigation}) => {
   const [data, setData] = React.useState(PROFILE_DATA);
 
   // SERVERS ---------------------------------------------------------
@@ -169,4 +169,4 @@ const ProfileHome = ({navigation}) => {
   );
 };
 
-export default ProfileHome;
+export default Profile;

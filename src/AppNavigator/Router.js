@@ -102,6 +102,7 @@ const AppStack = ({navigation}) => {
         name="Search"
         component={SearchStack}
         options={{
+          // tabBarVisible: false,
           tabBarLabel: 'search',
           tabBarIcon: ({color}) => (
             <SearchIcon width={28} height={28} fill={color} />

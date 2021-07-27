@@ -36,18 +36,26 @@ const ServeDonate = ({donateAction, setDonateAction}) => {
     />
   );
 };
-const ServeNavigateProfile = ({navigation, professional}) => {
-  console.log(professional);
+const ServeNavigateProfile = ({navigation, screen}) => {
+  const [active, setActive] = React.useState({color: Colors.white});
+  const [inactive, setInactive] = React.useState({color: Colors.lightSilver});
 
-  let titleActive = {color: Colors.white};
-  let titleInactive = {color: Colors.lightSilver};
+  React.useEffect(() => {
+    setInactive({color: Colors.lightSilver});
+    setActive({color: Colors.white});
+
+    if (screen === 'CreateProAccount') {
+      setActive({color: Colors.lightSilver});
+      setInactive({color: Colors.white});
+    }
+  }, [screen]);
 
   return (
     <View style={styles.profileContainer}>
       <CustomButton
         style={{backgroundColor: Colors.transparent}}
         title="Personal"
-        titleStyling={{...styles.profileType, ...titleActive}}
+        titleStyling={{...styles.profileType, ...active}}
         onPress={() => navigation.navigate('AppStack', {screen: 'Profile'})}
       />
       <View style={{justifyContent: 'center'}}>
@@ -62,9 +70,12 @@ const ServeNavigateProfile = ({navigation, professional}) => {
       <CustomButton
         style={{backgroundColor: Colors.transparent}}
         title="Professional"
-        titleStyling={{...styles.profileType, ...titleInactive}}
+        titleStyling={{...styles.profileType, ...inactive}}
         onPress={() =>
-          navigation.navigate('ProfileStack', {screen: 'CreateProAccount'})
+          navigation.navigate('ProfileStack', {
+            screen: 'CreateProAccount',
+            params: {screen: 'CreateProAccount'},
+          })
         }
       />
     </View>
@@ -72,7 +83,7 @@ const ServeNavigateProfile = ({navigation, professional}) => {
 };
 
 // RETURN ---------------------------------------------------------
-const DonateActions = ({navigation, profile, professional}) => {
+const DonateActions = ({navigation, profile, screen}) => {
   const [donateAction, setDonateAction] = React.useState(false);
 
   return (
@@ -93,7 +104,7 @@ const DonateActions = ({navigation, profile, professional}) => {
           />
         </View>
         {profile && (
-          <ServeNavigateProfile navigation={navigation} professional />
+          <ServeNavigateProfile navigation={navigation} screen={screen} />
         )}
         <View>
           <CustomButton
