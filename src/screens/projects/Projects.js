@@ -167,27 +167,28 @@ const Projects = ({navigation}) => {
 
   let countWidth = 0;
   let countHeight = 0;
+  const dataLength = mutatedData.length;
+  console.log(dataLength);
   const renderFlatListItem = ({item, index}) => {
-    const {url, halfWidth, dummy} = item;
+    const {url, dummy} = item;
 
     const handlePictureWidth = () => {
       let picWidth = width / 3;
 
-      if (countWidth == 3 || countWidth == 4) picWidth = width / 2;
+      if (countWidth === 3 || countWidth === 4) picWidth = width / 2;
       if (dummy) picWidth = 0;
       countWidth += 1;
-      if (countWidth === 6) countWidth = 0;
-
+      if (countWidth === 6 || index === dataLength - 1) countWidth = 0;
       return picWidth;
     };
 
     const handlePictureHeight = () => {
       let picHeight = 200;
 
-      // if (countHeight === 3 || countHeight === 4) picHeight = 300;
-      // if (dummy) picHeight = 0;
-      // countHeight += 1;
-      // if (countHeight === 6) countHeight = 0;
+      if (countHeight === 3 || countHeight === 4) picHeight = 300;
+      if (dummy) picHeight = 0;
+      countHeight += 1;
+      if (countHeight === 6 || index === dataLength - 1) countHeight = 0;
 
       return picHeight;
     };
@@ -203,7 +204,7 @@ const Projects = ({navigation}) => {
         }>
         <View style={styles.imageContainer}>
           <ImageBackground
-            source={item.url}
+            source={url}
             style={{
               resizeMode: 'cover',
               height: handlePictureHeight(),
