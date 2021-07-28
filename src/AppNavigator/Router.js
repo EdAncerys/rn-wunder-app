@@ -8,7 +8,7 @@ import {
   Home as HomeIcon,
   Search as SearchIcon,
   Create,
-  Projects,
+  Projects as ProjectsIcon,
   Profile as ProfileIcon,
 } from '../config/icons';
 
@@ -46,6 +46,9 @@ import ConfirmedProAccount from '../screens/profile/ConfirmedProAccount';
 import OrganizationName from '../screens/profile/OrganizationName';
 import OrganizationWebsite from '../screens/profile/OrganizationWebsite';
 import OrganizationProfileImage from '../screens/profile/OrganizationProfileImage';
+import Projects from '../screens/projects/Projects';
+import NewPost from '../screens/Posts/NewPosts';
+import Image from '../screens/profile/Image';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -53,11 +56,11 @@ const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="CreateAccountStack">
-      <Stack.Screen
+      {/* <Stack.Screen
         name="CreateAccountStack"
         component={CreateAccountStack}
         options={{headerShown: false}}
-      />
+      /> */}
       <Stack.Screen
         name="AppStack"
         component={AppStack}
@@ -122,8 +125,8 @@ const AppStack = ({navigation}) => {
         }}
       />
       <Tab.Screen
-        name="Add"
-        component={AddStack}
+        name="AddStack"
+        component={Home}
         options={{
           tabBarLabel: '',
           tabBarIcon: () => (
@@ -134,11 +137,11 @@ const AppStack = ({navigation}) => {
         }}
       />
       <Tab.Screen
-        name="Projects"
-        component={Profile}
+        name="ProjectStack"
+        component={ProjectStack}
         options={{
           tabBarLabel: 'projects',
-          tabBarIcon: () => <Projects width={28} height={28} />,
+          tabBarIcon: () => <ProjectsIcon width={28} height={28} />,
         }}
       />
       <Tab.Screen
@@ -173,6 +176,11 @@ const SearchStack = ({navigation}) => {
         component={Search}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="Image"
+        component={Image}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 };
@@ -180,8 +188,8 @@ const AddStack = ({navigation}) => {
   return (
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
-        name="Home"
-        component={Home}
+        name="NewPost"
+        component={NewPost}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
@@ -189,10 +197,10 @@ const AddStack = ({navigation}) => {
 };
 const ProjectStack = ({navigation}) => {
   return (
-    <Stack.Navigator initialRouteName="Search">
+    <Stack.Navigator initialRouteName="Projects">
       <Stack.Screen
-        name="Search"
-        component={Search}
+        name="Projects"
+        component={Projects}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

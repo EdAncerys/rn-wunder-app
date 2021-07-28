@@ -124,7 +124,8 @@ const Search = ({navigation}) => {
     <TouchableOpacity
       style={{flexDirection: 'row'}}
       onPress={() =>
-        navigation.navigate('ProjectPage', {projectItem: item, index})
+        // navigation.navigate('ProjectPage', {projectItem: item, index})
+        alert(item.title)
       }>
       <View style={{flex: 1}}>
         <View style={styles.imageContainer}>
@@ -154,7 +155,7 @@ const Search = ({navigation}) => {
     </TouchableOpacity>
   );
 
-  const renderItems = () => {
+  const RenderItems = () => {
     const items = data.map(item => {
       const {title, total, images} = item;
 
@@ -231,7 +232,9 @@ const Search = ({navigation}) => {
             <Text>Hashtags</Text>
           </TouchableOpacity>
         </View>
-        <View style={{marginBottom: 60}}>{renderItems()}</View>
+        <View style={{marginBottom: 60}}>
+          <RenderItems />
+        </View>
       </ScrollView>
     </ScreenWrapper>
   );

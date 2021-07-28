@@ -81,9 +81,23 @@ const ServeNavigateProfile = ({navigation, screen}) => {
     </View>
   );
 };
+const ServeProjects = ({navigation}) => {
+  return (
+    <View>
+      <CustomButton
+        style={{
+          backgroundColor: Colors.transparent,
+        }}
+        title="Projects"
+        titleStyling={{color: Colors.lightBlack, ...Fonts.N_700_16}}
+        // onPress={() => navigation.navigate('AppStack', {screen: 'Profile'})}
+      />
+    </View>
+  );
+};
 
 // RETURN ---------------------------------------------------------
-const DonateActions = ({navigation, profile, screen}) => {
+const DonateActions = ({navigation, profile, projects, screen}) => {
   const [donateAction, setDonateAction] = React.useState(false);
 
   return (
@@ -108,6 +122,7 @@ const DonateActions = ({navigation, profile, screen}) => {
         {profile && (
           <ServeNavigateProfile navigation={navigation} screen={screen} />
         )}
+        {projects && <ServeProjects />}
         <View>
           <CustomButton
             style={{
