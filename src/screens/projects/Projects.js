@@ -68,15 +68,22 @@ const styles = StyleSheet.create({
 
 const Projects = ({navigation}) => {
   const [data, setData] = React.useState(PROJECTS_DATA);
-  const [mutatedData, setMutatedData] = React.useState(PROJECTS_DATA);
-  const everyNth = (arr, nth) => arr.filter((e, i) => i % nth === nth - 1);
-  console.log(data.length);
-  console.log(mutatedData.length);
+  const [mutatedData, setMutatedData] = React.useState(false);
+  const [filter, setFilter] = React.useState('');
 
-  // HANDLERS ---------------------------------------------------------
   React.useEffect(() => {
+    if (!filter) {
+      setData(PROJECTS_DATA);
+      return;
+    }
+    const filteredData = PROJECTS_DATA.filter(item => item.category == filter);
+    setData(filteredData);
+  }, [filter]);
+
+  React.useEffect(() => {
+    console.log(filter);
     let mutatedArray = [];
-    data.map(async (item, index) => {
+    data.map((item, index) => {
       let dummy = {
         url: DummyBackground,
         dummy: true,
@@ -128,7 +135,7 @@ const Projects = ({navigation}) => {
           }}
           title="All"
           titleStyling={styles.actionTitle}
-          // onPress={() => navigation.navigate('AppStack', {screen: 'Profile'})}
+          onPress={() => setFilter('')}
         />
         <CustomButton
           style={{
@@ -136,7 +143,7 @@ const Projects = ({navigation}) => {
           }}
           title="People"
           titleStyling={styles.actionTitle}
-          // onPress={() => navigation.navigate('AppStack', {screen: 'Profile'})}
+          onPress={() => setFilter('people')}
         />
         <CustomButton
           style={{
@@ -144,7 +151,7 @@ const Projects = ({navigation}) => {
           }}
           title="Planet"
           titleStyling={styles.actionTitle}
-          // onPress={() => navigation.navigate('AppStack', {screen: 'Profile'})}
+          onPress={() => setFilter('planet')}
         />
         <CustomButton
           style={{
@@ -152,39 +159,35 @@ const Projects = ({navigation}) => {
           }}
           title="Near Me"
           titleStyling={styles.actionTitle}
-          // onPress={() => navigation.navigate('AppStack', {screen: 'Profile'})}
+          onPress={() => setFilter('')}
         />
       </View>
     );
   };
 
-  let count = 0;
+  let countWidth = 0;
+  let countHeight = 0;
   const renderFlatListItem = ({item, index}) => {
     const {url, halfWidth, dummy} = item;
 
-    const everyFourth = everyNth(data, 4);
-    const everyFifth = everyNth(mutatedData, 5);
-
     const handlePictureWidth = () => {
       let picWidth = width / 3;
-      console.log(count);
 
-      if (count === 3) picWidth = width / 2;
-      if (count === 4) picWidth = width / 2;
+      if (countWidth == 3 || countWidth == 4) picWidth = width / 2;
       if (dummy) picWidth = 0;
-      count += 1;
-      if (count === 6) count = 0;
+      countWidth += 1;
+      if (countWidth === 6) countWidth = 0;
 
       return picWidth;
     };
 
     const handlePictureHeight = () => {
-      let picHeight = width / 2;
-      console.log(count);
+      let picHeight = 200;
 
-      if (count === 3) picHeight = width / 1.5;
-      if (count === 4) picHeight = width / 1.5;
-      if (dummy) picHeight = 0;
+      // if (countHeight === 3 || countHeight === 4) picHeight = 300;
+      // if (dummy) picHeight = 0;
+      // countHeight += 1;
+      // if (countHeight === 6) countHeight = 0;
 
       return picHeight;
     };

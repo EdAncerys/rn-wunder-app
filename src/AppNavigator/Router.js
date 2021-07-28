@@ -47,7 +47,7 @@ import OrganizationName from '../screens/profile/OrganizationName';
 import OrganizationWebsite from '../screens/profile/OrganizationWebsite';
 import OrganizationProfileImage from '../screens/profile/OrganizationProfileImage';
 import Projects from '../screens/projects/Projects';
-import NewPost from '../screens/Posts/NewPosts';
+import CreatePost from '../screens/Posts/CreatePost';
 import FullScreenImage from '../screens/profile/FullScreenImage';
 
 const Stack = createStackNavigator();
@@ -74,6 +74,11 @@ export const AppNavigator = () => {
       <Stack.Screen
         name="SearchStack"
         component={SearchStack}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="AddStack"
+        component={AddStack}
         options={{headerShown: false}}
       />
       <Stack.Screen
@@ -119,15 +124,15 @@ const AppStack = ({navigation}) => {
         name="Search"
         component={Search}
         options={{
-          // tabBarVisible: false,
           tabBarLabel: 'search',
           tabBarIcon: () => <SearchIcon width={28} height={28} />,
         }}
       />
       <Tab.Screen
-        name="NewPost"
-        component={Home}
+        name="CreatePost"
+        component={CreatePost}
         options={{
+          // tabBarVisible: false,
           tabBarLabel: '',
           tabBarIcon: () => (
             <View style={{marginTop: 14}}>
@@ -135,6 +140,13 @@ const AppStack = ({navigation}) => {
             </View>
           ),
         }}
+        listeners={({navigation}) => ({
+          tabPress: e => {
+            e.preventDefault();
+            // navigation.navigate('AddStack', {screen: 'CreatePost'});
+            <Create width={36} height={36} fill={Colors.primary} />;
+          },
+        })}
       />
       <Tab.Screen
         name="Projects"
@@ -181,10 +193,11 @@ const SearchStack = ({navigation}) => {
 };
 const AddStack = ({navigation}) => {
   return (
-    <Stack.Navigator initialRouteName="Home">
+    <Stack.Navigator initialRouteName="CreatePost">
       <Stack.Screen
-        name="NewPost"
-        component={NewPost}
+        name="CreatePost"
+        component={CreatePost}
+        options={{animationEnabled: true}}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
