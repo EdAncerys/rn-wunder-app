@@ -8,6 +8,7 @@ import {
   FlatList,
   Image,
   ScrollView,
+  Modal,
 } from 'react-native';
 import {PROFILE_DATA, IMAGE_DATA_ARRAY} from '../../config/data';
 
@@ -37,7 +38,6 @@ const styles = StyleSheet.create({
     height: height / 2,
   },
   postContainer: {
-    height: height / 6,
     justifyContent: 'flex-start',
     marginHorizontal: '5%',
     height: height / 6,
@@ -60,15 +60,17 @@ const styles = StyleSheet.create({
   badge: {
     flex: 1,
   },
+  imageContainer: {
+    marginBottom: 60,
+    backgroundColor: Colors.white,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    overflow: 'hidden',
+  },
   image: {
     height: height / 4 + 50,
     width: width / 2 - 30,
     resizeMode: 'cover',
-  },
-  imageStyle: {
-    resizeMode: 'cover',
-    height: 200,
-    width: width / 3,
   },
 });
 
@@ -78,26 +80,75 @@ const Profile = ({navigation}) => {
 
   React.useEffect(() => {
     console.log(navigate);
-    navigation.navigate('NavigateAppStack', {
-      screen: 'RenderImage',
-      // params: {item: navigate},
+    navigation.navigate('ProfileStack', {
+      screen: 'FullScreenImage',
+      params: {item: navigate},
     });
   }, [navigate]);
 
   // SERVERS ---------------------------------------------------------
   const renderFlatListItem = ({item, index}) => (
     <TouchableOpacity onPress={() => setNavigate(item)}>
-      <Image
-        style={[
-          styles.imageStyle,
-          {
-            borderTopLeftRadius: index === 0 ? 30 : 0,
-            borderTopRightRadius: index === 2 ? 30 : 0,
-          },
-        ]}
-        source={item.url}
-      />
+      <View>
+        <Image
+          style={{
+            resizeMode: 'cover',
+            height: 200,
+            width: width / 3,
+            marginLeft: index % 3 !== 0 ? 2 : 0,
+            marginBottom: 2,
+          }}
+          source={item.url}
+        />
+      </View>
     </TouchableOpacity>
+  );
+
+  const ServeProfileInfo = () => (
+    <View style={styles.rowWrapper}>
+      <TouchableOpacity onPress={() => alert('profile')}>
+        <View>
+          <Text style={styles.post}>{data.profileName}</Text>
+          <Text style={styles.info}>{data.followers} followers</Text>
+          <Text style={styles.info}>{data.about}</Text>
+        </View>
+      </TouchableOpacity>
+      <View
+        style={{
+          flexDirection: 'row',
+          flex: 1,
+          justifyContent: 'space-around',
+          alignItems: 'center',
+        }}>
+        <View style={styles.rowWrapper}>
+          <View style={styles.badge}>
+            <CustomButton
+              iconLeft="Paw"
+              iconFill={Colors.white}
+              style={{backgroundColor: Colors.transparent}}
+              onPress={() => alert('paw')}
+            />
+          </View>
+          <View style={styles.badge}>
+            <CustomButton
+              iconLeft="WindTurbine"
+              iconFill={Colors.white}
+              style={{backgroundColor: Colors.transparent}}
+              iconStyling={{width: 23, height: 32}}
+              onPress={() => alert('wind')}
+            />
+          </View>
+          <View style={styles.badge}>
+            <CustomButton
+              iconLeft="Health"
+              iconFill={Colors.white}
+              style={{backgroundColor: Colors.transparent}}
+              onPress={() => alert('health')}
+            />
+          </View>
+        </View>
+      </View>
+    </View>
   );
 
   // RETURN ---------------------------------------------------------
@@ -107,69 +158,52 @@ const Profile = ({navigation}) => {
         <View style={styles.donateContainer}>
           <DonateActions navigation={navigation} profile />
         </View>
+        {/* <View
+          style={{
+            zIndex: 1,
+            position: 'relative',
+            alignItems: 'flex-start',
+            width: '100%',
+            marginTop: height / 3.5,
+            marginLeft: '5%',
+            backgroundColor: 'tomato',
+          }}>
+          <ProfileActions />
+        </View>
 
-        <ScrollView showsVerticalScrollIndicator={false} horizontal={false}>
-          <View style={styles.appActions}>
-            <ProfileActions />
-          </View>
-          <View style={styles.postContainer}>
-            <View style={styles.rowWrapper}>
-              <TouchableOpacity onPress={() => alert('profile')}>
-                <View>
-                  <Text style={styles.post}>{data.profileName}</Text>
-                  <Text style={styles.info}>{data.followers} followers</Text>
-                  <Text style={styles.info}>{data.about}</Text>
-                </View>
-              </TouchableOpacity>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  flex: 1,
-                  justifyContent: 'space-around',
-                  alignItems: 'center',
-                }}>
-                <View style={styles.rowWrapper}>
-                  <View style={styles.badge}>
-                    <CustomButton
-                      iconLeft="Paw"
-                      iconFill={Colors.white}
-                      style={{backgroundColor: Colors.transparent}}
-                      onPress={() => alert('paw')}
-                    />
-                  </View>
-                  <View style={styles.badge}>
-                    <CustomButton
-                      iconLeft="WindTurbine"
-                      iconFill={Colors.white}
-                      style={{backgroundColor: Colors.transparent}}
-                      iconStyling={{width: 23, height: 32}}
-                      onPress={() => alert('wind')}
-                    />
-                  </View>
-                  <View style={styles.badge}>
-                    <CustomButton
-                      iconLeft="Health"
-                      iconFill={Colors.white}
-                      style={{backgroundColor: Colors.transparent}}
-                      onPress={() => alert('health')}
-                    />
-                  </View>
-                </View>
-              </View>
+        <View
+          style={{
+            zIndex: 1,
+            position: 'absolute',
+            alignItems: 'flex-start',
+            width: '100%',
+            marginTop: height / 1.65,
+            marginLeft: '5%',
+            backgroundColor: 'tomato',
+          }}>
+          <ServeProfileInfo />
+        </View> */}
+        <View>
+          <ScrollView showsVerticalScrollIndicator={false} horizontal={false}>
+            <View style={styles.appActions}>
+              <ProfileActions />
             </View>
-          </View>
+            <View style={styles.postContainer}>
+              <ServeProfileInfo />
+            </View>
 
-          <View style={{marginBottom: 45}}>
-            <FlatList
-              keyExtractor={(_, index) => String(index)}
-              showsVerticalScrollIndicator={false}
-              numColumns={3}
-              data={IMAGE_DATA_ARRAY}
-              renderItem={renderFlatListItem}
-              nestedScrollEnabled={true}
-            />
-          </View>
-        </ScrollView>
+            <View style={styles.imageContainer}>
+              <FlatList
+                keyExtractor={(_, index) => String(index)}
+                showsVerticalScrollIndicator={false}
+                numColumns={3}
+                data={IMAGE_DATA_ARRAY}
+                renderItem={renderFlatListItem}
+                nestedScrollEnabled={true}
+              />
+            </View>
+          </ScrollView>
+        </View>
       </View>
     </ScreenWrapper>
   );

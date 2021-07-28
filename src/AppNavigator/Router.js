@@ -48,7 +48,7 @@ import OrganizationWebsite from '../screens/profile/OrganizationWebsite';
 import OrganizationProfileImage from '../screens/profile/OrganizationProfileImage';
 import Projects from '../screens/projects/Projects';
 import NewPost from '../screens/Posts/NewPosts';
-import RenderImage from '../screens/profile/Image';
+import FullScreenImage from '../screens/profile/FullScreenImage';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -56,17 +56,17 @@ const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="CreateAccountStack">
-      <Stack.Screen
+      {/* <Stack.Screen
         name="CreateAccountStack"
         component={CreateAccountStack}
         options={{headerShown: false}}
-      />
+      /> */}
       <Stack.Screen
         name="AppStack"
         component={AppStack}
         options={{headerShown: false}}
       />
-      {/* <Stack.Screen
+      <Stack.Screen
         name="HomeStack"
         component={HomeStack}
         options={{headerShown: false}}
@@ -84,11 +84,6 @@ export const AppNavigator = () => {
       <Stack.Screen
         name="ProfileStack"
         component={ProfileStack}
-        options={{headerShown: false}}
-      /> */}
-      <Stack.Screen
-        name="NavigateAppStack"
-        component={NavigateAppStack}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
@@ -121,8 +116,8 @@ const AppStack = ({navigation}) => {
         }}
       />
       <Tab.Screen
-        name="SearchStack"
-        component={SearchStack}
+        name="Search"
+        component={Search}
         options={{
           // tabBarVisible: false,
           tabBarLabel: 'search',
@@ -130,8 +125,8 @@ const AppStack = ({navigation}) => {
         }}
       />
       <Tab.Screen
-        name="AddStack"
-        component={AddStack}
+        name="NewPost"
+        component={NewPost}
         options={{
           tabBarLabel: '',
           tabBarIcon: () => (
@@ -142,16 +137,16 @@ const AppStack = ({navigation}) => {
         }}
       />
       <Tab.Screen
-        name="ProjectStack"
-        component={ProjectStack}
+        name="Projects"
+        component={Projects}
         options={{
           tabBarLabel: 'projects',
           tabBarIcon: () => <ProjectsIcon width={28} height={28} />,
         }}
       />
       <Tab.Screen
-        name="ProfileStack"
-        component={ProfileStack}
+        name="Profile"
+        component={Profile}
         options={{
           tabBarLabel: 'profile',
           tabBarIcon: () => <ProfileIcon width={28} height={28} />,
@@ -249,15 +244,9 @@ const ProfileStack = ({navigation}) => {
         component={OrganizationProfileImage}
         options={{headerShown: false}}
       />
-    </Stack.Navigator>
-  );
-};
-const NavigateAppStack = ({navigation}) => {
-  return (
-    <Stack.Navigator initialRouteName="RenderImage">
       <Stack.Screen
-        name="RenderImage"
-        component={RenderImage}
+        name="FullScreenImage"
+        component={FullScreenImage}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
