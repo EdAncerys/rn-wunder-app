@@ -9,13 +9,14 @@ import {
   Image,
   ScrollView,
   ImageBackground,
-  LinearGradient,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 import {PROJECTS_DATA} from '../../config/data';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
+import {Planet, People} from '../../config/icons';
 import CustomButton from '../../components/CustomButton';
 import DonateActions from '../../components/DonateActions';
 
@@ -36,6 +37,14 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     marginVertical: '5%',
   },
+  imgIconBackground: {
+    width: 16,
+    height: 16,
+    borderRadius: 16 / 2,
+    overflow: 'hidden',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   image: {
     height: height / 4 + 50,
     width: width / 2 - 30,
@@ -50,6 +59,11 @@ const styles = StyleSheet.create({
     ...Fonts.N_700_12,
     color: Colors.lightBlack,
   },
+  imgInfoOverlay: {},
+  textOverlay: {
+    ...Fonts.N_400_10,
+    color: Colors.white,
+  },
 });
 
 const Projects = ({navigation}) => {
@@ -60,7 +74,6 @@ const Projects = ({navigation}) => {
   console.log(mutatedData.length);
 
   // HANDLERS ---------------------------------------------------------
-
   React.useEffect(() => {
     let mutatedArray = [];
     data.map(async (item, index) => {
@@ -78,6 +91,30 @@ const Projects = ({navigation}) => {
   }, [data]);
 
   // SERVERS ---------------------------------------------------------
+  const ServePeopleIcon = () => {
+    return (
+      <View
+        style={{
+          ...styles.imgIconBackground,
+          backgroundColor: Colors.primary,
+        }}>
+        <People width={10} height={10} fill={Colors.white} />
+      </View>
+    );
+  };
+
+  const ServePlanetIcon = () => {
+    return (
+      <View
+        style={{
+          ...styles.imgIconBackground,
+          backgroundColor: Colors.planet,
+        }}>
+        <Planet width={10} height={10} fill={Colors.white} />
+      </View>
+    );
+  };
+
   const ServeActions = ({navigation}) => {
     return (
       <View
@@ -155,17 +192,50 @@ const Projects = ({navigation}) => {
     return (
       <TouchableOpacity
         style={{flexDirection: 'row'}}
-        onPress={() => alert(index)}>
-        <Image
-          style={{
-            resizeMode: 'cover',
-            height: handlePictureHeight(),
-            width: handlePictureWidth(),
-            marginLeft: index % 3 !== 0 ? 2 : 0,
-            marginBottom: 2,
-          }}
-          source={url}
-        />
+        onPress={() =>
+          navigation.navigate('ProfileStack', {
+            screen: 'FullScreenImage',
+            params: {item: item},
+          })
+        }>
+        <View style={styles.imageContainer}>
+          <ImageBackground
+            source={item.url}
+            style={{
+              resizeMode: 'cover',
+              height: handlePictureHeight(),
+              width: handlePictureWidth(),
+              marginLeft: index % 3 !== 0 ? 2 : 0,
+              marginBottom: 2,
+            }}>
+            <LinearGradient
+              colors={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}
+              start={{x: 0.4, y: 0.4}}
+              style={{flex: 1}}>
+              <View
+                style={{
+                  zIndex: 1,
+                  position: 'absolute',
+                  width: '100%',
+                  bottom: 10,
+                  paddingHorizontal: 10,
+                }}>
+                <Text style={styles.textOverlay}>{item.title}</Text>
+                <View
+                  style={{
+                    paddingVertical: 5,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                  }}>
+                  <Text style={styles.textOverlay}>{item.time}</Text>
+                  {item.category === 'people' && <ServePeopleIcon />}
+                  {item.category !== 'people' && <ServePlanetIcon />}
+                </View>
+              </View>
+            </LinearGradient>
+          </ImageBackground>
+        </View>
       </TouchableOpacity>
     );
   };
@@ -182,7 +252,7 @@ const Projects = ({navigation}) => {
         </View>
 
         <ScrollView showsVerticalScrollIndicator={false} horizontal={false}>
-          <View style={{marginBottom: 45}}>
+          <View style={{marginBottom: 60}}>
             <FlatList
               keyExtractor={(_, index) => String(index)}
               showsVerticalScrollIndicator={false}

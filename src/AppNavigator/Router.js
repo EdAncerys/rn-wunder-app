@@ -126,7 +126,7 @@ const AppStack = ({navigation}) => {
       />
       <Tab.Screen
         name="NewPost"
-        component={NewPost}
+        component={Home}
         options={{
           tabBarLabel: '',
           tabBarIcon: () => (
