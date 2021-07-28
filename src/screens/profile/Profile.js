@@ -75,32 +75,29 @@ const styles = StyleSheet.create({
 const Profile = ({navigation}) => {
   const [data, setData] = React.useState(PROFILE_DATA);
   const [navigate, setNavigate] = React.useState(false);
-  console.log(navigate);
 
   React.useEffect(() => {
     console.log(navigate);
-    navigation.navigate('ProjectStack', {
-      screen: 'Image',
-      params: {item: navigate},
+    navigation.navigate('NavigateAppStack', {
+      screen: 'RenderImage',
+      // params: {item: navigate},
     });
   }, [navigate]);
 
   // SERVERS ---------------------------------------------------------
   const renderFlatListItem = ({item, index}) => (
-    <View onPress={() => console.log('hello')}>
-      <TouchableOpacity onPress={() => alert(item.url)}>
-        <Image
-          style={[
-            styles.imageStyle,
-            {
-              borderTopLeftRadius: index === 0 ? 30 : 0,
-              borderTopRightRadius: index === 2 ? 30 : 0,
-            },
-          ]}
-          source={item.url}
-        />
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity onPress={() => setNavigate(item)}>
+      <Image
+        style={[
+          styles.imageStyle,
+          {
+            borderTopLeftRadius: index === 0 ? 30 : 0,
+            borderTopRightRadius: index === 2 ? 30 : 0,
+          },
+        ]}
+        source={item.url}
+      />
+    </TouchableOpacity>
   );
 
   // RETURN ---------------------------------------------------------

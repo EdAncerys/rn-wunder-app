@@ -112,7 +112,6 @@ const OrganizationProfileImage = ({navigation}) => {
   };
 
   React.useEffect(() => {
-    setUploadOptions(true);
     if (image) setUploadOptions(false);
   }, [image]);
 

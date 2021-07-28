@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Please allowing to select image from library</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Please allowing to capture image</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -34,15 +30,19 @@
 		<dict>
 			<key>localhost</key>
 			<dict>
-				<key>New item</key>
-				<string></string>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
+				<key>New item</key>
+				<string></string>
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Please allowing to capture image</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Please allowing to select image from library</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
