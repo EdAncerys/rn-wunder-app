@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   imageContainer: {
-    marginBottom: 60,
+    marginBottom: 150,
     backgroundColor: Colors.white,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
@@ -76,19 +76,18 @@ const styles = StyleSheet.create({
 
 const Profile = ({navigation}) => {
   const [data, setData] = React.useState(PROFILE_DATA);
-  const [navigate, setNavigate] = React.useState(false);
+  const [project, setProject] = React.useState(false);
 
   React.useEffect(() => {
-    console.log(navigate);
     navigation.navigate('ProfileStack', {
       screen: 'FullScreenImage',
-      params: {item: navigate},
+      params: {item: project},
     });
-  }, [navigate]);
+  }, [project]);
 
   // SERVERS ---------------------------------------------------------
   const renderFlatListItem = ({item, index}) => (
-    <TouchableOpacity onPress={() => setNavigate(item)}>
+    <TouchableOpacity onPress={() => setProject(item)}>
       <View>
         <Image
           style={{

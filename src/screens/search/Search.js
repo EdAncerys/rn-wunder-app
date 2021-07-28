@@ -124,8 +124,10 @@ const Search = ({navigation}) => {
     <TouchableOpacity
       style={{flexDirection: 'row'}}
       onPress={() =>
-        // navigation.navigate('ProjectPage', {projectItem: item, index})
-        alert(item.title)
+        navigation.navigate('ProfileStack', {
+          screen: 'FullScreenImage',
+          params: {item: item},
+        })
       }>
       <View style={{flex: 1}}>
         <View style={styles.imageContainer}>

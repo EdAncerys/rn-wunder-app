@@ -19,7 +19,7 @@ import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import DonateActions from '../../components/DonateActions';
 
-import Background from '../../assets/images/profile/profile-background.png';
+import DummyBackground from '../../assets/images/profile/profile-background.png';
 const {width, height} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginHorizontal: '5%',
+    marginVertical: '5%',
   },
   image: {
     height: height / 4 + 50,
@@ -64,10 +65,11 @@ const Projects = ({navigation}) => {
     let mutatedArray = [];
     data.map(async (item, index) => {
       let dummy = {
-        url: Background,
+        url: DummyBackground,
         dummy: true,
       };
 
+      if (index % 4 === 0) item.halfWidth = true;
       if (index % 5 === 0 && index !== 0)
         mutatedArray = [...mutatedArray, dummy];
       mutatedArray = [...mutatedArray, item];
@@ -119,22 +121,35 @@ const Projects = ({navigation}) => {
     );
   };
 
+  let count = 0;
   const renderFlatListItem = ({item, index}) => {
     const {url, halfWidth, dummy} = item;
-    const everyFourth = everyNth(mutatedData, 4);
+
+    const everyFourth = everyNth(data, 4);
     const everyFifth = everyNth(mutatedData, 5);
-    console.log(everyFifth.length);
 
     const handlePictureWidth = () => {
       let picWidth = width / 3;
+      console.log(count);
 
-      // if (everyFourth.includes(item) && index % 3 === 0) picWidth = 20;
-      // if (everyFifth.includes(item) && index % 4 === 0) picWidth = 20;
-
-      // if (index % 4 === 0 && index !== 0) picWidth = width / 12;
-      // if (dummy) picWidth = 20;
+      if (count === 3) picWidth = width / 2;
+      if (count === 4) picWidth = width / 2;
+      if (dummy) picWidth = 0;
+      count += 1;
+      if (count === 6) count = 0;
 
       return picWidth;
+    };
+
+    const handlePictureHeight = () => {
+      let picHeight = width / 2;
+      console.log(count);
+
+      if (count === 3) picHeight = width / 1.5;
+      if (count === 4) picHeight = width / 1.5;
+      if (dummy) picHeight = 0;
+
+      return picHeight;
     };
 
     return (
@@ -144,7 +159,7 @@ const Projects = ({navigation}) => {
         <Image
           style={{
             resizeMode: 'cover',
-            height: height / 3,
+            height: handlePictureHeight(),
             width: handlePictureWidth(),
             marginLeft: index % 3 !== 0 ? 2 : 0,
             marginBottom: 2,
