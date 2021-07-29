@@ -88,7 +88,6 @@ const Home = ({navigation}) => {
   const renderItem = ({item, index}) => {
     const inputRange = [index - 1, index, index + 1];
     let screenOverlap = ITEM_HEIGHT - 180;
-    console.log(screenOverlap);
     const translateY = scrollYAnimated.interpolate({
       inputRange,
       outputRange: [screenOverlap, 0, 0],

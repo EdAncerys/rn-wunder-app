@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, Share} from 'react-native';
 
 import Colors from '../config/colors';
 import Fonts from '../config/fonts';
@@ -28,7 +28,26 @@ const styles = StyleSheet.create({
   },
 });
 
-const AppActions = ({Settings, Commend, Applaud, Shoutout, Comment}) => {
+// HANDLERS ---------------------------------------------------------
+const handleShoutout = async ({title}) => {
+  try {
+    const result = await Share.share({
+      message: `Wunder App | ${title}`,
+    });
+    console.log(result.activityType);
+    console.log(result.action);
+    if (result.action === Share.sharedAction) {
+      console.log(Share.sharedAction);
+    } else if (result.action === Share.dismissedAction) {
+      console.log(Share.dismissedAction);
+    }
+  } catch (error) {
+    alert(error.message);
+  }
+};
+
+// RETURN ---------------------------------------------------------
+const AppActions = ({Settings, Commend, Applaud, Shoutout, Comment, title}) => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
@@ -77,8 +96,8 @@ const AppActions = ({Settings, Commend, Applaud, Shoutout, Comment}) => {
               iconWidth={24}
               iconHeight={20}
               iconFill={Colors.white}
-              onPress={() => alert('Shoutout')}
               style={{backgroundColor: Colors.transparent}}
+              onPress={() => handleShoutout(title)}
             />
             <Text style={styles.title}>346</Text>
           </View>

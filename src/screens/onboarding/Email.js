@@ -73,7 +73,6 @@ const Email = ({navigation}) => {
 
   React.useEffect(() => {
     setBtnInactive(true);
-    console.log(tempData.overSixteen);
     if (!tempData.overSixteen) setBackPath('Yay');
   }, [tempData]);
 

@@ -75,7 +75,7 @@ const HomeScreen = ({
       <View style={styles.wrapper}>
         {donateActions && <ServeDonate navigation={navigation} />}
         <View style={{...styles.appActions, ...applyMarginActions}}>
-          <AppActions Commend Applaud Shoutout Comment />
+          <AppActions Commend Applaud Shoutout Comment title={title} />
         </View>
         <View style={{...styles.postContainer, ...applyMarginPost}}>
           <PostSnapshot

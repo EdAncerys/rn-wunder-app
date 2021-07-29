@@ -81,7 +81,6 @@ const Projects = ({navigation}) => {
   }, [filter]);
 
   React.useEffect(() => {
-    console.log(filter);
     let mutatedArray = [];
     data.map((item, index) => {
       let dummy = {

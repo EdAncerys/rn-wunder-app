@@ -4,7 +4,7 @@ import {View, StyleSheet, Image, Dimensions} from 'react-native';
 import Colors from '../../config/colors';
 import CustomButton from '../../components/CustomButton';
 const {width, height} = Dimensions.get('screen');
-console.log(width, height);
+
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,

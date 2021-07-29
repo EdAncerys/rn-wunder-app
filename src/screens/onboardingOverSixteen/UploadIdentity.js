@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
 
 const UploadIdentity = ({navigation}) => {
   const {tempData} = useAuthState();
-  console.log(tempData);
 
   return (
     <ScreenWrapper filter={Colors.lightBlack}>

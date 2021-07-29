@@ -122,6 +122,7 @@ const Search = ({navigation}) => {
 
   const renderFlatListItem = ({item, index}) => (
     <TouchableOpacity
+      key={index}
       style={{flexDirection: 'row'}}
       onPress={() =>
         navigation.navigate('ProjectStack', {

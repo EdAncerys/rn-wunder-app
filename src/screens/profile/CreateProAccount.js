@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
 
 const CreateProAccount = ({navigation, route}) => {
   const {screen} = route.params;
-  // console.log(screen);
 
   return (
     <ScreenWrapper filter={Colors.lightBlack}>

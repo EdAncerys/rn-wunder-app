@@ -74,7 +74,6 @@ const styles = StyleSheet.create({
 const Post = ({navigation, route}) => {
   const {item} = route.params;
   const [data, setData] = React.useState(item);
-  console.log(item);
   const postData = data;
   const {
     url,
@@ -105,7 +104,6 @@ const Post = ({navigation, route}) => {
     );
   };
   const ServeProfileInfo = ({profileImageUrl, name, isVerified}) => {
-    console.log(profileImageUrl);
     return (
       <View style={styles.rowWrapper}>
         <View>
