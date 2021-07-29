@@ -57,11 +57,11 @@ const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="CreateAccountStack">
-      {/* <Stack.Screen
-        name="Post"
-        component={Post}
+      <Stack.Screen
+        name="TestScreen"
+        component={SplashScreen}
         options={{headerShown: false}}
-      /> */}
+      />
       <Stack.Screen
         name="CreateAccountStack"
         component={CreateAccountStack}

@@ -28,6 +28,19 @@ const styles = StyleSheet.create({
 const SplashScreen = ({navigation}) => {
   return (
     <ScreenWrapper image={Background} filter={Colors.screenFilter}>
+      <View
+        style={{
+          position: 'absolute',
+          top: '5%',
+          left: '5%',
+        }}>
+        <CustomButton
+          iconLeft="Create"
+          iconFill={Colors.primary}
+          onPress={() => navigation.navigate('AppStack', {screen: 'Home'})}
+          style={{backgroundColor: Colors.transparent}}
+        />
+      </View>
       <View style={styles.logoContainer}>
         <Image source={Logo} />
       </View>
