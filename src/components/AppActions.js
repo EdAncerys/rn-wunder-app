@@ -39,7 +39,7 @@ const AppActions = ({Settings, Commend, Applaud, Shoutout, Comment}) => {
               iconWidth={24}
               iconHeight={24}
               iconFill={Colors.white}
-              onPress={() => alert('inbox')}
+              onPress={() => alert('Settings')}
               style={{backgroundColor: Colors.transparent}}
             />
           </View>
@@ -51,7 +51,7 @@ const AppActions = ({Settings, Commend, Applaud, Shoutout, Comment}) => {
               iconWidth={24}
               iconHeight={24}
               iconFill={Colors.white}
-              onPress={() => alert('inbox')}
+              onPress={() => alert('Commend')}
               style={{backgroundColor: Colors.transparent}}
             />
             <Text style={styles.title}>1346</Text>
@@ -64,7 +64,7 @@ const AppActions = ({Settings, Commend, Applaud, Shoutout, Comment}) => {
               iconWidth={24}
               iconHeight={24}
               iconFill={Colors.white}
-              onPress={() => alert('inbox')}
+              onPress={() => alert('Applaud')}
               style={{backgroundColor: Colors.transparent}}
             />
             <Text style={styles.title}>346</Text>
@@ -77,7 +77,7 @@ const AppActions = ({Settings, Commend, Applaud, Shoutout, Comment}) => {
               iconWidth={24}
               iconHeight={20}
               iconFill={Colors.white}
-              onPress={() => alert('inbox')}
+              onPress={() => alert('Shoutout')}
               style={{backgroundColor: Colors.transparent}}
             />
             <Text style={styles.title}>346</Text>
@@ -90,7 +90,7 @@ const AppActions = ({Settings, Commend, Applaud, Shoutout, Comment}) => {
               iconWidth={24}
               iconHeight={20}
               iconFill={Colors.white}
-              onPress={() => alert('inbox')}
+              onPress={() => alert('Comment')}
               style={{backgroundColor: Colors.transparent}}
             />
             <Text style={styles.title}>346</Text>

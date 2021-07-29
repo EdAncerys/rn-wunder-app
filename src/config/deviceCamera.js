@@ -1,4 +1,7 @@
+import * as React from 'react';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import {useAuthState, useAuthDispatch, logIn} from '../context/auth';
+import {useApiDispatch} from '../context/api';
 
 const handleResponse = (response, setImage) => {
   console.log(response);

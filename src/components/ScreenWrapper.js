@@ -48,10 +48,11 @@ const ServeScrollView = ({props}) => {
   return screen;
 };
 const ServeImgBackground = ({props}) => {
+  const background = props.image || props.url;
   let screen = <ServeScreenView props={props} />;
-  if (props.image)
+  if (background)
     screen = (
-      <ImageBackground source={props.image} style={styles.backgroundImg}>
+      <ImageBackground source={background} style={styles.backgroundImg}>
         <ServeScreenView props={props} />
       </ImageBackground>
     );

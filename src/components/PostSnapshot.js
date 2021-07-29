@@ -119,7 +119,7 @@ const ServePost = ({props}) => {
 const PostPreview = props => {
   return (
     <View style={styles.container}>
-      {<ServeProfileInfo props={props} />}
+      <ServeProfileInfo props={props} />
       {props.title && <ServePostTitle props={props} />}
       {props.post && <ServePost props={props} />}
     </View>

@@ -168,7 +168,6 @@ const Projects = ({navigation}) => {
   let countWidth = 0;
   let countHeight = 0;
   const dataLength = mutatedData.length;
-  console.log(dataLength);
   const renderFlatListItem = ({item, index}) => {
     const {url, dummy} = item;
 
@@ -197,8 +196,8 @@ const Projects = ({navigation}) => {
       <TouchableOpacity
         style={{flexDirection: 'row'}}
         onPress={() =>
-          navigation.navigate('ProfileStack', {
-            screen: 'FullScreenImage',
+          navigation.navigate('ProjectStack', {
+            screen: 'Post',
             params: {item: item},
           })
         }>

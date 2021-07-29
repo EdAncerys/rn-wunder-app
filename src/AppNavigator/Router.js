@@ -49,6 +49,7 @@ import OrganizationProfileImage from '../screens/profile/OrganizationProfileImag
 import Projects from '../screens/projects/Projects';
 import CreatePost from '../screens/Posts/CreatePost';
 import FullScreenImage from '../screens/profile/FullScreenImage';
+import Post from '../screens/Posts/Post';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -56,6 +57,11 @@ const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="CreateAccountStack">
+      {/* <Stack.Screen
+        name="Post"
+        component={Post}
+        options={{headerShown: false}}
+      /> */}
       {/* <Stack.Screen
         name="CreateAccountStack"
         component={CreateAccountStack}
@@ -144,7 +150,6 @@ const AppStack = ({navigation}) => {
           tabPress: e => {
             e.preventDefault();
             // navigation.navigate('AddStack', {screen: 'CreatePost'});
-            <Create width={36} height={36} fill={Colors.primary} />;
           },
         })}
       />
@@ -209,6 +214,11 @@ const ProjectStack = ({navigation}) => {
       <Stack.Screen
         name="Projects"
         component={Projects}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Post"
+        component={Post}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
