@@ -54,17 +54,29 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  getInvolvedActions: {
+    marginVertical: 5,
+  },
 });
 
 // SERVERS ---------------------------------------------------------
-const ServeProfileInfo = ({props}) => {
+const ServeProfileInfo = ({item}) => {
+  const {profileImageUrl, name, isVerified} = item;
   return (
     <View style={styles.rowWrapper}>
       <View>
-        <Image source={props.profileIcon} />
+        <Image
+          style={{
+            width: 32,
+            height: 32,
+            borderRadius: 16,
+            overflow: 'hidden',
+          }}
+          source={{uri: profileImageUrl}}
+        />
       </View>
-      <Text style={styles.profile}>{props.profileName}</Text>
-      {props.verified && (
+      <Text style={styles.profile}>@{name}</Text>
+      {isVerified && (
         <View style={styles.verified}>
           <View>
             <Verified width={20} height={20} fill={Colors.primary} />
@@ -74,19 +86,20 @@ const ServeProfileInfo = ({props}) => {
     </View>
   );
 };
-const ServePostTitle = ({props}) => {
-  return <Text style={styles.title}>{props.title}</Text>;
+const ServePostTitle = ({item}) => {
+  return <Text style={styles.title}>{item.title}</Text>;
 };
-const ServePost = ({props}) => {
-  const postTagIcon = props.postTag === 'planet' ? 'Planet' : 'People';
-  const iconColor = props.postTag === 'planet' ? Colors.planet : Colors.primary;
+const ServePost = ({item}) => {
+  const {post, category} = item;
+  const postTagIcon = category === 'planet' ? 'Planet' : 'People';
+  const iconColor = category === 'planet' ? Colors.planet : Colors.primary;
 
   return (
     <View style={styles.rowWrapper}>
-      <TouchableOpacity onPress={props.onPress}>
+      <TouchableOpacity onPress={() => alert('post')}>
         <View>
           <Text style={styles.post}>
-            {props.post}
+            {post}
             <Text style={styles.postAction}>... more</Text>
           </Text>
         </View>
@@ -115,13 +128,22 @@ const ServePost = ({props}) => {
   );
 };
 
-// RETURN ---------------------------------------------------------
-const PostPreview = props => {
+const PostPreview = ({item}) => {
+  const {getInvolved} = item;
+
   return (
     <View style={styles.container}>
-      <ServeProfileInfo props={props} />
-      {props.title && <ServePostTitle props={props} />}
-      {props.post && <ServePost props={props} />}
+      <ServeProfileInfo item={item} />
+      <ServePostTitle item={item} />
+      <ServePost item={item} />
+      {getInvolved && (
+        <View style={styles.getInvolvedActions}>
+          <CustomButton
+            title="get involved"
+            onPress={() => alert('get involved')}
+          />
+        </View>
+      )}
     </View>
   );
 };

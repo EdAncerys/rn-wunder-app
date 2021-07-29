@@ -3,7 +3,7 @@ import {View, StyleSheet} from 'react-native';
 
 import ScreenWrapper from './ScreenWrapper';
 import Colors from '../config/colors';
-import CustomButton from './CustomButton';
+
 import PostSnapshot from './PostSnapshot';
 import AppActions from './AppActions';
 import DonateActions from './DonateActions';
@@ -33,28 +33,16 @@ const styles = StyleSheet.create({
     flex: 3,
     justifyContent: 'flex-start',
   },
-  getInvolvedActions: {
-    marginVertical: 5,
-  },
 });
 
-const HomeScreen = ({
-  navigation,
-  background,
-  profileIcon,
-  profileName,
-  verified,
-  title,
-  post,
-  postTag,
-  getInvolved,
-  donateActions,
-}) => {
-  let applyMarginPost = {marginBottom: '15%'};
-  if (getInvolved) applyMarginPost = {marginBottom: '40%'};
-  if (donateActions) applyMarginPost = {marginBottom: '5%'};
+const HomeScreen = ({navigation, item}) => {
+  const {url, getInvolved, donateAction} = item;
 
-  const applyMarginActions = donateActions
+  let applyMarginPost = {marginBottom: '15%'};
+  if (donateAction) applyMarginPost = {marginBottom: '5%'};
+  if (getInvolved) applyMarginPost = {marginBottom: '40%'};
+
+  const applyMarginActions = donateAction
     ? {marginTop: '0%'}
     : {marginTop: '30%'};
 
@@ -70,30 +58,15 @@ const HomeScreen = ({
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper
-      image={background}
+      image={url}
       gradient={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}>
       <View style={styles.wrapper}>
-        {donateActions && <ServeDonate navigation={navigation} />}
+        {donateAction && <ServeDonate navigation={navigation} />}
         <View style={{...styles.appActions, ...applyMarginActions}}>
-          <AppActions Commend Applaud Shoutout Comment title={title} />
+          <AppActions Commend Applaud Shoutout Comment item={item} />
         </View>
         <View style={{...styles.postContainer, ...applyMarginPost}}>
-          <PostSnapshot
-            profileIcon={profileIcon}
-            profileName={profileName}
-            verified={verified}
-            title={title}
-            post={post}
-            postTag={postTag}
-          />
-          {getInvolved && (
-            <View style={styles.getInvolvedActions}>
-              <CustomButton
-                title="get involved"
-                onPress={() => alert('get involved')}
-              />
-            </View>
-          )}
+          <PostSnapshot item={item} />
         </View>
       </View>
     </ScreenWrapper>

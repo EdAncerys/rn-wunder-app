@@ -68,19 +68,7 @@ const Home = ({navigation}) => {
 
     return (
       <View style={{...styles.screenContainer, ...screenBorder}}>
-        <HomeScreen
-          navigation={navigation}
-          background={item.background}
-          profileIcon={item.profileIcon}
-          profileName={item.profileName}
-          verified={item.verified}
-          title={item.title}
-          post={item.post}
-          postTag={item.postTag}
-          getInvolved={item.getInvolved}
-          donateActions={item.donateActions}
-          navigateActions={item.navigateActions}
-        />
+        <HomeScreen navigation={navigation} item={item} />
       </View>
     );
   };
