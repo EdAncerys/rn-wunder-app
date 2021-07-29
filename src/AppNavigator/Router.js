@@ -231,12 +231,7 @@ const ProjectStack = ({navigation}) => {
 };
 const ProfileStack = ({navigation}) => {
   return (
-    <Stack.Navigator initialRouteName="Profile">
-      <Stack.Screen
-        name="Profile"
-        component={Profile}
-        options={{headerShown: false}}
-      />
+    <Stack.Navigator initialRouteName="CreateProAccount">
       <Stack.Screen
         name="CreateProAccount"
         component={CreateProAccount}

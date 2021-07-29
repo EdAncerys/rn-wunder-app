@@ -76,18 +76,16 @@ const styles = StyleSheet.create({
 
 const Profile = ({navigation}) => {
   const [data, setData] = React.useState(PROFILE_DATA);
-  const [project, setProject] = React.useState(false);
-
-  React.useEffect(() => {
-    navigation.navigate('ProjectStack', {
-      screen: 'FullScreenImage',
-      params: {item: project},
-    });
-  }, [project]);
 
   // SERVERS ---------------------------------------------------------
   const renderFlatListItem = ({item, index}) => (
-    <TouchableOpacity onPress={() => setProject(item)}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate('ProjectStack', {
+          screen: 'FullScreenImage',
+          params: {item: item},
+        })
+      }>
       <View>
         <Image
           style={{
