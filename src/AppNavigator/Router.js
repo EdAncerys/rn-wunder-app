@@ -221,6 +221,11 @@ const ProjectStack = ({navigation}) => {
         component={Post}
         options={{headerShown: false}}
       />
+      <Stack.Screen
+        name="FullScreenImage"
+        component={FullScreenImage}
+        options={{headerShown: false}}
+      />
     </Stack.Navigator>
   );
 };
@@ -265,11 +270,6 @@ const ProfileStack = ({navigation}) => {
       <Stack.Screen
         name="OrganizationProfileImage"
         component={OrganizationProfileImage}
-        options={{headerShown: false}}
-      />
-      <Stack.Screen
-        name="FullScreenImage"
-        component={FullScreenImage}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

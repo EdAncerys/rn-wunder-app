@@ -79,7 +79,7 @@ const Profile = ({navigation}) => {
   const [project, setProject] = React.useState(false);
 
   React.useEffect(() => {
-    navigation.navigate('ProfileStack', {
+    navigation.navigate('ProjectStack', {
       screen: 'FullScreenImage',
       params: {item: project},
     });
