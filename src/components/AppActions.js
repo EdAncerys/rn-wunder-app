@@ -29,11 +29,18 @@ const styles = StyleSheet.create({
 });
 
 // HANDLERS ---------------------------------------------------------
-const handleShoutout = async ({title}) => {
+const handleShoutout = async item => {
+  const {title} = item;
+
   try {
-    const result = await Share.share({
-      message: `Wunder App | ${title}`,
-    });
+    const result = await Share.share(
+      {
+        message: title,
+      },
+      {
+        subject: title,
+      },
+    );
     console.log(result.activityType);
     console.log(result.action);
     if (result.action === Share.sharedAction) {
@@ -47,7 +54,7 @@ const handleShoutout = async ({title}) => {
 };
 
 // RETURN ---------------------------------------------------------
-const AppActions = ({Settings, Commend, Applaud, Shoutout, Comment, title}) => {
+const AppActions = ({Settings, Commend, Applaud, Shoutout, Comment, item}) => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
@@ -97,7 +104,7 @@ const AppActions = ({Settings, Commend, Applaud, Shoutout, Comment, title}) => {
               iconHeight={20}
               iconFill={Colors.white}
               style={{backgroundColor: Colors.transparent}}
-              onPress={() => handleShoutout(title)}
+              onPress={() => handleShoutout(item)}
             />
             <Text style={styles.title}>346</Text>
           </View>

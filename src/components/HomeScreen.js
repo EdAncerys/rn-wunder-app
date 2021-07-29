@@ -47,7 +47,7 @@ const HomeScreen = ({navigation, item}) => {
     : {marginTop: '30%'};
 
   // SERVERS ---------------------------------------------------------
-  const ServeDonate = ({navigation}) => {
+  const ServeDonate = () => {
     return (
       <View style={styles.donateContainer}>
         <DonateActions navigation={navigation} />
@@ -61,7 +61,7 @@ const HomeScreen = ({navigation, item}) => {
       image={url}
       gradient={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}>
       <View style={styles.wrapper}>
-        {donateAction && <ServeDonate navigation={navigation} />}
+        {donateAction && <ServeDonate />}
         <View style={{...styles.appActions, ...applyMarginActions}}>
           <AppActions Commend Applaud Shoutout Comment item={item} />
         </View>
