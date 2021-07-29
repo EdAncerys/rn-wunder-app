@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     color: Colors.white,
     width: width * 0.7,
   },
-  verified: {
+  isVerified: {
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -81,7 +81,7 @@ const Post = ({navigation, route}) => {
     profileImageUrl,
     title,
     name,
-    verified,
+    isVerified,
     detail,
     category,
     getInvolved,
@@ -104,16 +104,24 @@ const Post = ({navigation, route}) => {
       </View>
     );
   };
-  const ServeProfileInfo = ({profileImageUrl, name, verified}) => {
+  const ServeProfileInfo = ({profileImageUrl, name, isVerified}) => {
     console.log(profileImageUrl);
     return (
       <View style={styles.rowWrapper}>
         <View>
-          <Image source={profileImageUrl} />
+          <Image
+            style={{
+              width: 32,
+              height: 32,
+              borderRadius: 16,
+              overflow: 'hidden',
+            }}
+            source={{uri: profileImageUrl}}
+          />
         </View>
         <Text style={styles.profile}>@{name}</Text>
-        {verified && (
-          <View style={styles.verified}>
+        {isVerified && (
+          <View style={styles.isVerified}>
             <View>
               <Verified width={20} height={20} fill={Colors.primary} />
             </View>
@@ -172,7 +180,7 @@ const Post = ({navigation, route}) => {
           <ServeProfileInfo
             profileImageUrl={profileImageUrl}
             name={name}
-            verified={verified}
+            isVerified={isVerified}
           />
           <ServePostTitle title={title} />
           <ServePost detail={detail} category={category} />
