@@ -9,8 +9,10 @@ const {height} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: height - 200,
+    position: 'absolute',
+    width: '100%',
     paddingHorizontal: '5%',
+    bottom: 50,
   },
 });
 

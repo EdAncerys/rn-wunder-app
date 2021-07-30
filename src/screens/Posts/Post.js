@@ -29,13 +29,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   appActions: {
-    flex: 4,
+    flex: 5,
     alignItems: 'flex-start',
     justifyContent: 'center',
   },
   postContainer: {
     flex: 3,
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-end',
+    marginVertical: '5%',
   },
   getInvolvedActions: {
     marginVertical: 5,
@@ -82,19 +83,10 @@ const Post = ({navigation, route}) => {
     post,
     category,
     getInvolved,
-    donateActions,
   } = item;
 
-  let applyMarginPost = {marginBottom: '15%'};
-  if (getInvolved) applyMarginPost = {marginBottom: '40%'};
-  if (donateActions) applyMarginPost = {marginBottom: '5%'};
-
-  const applyMarginActions = donateActions
-    ? {marginTop: '0%'}
-    : {marginTop: '30%'};
-
   // SERVERS ---------------------------------------------------------
-  const ServeDonate = () => {
+  const ServeProfileHeaderActions = () => {
     return (
       <View style={styles.donateContainer}>
         <ProfileHeaderActions navigation={navigation} item={item} />
@@ -168,11 +160,11 @@ const Post = ({navigation, route}) => {
       image={url}
       gradient={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}>
       <View style={styles.wrapper}>
-        <ServeDonate navigation={navigation} />
-        <View style={{...styles.appActions, ...applyMarginActions}}>
+        <ServeProfileHeaderActions navigation={navigation} />
+        <View style={styles.appActions}>
           <AppActions Commend Applaud Shoutout Comment />
         </View>
-        <View style={{...styles.postContainer, ...applyMarginPost}}>
+        <View style={styles.postContainer}>
           <ServeProfileInfo
             profileImageUrl={profileImageUrl}
             name={name}
