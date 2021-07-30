@@ -26,10 +26,6 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     justifyContent: 'center',
   },
-  screenFilter: {
-    flex: 1,
-    backgroundColor: Colors.screenFilter,
-  },
 });
 
 // SERVERS ---------------------------------------------------------

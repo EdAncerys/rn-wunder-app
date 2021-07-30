@@ -8,6 +8,7 @@ import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
 import LicenceImage from '../../assets/images/onboardingOverSixteen/upload-licence.png';
+import CameraActionsPopUp from '../../components/CameraActionsPopUp';
 
 const styles = StyleSheet.create({
   contentContainer: {
@@ -148,7 +149,13 @@ const UploadLicenceFront = ({navigation}) => {
               />
             </View>
           )}
-          {uploadOptions && <ServeActions />}
+          {uploadOptions && (
+            <CameraActionsPopUp
+              handleCamera={handleCamera}
+              handleGallery={handleGallery}
+              setUploadOptions={setUploadOptions}
+            />
+          )}
         </View>
       </View>
     </ScreenWrapper>

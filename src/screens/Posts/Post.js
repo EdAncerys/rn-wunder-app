@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  detail: {
+  post: {
     ...Fonts.N_400_16,
     color: Colors.planet,
     width: width * 0.7,
@@ -81,7 +81,7 @@ const Post = ({navigation, route}) => {
     title,
     name,
     isVerified,
-    detail,
+    post,
     category,
     getInvolved,
     donateActions,
@@ -131,14 +131,14 @@ const Post = ({navigation, route}) => {
   const ServePostTitle = ({title}) => {
     return <Text style={styles.title}>{title}</Text>;
   };
-  const ServePost = ({detail, category}) => {
+  const ServePost = ({post, category}) => {
     const postTagIcon = category === 'planet' ? 'Planet' : 'People';
     const iconColor = category === 'planet' ? Colors.planet : Colors.primary;
 
     return (
       <View style={styles.rowWrapper}>
         <View>
-          <Text style={styles.detail}>{detail}</Text>
+          <Text style={styles.post}>{post}</Text>
         </View>
         <View style={styles.badge}>
           <View
@@ -181,7 +181,7 @@ const Post = ({navigation, route}) => {
             isVerified={isVerified}
           />
           <ServePostTitle title={title} />
-          <ServePost detail={detail} category={category} />
+          <ServePost post={post} category={category} />
           {getInvolved && (
             <View style={styles.getInvolvedActions}>
               <CustomButton
