@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, StyleSheet, Dimensions, Modal} from 'react-native';
+import {Text, View, StyleSheet, Dimensions, Modal} from 'react-native';
 
 import Colors from '../config/colors';
 import Fonts from '../config/fonts';
@@ -25,13 +25,20 @@ const styles = StyleSheet.create({
     ...Fonts.N_400_16,
   },
   actionsContainer: {
-    paddingTop: height - 200,
+    position: 'absolute',
+    width: '100%',
     paddingHorizontal: '5%',
+    bottom: 50,
   },
 });
 
 // SERVERS ---------------------------------------------------------
-const ServeReportPost = ({navigation, setDonateAction, item}) => {
+const ServeReportPost = ({
+  navigation,
+  setReportAction,
+  setBlockAction,
+  item,
+}) => {
   const {name} = item;
 
   return (
@@ -48,10 +55,10 @@ const ServeReportPost = ({navigation, setDonateAction, item}) => {
             borderBottomWidth: 1,
             borderColor: Colors.lightSilver,
           }}
-          onPress={() =>
-            // navigation.navigate('ProfileStack', {screen: 'SelectingReport'})
-            alert('block pop up')
-          }
+          onPress={() => {
+            setReportAction(false);
+            setBlockAction(true);
+          }}
         />
         <CustomButton
           title="Report Post"
@@ -63,7 +70,7 @@ const ServeReportPost = ({navigation, setDonateAction, item}) => {
             borderBottomRightRadius: 10,
           }}
           onPress={() => {
-            setDonateAction(false);
+            setReportAction(false);
             navigation.navigate('ProjectStack', {screen: 'SelectingReport'});
           }}
         />
@@ -71,8 +78,76 @@ const ServeReportPost = ({navigation, setDonateAction, item}) => {
           title="Cancel"
           titleStyling={{...Fonts.N_400_20, color: Colors.lightBlue}}
           style={{backgroundColor: Colors.white, marginVertical: 10}}
-          onPress={() => setDonateAction(false)}
+          onPress={() => setReportAction(false)}
         />
+      </View>
+    </Modal>
+  );
+};
+
+const ServeBlockingUser = ({setBlockAction, item}) => {
+  const {name} = item;
+
+  return (
+    <Modal animationType="slide" transparent={true} visible={true}>
+      <View style={{...styles.actionsContainer, bottom: height / 2.5}}>
+        <View
+          style={{
+            backgroundColor: Colors.transparentMatWhite,
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
+          }}>
+          <Text
+            style={{
+              ...Fonts.N_400_20,
+              color: Colors.lightBlack,
+              textAlign: 'center',
+              marginTop: 16,
+            }}>{`Block @${name}`}</Text>
+          <Text
+            style={{
+              ...Fonts.N_400_16,
+              color: Colors.lightBlack,
+              textAlign: 'center',
+              marginVertical: 16,
+              paddingHorizontal: 45,
+            }}>
+            {`@${name}`} no longer be able to follow you and you will no longer
+            see there posts or comments.
+          </Text>
+        </View>
+        <View style={{flexDirection: 'row'}}>
+          <View style={{flex: 1}}>
+            <CustomButton
+              title="Cancel"
+              titleStyling={{...Fonts.N_400_20, color: Colors.primary}}
+              style={{
+                flex: 1,
+                backgroundColor: Colors.transparentMatWhite,
+                borderRadius: 0,
+                borderBottomLeftRadius: 10,
+                borderRightWidth: 1,
+                borderTopWidth: 1,
+                borderColor: Colors.lightSilver,
+              }}
+              onPress={() => setBlockAction(false)}
+            />
+          </View>
+          <View style={{flex: 1}}>
+            <CustomButton
+              title="Confirm"
+              titleStyling={{...Fonts.N_400_20, color: Colors.lightBlue}}
+              style={{
+                backgroundColor: Colors.transparentMatWhite,
+                borderBottomRightRadius: 10,
+                borderRadius: 0,
+                borderTopWidth: 1,
+                borderColor: Colors.lightSilver,
+              }}
+              onPress={() => setBlockAction(false)}
+            />
+          </View>
+        </View>
       </View>
     </Modal>
   );
@@ -80,7 +155,8 @@ const ServeReportPost = ({navigation, setDonateAction, item}) => {
 
 // RETURN ---------------------------------------------------------
 const ProfileHeaderActions = ({navigation, item}) => {
-  const [donateAction, setDonateAction] = React.useState(false);
+  const [reportAction, setReportAction] = React.useState(false);
+  const [blockAction, setBlockAction] = React.useState(false);
 
   return (
     <View>
@@ -111,16 +187,20 @@ const ProfileHeaderActions = ({navigation, item}) => {
             iconWidth={32}
             iconHeight={32}
             iconFill={Colors.white}
-            onPress={() => setDonateAction(true)}
+            onPress={() => setReportAction(true)}
           />
         </View>
       </View>
-      {donateAction && (
+      {reportAction && (
         <ServeReportPost
           navigation={navigation}
-          setDonateAction={setDonateAction}
+          setReportAction={setReportAction}
+          setBlockAction={setBlockAction}
           item={item}
         />
+      )}
+      {blockAction && (
+        <ServeBlockingUser setBlockAction={setBlockAction} item={item} />
       )}
     </View>
   );
