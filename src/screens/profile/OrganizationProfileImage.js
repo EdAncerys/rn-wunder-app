@@ -8,6 +8,7 @@ import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
 import LicenceImage from '../../assets/images/onboardingOverSixteen/upload-licence.png';
+import CameraActionsPopUp from '../../components/CameraActionsPopUp';
 
 const styles = StyleSheet.create({
   contentContainer: {
@@ -54,44 +55,6 @@ const OrganizationProfileImage = ({navigation}) => {
   const [uploadOptions, setUploadOptions] = React.useState(false);
   const renderImg = image || LicenceImage;
   const imgOpacity = uploadOptions ? 0.4 : 1;
-
-  // SERVERS ---------------------------------------------------------
-  const ServeActions = ({props}) => {
-    return (
-      <View>
-        <CustomButton
-          title="Camera"
-          titleStyling={{...Fonts.N_400_20, color: Colors.lightBlue}}
-          style={{
-            backgroundColor: Colors.transparentMatWhite,
-            borderRadius: 0,
-            borderTopLeftRadius: 10,
-            borderTopRightRadius: 10,
-            borderBottomWidth: 1,
-            borderColor: Colors.lightSilver,
-          }}
-          onPress={handleCamera}
-        />
-        <CustomButton
-          title="Photo & Video Gallery"
-          titleStyling={{...Fonts.N_400_20, color: Colors.lightBlue}}
-          style={{
-            backgroundColor: Colors.transparentMatWhite,
-            borderRadius: 0,
-            borderBottomLeftRadius: 10,
-            borderBottomRightRadius: 10,
-          }}
-          onPress={handleGallery}
-        />
-        <CustomButton
-          title="Cancel"
-          titleStyling={{...Fonts.N_400_20, color: Colors.lightBlue}}
-          style={{backgroundColor: Colors.white, marginVertical: 10}}
-          onPress={() => setUploadOptions(false)}
-        />
-      </View>
-    );
-  };
 
   // HANDLERS ---------------------------------------------------------
   const handleContinue = () => {
@@ -153,7 +116,13 @@ const OrganizationProfileImage = ({navigation}) => {
               />
             </View>
           )}
-          {uploadOptions && <ServeActions />}
+          {uploadOptions && (
+            <CameraActionsPopUp
+              handleCamera={handleCamera}
+              handleGallery={handleGallery}
+              setUploadOptions={setUploadOptions}
+            />
+          )}
         </View>
       </View>
     </ScreenWrapper>

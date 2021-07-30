@@ -54,6 +54,7 @@ const UploadLicenceBack = ({navigation}) => {
   const [image, setImage] = React.useState(false);
   const [uploadOptions, setUploadOptions] = React.useState(false);
   const renderImg = image || LicenceImage;
+  const imgOpacity = uploadOptions ? 0.4 : 1;
 
   // HANDLERS ---------------------------------------------------------
   const handleContinue = () => {
@@ -93,7 +94,11 @@ const UploadLicenceBack = ({navigation}) => {
             Upload a clear picture of the back of your licence
           </Text>
           <View style={styles.imageContainer}>
-            <Image source={renderImg} resizeMode="cover" style={styles.image} />
+            <Image
+              source={renderImg}
+              resizeMode="cover"
+              style={{...styles.image, opacity: imgOpacity}}
+            />
           </View>
         </View>
 

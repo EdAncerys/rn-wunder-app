@@ -59,7 +59,7 @@ export const AppNavigator = () => {
     <Stack.Navigator initialRouteName="CreateAccountStack">
       <Stack.Screen
         name="TestScreen"
-        component={UploadLicenceBack}
+        component={OrganizationProfileImage}
         options={{headerShown: false}}
       />
       {/* <Stack.Screen
