@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, TextInput} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -10,62 +10,41 @@ import NavigateAction from '../../components/NavigateAction';
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    marginHorizontal: '5%',
-  },
-  formContainer: {
-    flex: 4,
-    alignItems: 'center',
   },
   titleContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: '8%',
+    marginVertical: '5%',
   },
   title: {
-    ...Fonts.N_700_16,
-    color: Colors.white,
-    textAlign: 'center',
-    marginHorizontal: '15%',
-  },
-  inputWrapper: {
-    width: '100%',
-  },
-  inputContainer: {
-    ...Fonts.N_400_12,
-    marginVertical: '2%',
-    padding: 15,
-    borderRadius: 4,
-    backgroundColor: Colors.white,
-  },
-  actionsContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  actionsWrapper: {
-    width: '100%',
+    ...Fonts.N_400_16,
+    color: Colors.lightBlack,
+    textAlign: 'justify',
+    marginHorizontal: '5%',
   },
   navigateActionContainer: {
-    flex: 1,
     marginTop: '5%',
+    marginHorizontal: '5%',
+  },
+  divider: {
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.lightSilver,
+    marginVertical: '2%',
+  },
+  btnTitleStyling: {
+    flex: 1,
+    ...Fonts.N_400_16,
+    color: Colors.lightBlack,
+  },
+  btnStyling: {
+    backgroundColor: Colors.transparent,
+    marginVertical: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.lightSilver,
   },
 });
 
 const SelectingReport = ({navigation}) => {
-  const [regNumber, setRegNumber] = React.useState('');
-  const [btnInactive, setBtnInactive] = React.useState(true);
-
-  React.useEffect(() => {
-    setBtnInactive(true);
-    if (!!regNumber) setBtnInactive(false);
-  }, [regNumber]);
-
-  // HANDLERS ---------------------------------------------------------
-  const handleContinue = () => {
-    navigation.navigate('OrganizationEmail');
-    setRegNumber('');
-  };
-
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper filter={Colors.white}>
@@ -78,33 +57,51 @@ const SelectingReport = ({navigation}) => {
             onPress={() => navigation.goBack()}
           />
         </View>
-        <View style={styles.formContainer}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>
-              What’s your organisation registration number?
-            </Text>
-          </View>
-          <View style={styles.inputWrapper}>
-            <TextInput
-              placeholder="Registration Number"
-              placeholderTextColor={Colors.lightSilver}
-              onChangeText={setRegNumber}
-              autoCapitalize="none"
-              value={regNumber}
-              style={styles.inputContainer}
-              keyboardType="numeric"
-              maxLength={6}
-            />
-          </View>
+        <View style={styles.divider} />
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>
+            Please help us understand the problem of this comment. Select one of
+            the following.
+          </Text>
         </View>
-        <View style={styles.actionsContainer}>
-          <View style={styles.actionsWrapper}>
-            <CustomButton
-              title="Continue"
-              inactive={btnInactive}
-              onPress={() => handleContinue()}
-            />
-          </View>
+        <View style={styles.divider} />
+        <View style={styles.navigateActionContainer}>
+          <CustomButton
+            title="It’s suspicious or spam."
+            iconRight="ChevronRight"
+            iconWidth={12}
+            iconHeight={16}
+            titleStyling={styles.btnTitleStyling}
+            style={styles.btnStyling}
+            onPress={() => alert('It’s suspicious or spam.')}
+          />
+          <CustomButton
+            title="It’s abusive or harmful."
+            iconRight="ChevronRight"
+            iconWidth={12}
+            iconHeight={16}
+            titleStyling={styles.btnTitleStyling}
+            style={styles.btnStyling}
+            onPress={() => alert('It’s abusive or harmful.')}
+          />
+          <CustomButton
+            title="It expresses intentions of self harm."
+            iconRight="ChevronRight"
+            iconWidth={12}
+            iconHeight={16}
+            titleStyling={styles.btnTitleStyling}
+            style={styles.btnStyling}
+            onPress={() => alert('It expresses intentions of self harm.')}
+          />
+          <CustomButton
+            title="It displays a sensitive photo or video."
+            iconRight="ChevronRight"
+            iconWidth={12}
+            iconHeight={16}
+            titleStyling={styles.btnTitleStyling}
+            style={styles.btnStyling}
+            onPress={() => alert('It displays a sensitive photo or video.')}
+          />
         </View>
       </View>
     </ScreenWrapper>

@@ -58,16 +58,16 @@ const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="CreateAccountStack">
-      <Stack.Screen
+      {/* <Stack.Screen
         name="TestScreen"
         component={SelectingReport}
         options={{headerShown: false}}
-      />
-      {/* <Stack.Screen
+      /> */}
+      <Stack.Screen
         name="CreateAccountStack"
         component={CreateAccountStack}
         options={{headerShown: false}}
-      /> */}
+      />
       <Stack.Screen
         name="AppStack"
         component={AppStack}
@@ -225,6 +225,11 @@ const ProjectStack = ({navigation}) => {
       <Stack.Screen
         name="FullScreenImage"
         component={FullScreenImage}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="SelectingReport"
+        component={SelectingReport}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

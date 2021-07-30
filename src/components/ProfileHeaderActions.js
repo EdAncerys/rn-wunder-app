@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 });
 
 // SERVERS ---------------------------------------------------------
-const ServeReportPost = ({setDonateAction, item}) => {
+const ServeReportPost = ({navigation, setDonateAction, item}) => {
   const {name} = item;
 
   return (
@@ -48,7 +48,10 @@ const ServeReportPost = ({setDonateAction, item}) => {
             borderBottomWidth: 1,
             borderColor: Colors.lightSilver,
           }}
-          // onPress={handleCamera}
+          onPress={() =>
+            // navigation.navigate('ProfileStack', {screen: 'SelectingReport'})
+            alert('block pop up')
+          }
         />
         <CustomButton
           title="Report Post"
@@ -59,7 +62,10 @@ const ServeReportPost = ({setDonateAction, item}) => {
             borderBottomLeftRadius: 10,
             borderBottomRightRadius: 10,
           }}
-          // onPress={handleGallery}
+          onPress={() => {
+            setDonateAction(false);
+            navigation.navigate('ProjectStack', {screen: 'SelectingReport'});
+          }}
         />
         <CustomButton
           title="Cancel"
@@ -110,7 +116,11 @@ const ProfileHeaderActions = ({navigation, item}) => {
         </View>
       </View>
       {donateAction && (
-        <ServeReportPost setDonateAction={setDonateAction} item={item} />
+        <ServeReportPost
+          navigation={navigation}
+          setDonateAction={setDonateAction}
+          item={item}
+        />
       )}
     </View>
   );
