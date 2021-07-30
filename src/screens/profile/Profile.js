@@ -185,7 +185,12 @@ const Profile = ({navigation}) => {
         <View>
           <ScrollView showsVerticalScrollIndicator={false} horizontal={false}>
             <View style={styles.appActions}>
-              <AppActions Settings Shoutout item={profile} />
+              <AppActions
+                navigation={navigation}
+                Settings
+                Shoutout
+                item={profile}
+              />
             </View>
             <View style={styles.postContainer}>
               <ServeProfileInfo />

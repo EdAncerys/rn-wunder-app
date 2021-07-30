@@ -51,6 +51,7 @@ import CreatePost from '../screens/posts/CreatePost';
 import FullScreenImage from '../screens/profile/FullScreenImage';
 import Post from '../screens/posts/Post';
 import SelectingReport from '../screens/posts/SelectingReport';
+import Settings from '../screens/profile/Settings';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -60,14 +61,14 @@ export const AppNavigator = () => {
     <Stack.Navigator initialRouteName="CreateAccountStack">
       {/* <Stack.Screen
         name="TestScreen"
-        component={UploadLicenceFront}
+        component={Settings}
         options={{headerShown: false}}
       /> */}
-      <Stack.Screen
+      {/* <Stack.Screen
         name="CreateAccountStack"
         component={CreateAccountStack}
         options={{headerShown: false}}
-      />
+      /> */}
       <Stack.Screen
         name="AppStack"
         component={AppStack}
@@ -271,6 +272,11 @@ const ProfileStack = ({navigation}) => {
       <Stack.Screen
         name="OrganizationProfileImage"
         component={OrganizationProfileImage}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={Settings}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

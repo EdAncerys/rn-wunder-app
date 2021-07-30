@@ -1,4 +1,10 @@
 const Fonts = {
+  N_400_8: {
+    fontFamily: 'Sailec',
+    fontSize: 8,
+    fontWeight: '400',
+    lineHeight: 11,
+  },
   N_400_9: {
     fontFamily: 'Sailec',
     fontSize: 9,

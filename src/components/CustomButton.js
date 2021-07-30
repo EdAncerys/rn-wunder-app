@@ -31,13 +31,23 @@ const styles = StyleSheet.create({
 const ServeBtnTitle = ({title, titleStyling}) => {
   return <Text style={{...styles.titleText, ...titleStyling}}>{title}</Text>;
 };
-const ServeIcon = ({iconLeft, iconRight, iconWidth, iconHeight, iconFill}) => {
+const ServeIcon = ({
+  iconLeft,
+  iconRight,
+  iconWidth,
+  iconHeight,
+  iconFill,
+  iconLeftWidth,
+  iconLeftHeight,
+}) => {
   const iconName = iconLeft || iconRight;
+  const width = iconLeftWidth || iconWidth;
+  const height = iconLeftHeight || iconHeight;
   const SvgIcon = Icons[iconName];
 
   return (
     <View style={styles.iconContainer}>
-      <SvgIcon width={iconWidth} height={iconHeight} fill={iconFill} />
+      <SvgIcon width={width} height={height} fill={iconFill} />
     </View>
   );
 };
@@ -73,6 +83,8 @@ const CustomButton = ({
   iconFill,
   iconWidth,
   iconHeight,
+  iconLeftWidth,
+  iconLeftHeight,
   inactive,
 }) => {
   return (
@@ -87,6 +99,8 @@ const CustomButton = ({
           iconFill={iconFill}
           iconWidth={iconWidth}
           iconHeight={iconHeight}
+          iconLeftWidth={iconLeftWidth}
+          iconLeftHeight={iconLeftHeight}
         />
       )}
       {title && <ServeBtnTitle title={title} titleStyling={titleStyling} />}

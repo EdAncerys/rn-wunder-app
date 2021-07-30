@@ -52,7 +52,15 @@ const handleShoutout = async item => {
 };
 
 // RETURN ---------------------------------------------------------
-const AppActions = ({Settings, Commend, Applaud, Shoutout, Comment, item}) => {
+const AppActions = ({
+  navigation,
+  Settings,
+  Commend,
+  Applaud,
+  Shoutout,
+  Comment,
+  item,
+}) => {
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
@@ -63,7 +71,9 @@ const AppActions = ({Settings, Commend, Applaud, Shoutout, Comment, item}) => {
               iconWidth={24}
               iconHeight={24}
               iconFill={Colors.white}
-              onPress={() => alert('Settings')}
+              onPress={() =>
+                navigation.navigate('ProfileStack', {screen: 'Settings'})
+              }
               style={{backgroundColor: Colors.transparent}}
             />
           </View>
