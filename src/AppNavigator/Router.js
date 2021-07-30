@@ -47,9 +47,10 @@ import OrganizationName from '../screens/profile/OrganizationName';
 import OrganizationWebsite from '../screens/profile/OrganizationWebsite';
 import OrganizationProfileImage from '../screens/profile/OrganizationProfileImage';
 import Projects from '../screens/projects/Projects';
-import CreatePost from '../screens/Posts/CreatePost';
+import CreatePost from '../screens/posts/CreatePost';
 import FullScreenImage from '../screens/profile/FullScreenImage';
-import Post from '../screens/Posts/Post';
+import Post from '../screens/posts/Post';
+import SelectingReport from '../screens/posts/SelectingReport';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -57,11 +58,11 @@ const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="CreateAccountStack">
-      {/* <Stack.Screen
+      <Stack.Screen
         name="TestScreen"
-        component={OrganizationProfileImage}
+        component={SelectingReport}
         options={{headerShown: false}}
-      /> */}
+      />
       {/* <Stack.Screen
         name="CreateAccountStack"
         component={CreateAccountStack}

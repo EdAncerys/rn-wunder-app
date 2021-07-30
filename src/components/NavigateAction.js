@@ -22,21 +22,22 @@ const styles = StyleSheet.create({
   },
 });
 
-const NavigateAction = props => {
+const NavigateAction = ({onPress, title, icon, iconFill, titleStyling}) => {
+  const iconType = icon || 'ChevronLeft';
+  const fillColor = iconFill || Colors.white;
+
   return (
     <View style={styles.container}>
       <CustomButton
-        onPress={props.onPress}
-        iconLeft="ChevronLeft"
+        onPress={onPress}
+        iconLeft={iconType}
         iconWidth={12}
-        iconFill={Colors.white}
+        iconFill={fillColor}
         style={{backgroundColor: Colors.transparent}}
         iconStyling={{width: 12, height: 20}}
       />
       <View style={styles.textContainer}>
-        <Text style={{...styles.titleText, ...props.titleStyling}}>
-          {props.title}
-        </Text>
+        <Text style={{...styles.titleText, ...titleStyling}}>{title}</Text>
       </View>
     </View>
   );
