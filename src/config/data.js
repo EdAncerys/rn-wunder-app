@@ -17,7 +17,7 @@ export const PROFILE_DATA = {
   url: require('../assets/images/profile/profile-background.png'),
   title: 'Meditation to rel...',
   time: '4 hrs ago',
-  profileImageUrl: '../assets/dummyAssets/profile-fiona.png',
+  profileImageUrl: 'https://reactnative.dev/img/tiny_logo.png',
   name: 'friendsofthearth',
   post: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
   category: 'people',
@@ -29,6 +29,7 @@ export const PROFILE_DATA = {
   name: 'sarah_wills',
   followers: '5k',
   about: 'She/Her. Passionate about plants.',
+  location: 'London',
 };
 
 export const PROFILE_DATA_ONE = [

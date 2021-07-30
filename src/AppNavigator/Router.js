@@ -52,6 +52,7 @@ import FullScreenImage from '../screens/profile/FullScreenImage';
 import Post from '../screens/posts/Post';
 import SelectingReport from '../screens/posts/SelectingReport';
 import Settings from '../screens/profile/Settings';
+import Account from '../screens/profile/Account';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -277,6 +278,11 @@ const ProfileStack = ({navigation}) => {
       <Stack.Screen
         name="Settings"
         component={Settings}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Account"
+        component={Account}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

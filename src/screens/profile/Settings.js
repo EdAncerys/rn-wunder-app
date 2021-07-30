@@ -58,7 +58,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const SelectingReport = ({navigation}) => {
+const SelectingReport = ({navigation, route}) => {
+  const {item} = route.params;
+
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper filter={Colors.white}>
@@ -84,7 +86,12 @@ const SelectingReport = ({navigation}) => {
               iconHeight={16}
               titleStyling={styles.btnTitleStyling}
               style={styles.btnStyling}
-              onPress={() => alert('It’s suspicious or spam.')}
+              onPress={() =>
+                navigation.navigate('ProfileStack', {
+                  screen: 'Account',
+                  params: {item: item},
+                })
+              }
             />
           </View>
           <View style={styles.btnWrapper}>

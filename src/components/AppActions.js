@@ -72,7 +72,10 @@ const AppActions = ({
               iconHeight={24}
               iconFill={Colors.white}
               onPress={() =>
-                navigation.navigate('ProfileStack', {screen: 'Settings'})
+                navigation.navigate('ProfileStack', {
+                  screen: 'Settings',
+                  params: {item: item},
+                })
               }
               style={{backgroundColor: Colors.transparent}}
             />
