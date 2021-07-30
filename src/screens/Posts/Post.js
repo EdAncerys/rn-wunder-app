@@ -73,8 +73,6 @@ const styles = StyleSheet.create({
 
 const Post = ({navigation, route}) => {
   const {item} = route.params;
-  const [data, setData] = React.useState(item);
-  const postData = data;
   const {
     url,
     profileImageUrl,
@@ -85,7 +83,7 @@ const Post = ({navigation, route}) => {
     category,
     getInvolved,
     donateActions,
-  } = postData;
+  } = item;
 
   let applyMarginPost = {marginBottom: '15%'};
   if (getInvolved) applyMarginPost = {marginBottom: '40%'};
@@ -96,10 +94,10 @@ const Post = ({navigation, route}) => {
     : {marginTop: '30%'};
 
   // SERVERS ---------------------------------------------------------
-  const ServeDonate = ({navigation}) => {
+  const ServeDonate = () => {
     return (
       <View style={styles.donateContainer}>
-        <ProfileHeaderActions navigation={navigation} />
+        <ProfileHeaderActions navigation={navigation} item={item} />
       </View>
     );
   };

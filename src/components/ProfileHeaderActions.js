@@ -1,11 +1,11 @@
 import * as React from 'react';
-import {View, StyleSheet, Dimensions} from 'react-native';
+import {View, StyleSheet, Dimensions, Modal} from 'react-native';
 
 import Colors from '../config/colors';
 import Fonts from '../config/fonts';
 import CustomButton from './CustomButton';
 
-const {width} = Dimensions.get('screen');
+const {width, height} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
   container: {
@@ -24,10 +24,56 @@ const styles = StyleSheet.create({
   profileType: {
     ...Fonts.N_400_16,
   },
+  actionsContainer: {
+    paddingTop: height - 200,
+    paddingHorizontal: '5%',
+  },
 });
 
+// SERVERS ---------------------------------------------------------
+const ServeReportPost = ({setDonateAction, item}) => {
+  const {name} = item;
+
+  return (
+    <Modal animationType="slide" transparent={true} visible={true}>
+      <View style={styles.actionsContainer}>
+        <CustomButton
+          title={`Block @${name}`}
+          titleStyling={{...Fonts.N_400_20, color: Colors.lightBlue}}
+          style={{
+            backgroundColor: Colors.transparentMatWhite,
+            borderRadius: 0,
+            borderTopLeftRadius: 10,
+            borderTopRightRadius: 10,
+            borderBottomWidth: 1,
+            borderColor: Colors.lightSilver,
+          }}
+          // onPress={handleCamera}
+        />
+        <CustomButton
+          title="Report Post"
+          titleStyling={{...Fonts.N_400_20, color: Colors.lightBlue}}
+          style={{
+            backgroundColor: Colors.transparentMatWhite,
+            borderRadius: 0,
+            borderBottomLeftRadius: 10,
+            borderBottomRightRadius: 10,
+          }}
+          // onPress={handleGallery}
+        />
+        <CustomButton
+          title="Cancel"
+          titleStyling={{...Fonts.N_400_20, color: Colors.lightBlue}}
+          style={{backgroundColor: Colors.white, marginVertical: 10}}
+          onPress={() => setDonateAction(false)}
+        />
+      </View>
+    </Modal>
+  );
+};
+
 // RETURN ---------------------------------------------------------
-const ProfileHeaderActions = ({navigation}) => {
+const ProfileHeaderActions = ({navigation, item}) => {
   const [donateAction, setDonateAction] = React.useState(false);
 
   return (
@@ -59,10 +105,13 @@ const ProfileHeaderActions = ({navigation}) => {
             iconWidth={32}
             iconHeight={32}
             iconFill={Colors.white}
-            onPress={() => alert('actions')}
+            onPress={() => setDonateAction(true)}
           />
         </View>
       </View>
+      {donateAction && (
+        <ServeReportPost setDonateAction={setDonateAction} item={item} />
+      )}
     </View>
   );
 };
