@@ -16,7 +16,7 @@ import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
-import ProfileActions from '../../components/ProfileActions';
+import AppActions from '../../components/AppActions';
 import DonateActions from '../../components/DonateActions';
 
 import Background from '../../assets/images/profile/profile-background.png';
@@ -75,7 +75,9 @@ const styles = StyleSheet.create({
 });
 
 const Profile = ({navigation}) => {
-  const [data, setData] = React.useState(PROFILE_DATA);
+  const [profile, setProfile] = React.useState(PROFILE_DATA);
+  const [projects, setProjects] = React.useState(IMAGE_DATA_ARRAY);
+  const {name, followers, about} = profile;
 
   // SERVERS ---------------------------------------------------------
   const renderFlatListItem = ({item, index}) => (
@@ -105,9 +107,9 @@ const Profile = ({navigation}) => {
     <View style={styles.rowWrapper}>
       <TouchableOpacity onPress={() => alert('profile')}>
         <View>
-          <Text style={styles.post}>{data.profileName}</Text>
-          <Text style={styles.info}>{data.followers} followers</Text>
-          <Text style={styles.info}>{data.about}</Text>
+          <Text style={styles.post}>{name}</Text>
+          <Text style={styles.info}>{followers} followers</Text>
+          <Text style={styles.info}>{about}</Text>
         </View>
       </TouchableOpacity>
       <View
@@ -183,7 +185,7 @@ const Profile = ({navigation}) => {
         <View>
           <ScrollView showsVerticalScrollIndicator={false} horizontal={false}>
             <View style={styles.appActions}>
-              <ProfileActions />
+              <AppActions Settings Shoutout item={profile} />
             </View>
             <View style={styles.postContainer}>
               <ServeProfileInfo />
@@ -194,7 +196,7 @@ const Profile = ({navigation}) => {
                 keyExtractor={(_, index) => String(index)}
                 showsVerticalScrollIndicator={false}
                 numColumns={3}
-                data={IMAGE_DATA_ARRAY}
+                data={projects}
                 renderItem={renderFlatListItem}
                 nestedScrollEnabled={true}
               />

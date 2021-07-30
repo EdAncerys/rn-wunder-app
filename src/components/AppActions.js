@@ -30,17 +30,15 @@ const styles = StyleSheet.create({
 
 // HANDLERS ---------------------------------------------------------
 const handleShoutout = async item => {
-  const {title} = item;
+  const {title, url} = item;
+
+  const shareOptions = {
+    message: title,
+    url: url,
+  };
 
   try {
-    const result = await Share.share(
-      {
-        message: title,
-      },
-      {
-        subject: title,
-      },
-    );
+    const result = await Share.share(shareOptions);
     console.log(result.activityType);
     console.log(result.action);
     if (result.action === Share.sharedAction) {

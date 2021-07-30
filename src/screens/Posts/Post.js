@@ -162,7 +162,7 @@ const Post = ({navigation, route}) => {
       <View style={styles.wrapper}>
         <ServeProfileHeaderActions navigation={navigation} />
         <View style={styles.appActions}>
-          <AppActions Commend Applaud Shoutout Comment />
+          <AppActions Commend Applaud Shoutout Comment item={item} />
         </View>
         <View style={styles.postContainer}>
           <ServeProfileInfo
