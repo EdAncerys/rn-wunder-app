@@ -55,6 +55,7 @@ import Settings from '../screens/profile/Settings';
 import Account from '../screens/profile/Account';
 import SelectInterests from '../screens/profile/SelectInterests';
 import Notifications from '../screens/profile/Notifications';
+import PrivacyAndSecurity from '../screens/profile/PrivacyAndSecurity';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -64,7 +65,7 @@ export const AppNavigator = () => {
     <Stack.Navigator initialRouteName="CreateAccountStack">
       <Stack.Screen
         name="TestScreen"
-        component={Notifications}
+        component={PrivacyAndSecurity}
         options={{headerShown: false}}
       />
       {/* <Stack.Screen
@@ -290,6 +291,16 @@ const ProfileStack = ({navigation}) => {
       <Stack.Screen
         name="SelectInterests"
         component={SelectInterests}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Notifications"
+        component={Notifications}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="PrivacyAndSecurity"
+        component={PrivacyAndSecurity}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

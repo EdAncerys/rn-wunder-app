@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, Switch} from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -50,6 +50,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: Colors.lightSilver,
   },
+  rowWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 8,
+  },
   logoContainer: {
     flex: 3,
     justifyContent: 'flex-end',
@@ -58,8 +63,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const Settings = ({navigation, route}) => {
-  const {item} = route.params;
+const Settings = ({navigation}) => {
+  const [climate, setClimate] = React.useState(false);
 
   // RETURN ---------------------------------------------------------
   return (
@@ -67,7 +72,7 @@ const Settings = ({navigation, route}) => {
       <View style={styles.wrapper}>
         <View style={styles.navigateActionContainer}>
           <NavigateAction
-            title="Settings"
+            title="Privacy and Security"
             titleStyling={{color: Colors.lightBlack}}
             iconFill={Colors.lightBlack}
             onPress={() => navigation.goBack()}
@@ -76,120 +81,94 @@ const Settings = ({navigation, route}) => {
         <View style={styles.divider} />
         <View style={styles.content}>
           <View style={styles.btnWrapper}>
-            <CustomButton
-              iconLeft="UserProfile"
-              iconLeftWidth={20}
-              iconLeftHeight={20}
-              title="Account"
-              iconRight="ChevronRight"
-              iconWidth={16}
-              iconHeight={16}
-              titleStyling={styles.btnTitleStyling}
-              style={styles.btnStyling}
-              onPress={() =>
-                navigation.navigate('ProfileStack', {
-                  screen: 'Account',
-                  params: {item: item},
-                })
-              }
-            />
+            <View style={styles.rowWrapper}>
+              <View style={{flex: 1}}>
+                <CustomButton
+                  noFeedback
+                  title="Private Account"
+                  titleStyling={styles.btnTitleStyling}
+                  style={styles.btnStyling}
+                />
+              </View>
+              <View>
+                <Switch
+                  trackColor={{false: Colors.matFilter, true: Colors.primary}}
+                  thumbColor={Colors.white}
+                  ios_backgroundColor={Colors.matFilter}
+                  onValueChange={() => setClimate(!climate)}
+                  value={climate}
+                />
+              </View>
+            </View>
           </View>
           <View style={styles.btnWrapper}>
             <CustomButton
-              iconLeft="NotificationsFill"
-              iconLeftWidth={20}
-              iconLeftHeight={20}
-              title="Notifications"
+              title="Interactions"
               iconRight="ChevronRight"
               iconWidth={12}
               iconHeight={16}
               titleStyling={styles.btnTitleStyling}
               style={styles.btnStyling}
-              onPress={() =>
-                navigation.navigate('ProfileStack', {
-                  screen: 'Notifications',
-                })
-              }
+              onPress={() => alert('Notifications')}
             />
           </View>
           <View style={styles.btnWrapper}>
             <CustomButton
-              iconLeft="Password"
-              iconLeftWidth={20}
-              iconLeftHeight={20}
-              title="Privacy and Security"
+              title="Mentions"
               iconRight="ChevronRight"
               iconWidth={12}
               iconHeight={16}
               titleStyling={styles.btnTitleStyling}
               style={styles.btnStyling}
-              onPress={() =>
-                navigation.navigate('ProfileStack', {
-                  screen: 'PrivacyAndSecurity',
-                })
-              }
+              onPress={() => alert('Mentions')}
             />
           </View>
           <View style={styles.btnWrapper}>
             <CustomButton
-              iconLeft="Payments"
-              iconLeftWidth={20}
-              iconLeftHeight={20}
-              title="Manage Payments"
+              title="Restricted Accounts"
               iconRight="ChevronRight"
               iconWidth={12}
               iconHeight={16}
               titleStyling={styles.btnTitleStyling}
               style={styles.btnStyling}
-              onPress={() => alert('It displays a sensitive photo or video.')}
+              onPress={() => alert('Restricted Accounts')}
             />
           </View>
           <View style={styles.btnWrapper}>
             <CustomButton
-              iconLeft="ContentToSocials"
-              iconLeftWidth={20}
-              iconLeftHeight={20}
-              title="Content to Socials"
+              title="Blocked Accounts"
               iconRight="ChevronRight"
               iconWidth={12}
               iconHeight={16}
               titleStyling={styles.btnTitleStyling}
               style={styles.btnStyling}
-              onPress={() => alert('It displays a sensitive photo or video.')}
+              onPress={() => alert('Blocked Accounts')}
             />
           </View>
           <View style={styles.btnWrapper}>
             <CustomButton
-              iconLeft="HelpSupport"
-              iconLeftWidth={20}
-              iconLeftHeight={20}
-              title="Help and Support"
+              title="Muted Accounts"
               iconRight="ChevronRight"
               iconWidth={12}
               iconHeight={16}
               titleStyling={styles.btnTitleStyling}
               style={styles.btnStyling}
-              onPress={() => alert('It displays a sensitive photo or video.')}
+              onPress={() => alert('Muted Accounts')}
             />
           </View>
           <View style={styles.btnWrapper}>
             <CustomButton
-              iconLeft="QuestionMark"
-              iconLeftWidth={20}
-              iconLeftHeight={20}
-              title="About"
+              title="Accounts you Follow"
               iconRight="ChevronRight"
               iconWidth={12}
               iconHeight={16}
               titleStyling={styles.btnTitleStyling}
               style={styles.btnStyling}
-              onPress={() => alert('It displays a sensitive photo or video.')}
+              onPress={() => alert('Accounts you Follow')}
             />
           </View>
         </View>
-        <View style={styles.logoContainer}>
-          <Image source={Logo} />
-        </View>
+
         <View style={styles.footerContainer}>
           <Text style={styles.footerTitle}>
             © Copyright 2021 • All Rights Reserved

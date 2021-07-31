@@ -8,7 +8,6 @@ import {
   FlatList,
   Image,
   ScrollView,
-  Modal,
 } from 'react-native';
 import {PROFILE_DATA, IMAGE_DATA_ARRAY} from '../../config/data';
 
