@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, Switch} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -49,11 +49,6 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: Colors.lightSilver,
   },
-  rowWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 8,
-  },
   logoContainer: {
     flex: 3,
     justifyContent: 'flex-end',
@@ -63,15 +58,13 @@ const styles = StyleSheet.create({
 });
 
 const Settings = ({navigation}) => {
-  const [climate, setClimate] = React.useState(false);
-
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper filter={Colors.white}>
       <View style={styles.wrapper}>
         <View style={styles.navigateActionContainer}>
           <NavigateAction
-            title="Privacy and Security"
+            title="Connect to Socials"
             titleStyling={{color: Colors.lightBlack}}
             iconFill={Colors.lightBlack}
             onPress={() => navigation.goBack()}
@@ -80,90 +73,45 @@ const Settings = ({navigation}) => {
         <View style={styles.divider} />
         <View style={styles.content}>
           <View style={styles.btnWrapper}>
-            <View style={styles.rowWrapper}>
-              <View style={{flex: 1}}>
-                <CustomButton
-                  noFeedback
-                  title="Private Account"
-                  titleStyling={styles.btnTitleStyling}
-                  style={styles.btnStyling}
-                />
-              </View>
-              <View>
-                <Switch
-                  trackColor={{false: Colors.matFilter, true: Colors.primary}}
-                  thumbColor={Colors.white}
-                  ios_backgroundColor={Colors.matFilter}
-                  onValueChange={() => setClimate(!climate)}
-                  value={climate}
-                />
-              </View>
-            </View>
-          </View>
-          <View style={styles.btnWrapper}>
             <CustomButton
-              title="Interactions"
+              iconLeft="Facebook"
+              iconLeftWidth={20}
+              iconLeftHeight={20}
+              title="Facebook"
               iconRight="ChevronRight"
               iconWidth={12}
               iconHeight={16}
               titleStyling={styles.btnTitleStyling}
               style={styles.btnStyling}
-              onPress={() => alert('Notifications')}
+              onPress={() => alert('Facebook')}
             />
           </View>
           <View style={styles.btnWrapper}>
             <CustomButton
-              title="Mentions"
+              iconLeft="Instagram"
+              iconLeftWidth={20}
+              iconLeftHeight={20}
+              title="Instagram"
               iconRight="ChevronRight"
               iconWidth={12}
               iconHeight={16}
               titleStyling={styles.btnTitleStyling}
               style={styles.btnStyling}
-              onPress={() => alert('Mentions')}
+              onPress={() => alert('Instagram')}
             />
           </View>
           <View style={styles.btnWrapper}>
             <CustomButton
-              title="Restricted Accounts"
+              iconLeft="LinkedIn"
+              iconLeftWidth={20}
+              iconLeftHeight={20}
+              title="LinkedIn"
               iconRight="ChevronRight"
               iconWidth={12}
               iconHeight={16}
               titleStyling={styles.btnTitleStyling}
               style={styles.btnStyling}
-              onPress={() => alert('Restricted Accounts')}
-            />
-          </View>
-          <View style={styles.btnWrapper}>
-            <CustomButton
-              title="Blocked Accounts"
-              iconRight="ChevronRight"
-              iconWidth={12}
-              iconHeight={16}
-              titleStyling={styles.btnTitleStyling}
-              style={styles.btnStyling}
-              onPress={() => alert('Blocked Accounts')}
-            />
-          </View>
-          <View style={styles.btnWrapper}>
-            <CustomButton
-              title="Muted Accounts"
-              iconRight="ChevronRight"
-              iconWidth={12}
-              iconHeight={16}
-              titleStyling={styles.btnTitleStyling}
-              style={styles.btnStyling}
-              onPress={() => alert('Muted Accounts')}
-            />
-          </View>
-          <View style={styles.btnWrapper}>
-            <CustomButton
-              title="Accounts you Follow"
-              iconRight="ChevronRight"
-              iconWidth={12}
-              iconHeight={16}
-              titleStyling={styles.btnTitleStyling}
-              style={styles.btnStyling}
-              onPress={() => alert('Accounts you Follow')}
+              onPress={() => alert('LinkedIn')}
             />
           </View>
         </View>
