@@ -58,6 +58,7 @@ import Notifications from '../screens/profile/Notifications';
 import PrivacyAndSecurity from '../screens/profile/PrivacyAndSecurity';
 import ManagePayments from '../screens/profile/ManagePayments';
 import ContentToSocials from '../screens/profile/ContentToSocials';
+import HelpAndSupport from '../screens/profile/HelpAndSupport';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -67,7 +68,7 @@ export const AppNavigator = () => {
     <Stack.Navigator initialRouteName="CreateAccountStack">
       <Stack.Screen
         name="TestScreen"
-        component={ContentToSocials}
+        component={HelpAndSupport}
         options={{headerShown: false}}
       />
       {/* <Stack.Screen
@@ -313,6 +314,11 @@ const ProfileStack = ({navigation}) => {
       <Stack.Screen
         name="ContentToSocials"
         component={ContentToSocials}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="HelpAndSupport"
+        component={HelpAndSupport}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

@@ -1,12 +1,11 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
-import Logo from '../../assets/images/profile/settings-screen-logo.png';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -58,16 +57,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const Settings = ({navigation, route}) => {
-  const {item} = route.params;
-
+const Settings = ({navigation}) => {
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper filter={Colors.white}>
       <View style={styles.wrapper}>
         <View style={styles.navigateActionContainer}>
           <NavigateAction
-            title="Settings"
+            title="Help and Support"
             titleStyling={{color: Colors.lightBlack}}
             iconFill={Colors.lightBlack}
             onPress={() => navigation.goBack()}
@@ -77,131 +74,50 @@ const Settings = ({navigation, route}) => {
         <View style={styles.content}>
           <View style={styles.btnWrapper}>
             <CustomButton
-              iconLeft="UserProfile"
-              iconLeftWidth={20}
-              iconLeftHeight={20}
-              title="Account"
-              iconRight="ChevronRight"
-              iconWidth={16}
-              iconHeight={16}
-              titleStyling={styles.btnTitleStyling}
-              style={styles.btnStyling}
-              onPress={() =>
-                navigation.navigate('ProfileStack', {
-                  screen: 'Account',
-                  params: {item: item},
-                })
-              }
-            />
-          </View>
-          <View style={styles.btnWrapper}>
-            <CustomButton
-              iconLeft="NotificationsFill"
-              iconLeftWidth={20}
-              iconLeftHeight={20}
-              title="Notifications"
+              title="Report a Problem"
               iconRight="ChevronRight"
               iconWidth={12}
               iconHeight={16}
               titleStyling={styles.btnTitleStyling}
               style={styles.btnStyling}
-              onPress={() =>
-                navigation.navigate('ProfileStack', {
-                  screen: 'Notifications',
-                })
-              }
+              onPress={() => alert('Report a Problem')}
             />
           </View>
           <View style={styles.btnWrapper}>
             <CustomButton
-              iconLeft="Password"
-              iconLeftWidth={20}
-              iconLeftHeight={20}
-              title="Privacy and Security"
+              title="Help Center"
               iconRight="ChevronRight"
               iconWidth={12}
               iconHeight={16}
               titleStyling={styles.btnTitleStyling}
               style={styles.btnStyling}
-              onPress={() =>
-                navigation.navigate('ProfileStack', {
-                  screen: 'PrivacyAndSecurity',
-                })
-              }
+              onPress={() => alert('Help Center')}
             />
           </View>
           <View style={styles.btnWrapper}>
             <CustomButton
-              iconLeft="Payments"
-              iconLeftWidth={20}
-              iconLeftHeight={20}
-              title="Manage Payments"
+              title="Support Requests"
               iconRight="ChevronRight"
               iconWidth={12}
               iconHeight={16}
               titleStyling={styles.btnTitleStyling}
               style={styles.btnStyling}
-              onPress={() =>
-                navigation.navigate('ProfileStack', {
-                  screen: 'ManagePayments',
-                })
-              }
+              onPress={() => alert('Support Requests')}
             />
           </View>
           <View style={styles.btnWrapper}>
             <CustomButton
-              iconLeft="ContentToSocials"
-              iconLeftWidth={20}
-              iconLeftHeight={20}
-              title="Content to Socials"
+              title="Privacy and Security Help"
               iconRight="ChevronRight"
               iconWidth={12}
               iconHeight={16}
               titleStyling={styles.btnTitleStyling}
               style={styles.btnStyling}
-              onPress={() =>
-                navigation.navigate('ProfileStack', {
-                  screen: 'ContentToSocials',
-                })
-              }
-            />
-          </View>
-          <View style={styles.btnWrapper}>
-            <CustomButton
-              iconLeft="HelpSupport"
-              iconLeftWidth={20}
-              iconLeftHeight={20}
-              title="Help and Support"
-              iconRight="ChevronRight"
-              iconWidth={12}
-              iconHeight={16}
-              titleStyling={styles.btnTitleStyling}
-              style={styles.btnStyling}
-              onPress={() =>
-                navigation.navigate('ProfileStack', {
-                  screen: 'HelpAndSupport',
-                })
-              }
-            />
-          </View>
-          <View style={styles.btnWrapper}>
-            <CustomButton
-              iconLeft="QuestionMark"
-              iconLeftWidth={20}
-              iconLeftHeight={20}
-              title="About"
-              iconRight="ChevronRight"
-              iconWidth={12}
-              iconHeight={16}
-              titleStyling={styles.btnTitleStyling}
-              style={styles.btnStyling}
-              onPress={() => alert('It displays a sensitive photo or video.')}
+              onPress={() => alert('Privacy and Security Help')}
             />
           </View>
         </View>
-        <View style={styles.logoContainer}>
-          <Image source={Logo} />
-        </View>
+
         <View style={styles.footerContainer}>
           <Text style={styles.footerTitle}>
             © Copyright 2021 • All Rights Reserved
