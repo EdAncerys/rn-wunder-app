@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const SelectingReport = ({navigation, route}) => {
+const Settings = ({navigation, route}) => {
   const {item} = route.params;
 
   // RETURN ---------------------------------------------------------
@@ -193,4 +193,4 @@ const SelectingReport = ({navigation, route}) => {
   );
 };
 
-export default SelectingReport;
+export default Settings;

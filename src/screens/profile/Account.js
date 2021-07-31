@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const SelectingReport = ({navigation, route}) => {
+const Account = ({navigation, route}) => {
   const [image, setImage] = React.useState(null);
   const [imgType, setImgType] = React.useState(null);
   const [avatar, setAvatar] = React.useState(false);
@@ -216,7 +216,9 @@ const SelectingReport = ({navigation, route}) => {
               iconHeight={16}
               titleStyling={styles.btnTitleStyling}
               style={styles.btnStyling}
-              onPress={() => alert('It displays a sensitive photo or video.')}
+              onPress={() =>
+                navigation.navigate('ProfileStack', {screen: 'SelectInterests'})
+              }
             />
           </View>
         </View>
@@ -241,4 +243,4 @@ const SelectingReport = ({navigation, route}) => {
   );
 };
 
-export default SelectingReport;
+export default Account;

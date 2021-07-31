@@ -53,6 +53,7 @@ import Post from '../screens/posts/Post';
 import SelectingReport from '../screens/posts/SelectingReport';
 import Settings from '../screens/profile/Settings';
 import Account from '../screens/profile/Account';
+import SelectInterests from '../screens/profile/SelectInterests';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -60,11 +61,11 @@ const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="CreateAccountStack">
-      {/* <Stack.Screen
+      <Stack.Screen
         name="TestScreen"
-        component={Settings}
+        component={SelectInterests}
         options={{headerShown: false}}
-      /> */}
+      />
       {/* <Stack.Screen
         name="CreateAccountStack"
         component={CreateAccountStack}
@@ -283,6 +284,11 @@ const ProfileStack = ({navigation}) => {
       <Stack.Screen
         name="Account"
         component={Account}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="SelectInterests"
+        component={SelectInterests}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

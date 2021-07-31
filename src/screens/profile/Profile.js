@@ -122,7 +122,7 @@ const Profile = ({navigation}) => {
         <View style={styles.rowWrapper}>
           <View style={styles.badge}>
             <CustomButton
-              iconLeft="Paw"
+              iconLeft="LifeOnLand"
               iconFill={Colors.white}
               style={{backgroundColor: Colors.transparent}}
               onPress={() => alert('paw')}
@@ -130,7 +130,7 @@ const Profile = ({navigation}) => {
           </View>
           <View style={styles.badge}>
             <CustomButton
-              iconLeft="WindTurbine"
+              iconLeft="Climate"
               iconFill={Colors.white}
               style={{backgroundColor: Colors.transparent}}
               iconStyling={{width: 23, height: 32}}
