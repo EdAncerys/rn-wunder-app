@@ -1,11 +1,13 @@
 import * as React from 'react';
 import {View, Text, StyleSheet, Image} from 'react-native';
+import {openCamera, openGallery} from '../../config/deviceCamera';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
+import CameraActionsPopUp from '../../components/CameraActionsPopUp';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -80,10 +82,28 @@ const styles = StyleSheet.create({
 });
 
 const SelectingReport = ({navigation, route}) => {
+  const [image, setImage] = React.useState(null);
+  const [imgType, setImgType] = React.useState(null);
+  const [avatar, setAvatar] = React.useState(false);
+  const [uploadOptions, setUploadOptions] = React.useState(false);
   const {item} = route.params;
   const {url, name, about, location} = item;
+  const renderImg = image || url;
 
-  console.log(item);
+  // HANDLERS ---------------------------------------------------------
+  const handleGallery = () => {
+    openGallery(setImage);
+  };
+
+  const handleCamera = () => {
+    openCamera(setImage);
+  };
+
+  React.useEffect(() => {
+    if (image) imgType === 'photo' ? setAvatar(false) : setAvatar(true);
+    setImgType(null);
+    setUploadOptions(false);
+  }, [image]);
 
   // RETURN ---------------------------------------------------------
   return (
@@ -109,15 +129,16 @@ const SelectingReport = ({navigation, route}) => {
                 flex: 1,
                 justifyContent: 'space-around',
                 alignItems: 'center',
+                height: 170,
               }}>
               <Image
                 style={{
                   width: 80,
-                  height: 170,
-                  borderRadius: 10,
+                  height: avatar ? 80 : 170,
+                  borderRadius: avatar ? 40 : 10,
                   overflow: 'hidden',
                 }}
-                source={url}
+                source={renderImg}
               />
             </View>
             <View
@@ -130,14 +151,20 @@ const SelectingReport = ({navigation, route}) => {
                 style={{
                   ...Fonts.N_700_14,
                 }}
-                onPress={() => alert('It’s abusive or harmful.')}
+                onPress={() => {
+                  setImgType('photo');
+                  setUploadOptions(true);
+                }}
               />
               <CustomButton
                 title="Select an Avatar"
                 style={{
                   ...Fonts.N_700_14,
                 }}
-                onPress={() => alert('It’s abusive or harmful.')}
+                onPress={() => {
+                  setImgType('avatar');
+                  setUploadOptions(true);
+                }}
               />
             </View>
           </View>
@@ -203,6 +230,13 @@ const SelectingReport = ({navigation, route}) => {
           </Text>
         </View>
       </View>
+      {uploadOptions && (
+        <CameraActionsPopUp
+          handleCamera={handleCamera}
+          handleGallery={handleGallery}
+          setUploadOptions={setUploadOptions}
+        />
+      )}
     </ScreenWrapper>
   );
 };

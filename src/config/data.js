@@ -26,10 +26,11 @@ export const PROFILE_DATA = {
   id: '1',
   date: '05.05.21',
   interest: 'Zero Hunger',
-  name: 'sarah_wills',
+  name: 'nora.osborn',
   followers: '5k',
   about: 'She/Her. Passionate about plants.',
   location: 'London',
+  fullName: 'Nora Osborn',
 };
 
 export const PROFILE_DATA_ONE = [
