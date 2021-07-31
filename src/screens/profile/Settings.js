@@ -195,7 +195,11 @@ const Settings = ({navigation, route}) => {
               iconHeight={16}
               titleStyling={styles.btnTitleStyling}
               style={styles.btnStyling}
-              onPress={() => alert('It displays a sensitive photo or video.')}
+              onPress={() =>
+                navigation.navigate('ProfileStack', {
+                  screen: 'About',
+                })
+              }
             />
           </View>
         </View>

@@ -59,6 +59,7 @@ import PrivacyAndSecurity from '../screens/profile/PrivacyAndSecurity';
 import ManagePayments from '../screens/profile/ManagePayments';
 import ContentToSocials from '../screens/profile/ContentToSocials';
 import HelpAndSupport from '../screens/profile/HelpAndSupport';
+import About from '../screens/profile/About';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -68,7 +69,7 @@ export const AppNavigator = () => {
     <Stack.Navigator initialRouteName="CreateAccountStack">
       <Stack.Screen
         name="TestScreen"
-        component={HelpAndSupport}
+        component={About}
         options={{headerShown: false}}
       />
       {/* <Stack.Screen
