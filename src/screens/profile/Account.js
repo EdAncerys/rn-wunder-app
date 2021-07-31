@@ -89,6 +89,9 @@ const Account = ({navigation, route}) => {
   const {item} = route.params;
   const {url, name, about, location} = item;
   const renderImg = image || url;
+  const gradientFilter = uploadOptions
+    ? [Colors.blurFilter, Colors.blurFilter]
+    : [Colors.transparent, Colors.transparent];
 
   // HANDLERS ---------------------------------------------------------
   const handleGallery = () => {
@@ -107,7 +110,7 @@ const Account = ({navigation, route}) => {
 
   // RETURN ---------------------------------------------------------
   return (
-    <ScreenWrapper filter={Colors.white}>
+    <ScreenWrapper filter={Colors.white} gradient={gradientFilter}>
       <View style={styles.wrapper}>
         <View style={styles.navigateActionContainer}>
           <NavigateAction

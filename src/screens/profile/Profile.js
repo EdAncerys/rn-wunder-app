@@ -104,13 +104,11 @@ const Profile = ({navigation}) => {
 
   const ServeProfileInfo = () => (
     <View style={styles.rowWrapper}>
-      <TouchableOpacity onPress={() => alert('profile')}>
-        <View>
-          <Text style={styles.post}>{name}</Text>
-          <Text style={styles.info}>{followers} followers</Text>
-          <Text style={styles.info}>{about}</Text>
-        </View>
-      </TouchableOpacity>
+      <View>
+        <Text style={styles.post}>{name}</Text>
+        <Text style={styles.info}>{followers} followers</Text>
+        <Text style={styles.info}>{about}</Text>
+      </View>
       <View
         style={{
           flexDirection: 'row',

@@ -67,11 +67,11 @@ const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="CreateAccountStack">
-      <Stack.Screen
+      {/* <Stack.Screen
         name="TestScreen"
         component={About}
         options={{headerShown: false}}
-      />
+      /> */}
       {/* <Stack.Screen
         name="CreateAccountStack"
         component={CreateAccountStack}
@@ -320,6 +320,11 @@ const ProfileStack = ({navigation}) => {
       <Stack.Screen
         name="HelpAndSupport"
         component={HelpAndSupport}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="About"
+        component={About}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

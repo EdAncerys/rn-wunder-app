@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
     borderBottomColor: Colors.lightSilver,
   },
   logoContainer: {
-    flex: 3,
     justifyContent: 'flex-end',
     alignItems: 'center',
     marginVertical: '5%',
