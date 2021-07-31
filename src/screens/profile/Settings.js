@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: '5%',
   },
-  title: {
+  footerTitle: {
     ...Fonts.N_400_8,
     color: Colors.lightBlack,
     textAlign: 'justify',
@@ -183,10 +183,12 @@ const Settings = ({navigation, route}) => {
           <Image source={Logo} />
         </View>
         <View style={styles.footerContainer}>
-          <Text style={styles.title}>
+          <Text style={styles.footerTitle}>
             © Copyright 2021 • All Rights Reserved
           </Text>
-          <Text style={styles.title}>Terms & Conditions Privacy Policy</Text>
+          <Text style={styles.footerTitle}>
+            Terms & Conditions Privacy Policy
+          </Text>
         </View>
       </View>
     </ScreenWrapper>
