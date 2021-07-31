@@ -92,6 +92,7 @@ const SelectInterests = ({navigation}) => {
           <View style={styles.btnWrapper}>
             <View style={{flex: 1}}>
               <CustomButton
+                noFeedback
                 iconLeft="ZeroHunger"
                 iconLeftWidth={20}
                 iconLeftHeight={20}
@@ -113,6 +114,7 @@ const SelectInterests = ({navigation}) => {
           <View style={styles.btnWrapper}>
             <View style={{flex: 1}}>
               <CustomButton
+                noFeedback
                 iconLeft="Health"
                 iconLeftWidth={20}
                 iconLeftHeight={20}
@@ -134,6 +136,7 @@ const SelectInterests = ({navigation}) => {
           <View style={styles.btnWrapper}>
             <View style={{flex: 1}}>
               <CustomButton
+                noFeedback
                 iconLeft="Education"
                 iconLeftWidth={20}
                 iconLeftHeight={20}
@@ -155,6 +158,7 @@ const SelectInterests = ({navigation}) => {
           <View style={styles.btnWrapper}>
             <View style={{flex: 1}}>
               <CustomButton
+                noFeedback
                 iconLeft="GenderEquality"
                 iconLeftWidth={20}
                 iconLeftHeight={20}
@@ -176,6 +180,7 @@ const SelectInterests = ({navigation}) => {
           <View style={styles.btnWrapper}>
             <View style={{flex: 1}}>
               <CustomButton
+                noFeedback
                 iconLeft="CleanWater"
                 iconLeftWidth={20}
                 iconLeftHeight={20}
@@ -197,6 +202,7 @@ const SelectInterests = ({navigation}) => {
           <View style={styles.btnWrapper}>
             <View style={{flex: 1}}>
               <CustomButton
+                noFeedback
                 iconLeft="Climate"
                 iconLeftWidth={20}
                 iconLeftHeight={20}
@@ -218,6 +224,7 @@ const SelectInterests = ({navigation}) => {
           <View style={styles.btnWrapper}>
             <View style={{flex: 1}}>
               <CustomButton
+                noFeedback
                 iconLeft="LifeOnLand"
                 iconLeftWidth={20}
                 iconLeftHeight={20}
@@ -239,6 +246,7 @@ const SelectInterests = ({navigation}) => {
           <View style={styles.btnWrapper}>
             <View style={{flex: 1}}>
               <CustomButton
+                noFeedback
                 iconLeft="Rainbow"
                 iconLeftWidth={20}
                 iconLeftHeight={20}

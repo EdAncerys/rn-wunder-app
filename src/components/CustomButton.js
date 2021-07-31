@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Pressable} from 'react-native';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 import Colors from '../config/colors';
@@ -51,12 +52,29 @@ const ServeIcon = ({
     </View>
   );
 };
-const ServeBtnFeedback = ({onPress, shadow, style, inactive, children}) => {
+const ServeBtnFeedback = ({
+  onPress,
+  shadow,
+  style,
+  inactive,
+  noFeedback,
+  children,
+}) => {
   let visualFeedback = (
     <TouchableOpacity onPress={onPress} style={{...shadow}}>
       <View style={{...styles.container, ...style}}>{children}</View>
     </TouchableOpacity>
   );
+  if (noFeedback)
+    visualFeedback = (
+      <View
+        style={{
+          ...styles.container,
+          ...style,
+        }}>
+        {children}
+      </View>
+    );
   if (inactive)
     visualFeedback = (
       <View
@@ -86,13 +104,15 @@ const CustomButton = ({
   iconLeftWidth,
   iconLeftHeight,
   inactive,
+  noFeedback,
 }) => {
   return (
     <ServeBtnFeedback
       onPress={onPress}
       shadow={shadow}
       style={style}
-      inactive={inactive}>
+      inactive={inactive}
+      noFeedback={noFeedback}>
       {iconLeft && (
         <ServeIcon
           iconLeft={iconLeft}
