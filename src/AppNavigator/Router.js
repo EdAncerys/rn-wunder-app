@@ -60,6 +60,7 @@ import ManagePayments from '../screens/profile/ManagePayments';
 import ContentToSocials from '../screens/profile/ContentToSocials';
 import HelpAndSupport from '../screens/profile/HelpAndSupport';
 import About from '../screens/profile/About';
+import SharePost from '../screens/posts/SharePost';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -69,7 +70,7 @@ export const AppNavigator = () => {
     <Stack.Navigator initialRouteName="CreateAccountStack">
       {/* <Stack.Screen
         name="TestScreen"
-        component={About}
+        component={SharePost}
         options={{headerShown: false}}
       /> */}
       {/* <Stack.Screen
@@ -159,7 +160,7 @@ const AppStack = ({navigation}) => {
         listeners={({navigation}) => ({
           tabPress: e => {
             e.preventDefault();
-            // navigation.navigate('AddStack', {screen: 'CreatePost'});
+            navigation.navigate('AddStack', {screen: 'SharePost'});
           },
         })}
       />
@@ -213,6 +214,11 @@ const AddStack = ({navigation}) => {
         name="CreatePost"
         component={CreatePost}
         options={{animationEnabled: true}}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="SharePost"
+        component={SharePost}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
