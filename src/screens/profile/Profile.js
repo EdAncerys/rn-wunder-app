@@ -122,7 +122,7 @@ const Profile = ({navigation}) => {
               iconLeft="LifeOnLand"
               iconFill={Colors.white}
               style={{backgroundColor: Colors.transparent}}
-              onPress={() => alert('paw')}
+              onPress={() => alert('Life on Earth')}
             />
           </View>
           <View style={styles.badge}>
@@ -131,7 +131,7 @@ const Profile = ({navigation}) => {
               iconFill={Colors.white}
               style={{backgroundColor: Colors.transparent}}
               iconStyling={{width: 23, height: 32}}
-              onPress={() => alert('wind')}
+              onPress={() => alert('Climate')}
             />
           </View>
           <View style={styles.badge}>
@@ -139,7 +139,7 @@ const Profile = ({navigation}) => {
               iconLeft="Health"
               iconFill={Colors.white}
               style={{backgroundColor: Colors.transparent}}
-              onPress={() => alert('health')}
+              onPress={() => alert('Health')}
             />
           </View>
         </View>

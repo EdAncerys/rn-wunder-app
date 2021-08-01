@@ -5,6 +5,7 @@ import Colors from '../config/colors';
 import Fonts from '../config/fonts';
 import CustomButton from './CustomButton';
 import DonatePopUp from './donateActions/DonatePopUp';
+import Wallet from './wallet/Wallet';
 
 const {width} = Dimensions.get('screen');
 
@@ -28,12 +29,19 @@ const styles = StyleSheet.create({
 });
 
 // SERVERS ---------------------------------------------------------
-const ServeDonate = ({donateAction, setDonateAction}) => {
+const ServeDonate = ({donateAction, setDonateAction, profile}) => {
   return (
-    <DonatePopUp
-      donateAction={donateAction}
-      setDonateAction={setDonateAction}
-    />
+    <View>
+      {profile && (
+        <Wallet donateAction={donateAction} setDonateAction={setDonateAction} />
+      )}
+      {!profile && (
+        <DonatePopUp
+          donateAction={donateAction}
+          setDonateAction={setDonateAction}
+        />
+      )}
+    </View>
   );
 };
 const ServeNavigateProfile = ({navigation, screen}) => {
@@ -142,6 +150,7 @@ const DonateActions = ({navigation, profile, projects, screen}) => {
         <ServeDonate
           donateAction={donateAction}
           setDonateAction={setDonateAction}
+          profile={profile}
         />
       )}
     </View>
