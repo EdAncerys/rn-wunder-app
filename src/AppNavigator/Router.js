@@ -62,6 +62,7 @@ import ContentToSocials from '../screens/profile/ContentToSocials';
 import HelpAndSupport from '../screens/profile/HelpAndSupport';
 import About from '../screens/profile/About';
 import SharePost from '../screens/posts/SharePost';
+import Draft from '../screens/posts/Draft';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -71,7 +72,7 @@ export const AppNavigator = () => {
     <Stack.Navigator initialRouteName="CreateAccountStack">
       {/* <Stack.Screen
         name="TestScreen"
-        component={SharePost}
+        component={Draft}
         options={{headerShown: false}}
       /> */}
       {/* <Stack.Screen
@@ -222,6 +223,11 @@ const AddStack = ({navigation}) => {
       <Stack.Screen
         name="SharePost"
         component={SharePost}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Draft"
+        component={Draft}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

@@ -46,6 +46,13 @@ const CreatePost = ({navigation}) => {
     openCamera(setImage);
   };
 
+  const handleViewDrafts = () => {
+    setUploadOptions(false);
+    navigation.navigate('AddStack', {
+      screen: 'Draft',
+    });
+  };
+
   React.useEffect(() => {
     if (image) {
       setUploadOptions(false);
@@ -93,7 +100,7 @@ const CreatePost = ({navigation}) => {
             borderBottomLeftRadius: 10,
             borderBottomRightRadius: 10,
           }}
-          // onPress={handleGallery}
+          onPress={handleViewDrafts}
         />
         <CustomButton
           title="Cancel"

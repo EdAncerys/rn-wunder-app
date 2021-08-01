@@ -1,12 +1,11 @@
 import * as React from 'react';
-import {View, Text, StyleSheet, Image, TextInput, Switch} from 'react-native';
+import {View, StyleSheet, Image, TextInput, Switch} from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
-import {PROFILE_DATA} from '../../config/data';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -68,7 +67,9 @@ const styles = StyleSheet.create({
 
 const SharePost = ({navigation, route}) => {
   const {image} = route.params;
-  const renderImg = image || LicenceImage;
+  const {url} = image;
+  console.log(url);
+  const renderImg = url || image;
 
   const [title, setTitle] = React.useState('');
   const [caption, setCaption] = React.useState('');
