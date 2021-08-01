@@ -25,7 +25,17 @@ export const openGallery = setImage => {
     },
   );
 };
+
 export const openCamera = setImage => {
+  launchCamera(
+    {saveToPhotos: true, mediaType: 'photo', includeBase64: false},
+    response => {
+      handleResponse(response, setImage);
+    },
+  );
+};
+
+export const openCameraPopUp = setImage => {
   launchCamera(
     {saveToPhotos: true, mediaType: 'photo', includeBase64: false},
     response => {

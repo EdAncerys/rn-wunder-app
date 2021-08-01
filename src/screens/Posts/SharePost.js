@@ -12,39 +12,10 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
   },
-  bioContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    marginVertical: '5%',
-  },
-  bioWrapper: {
-    flex: 1,
-  },
-  bioTitleWrapper: {
-    flex: 2,
-  },
   title: {
     ...Fonts.N_700_16,
     color: Colors.lightBlack,
     textAlign: 'justify',
-  },
-  bioTitle: {
-    ...Fonts.N_400_14,
-    color: Colors.lightBlack,
-    textAlign: 'justify',
-  },
-  footerContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginVertical: '5%',
-  },
-  footerTitle: {
-    ...Fonts.N_400_8,
-    color: Colors.lightBlack,
-    textAlign: 'justify',
-    marginHorizontal: '5%',
   },
   navigateActionContainer: {
     flexDirection: 'row',
@@ -105,6 +76,73 @@ const SharePost = ({navigation}) => {
   const [planet, setPlanet] = React.useState(true);
   const [draft, setDraft] = React.useState(false);
 
+  // HANDLERS ---------------------------------------------------------
+  const AboutPost = () => {
+    return (
+      <View
+        style={{
+          flexDirection: 'row',
+          marginVertical: '5%',
+        }}>
+        <View
+          style={{
+            height: 170,
+          }}>
+          <Image
+            style={{
+              width: 80,
+              height: 170,
+              borderRadius: 5,
+              overflow: 'hidden',
+            }}
+            source={url}
+          />
+        </View>
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'flex-start',
+            marginLeft: '5%',
+          }}>
+          <View
+            style={{
+              borderBottomWidth: 1,
+              borderColor: Colors.lightSilver,
+              width: '100%',
+            }}>
+            <TextInput
+              placeholder="Title of post..."
+              maxLength={20}
+              placeholderTextColor={Colors.lightSilver}
+              onChangeText={setTitle}
+              autoCapitalize="none"
+              value={title}
+              style={styles.inputContainer}
+            />
+          </View>
+          <View
+            style={{
+              width: '100%',
+              height: 100,
+            }}>
+            <TextInput
+              multiline={true}
+              numberOfLines={3}
+              require={true}
+              placeholder="Write a caption..."
+              underlineColorAndroid="transparent"
+              placeholderTextColor={Colors.lightSilver}
+              style={styles.inputContainer}
+              onChangeText={setCaption}
+              value={caption}
+              autoCapitalize="none"
+            />
+          </View>
+        </View>
+      </View>
+    );
+  };
+
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper filter={Colors.white}>
@@ -129,67 +167,7 @@ const SharePost = ({navigation}) => {
         </View>
         <View style={styles.divider} />
         <View style={styles.content}>
-          <View
-            style={{
-              flexDirection: 'row',
-              marginVertical: '5%',
-            }}>
-            <View
-              style={{
-                height: 170,
-              }}>
-              <Image
-                style={{
-                  width: 80,
-                  height: 170,
-                  borderRadius: 5,
-                  overflow: 'hidden',
-                }}
-                source={url}
-              />
-            </View>
-            <View
-              style={{
-                flex: 1,
-                alignItems: 'flex-start',
-                marginLeft: '5%',
-              }}>
-              <View
-                style={{
-                  borderBottomWidth: 1,
-                  borderColor: Colors.lightSilver,
-                  width: '100%',
-                }}>
-                <TextInput
-                  placeholder="Title of post..."
-                  maxLength={20}
-                  placeholderTextColor={Colors.lightSilver}
-                  onChangeText={setTitle}
-                  autoCapitalize="none"
-                  value={title}
-                  style={styles.inputContainer}
-                />
-              </View>
-              <View
-                style={{
-                  width: '100%',
-                  height: 100,
-                }}>
-                <TextInput
-                  multiline={true}
-                  numberOfLines={3}
-                  require={true}
-                  placeholder="Write a caption..."
-                  underlineColorAndroid="transparent"
-                  placeholderTextColor={Colors.lightSilver}
-                  style={styles.inputContainer}
-                  onChangeText={setCaption}
-                  value={caption}
-                  autoCapitalize="none"
-                />
-              </View>
-            </View>
-          </View>
+          <AboutPost />
           <View style={styles.divider} />
 
           <View
