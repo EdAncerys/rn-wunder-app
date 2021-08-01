@@ -2,6 +2,7 @@ import * as React from 'react';
 import {View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {openCameraPopUp} from '../config/deviceCamera';
 
 import Colors from '../config/colors';
 import {
@@ -150,6 +151,7 @@ const AppStack = ({navigation}) => {
         component={CreatePost}
         options={{
           // tabBarVisible: false,
+          animationEnabled: false,
           tabBarLabel: '',
           tabBarIcon: () => (
             <View style={{marginTop: 14}}>
@@ -157,12 +159,13 @@ const AppStack = ({navigation}) => {
             </View>
           ),
         }}
-        listeners={({navigation}) => ({
-          tabPress: e => {
-            e.preventDefault();
-            navigation.navigate('AddStack', {screen: 'SharePost'});
-          },
-        })}
+        // listeners={({navigation}) => ({
+        //   tabPress: e => {
+        //     e.preventDefault();
+        //     // navigation.navigate('AddStack', {screen: 'SharePost'});
+        //     openCameraPopUp(navigation);
+        //   },
+        // })}
       />
       <Tab.Screen
         name="Projects"

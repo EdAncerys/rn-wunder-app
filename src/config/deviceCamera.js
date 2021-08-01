@@ -35,11 +35,15 @@ export const openCamera = setImage => {
   );
 };
 
-export const openCameraPopUp = setImage => {
-  launchCamera(
-    {saveToPhotos: true, mediaType: 'photo', includeBase64: false},
-    response => {
-      handleResponse(response, setImage);
-    },
-  );
+export const openCameraPopUp = () => {
+  const handleCameraPopUp = () => {
+    const [logInEmail, setLogInEmail] = React.useState('');
+    const [logInPassword, setLogInPassword] = React.useState('');
+    const dispatchAuth = useAuthDispatch();
+    const dispatchApi = useApiDispatch();
+
+    console.log('handler triggered');
+  };
+
+  console.log('Open camera handler triggered');
 };

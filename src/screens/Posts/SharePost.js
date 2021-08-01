@@ -66,9 +66,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const SharePost = ({navigation}) => {
-  const [image, setImage] = React.useState(PROFILE_DATA);
-  const {url} = image;
+const SharePost = ({navigation, route}) => {
+  const {image} = route.params;
+  const renderImg = image || LicenceImage;
+
   const [title, setTitle] = React.useState('');
   const [caption, setCaption] = React.useState('');
   const [hashtag, setHashtag] = React.useState('');
@@ -94,8 +95,9 @@ const SharePost = ({navigation}) => {
               height: 170,
               borderRadius: 5,
               overflow: 'hidden',
+              resizeMode: 'cover',
             }}
-            source={url}
+            source={renderImg}
           />
         </View>
         <View
@@ -111,13 +113,15 @@ const SharePost = ({navigation}) => {
               width: '100%',
             }}>
             <TextInput
-              placeholder="Title of post..."
               maxLength={20}
+              require={true}
+              placeholder="Title of post..."
+              underlineColorAndroid="transparent"
               placeholderTextColor={Colors.lightSilver}
-              onChangeText={setTitle}
-              autoCapitalize="none"
-              value={title}
               style={styles.inputContainer}
+              // value={title}
+              // onChangeText={setTitle}
+              autoCapitalize="none"
             />
           </View>
           <View
@@ -133,8 +137,8 @@ const SharePost = ({navigation}) => {
               underlineColorAndroid="transparent"
               placeholderTextColor={Colors.lightSilver}
               style={styles.inputContainer}
-              onChangeText={setCaption}
-              value={caption}
+              // onChangeText={setCaption}
+              // value={caption}
               autoCapitalize="none"
             />
           </View>
@@ -161,7 +165,7 @@ const SharePost = ({navigation}) => {
               title="Share"
               titleStyling={{...Fonts.N_700_12, color: Colors.primary}}
               style={styles.btnStyling}
-              onPress={() => alert('Share')}
+              onPress={() => navigation.navigate('AppStack', {screen: 'Home'})}
             />
           </View>
         </View>
