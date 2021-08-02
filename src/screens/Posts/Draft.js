@@ -5,9 +5,6 @@ import {
   StyleSheet,
   ScrollView,
   FlatList,
-  Image,
-  TextInput,
-  Switch,
   TouchableOpacity,
   ImageBackground,
   Dimensions,
@@ -64,7 +61,6 @@ const Draft = ({navigation}) => {
               height: 110,
               borderRadius: 10,
               marginBottom: 2,
-              borderRadius: 10,
               overflow: 'hidden',
             }}>
             <LinearGradient

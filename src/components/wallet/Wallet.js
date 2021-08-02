@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  Text,
   View,
   KeyboardAvoidingView,
   StyleSheet,
@@ -12,6 +11,7 @@ import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../CustomButton';
 import Account from './Account';
+import Cards from './Cards';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -21,11 +21,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   modalView: {
-    paddingVertical: 20,
     marginHorizontal: width / 20,
+    height: 450,
     backgroundColor: Colors.white,
     borderRadius: 20,
-    alignItems: 'center',
     shadowColor: Colors.lightBlack,
     shadowOffset: {
       width: 0,
@@ -34,6 +33,7 @@ const styles = StyleSheet.create({
     elevation: 1,
     shadowOpacity: 0.25,
     shadowRadius: 3,
+    overflow: 'hidden',
   },
   divider: {
     borderBottomWidth: 1,
@@ -46,6 +46,72 @@ const DonatePopUp = ({donateAction, setDonateAction}) => {
   const [cards, setCards] = React.useState(false);
   const [junior, setJunior] = React.useState(false);
 
+  // SERVERS ---------------------------------------------------------
+  const ServeActionHeader = ({}) => (
+    <View>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          marginHorizontal: '5%',
+        }}>
+        <View>
+          <CustomButton
+            title="Account"
+            style={{
+              backgroundColor: Colors.transparent,
+            }}
+            titleStyling={{
+              ...Fonts.N_700_12,
+              color: account ? Colors.lightBlack : Colors.lightSilver,
+            }}
+            onPress={() => {
+              setAccount(true);
+              setCards(false);
+              setJunior(false);
+            }}
+          />
+        </View>
+        <View>
+          <CustomButton
+            title="Cards"
+            style={{
+              backgroundColor: Colors.transparent,
+            }}
+            titleStyling={{
+              ...Fonts.N_700_12,
+              color: cards ? Colors.lightBlack : Colors.lightSilver,
+            }}
+            onPress={() => {
+              setAccount(false);
+              setCards(true);
+              setJunior(false);
+            }}
+          />
+        </View>
+        <View>
+          <CustomButton
+            title="Junior"
+            style={{
+              backgroundColor: Colors.transparent,
+            }}
+            titleStyling={{
+              ...Fonts.N_700_12,
+              color: junior ? Colors.lightBlack : Colors.lightSilver,
+            }}
+            onPress={() => {
+              // setAccount(false);
+              // setCards(false);
+              // setJunior(true);
+              alert('junior');
+            }}
+          />
+        </View>
+      </View>
+      <View style={styles.divider} />
+    </View>
+  );
+
   // RETURN ---------------------------------------------------------
   return (
     <View style={styles.container}>
@@ -54,66 +120,26 @@ const DonatePopUp = ({donateAction, setDonateAction}) => {
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={styles.container}>
           <View style={styles.modalView}>
+            <View
+              style={{
+                marginHorizontal: '5%',
+                marginTop: 10,
+                alignSelf: 'flex-end',
+              }}>
+              <CustomButton
+                style={{backgroundColor: Colors.transparent}}
+                iconLeft="Cross"
+                iconWidth={16}
+                iconHeight={16}
+                iconStyling={styles.icon}
+                onPress={() => setDonateAction(false)}
+              />
+            </View>
+            <ServeActionHeader />
+
             <View style={{width: '100%'}}>
-              <View style={{marginHorizontal: '5%', alignSelf: 'flex-end'}}>
-                <CustomButton
-                  style={{backgroundColor: Colors.transparent}}
-                  iconLeft="Cross"
-                  iconWidth={16}
-                  iconHeight={16}
-                  iconStyling={styles.icon}
-                  onPress={() => setDonateAction(false)}
-                />
-              </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  marginHorizontal: '5%',
-                }}>
-                <View>
-                  <CustomButton
-                    title="Account"
-                    style={{
-                      backgroundColor: Colors.transparent,
-                    }}
-                    titleStyling={{
-                      ...Fonts.N_700_12,
-                      color: account ? Colors.lightBlack : Colors.lightSilver,
-                    }}
-                    onPress={() => alert('Account')}
-                  />
-                </View>
-                <View>
-                  <CustomButton
-                    title="Cards"
-                    style={{
-                      backgroundColor: Colors.transparent,
-                    }}
-                    titleStyling={{
-                      ...Fonts.N_700_12,
-                      color: cards ? Colors.lightBlack : Colors.lightSilver,
-                    }}
-                    onPress={() => alert('Cards')}
-                  />
-                </View>
-                <View>
-                  <CustomButton
-                    title="Junior"
-                    style={{
-                      backgroundColor: Colors.transparent,
-                    }}
-                    titleStyling={{
-                      ...Fonts.N_700_12,
-                      color: junior ? Colors.lightBlack : Colors.lightSilver,
-                    }}
-                    onPress={() => alert('Junior')}
-                  />
-                </View>
-              </View>
-              <View style={styles.divider} />
               {account && <Account />}
+              {cards && <Cards />}
             </View>
           </View>
         </KeyboardAvoidingView>

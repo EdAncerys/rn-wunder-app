@@ -13,6 +13,24 @@ export const IMAGE_DATA_ARRAY = [
   {url: require('../assets/dummyAssets/imageTwelve.jpg')},
 ];
 
+export const VIRTUAL_CARDS = [
+  {
+    url: require('../assets/dummyAssets/disposable-virtual-card.png'),
+    title: 'Disposable Virtual Card',
+  },
+];
+
+export const PHYSICAL_CARDS = [
+  {
+    url: require('../assets/dummyAssets/natwest-card.png'),
+    title: 'Original ***4509',
+  },
+  {
+    url: require('../assets/dummyAssets/santander-card.png'),
+    title: 'Original ***7452',
+  },
+];
+
 export const PROFILE_DATA = {
   url: require('../assets/images/profile/profile-background.png'),
   title: 'Meditation to rel...',

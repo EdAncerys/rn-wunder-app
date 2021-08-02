@@ -1,13 +1,9 @@
 import * as React from 'react';
-import {Text, View, StyleSheet, Dimensions} from 'react-native';
+import {Text, View} from 'react-native';
 
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../CustomButton';
-
-const {width, height} = Dimensions.get('screen');
-
-const styles = StyleSheet.create({});
 
 const Account = ({}) => {
   // RETURN ---------------------------------------------------------
