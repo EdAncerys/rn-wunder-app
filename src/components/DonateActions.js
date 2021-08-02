@@ -104,48 +104,68 @@ const ServeProjects = ({navigation}) => {
   );
 };
 
+const ServeDonateHeader = ({
+  navigation,
+  profile,
+  projects,
+  screen,
+  donateAction,
+  setDonateAction,
+}) => {
+  return (
+    <View style={styles.container}>
+      <View>
+        <CustomButton
+          style={{
+            backgroundColor: Colors.secondary,
+            padding: 10,
+            borderRadius: 100,
+          }}
+          iconLeft="NotificationsLine"
+          iconWidth={18.5}
+          iconHeight={20}
+          iconFill={Colors.white}
+          onPress={() =>
+            navigation.navigate('HomeStack', {screen: 'Notifications'})
+          }
+        />
+      </View>
+      {profile && (
+        <ServeNavigateProfile navigation={navigation} screen={screen} />
+      )}
+      {projects && <ServeProjects />}
+      <View>
+        <CustomButton
+          style={{
+            backgroundColor: Colors.secondary,
+            padding: 10,
+            borderRadius: 100,
+          }}
+          iconLeft="Wallet"
+          iconWidth={20}
+          iconHeight={20}
+          iconFill={Colors.white}
+          onPress={() => setDonateAction(!donateAction)}
+        />
+      </View>
+    </View>
+  );
+};
+
 // RETURN ---------------------------------------------------------
 const DonateActions = ({navigation, profile, projects, screen}) => {
   const [donateAction, setDonateAction] = React.useState(false);
 
   return (
     <View>
-      <View style={styles.container}>
-        <View>
-          <CustomButton
-            style={{
-              backgroundColor: Colors.secondary,
-              padding: 10,
-              borderRadius: 100,
-            }}
-            iconLeft="NotificationsLine"
-            iconWidth={18.5}
-            iconHeight={20}
-            iconFill={Colors.white}
-            onPress={() =>
-              navigation.navigate('HomeStack', {screen: 'Notifications'})
-            }
-          />
-        </View>
-        {profile && (
-          <ServeNavigateProfile navigation={navigation} screen={screen} />
-        )}
-        {projects && <ServeProjects />}
-        <View>
-          <CustomButton
-            style={{
-              backgroundColor: Colors.secondary,
-              padding: 10,
-              borderRadius: 100,
-            }}
-            iconLeft="Wallet"
-            iconWidth={20}
-            iconHeight={20}
-            iconFill={Colors.white}
-            onPress={() => setDonateAction(!donateAction)}
-          />
-        </View>
-      </View>
+      <ServeDonateHeader
+        navigation={navigation}
+        profile={profile}
+        projects={projects}
+        screen={screen}
+        donateAction={donateAction}
+        setDonateAction={setDonateAction}
+      />
       {donateAction && (
         <ServeDonate
           donateAction={donateAction}
