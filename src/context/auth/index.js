@@ -4,6 +4,7 @@ import {
   logOut,
   signUp,
   tempDataStorage,
+  addPostAction,
   storageCheck,
   updateUser,
 } from './actions';
@@ -16,6 +17,7 @@ export {
   logOut,
   signUp,
   tempDataStorage,
+  addPostAction,
   storageCheck,
   updateUser,
 };

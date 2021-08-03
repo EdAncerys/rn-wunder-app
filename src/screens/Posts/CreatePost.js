@@ -6,7 +6,6 @@ import {openCamera, openGallery} from '../../config/deviceCamera';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
-import LicenceImage from '../../assets/images/onboardingOverSixteen/upload-licence.png';
 
 const styles = StyleSheet.create({
   container: {
@@ -25,7 +24,6 @@ const CreatePost = ({navigation}) => {
   const tabPress = navigation.addListener('tabPress', e => {
     // Prevent default action
     // e.preventDefault();
-    console.log(e);
   });
 
   const index = useNavigationState(state => state.index);

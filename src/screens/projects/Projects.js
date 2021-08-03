@@ -174,7 +174,7 @@ const Projects = ({navigation}) => {
       let picWidth = width / 3;
 
       if (countWidth === 3 || countWidth === 4) picWidth = width / 2;
-      if (dummy) picWidth = 0;
+      if (dummy) picWidth = 100;
       countWidth += 1;
       if (countWidth === 6 || index === dataLength - 1) countWidth = 0;
       return picWidth;

@@ -10,6 +10,8 @@ import {
   ScrollView,
 } from 'react-native';
 import {PROFILE_DATA, IMAGE_DATA_ARRAY} from '../../config/data';
+import Draggable from 'react-native-draggable';
+import SlidingUpPanel from 'rn-sliding-up-panel';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -25,26 +27,24 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
   },
-  donateContainer: {
+  headerActions: {
     justifyContent: 'center',
     marginHorizontal: '5%',
-    height: height / 10,
+    marginVertical: '5%',
   },
   appActions: {
+    flex: 1.5,
     alignItems: 'flex-start',
     justifyContent: 'center',
     marginHorizontal: '5%',
-    height: height / 2,
+    backgroundColor: Colors.matFilter,
   },
   postContainer: {
-    justifyContent: 'flex-start',
+    flex: 1,
     marginHorizontal: '5%',
-    height: height / 6,
   },
   rowWrapper: {
     flexDirection: 'row',
-    alignItems: 'center',
-    paddingVertical: 8,
   },
   post: {
     ...Fonts.N_700_22,
@@ -56,11 +56,10 @@ const styles = StyleSheet.create({
     marginVertical: 3,
     width: width * 0.5,
   },
-  badge: {
-    flex: 1,
-  },
-  imageContainer: {
-    marginBottom: 150,
+  flatListContainer: {
+    // zIndex: 1,
+    // position: 'absolute',
+    // marginTop: height - 350,
     backgroundColor: Colors.white,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
@@ -104,44 +103,46 @@ const Profile = ({navigation}) => {
 
   const ServeProfileInfo = () => (
     <View style={styles.rowWrapper}>
-      <View>
+      <View
+        style={{
+          flex: 1,
+        }}>
         <Text style={styles.post}>{name}</Text>
         <Text style={styles.info}>{followers} followers</Text>
         <Text style={styles.info}>{about}</Text>
       </View>
+
       <View
         style={{
-          flexDirection: 'row',
           flex: 1,
+          flexDirection: 'row',
           justifyContent: 'space-around',
           alignItems: 'center',
         }}>
-        <View style={styles.rowWrapper}>
-          <View style={styles.badge}>
-            <CustomButton
-              iconLeft="LifeOnLand"
-              iconFill={Colors.white}
-              style={{backgroundColor: Colors.transparent}}
-              onPress={() => alert('Life on Earth')}
-            />
-          </View>
-          <View style={styles.badge}>
-            <CustomButton
-              iconLeft="Climate"
-              iconFill={Colors.white}
-              style={{backgroundColor: Colors.transparent}}
-              iconStyling={{width: 23, height: 32}}
-              onPress={() => alert('Climate')}
-            />
-          </View>
-          <View style={styles.badge}>
-            <CustomButton
-              iconLeft="Health"
-              iconFill={Colors.white}
-              style={{backgroundColor: Colors.transparent}}
-              onPress={() => alert('Health')}
-            />
-          </View>
+        <View>
+          <CustomButton
+            iconLeft="LifeOnLand"
+            iconFill={Colors.white}
+            style={{backgroundColor: Colors.transparent}}
+            onPress={() => alert('Life on Earth')}
+          />
+        </View>
+        <View>
+          <CustomButton
+            iconLeft="Climate"
+            iconFill={Colors.white}
+            style={{backgroundColor: Colors.transparent}}
+            iconStyling={{width: 23, height: 32}}
+            onPress={() => alert('Climate')}
+          />
+        </View>
+        <View>
+          <CustomButton
+            iconLeft="Health"
+            iconFill={Colors.white}
+            style={{backgroundColor: Colors.transparent}}
+            onPress={() => alert('Health')}
+          />
         </View>
       </View>
     </View>
@@ -151,59 +152,52 @@ const Profile = ({navigation}) => {
   return (
     <ScreenWrapper image={Background}>
       <View style={styles.wrapper}>
-        <View style={styles.donateContainer}>
+        <View style={styles.headerActions}>
           <DonateActions navigation={navigation} profile />
         </View>
-        {/* <View
-          style={{
-            zIndex: 1,
-            position: 'relative',
-            alignItems: 'flex-start',
-            width: '100%',
-            marginTop: height / 3.5,
-            marginLeft: '5%',
-            backgroundColor: 'tomato',
-          }}>
-          <ProfileActions />
-        </View>
 
-        <View
-          style={{
-            zIndex: 1,
-            position: 'absolute',
-            alignItems: 'flex-start',
-            width: '100%',
-            marginTop: height / 1.65,
-            marginLeft: '5%',
-            backgroundColor: 'tomato',
-          }}>
-          <ServeProfileInfo />
-        </View> */}
-        <View>
-          <ScrollView showsVerticalScrollIndicator={false} horizontal={false}>
-            <View style={styles.appActions}>
-              <AppActions
-                navigation={navigation}
-                Settings
-                Shoutout
-                item={profile}
-              />
-            </View>
-            <View style={styles.postContainer}>
-              <ServeProfileInfo />
-            </View>
+        <View style={{flex: 1}}>
+          <View style={styles.appActions}>
+            <AppActions
+              navigation={navigation}
+              Settings
+              Shoutout
+              item={profile}
+            />
+          </View>
+          <View style={styles.postContainer}>
+            <ServeProfileInfo />
+          </View>
 
-            <View style={styles.imageContainer}>
-              <FlatList
+          <SlidingUpPanel
+            backdropOpacity={1}
+            draggableRange={{top: height, bottom: 300}}
+            // draggableRange={{top: height, bottom: 200}}
+          >
+            {/* <ScrollView
+              style={{flexGrow: 1}}
+              showsVerticalScrollIndicator={false}
+              horizontal={false}> */}
+            <View style={styles.flatListContainer}>
+              {/* <FlatList
                 keyExtractor={(_, index) => String(index)}
                 showsVerticalScrollIndicator={false}
                 numColumns={3}
                 data={projects}
                 renderItem={renderFlatListItem}
                 nestedScrollEnabled={true}
-              />
+              /> */}
+              <View
+                style={{
+                  minHeight: height,
+                  width: width / 2,
+                  backgroundColor: 'pink',
+                }}>
+                <Text>Helllo</Text>
+              </View>
             </View>
-          </ScrollView>
+            {/* </ScrollView> */}
+          </SlidingUpPanel>
         </View>
       </View>
     </ScreenWrapper>

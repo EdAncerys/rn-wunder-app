@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
 const SharePost = ({navigation, route}) => {
   const {image} = route.params;
   const {url} = image;
-  console.log(url);
   const renderImg = url || image;
 
   const [title, setTitle] = React.useState('');

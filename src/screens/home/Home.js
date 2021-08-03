@@ -1,4 +1,6 @@
 import * as React from 'react';
+import {useAuthState, useAuthDispatch, addPostAction} from '../../context/auth';
+import {useApiDispatch} from '../../context/api';
 import {
   StatusBar,
   FlatList,
@@ -12,7 +14,6 @@ import {
   Directions,
   State,
 } from 'react-native-gesture-handler';
-import {useNavigationState} from '@react-navigation/native';
 import {HOME_SCREEN_DATA} from '../../config/data';
 
 const {width, height} = Dimensions.get('screen');
@@ -34,6 +35,11 @@ const styles = StyleSheet.create({
 });
 
 const Home = ({navigation, route}) => {
+  const dispatchAuth = useAuthDispatch();
+  const dispatchApi = useApiDispatch();
+  const {addAction} = useAuthState();
+  console.log(addAction);
+
   const [data, setData] = React.useState(HOME_SCREEN_DATA);
   const scrollYIndex = React.useRef(new Animated.Value(0)).current;
   const scrollYAnimated = React.useRef(new Animated.Value(0)).current;

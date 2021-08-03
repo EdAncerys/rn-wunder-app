@@ -4,6 +4,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {openCameraPopUp} from '../config/deviceCamera';
 
+import {useAuthState, useAuthDispatch, addPostAction} from '../context/auth';
+import {useApiDispatch} from '../context/api';
+
 import Colors from '../config/colors';
 import {
   Home as HomeIcon,
@@ -75,11 +78,11 @@ export const AppNavigator = () => {
         component={Draft}
         options={{headerShown: false}}
       /> */}
-      <Stack.Screen
+      {/* <Stack.Screen
         name="CreateAccountStack"
         component={CreateAccountStack}
         options={{headerShown: false}}
-      />
+      /> */}
       <Stack.Screen
         name="AppStack"
         component={AppStack}
@@ -115,6 +118,9 @@ export const AppNavigator = () => {
 };
 
 const AppStack = ({navigation}) => {
+  const dispatchAuth = useAuthDispatch();
+  const dispatchApi = useApiDispatch();
+
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -151,7 +157,6 @@ const AppStack = ({navigation}) => {
         name="CreatePost"
         component={CreatePost}
         options={{
-          // tabBarVisible: false,
           animationEnabled: false,
           tabBarLabel: '',
           tabBarIcon: () => (
@@ -160,13 +165,13 @@ const AppStack = ({navigation}) => {
             </View>
           ),
         }}
-        // listeners={({navigation}) => ({
-        //   tabPress: e => {
-        //     e.preventDefault();
-        //     // navigation.navigate('AddStack', {screen: 'SharePost'});
-        //     openCameraPopUp(navigation);
-        //   },
-        // })}
+        listeners={({navigation}) => ({
+          tabPress: e => {
+            e.preventDefault();
+            const addAction = {addAction: true};
+            addPostAction({dispatchAuth, dispatchApi, addAction});
+          },
+        })}
       />
       <Tab.Screen
         name="Projects"

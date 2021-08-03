@@ -11,6 +11,19 @@ export const IMAGE_DATA_ARRAY = [
   {url: require('../assets/dummyAssets/imageTen.jpg')},
   {url: require('../assets/dummyAssets/imageEleven.jpg')},
   {url: require('../assets/dummyAssets/imageTwelve.jpg')},
+
+  {url: require('../assets/dummyAssets/imageOne.jpeg')},
+  {url: require('../assets/dummyAssets/imageTwo.jpg')},
+  {url: require('../assets/dummyAssets/imageThree.jpg')},
+  {url: require('../assets/dummyAssets/imageFour.jpg')},
+  {url: require('../assets/dummyAssets/imageFive.jpg')},
+  {url: require('../assets/dummyAssets/imageSix.jpg')},
+  {url: require('../assets/dummyAssets/imageSeven.jpg')},
+  {url: require('../assets/dummyAssets/imageEight.jpg')},
+  {url: require('../assets/dummyAssets/imageNine.jpg')},
+  {url: require('../assets/dummyAssets/imageTen.jpg')},
+  {url: require('../assets/dummyAssets/imageEleven.jpg')},
+  {url: require('../assets/dummyAssets/imageTwelve.jpg')},
 ];
 
 export const VIRTUAL_CARDS = [
