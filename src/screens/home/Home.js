@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {useAuthState, useAuthDispatch, addPostAction} from '../../context/auth';
-import {useApiDispatch} from '../../context/api';
+import {useAuthState} from '../../context/auth';
 import {
   StatusBar,
   FlatList,
@@ -14,6 +13,7 @@ import {
   Directions,
   State,
 } from 'react-native-gesture-handler';
+import AddPostAction from '../../components/AddPostAction';
 import {HOME_SCREEN_DATA} from '../../config/data';
 
 const {width, height} = Dimensions.get('screen');
@@ -34,13 +34,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const Home = ({navigation, route}) => {
-  const dispatchAuth = useAuthDispatch();
-  const dispatchApi = useApiDispatch();
+const Home = ({navigation}) => {
   const {addAction} = useAuthState();
-  console.log(addAction);
-
   const [data, setData] = React.useState(HOME_SCREEN_DATA);
+  const [addPostPopUp, setAddPostPopUp] = React.useState(null);
   const scrollYIndex = React.useRef(new Animated.Value(0)).current;
   const scrollYAnimated = React.useRef(new Animated.Value(0)).current;
   const [index, setIndex] = React.useState(0);
@@ -63,6 +60,10 @@ const Home = ({navigation, route}) => {
       friction: 15,
     }).start();
   });
+
+  React.useEffect(() => {
+    setAddPostPopUp(addAction.addAction);
+  }, [addAction]);
 
   // SERVERS ---------------------------------------------------------
   const ServeScreen = ({item, currentIndex}) => {
@@ -135,6 +136,7 @@ const Home = ({navigation, route}) => {
         }}>
         <View style={styles.container}>
           <StatusBar hidden />
+          {addPostPopUp && <AddPostAction navigation={navigation} />}
           <FlatList
             data={data}
             keyExtractor={(_, index) => String(index)}
