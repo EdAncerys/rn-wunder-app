@@ -76,26 +76,33 @@ const Projects = ({navigation}) => {
   const [filter, setFilter] = React.useState('');
 
   React.useEffect(() => {
-    let filteredData;
-
     if (!filter) {
-      setMutatedData(data);
+      const mutatedDataArray = serveMutateArray(data);
+      setMutatedData(mutatedDataArray);
       return;
     }
-    if (filter === 'nearMe')
-      filteredData = data.sort(() => 0.5 - Math.random()).slice(0, 4);
-    if (filter !== 'nearMe')
-      filteredData = data.filter(item => item.category == filter);
-
-    console.log(filteredData);
-    console.log(0.5 - Math.random());
-
-    setMutatedData(filteredData);
+    if (filter === 'nearMe') {
+      const nearMe = data.sort(() => 0.5 - Math.random()).slice(0, 7);
+      const mutatedDataArray = serveMutateArray(nearMe);
+      setMutatedData(mutatedDataArray);
+      return;
+    }
+    if (filter === 'people' || 'planet') {
+      const mutatedData = data.filter(item => item.category == filter);
+      const mutatedDataArray = serveMutateArray(mutatedData);
+      setMutatedData(mutatedDataArray);
+      return;
+    }
   }, [filter]);
 
   React.useEffect(() => {
+    if (addAction) setAddPostPopUp(addAction.addAction);
+  }, [addAction]);
+
+  // SERVERS ---------------------------------------------------------
+  const serveMutateArray = array => {
     let mutatedArray = [];
-    data.map((item, index) => {
+    array.map((item, index) => {
       let dummy = {
         url: DummyBackground,
         dummy: true,
@@ -106,14 +113,10 @@ const Projects = ({navigation}) => {
         mutatedArray = [...mutatedArray, dummy];
       mutatedArray = [...mutatedArray, item];
     });
-    setMutatedData(mutatedArray);
-  }, [data]);
 
-  React.useEffect(() => {
-    if (addAction) setAddPostPopUp(addAction.addAction);
-  }, [addAction]);
+    return mutatedArray;
+  };
 
-  // SERVERS ---------------------------------------------------------
   const ServePeopleIcon = () => {
     return (
       <View
@@ -183,27 +186,40 @@ const Projects = ({navigation}) => {
 
   let countItemWidth = 0;
   let countItemHeight = 0;
-  const dataLength = mutatedData.length;
   const renderFlatListItem = ({item, index}) => {
     const {url, dummy} = item;
+    const projectsArrayLength = mutatedData.length;
+    console.log(projectsArrayLength % 5);
 
     const handlePictureWidth = () => {
       let picWidth = width / 3;
 
+      if (dummy) picWidth = 0;
       if (countItemWidth === 3 || countItemWidth === 4) picWidth = width / 2;
-      if (dummy) picWidth = 100;
+
+      if (projectsArrayLength <= 2) picWidth = width / 2;
+      if (projectsArrayLength % 3 === 1 && index === projectsArrayLength - 1)
+        picWidth = width;
+
+      if (projectsArrayLength % 5 === 3 && index === projectsArrayLength - 2)
+        picWidth = width / 2;
+      if (projectsArrayLength % 5 === 3 && index === projectsArrayLength - 1)
+        picWidth = width / 2;
+
       countItemWidth += 1;
-      if (countItemWidth === 6 || index === dataLength - 1) countItemWidth = 0;
+      if (countItemWidth === 6 || index === projectsArrayLength - 1)
+        countItemWidth = 0;
       return picWidth;
     };
 
     const handlePictureHeight = () => {
-      let picHeight = 200;
+      let picHeight = height / 4;
 
-      if (countItemHeight === 3 || countItemHeight === 4) picHeight = 300;
+      if (countItemHeight === 3 || countItemHeight === 4)
+        picHeight = height / 3;
       if (dummy) picHeight = 0;
       countItemHeight += 1;
-      if (countItemHeight === 6 || index === dataLength - 1)
+      if (countItemHeight === 6 || index === projectsArrayLength - 1)
         countItemHeight = 0;
 
       return picHeight;
