@@ -59,7 +59,6 @@ const styles = StyleSheet.create({
   },
   actionTitle: {
     ...Fonts.N_700_12,
-    color: Colors.lightBlack,
   },
   imgInfoOverlay: {},
   textOverlay: {
@@ -153,7 +152,10 @@ const Projects = ({navigation}) => {
             backgroundColor: Colors.transparent,
           }}
           title="All"
-          titleStyling={styles.actionTitle}
+          titleStyling={{
+            ...styles.actionTitle,
+            color: filter === '' ? Colors.lightBlack : Colors.lightSilver,
+          }}
           onPress={() => setFilter('')}
         />
         <CustomButton
@@ -161,7 +163,10 @@ const Projects = ({navigation}) => {
             backgroundColor: Colors.transparent,
           }}
           title="People"
-          titleStyling={styles.actionTitle}
+          titleStyling={{
+            ...styles.actionTitle,
+            color: filter === 'people' ? Colors.lightBlack : Colors.lightSilver,
+          }}
           onPress={() => setFilter('people')}
         />
         <CustomButton
@@ -169,7 +174,10 @@ const Projects = ({navigation}) => {
             backgroundColor: Colors.transparent,
           }}
           title="Planet"
-          titleStyling={styles.actionTitle}
+          titleStyling={{
+            ...styles.actionTitle,
+            color: filter === 'planet' ? Colors.lightBlack : Colors.lightSilver,
+          }}
           onPress={() => setFilter('planet')}
         />
         <CustomButton
@@ -177,7 +185,10 @@ const Projects = ({navigation}) => {
             backgroundColor: Colors.transparent,
           }}
           title="Near Me"
-          titleStyling={styles.actionTitle}
+          titleStyling={{
+            ...styles.actionTitle,
+            color: filter === 'nearMe' ? Colors.lightBlack : Colors.lightSilver,
+          }}
           onPress={() => setFilter('nearMe')}
         />
       </View>
