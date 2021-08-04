@@ -76,12 +76,21 @@ const Projects = ({navigation}) => {
   const [filter, setFilter] = React.useState('');
 
   React.useEffect(() => {
+    let filteredData;
+
     if (!filter) {
-      setData(PROJECTS_DATA);
+      setMutatedData(data);
       return;
     }
-    const filteredData = PROJECTS_DATA.filter(item => item.category == filter);
-    setData(filteredData);
+    if (filter === 'nearMe')
+      filteredData = data.sort(() => 0.5 - Math.random()).slice(0, 4);
+    if (filter !== 'nearMe')
+      filteredData = data.filter(item => item.category == filter);
+
+    console.log(filteredData);
+    console.log(0.5 - Math.random());
+
+    setMutatedData(filteredData);
   }, [filter]);
 
   React.useEffect(() => {
@@ -166,14 +175,14 @@ const Projects = ({navigation}) => {
           }}
           title="Near Me"
           titleStyling={styles.actionTitle}
-          onPress={() => setFilter('')}
+          onPress={() => setFilter('nearMe')}
         />
       </View>
     );
   };
 
-  let countWidth = 0;
-  let countHeight = 0;
+  let countItemWidth = 0;
+  let countItemHeight = 0;
   const dataLength = mutatedData.length;
   const renderFlatListItem = ({item, index}) => {
     const {url, dummy} = item;
@@ -181,20 +190,21 @@ const Projects = ({navigation}) => {
     const handlePictureWidth = () => {
       let picWidth = width / 3;
 
-      if (countWidth === 3 || countWidth === 4) picWidth = width / 2;
+      if (countItemWidth === 3 || countItemWidth === 4) picWidth = width / 2;
       if (dummy) picWidth = 100;
-      countWidth += 1;
-      if (countWidth === 6 || index === dataLength - 1) countWidth = 0;
+      countItemWidth += 1;
+      if (countItemWidth === 6 || index === dataLength - 1) countItemWidth = 0;
       return picWidth;
     };
 
     const handlePictureHeight = () => {
       let picHeight = 200;
 
-      if (countHeight === 3 || countHeight === 4) picHeight = 300;
+      if (countItemHeight === 3 || countItemHeight === 4) picHeight = 300;
       if (dummy) picHeight = 0;
-      countHeight += 1;
-      if (countHeight === 6 || index === dataLength - 1) countHeight = 0;
+      countItemHeight += 1;
+      if (countItemHeight === 6 || index === dataLength - 1)
+        countItemHeight = 0;
 
       return picHeight;
     };

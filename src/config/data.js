@@ -505,7 +505,7 @@ export const HOME_SCREEN_DATA = [
     isVerified: false,
     title: 'Peaceful Walk this Morning',
     post: 'The Pembury Children’s Community is a partnership led by the Co',
-    category: 'planet',
+    category: POST_DATA,
     getInvolved: false,
     donateAction: false,
   },
@@ -522,7 +522,11 @@ export const HOME_SCREEN_DATA = [
   },
 ];
 
-export const POST_DATA = [...PROFILE_DATA_ONE, ...PROFILE_DATA_TWO];
+export const POST_DATA = [
+  ...PROFILE_DATA_ONE,
+  ...PROFILE_DATA_TWO,
+  ...PROFILE_DATA_TWO,
+];
 
 export const PROJECTS_DATA = [
   {

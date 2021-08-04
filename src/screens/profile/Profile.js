@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginHorizontal: '5%',
     marginVertical: '15%',
-    // backgroundColor: 'pink',
   },
   appActions: {
     marginTop: height / 3,
@@ -81,27 +80,24 @@ const Profile = ({navigation}) => {
   const {name, followers, about} = profile;
   const {url} = profile;
 
-  console.log(projects);
-
   React.useEffect(() => {
     if (addAction) setAddPostPopUp(addAction.addAction);
   }, [addAction]);
 
   // SERVERS ---------------------------------------------------------
 
+  const projectsArrayLength = projects.length;
   const handlePictureWidth = index => {
-    const projectsArrayLength = projects.length;
-    console.log(projectsArrayLength % 5);
-    // console.log(index);
     let picWidth = width / 3;
 
     if (projectsArrayLength <= 2) picWidth = width / 2;
-    if (projectsArrayLength % 5 === 1 && index === projectsArrayLength - 2)
+    if (projectsArrayLength % 5 === 2 && index === projectsArrayLength - 2)
       picWidth = width / 2;
-    if (projectsArrayLength % 5 === 1 && index === projectsArrayLength - 1)
+    if (projectsArrayLength % 5 === 2 && index === projectsArrayLength - 1)
       picWidth = width / 2;
     if (projectsArrayLength % 3 === 1 && index === projectsArrayLength - 1)
       picWidth = width;
+
     return picWidth;
   };
 
