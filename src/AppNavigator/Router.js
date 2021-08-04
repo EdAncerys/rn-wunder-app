@@ -2,7 +2,6 @@ import * as React from 'react';
 import {View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {openCameraPopUp} from '../config/deviceCamera';
 
 import {useAuthState, useAuthDispatch, addPostAction} from '../context/auth';
 import {useApiDispatch} from '../context/api';
@@ -75,7 +74,7 @@ export const AppNavigator = () => {
     <Stack.Navigator initialRouteName="CreateAccountStack">
       {/* <Stack.Screen
         name="TestScreen"
-        component={Draft}
+        component={Profile}
         options={{headerShown: false}}
       /> */}
       {/* <Stack.Screen
