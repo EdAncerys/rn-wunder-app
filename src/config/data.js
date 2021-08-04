@@ -223,6 +223,23 @@ export const PROFILE_DATA_TWO = [
     date: '05.05.21',
     interest: 'Zero Hunger',
   },
+  {
+    url: require('../assets/dummyAssets/search7.jpg'),
+    title: 'Meditation to rel...',
+    time: '4 hrs ago',
+    profileImageUrl: 'https://reactnative.dev/img/tiny_logo.png',
+    name: 'friendsofthearth',
+    post: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    category: 'people',
+    getInvolved: false,
+    isVerified: false,
+    id: '1',
+    date: '05.05.21',
+    interest: 'Zero Hunger',
+    name: 'sarah_wills',
+    followers: '5k',
+    about: 'She/Her. Passionate about plants.',
+  },
 ];
 
 export const SEARCH_PAGE_DATA = [
@@ -504,6 +521,8 @@ export const HOME_SCREEN_DATA = [
     donateAction: true,
   },
 ];
+
+export const POST_DATA = [...PROFILE_DATA_ONE, ...PROFILE_DATA_TWO];
 
 export const PROJECTS_DATA = [
   {

@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import {useAuthState} from '../../context/auth';
 import AddPostAction from '../../components/AddPostAction';
-import {PROFILE_DATA, IMAGE_DATA_ARRAY} from '../../config/data';
+import {PROFILE_DATA, POST_DATA} from '../../config/data';
 import SlidingUpPanel from 'rn-sliding-up-panel';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
@@ -77,15 +77,34 @@ const Profile = ({navigation}) => {
   const {addAction} = useAuthState();
   const [addPostPopUp, setAddPostPopUp] = React.useState(null);
   const [profile, setProfile] = React.useState(PROFILE_DATA);
-  const [projects, setProjects] = React.useState(IMAGE_DATA_ARRAY);
+  const [projects, setProjects] = React.useState(POST_DATA);
   const {name, followers, about} = profile;
   const {url} = profile;
+
+  console.log(projects);
 
   React.useEffect(() => {
     if (addAction) setAddPostPopUp(addAction.addAction);
   }, [addAction]);
 
   // SERVERS ---------------------------------------------------------
+
+  const handlePictureWidth = index => {
+    const projectsArrayLength = projects.length;
+    console.log(projectsArrayLength % 5);
+    // console.log(index);
+    let picWidth = width / 3;
+
+    if (projectsArrayLength <= 2) picWidth = width / 2;
+    if (projectsArrayLength % 5 === 1 && index === projectsArrayLength - 2)
+      picWidth = width / 2;
+    if (projectsArrayLength % 5 === 1 && index === projectsArrayLength - 1)
+      picWidth = width / 2;
+    if (projectsArrayLength % 3 === 1 && index === projectsArrayLength - 1)
+      picWidth = width;
+    return picWidth;
+  };
+
   const renderFlatListItem = ({item, index}) => (
     <TouchableOpacity
       onPress={() =>
@@ -99,7 +118,7 @@ const Profile = ({navigation}) => {
           style={{
             resizeMode: 'cover',
             height: 200,
-            width: width / 3,
+            width: handlePictureWidth(index),
             marginLeft: index % 3 !== 0 ? 2 : 0,
             marginBottom: 2,
           }}
