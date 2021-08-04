@@ -109,7 +109,7 @@ const Profile = ({navigation}) => {
     <TouchableOpacity
       onPress={() =>
         navigation.navigate('ProjectStack', {
-          screen: 'FullScreenImage',
+          screen: 'Post',
           params: {item: item},
         })
       }>
