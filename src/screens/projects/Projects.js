@@ -10,6 +10,8 @@ import {
   ScrollView,
   ImageBackground,
 } from 'react-native';
+import {useAuthState} from '../../context/auth';
+import AddPostAction from '../../components/AddPostAction';
 import LinearGradient from 'react-native-linear-gradient';
 import {PROJECTS_DATA} from '../../config/data';
 
@@ -67,6 +69,8 @@ const styles = StyleSheet.create({
 });
 
 const Projects = ({navigation}) => {
+  const {addAction} = useAuthState();
+  const [addPostPopUp, setAddPostPopUp] = React.useState(null);
   const [data, setData] = React.useState(PROJECTS_DATA);
   const [mutatedData, setMutatedData] = React.useState(false);
   const [filter, setFilter] = React.useState('');
@@ -95,6 +99,10 @@ const Projects = ({navigation}) => {
     });
     setMutatedData(mutatedArray);
   }, [data]);
+
+  React.useEffect(() => {
+    if (addAction) setAddPostPopUp(addAction.addAction);
+  }, [addAction]);
 
   // SERVERS ---------------------------------------------------------
   const ServePeopleIcon = () => {
@@ -245,6 +253,7 @@ const Projects = ({navigation}) => {
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper>
+      {addPostPopUp && <AddPostAction navigation={navigation} />}
       <View style={styles.wrapper}>
         <View style={styles.donateContainer}>
           <DonateActions navigation={navigation} projects />
