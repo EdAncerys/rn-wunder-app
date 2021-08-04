@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {useAuthState} from '../../context/auth';
 import {
   StatusBar,
   FlatList,
@@ -13,6 +12,7 @@ import {
   Directions,
   State,
 } from 'react-native-gesture-handler';
+import {useAuthState} from '../../context/auth';
 import AddPostAction from '../../components/AddPostAction';
 import {HOME_SCREEN_DATA} from '../../config/data';
 
@@ -62,7 +62,7 @@ const Home = ({navigation}) => {
   });
 
   React.useEffect(() => {
-    setAddPostPopUp(addAction.addAction);
+    if (addAction) setAddPostPopUp(addAction.addAction);
   }, [addAction]);
 
   // SERVERS ---------------------------------------------------------

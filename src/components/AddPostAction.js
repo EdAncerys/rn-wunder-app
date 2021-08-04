@@ -49,6 +49,7 @@ const AddPostAction = ({navigation}) => {
 
   React.useEffect(() => {
     if (image) {
+      handleCancelAddPost();
       navigation.navigate('AddStack', {
         screen: 'SharePost',
         params: {image: image},

@@ -11,6 +11,8 @@ import {
   ScrollView,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {useAuthState} from '../../context/auth';
+import AddPostAction from '../../components/AddPostAction';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -118,8 +120,11 @@ const ServePlanetIcon = () => {
 };
 
 const Search = ({navigation}) => {
+  const {addAction} = useAuthState();
+  const [addPostPopUp, setAddPostPopUp] = React.useState(null);
   const [data, setData] = React.useState(SEARCH_PAGE_DATA);
 
+  // HELPERS ---------------------------------------------------------
   const renderFlatListItem = ({item, index}) => (
     <TouchableOpacity
       key={index}
@@ -186,8 +191,14 @@ const Search = ({navigation}) => {
     return items;
   };
 
+  React.useEffect(() => {
+    if (addAction) setAddPostPopUp(addAction.addAction);
+  }, [addAction]);
+
+  // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper>
+      {addPostPopUp && <AddPostAction navigation={navigation} />}
       <ScrollView showsVerticalScrollIndicator={false}>
         <View
           style={{
