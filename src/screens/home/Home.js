@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
 
 const Home = ({navigation}) => {
   const {addAction} = useAuthState();
-  const [data, setData] = React.useState(HOME_SCREEN_DATA);
   const [addPostPopUp, setAddPostPopUp] = React.useState(null);
+  const [data, setData] = React.useState(HOME_SCREEN_DATA);
   const scrollYIndex = React.useRef(new Animated.Value(0)).current;
   const scrollYAnimated = React.useRef(new Animated.Value(0)).current;
   const [index, setIndex] = React.useState(0);

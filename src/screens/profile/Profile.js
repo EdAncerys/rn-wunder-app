@@ -9,6 +9,8 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
+import {useAuthState} from '../../context/auth';
+import AddPostAction from '../../components/AddPostAction';
 import {PROFILE_DATA, IMAGE_DATA_ARRAY} from '../../config/data';
 import Draggable from 'react-native-draggable';
 import SlidingUpPanel from 'rn-sliding-up-panel';
@@ -73,9 +75,15 @@ const styles = StyleSheet.create({
 });
 
 const Profile = ({navigation}) => {
+  const {addAction} = useAuthState();
+  const [addPostPopUp, setAddPostPopUp] = React.useState(null);
   const [profile, setProfile] = React.useState(PROFILE_DATA);
   const [projects, setProjects] = React.useState(IMAGE_DATA_ARRAY);
   const {name, followers, about} = profile;
+
+  React.useEffect(() => {
+    if (addAction) setAddPostPopUp(addAction.addAction);
+  }, [addAction]);
 
   // SERVERS ---------------------------------------------------------
   const renderFlatListItem = ({item, index}) => (
@@ -151,6 +159,7 @@ const Profile = ({navigation}) => {
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper image={Background}>
+      {addPostPopUp && <AddPostAction navigation={navigation} />}
       <View style={styles.wrapper}>
         <View style={styles.headerActions}>
           <DonateActions navigation={navigation} profile />

@@ -167,6 +167,7 @@ const AppStack = ({navigation}) => {
         }}
         listeners={({navigation}) => ({
           tabPress: e => {
+            // Prevent default TabNav action to trigger popUp
             e.preventDefault();
             const addAction = {addAction: true};
             addPostAction({dispatchAuth, dispatchApi, addAction});
