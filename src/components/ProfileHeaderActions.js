@@ -37,9 +37,9 @@ const ServeReportPost = ({
   navigation,
   setReportAction,
   setBlockAction,
-  item,
+  dataProfile,
 }) => {
-  const {name} = item;
+  const {name} = dataProfile;
 
   return (
     <Modal animationType="slide" transparent={true} visible={true}>
@@ -85,8 +85,8 @@ const ServeReportPost = ({
   );
 };
 
-const ServeBlockingUser = ({setBlockAction, item}) => {
-  const {name} = item;
+const ServeBlockingUser = ({setBlockAction, dataProfile}) => {
+  const {name} = dataProfile;
 
   return (
     <Modal animationType="slide" transparent={true} visible={true}>
@@ -154,7 +154,7 @@ const ServeBlockingUser = ({setBlockAction, item}) => {
 };
 
 // RETURN ---------------------------------------------------------
-const ProfileHeaderActions = ({navigation, item}) => {
+const ProfileHeaderActions = ({navigation, dataProfile}) => {
   const [reportAction, setReportAction] = React.useState(false);
   const [blockAction, setBlockAction] = React.useState(false);
 
@@ -196,11 +196,11 @@ const ProfileHeaderActions = ({navigation, item}) => {
           navigation={navigation}
           setReportAction={setReportAction}
           setBlockAction={setBlockAction}
-          item={item}
+          dataProfile={dataProfile}
         />
       )}
       {blockAction && (
-        <ServeBlockingUser setBlockAction={setBlockAction} item={item} />
+        <ServeBlockingUser setBlockAction={setBlockAction} dataProfile={dataProfile} />
       )}
     </View>
   );

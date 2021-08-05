@@ -86,8 +86,8 @@ const Account = ({navigation, route}) => {
   const [imgType, setImgType] = React.useState(null);
   const [avatar, setAvatar] = React.useState(false);
   const [uploadOptions, setUploadOptions] = React.useState(false);
-  const {item} = route.params;
-  const {url, name, about, location} = item;
+  const {dataProfile} = route.params;
+  const {url, name, about, location} = dataProfile;
   const renderImg = image || url;
   const gradientFilter = uploadOptions
     ? [Colors.blurFilter, Colors.blurFilter]

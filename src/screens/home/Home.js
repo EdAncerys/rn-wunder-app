@@ -66,7 +66,7 @@ const Home = ({navigation}) => {
   }, [addAction]);
 
   // SERVERS ---------------------------------------------------------
-  const ServeScreen = ({item, currentIndex}) => {
+  const ServeScreen = ({dataProfile, currentIndex}) => {
     let screenBorder = {};
     if (currentIndex !== index)
       screenBorder = {
@@ -76,7 +76,7 @@ const Home = ({navigation}) => {
 
     return (
       <View style={{...styles.screenContainer, ...screenBorder}}>
-        <HomeScreen navigation={navigation} item={item} />
+        <HomeScreen navigation={navigation} dataProfile={dataProfile} />
       </View>
     );
   };
@@ -105,7 +105,7 @@ const Home = ({navigation}) => {
             {scale},
           ],
         }}>
-        <ServeScreen item={item} currentIndex={index} />
+        <ServeScreen dataProfile={item} currentIndex={index} />
       </Animated.View>
     );
   };

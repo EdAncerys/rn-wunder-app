@@ -72,13 +72,17 @@ const styles = StyleSheet.create({
   },
 });
 
-const Profile = ({navigation}) => {
+const Profile = ({navigation, route}) => {
+  const {dataProfile} = route.params;
+  const data = dataProfile || PROFILE_DATA;
+
+  console.log('dataProfile: ', dataProfile);
+
   const {addAction} = useAuthState();
   const [addPostPopUp, setAddPostPopUp] = React.useState(null);
-  const [profile, setProfile] = React.useState(PROFILE_DATA);
+  const [profile, setProfile] = React.useState(data);
   const [projects, setProjects] = React.useState(POST_DATA);
-  const {name, followers, about} = profile;
-  const {url} = profile;
+  const {url, name, followers, about} = profile;
 
   React.useEffect(() => {
     if (addAction) setAddPostPopUp(addAction.addAction);
@@ -106,7 +110,7 @@ const Profile = ({navigation}) => {
       onPress={() =>
         navigation.navigate('ProjectStack', {
           screen: 'Post',
-          params: {item: item},
+          params: {dataProfile: item},
         })
       }>
       <View>
@@ -128,9 +132,9 @@ const Profile = ({navigation}) => {
     <View style={styles.rowWrapper}>
       <View
         style={{
-          flex: 1,
+          flex: 1.5,
         }}>
-        <Text style={styles.post}>{name}</Text>
+        <Text style={styles.post}>@{name}</Text>
         <Text style={styles.info}>{followers} followers</Text>
         <Text style={styles.info}>{about}</Text>
       </View>
@@ -191,7 +195,7 @@ const Profile = ({navigation}) => {
             navigation={navigation}
             Settings
             Shoutout
-            item={profile}
+            dataProfile={profile}
           />
         </View>
         <View style={styles.postContainer}>

@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
 });
 
 const Settings = ({navigation, route}) => {
-  const {item} = route.params;
+  const {dataProfile} = route.params;
 
   // RETURN ---------------------------------------------------------
   return (
@@ -88,7 +88,7 @@ const Settings = ({navigation, route}) => {
               onPress={() =>
                 navigation.navigate('ProfileStack', {
                   screen: 'Account',
-                  params: {item: item},
+                  params: {dataProfile: dataProfile},
                 })
               }
             />

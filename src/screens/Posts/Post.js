@@ -1,5 +1,13 @@
 import * as React from 'react';
-import {Text, View, StyleSheet, Image, Dimensions} from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -7,7 +15,6 @@ import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import AppActions from '../../components/AppActions';
 import ProfileHeaderActions from '../../components/ProfileHeaderActions';
-import {PROFILE_DATA} from '../../config/data';
 import {Verified} from '../../config/icons';
 
 const {width} = Dimensions.get('screen');
@@ -21,21 +28,15 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
   },
   donateContainer: {
-    flex: 0.8,
-    justifyContent: 'center',
-  },
-  appNavigateContainer: {
-    flex: 2,
     justifyContent: 'center',
   },
   appActions: {
-    flex: 5,
+    flex: 4,
     alignItems: 'flex-start',
     justifyContent: 'center',
   },
   postContainer: {
-    flex: 3,
-    justifyContent: 'flex-end',
+    flex: 2,
     marginVertical: '5%',
   },
   getInvolvedActions: {
@@ -54,26 +55,28 @@ const styles = StyleSheet.create({
   title: {
     ...Fonts.N_700_34,
     color: Colors.white,
-    width: width * 0.7,
+    overflow: 'hidden',
   },
   isVerified: {
     justifyContent: 'center',
     alignItems: 'center',
   },
-  post: {
+  postWrapper: {
+    flex: 3,
+  },
+  postTitle: {
     ...Fonts.N_400_16,
     color: Colors.planet,
-    width: width * 0.7,
   },
-  badge: {
-    flex: 1,
+  badgeContainer: {
     justifyContent: 'center',
     alignItems: 'center',
+    marginHorizontal: 5,
   },
 });
 
 const Post = ({navigation, route}) => {
-  const {item} = route.params;
+  const {dataProfile} = route.params;
   const {
     url,
     profileImageUrl,
@@ -83,19 +86,29 @@ const Post = ({navigation, route}) => {
     post,
     category,
     getInvolved,
-  } = item;
+  } = dataProfile;
 
   // SERVERS ---------------------------------------------------------
   const ServeProfileHeaderActions = () => {
     return (
       <View style={styles.donateContainer}>
-        <ProfileHeaderActions navigation={navigation} item={item} />
+        <ProfileHeaderActions
+          navigation={navigation}
+          dataProfile={dataProfile}
+        />
       </View>
     );
   };
-  const ServeProfileInfo = ({profileImageUrl, name, isVerified}) => {
+  const ServeProfileInfo = ({}) => {
     return (
-      <View style={styles.rowWrapper}>
+      <TouchableOpacity
+        style={styles.rowWrapper}
+        onPress={() =>
+          navigation.navigate('AppStack', {
+            screen: 'Profile',
+            params: {dataProfile: dataProfile},
+          })
+        }>
         <View>
           <Image
             style={{
@@ -115,7 +128,7 @@ const Post = ({navigation, route}) => {
             </View>
           </View>
         )}
-      </View>
+      </TouchableOpacity>
     );
   };
   const ServePostTitle = ({title}) => {
@@ -127,10 +140,12 @@ const Post = ({navigation, route}) => {
 
     return (
       <View style={styles.rowWrapper}>
-        <View>
-          <Text style={styles.post}>{post}</Text>
-        </View>
-        <View style={styles.badge}>
+        <ScrollView showsVerticalScrollIndicator={false} horizontal={false}>
+          <View style={styles.postWrapper}>
+            <Text style={styles.postTitle}>{post}</Text>
+          </View>
+        </ScrollView>
+        <View style={styles.badgeContainer}>
           <View
             style={{
               backgroundColor: iconColor,
@@ -162,7 +177,13 @@ const Post = ({navigation, route}) => {
       <View style={styles.wrapper}>
         <ServeProfileHeaderActions navigation={navigation} />
         <View style={styles.appActions}>
-          <AppActions Commend Applaud Shoutout Comment item={item} />
+          <AppActions
+            Commend
+            Applaud
+            Shoutout
+            Comment
+            dataProfile={dataProfile}
+          />
         </View>
         <View style={styles.postContainer}>
           <ServeProfileInfo

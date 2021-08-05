@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
 });
 
 const FullScreenImage = ({navigation, route}) => {
-  const {item} = route.params;
-  const [image, setImage] = React.useState(item);
+  const {dataProfile} = route.params;
+  const [image, setImage] = React.useState(dataProfile);
 
   // RETURN ---------------------------------------------------------
   return (

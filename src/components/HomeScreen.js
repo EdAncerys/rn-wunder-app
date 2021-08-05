@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const HomeScreen = ({navigation, item}) => {
-  const {url, getInvolved, donateAction} = item;
+const HomeScreen = ({navigation, dataProfile}) => {
+  const {url, getInvolved, donateAction} = dataProfile;
 
   let applyMarginPost = {marginBottom: '15%'};
   if (donateAction) applyMarginPost = {marginBottom: '5%'};
@@ -63,10 +63,10 @@ const HomeScreen = ({navigation, item}) => {
       <View style={styles.wrapper}>
         {donateAction && <ServeDonate />}
         <View style={{...styles.appActions, ...applyMarginActions}}>
-          <AppActions Commend Applaud Shoutout Comment item={item} />
+          <AppActions Commend Applaud Shoutout Comment dataProfile={dataProfile} />
         </View>
         <View style={{...styles.postContainer, ...applyMarginPost}}>
-          <PostSnapshot item={item} />
+          <PostSnapshot dataProfile={dataProfile} />
         </View>
       </View>
     </ScreenWrapper>

@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
 });
 
 // SERVERS ---------------------------------------------------------
-const ServeProfileInfo = ({item}) => {
-  const {profileImageUrl, name, isVerified} = item;
+const ServeProfileInfo = ({dataProfile}) => {
+  const {profileImageUrl, name, isVerified} = dataProfile;
   return (
     <View style={styles.rowWrapper}>
       <View>
@@ -86,11 +86,11 @@ const ServeProfileInfo = ({item}) => {
     </View>
   );
 };
-const ServePostTitle = ({item}) => {
-  return <Text style={styles.title}>{item.title}</Text>;
+const ServePostTitle = ({dataProfile}) => {
+  return <Text style={styles.title}>{dataProfile.title}</Text>;
 };
-const ServePost = ({item}) => {
-  const {post, category} = item;
+const ServePost = ({dataProfile}) => {
+  const {post, category} = dataProfile;
   const postTagIcon = category === 'planet' ? 'Planet' : 'People';
   const iconColor = category === 'planet' ? Colors.planet : Colors.primary;
 
@@ -128,14 +128,14 @@ const ServePost = ({item}) => {
   );
 };
 
-const PostPreview = ({item}) => {
-  const {getInvolved} = item;
+const PostPreview = ({dataProfile}) => {
+  const {getInvolved} = dataProfile;
 
   return (
     <View style={styles.container}>
-      <ServeProfileInfo item={item} />
-      <ServePostTitle item={item} />
-      <ServePost item={item} />
+      <ServeProfileInfo dataProfile={dataProfile} />
+      <ServePostTitle dataProfile={dataProfile} />
+      <ServePost dataProfile={dataProfile} />
       {getInvolved && (
         <View style={styles.getInvolvedActions}>
           <CustomButton

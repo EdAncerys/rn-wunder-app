@@ -87,7 +87,9 @@ const Projects = ({navigation}) => {
       return;
     }
     if (filter === 'people' || 'planet') {
-      const mutatedData = data.filter(item => item.category == filter);
+      const mutatedData = data.filter(
+        dataProfile => dataProfile.category == filter,
+      );
       const mutatedDataArray = serveMutateArray(mutatedData);
       setMutatedData(mutatedDataArray);
       return;
@@ -101,16 +103,16 @@ const Projects = ({navigation}) => {
   // SERVERS ---------------------------------------------------------
   const serveMutateArray = array => {
     let mutatedArray = [];
-    array.map((item, index) => {
+    array.map((dataProfile, index) => {
       let dummy = {
         url: DummyBackground,
         dummy: true,
       };
 
-      if (index % 4 === 0) item.halfWidth = true;
+      if (index % 4 === 0) dataProfile.halfWidth = true;
       if (index % 5 === 0 && index !== 0)
         mutatedArray = [...mutatedArray, dummy];
-      mutatedArray = [...mutatedArray, item];
+      mutatedArray = [...mutatedArray, dataProfile];
     });
 
     return mutatedArray;
@@ -198,9 +200,8 @@ const Projects = ({navigation}) => {
   let countItemWidth = 0;
   let countItemHeight = 0;
   const renderFlatListItem = ({item, index}) => {
-    const {url, dummy} = item;
+    const {url, title, category, time, dummy} = item;
     const projectsArrayLength = mutatedData.length;
-    console.log(projectsArrayLength % 5);
 
     const handlePictureWidth = () => {
       let picWidth = width / 3;
@@ -242,7 +243,7 @@ const Projects = ({navigation}) => {
         onPress={() =>
           navigation.navigate('ProjectStack', {
             screen: 'Post',
-            params: {item: item},
+            params: {dataProfile: item},
           })
         }>
         <View style={styles.imageContainer}>
@@ -267,7 +268,7 @@ const Projects = ({navigation}) => {
                   bottom: 10,
                   paddingHorizontal: 10,
                 }}>
-                <Text style={styles.textOverlay}>{item.title}</Text>
+                <Text style={styles.textOverlay}>{title}</Text>
                 <View
                   style={{
                     paddingVertical: 5,
@@ -275,9 +276,9 @@ const Projects = ({navigation}) => {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                   }}>
-                  <Text style={styles.textOverlay}>{item.time}</Text>
-                  {item.category === 'people' && <ServePeopleIcon />}
-                  {item.category !== 'people' && <ServePlanetIcon />}
+                  <Text style={styles.textOverlay}>{time}</Text>
+                  {category === 'people' && <ServePeopleIcon />}
+                  {category !== 'people' && <ServePlanetIcon />}
                 </View>
               </View>
             </LinearGradient>
