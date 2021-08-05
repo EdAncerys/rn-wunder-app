@@ -62,6 +62,9 @@ const AppActions = ({
   profileDataInfo,
   More,
 }) => {
+  const [reportAction, setReportAction] = React.useState(false);
+  const [blockAction, setBlockAction] = React.useState(false);
+
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>

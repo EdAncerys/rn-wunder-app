@@ -14,7 +14,7 @@ import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import AppActions from '../../components/AppActions';
-import ProfileHeaderActions from '../../components/ProfileHeaderActions';
+import ProfileHeaderActions from '../../components/PostHeaderActions';
 import {Verified} from '../../config/icons';
 
 const {width} = Dimensions.get('screen');
@@ -89,7 +89,7 @@ const Post = ({navigation, route}) => {
   } = profileDataInfo;
 
   // SERVERS ---------------------------------------------------------
-  const ServeProfileHeaderActions = () => {
+  const ServePostHeaderActions = () => {
     return (
       <View style={styles.donateContainer}>
         <ProfileHeaderActions
@@ -179,7 +179,7 @@ const Post = ({navigation, route}) => {
       image={url}
       gradient={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}>
       <View style={styles.wrapper}>
-        <ServeProfileHeaderActions navigation={navigation} />
+        <ServePostHeaderActions />
         <View style={styles.appActions}>
           <AppActions
             Commend
