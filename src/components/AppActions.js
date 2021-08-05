@@ -4,6 +4,8 @@ import {Text, View, StyleSheet, Share} from 'react-native';
 import Colors from '../config/colors';
 import Fonts from '../config/fonts';
 import CustomButton from '../components/CustomButton';
+import ReportAction from '../components/ReportAction';
+import BlockUser from '../components/BlockUser';
 
 const styles = StyleSheet.create({
   container: {
@@ -51,6 +53,32 @@ const handleShoutout = async profileDataInfo => {
   }
 };
 
+// SERVERS ---------------------------------------------------------
+const ServeReportAction = ({
+  navigation,
+  setReportAction,
+  setBlockAction,
+  profileDataInfo,
+}) => {
+  return (
+    <ReportAction
+      navigation={navigation}
+      setReportAction={setReportAction}
+      setBlockAction={setBlockAction}
+      profileDataInfo={profileDataInfo}
+    />
+  );
+};
+
+const ServeBlockUser = ({setBlockAction, profileDataInfo}) => {
+  return (
+    <BlockUser
+      setBlockAction={setBlockAction}
+      profileDataInfo={profileDataInfo}
+    />
+  );
+};
+
 // RETURN ---------------------------------------------------------
 const AppActions = ({
   navigation,
@@ -64,6 +92,8 @@ const AppActions = ({
 }) => {
   const [reportAction, setReportAction] = React.useState(false);
   const [blockAction, setBlockAction] = React.useState(false);
+
+  console.log('profile info ', profileDataInfo);
 
   return (
     <View style={styles.container}>
@@ -145,9 +175,24 @@ const AppActions = ({
               iconHeight={5}
               iconFill={Colors.white}
               style={{backgroundColor: Colors.transparent}}
-              onPress={() => alert('ThreeDots')}
+              onPress={() => setReportAction(true)}
             />
           </View>
+        )}
+
+        {reportAction && (
+          <ServeReportAction
+            navigation={navigation}
+            setReportAction={setReportAction}
+            setBlockAction={setBlockAction}
+            profileDataInfo={profileDataInfo}
+          />
+        )}
+        {blockAction && (
+          <ServeBlockUser
+            setBlockAction={setBlockAction}
+            profileDataInfo={profileDataInfo}
+          />
         )}
       </View>
     </View>

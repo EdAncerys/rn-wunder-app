@@ -218,7 +218,7 @@ const Profile = ({navigation, route}) => {
               navigation={navigation}
               Settings
               Shoutout
-              dataProfile={profile}
+              profileDataInfo={profile}
               More={!myProfile}
             />
           </View>
