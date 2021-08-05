@@ -30,8 +30,8 @@ const styles = StyleSheet.create({
 const Draft = ({navigation}) => {
   const [data, setData] = React.useState(PROJECTS_DATA);
 
-  const renderFlatListItem = ({dataProfile, index}) => {
-    const {url} = dataProfile;
+  const renderFlatListItem = ({profileDataInfo, index}) => {
+    const {url} = profileDataInfo;
 
     return (
       <TouchableOpacity
@@ -39,7 +39,7 @@ const Draft = ({navigation}) => {
         onPress={() =>
           navigation.navigate('AddStack', {
             screen: 'SharePost',
-            params: {image: dataProfile},
+            params: {image: profileDataInfo},
           })
         }>
         <View
@@ -75,7 +75,7 @@ const Draft = ({navigation}) => {
                   bottom: 10,
                   paddingHorizontal: 10,
                 }}>
-                {/* <Text style={styles.textOverlay}>{dataProfile.title}</Text>
+                {/* <Text style={styles.textOverlay}>{profileDataInfo.title}</Text>
                 <View
                   style={{
                     paddingVertical: 5,
@@ -83,7 +83,7 @@ const Draft = ({navigation}) => {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                   }}>
-                  <Text style={styles.textOverlay}>{dataProfile.time}</Text>
+                  <Text style={styles.textOverlay}>{profileDataInfo.time}</Text>
                 </View> */}
               </View>
             </LinearGradient>
@@ -99,7 +99,7 @@ const Draft = ({navigation}) => {
                 textAlign: 'center',
                 color: Colors.lightBlack,
               }}>
-              {dataProfile.title}
+              {profileDataInfo.title}
             </Text>
           </View>
         </View>

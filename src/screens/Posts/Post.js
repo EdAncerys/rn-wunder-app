@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
 });
 
 const Post = ({navigation, route}) => {
-  const {dataProfile} = route.params;
+  const {profileDataInfo} = route.params;
   const {
     url,
     profileImageUrl,
@@ -86,7 +86,7 @@ const Post = ({navigation, route}) => {
     post,
     category,
     getInvolved,
-  } = dataProfile;
+  } = profileDataInfo;
 
   // SERVERS ---------------------------------------------------------
   const ServeProfileHeaderActions = () => {
@@ -94,7 +94,7 @@ const Post = ({navigation, route}) => {
       <View style={styles.donateContainer}>
         <ProfileHeaderActions
           navigation={navigation}
-          dataProfile={dataProfile}
+          profileDataInfo={profileDataInfo}
         />
       </View>
     );
@@ -106,7 +106,7 @@ const Post = ({navigation, route}) => {
         onPress={() =>
           navigation.navigate('AppStack', {
             screen: 'Profile',
-            params: {dataProfile: dataProfile},
+            params: {profileDataInfo: profileDataInfo},
           })
         }>
         <View>
@@ -131,10 +131,10 @@ const Post = ({navigation, route}) => {
       </TouchableOpacity>
     );
   };
-  const ServePostTitle = ({title}) => {
+  const ServePostTitle = ({}) => {
     return <Text style={styles.title}>{title}</Text>;
   };
-  const ServePost = ({post, category}) => {
+  const ServePost = ({}) => {
     const postTagIcon = category === 'planet' ? 'Planet' : 'People';
     const iconColor = category === 'planet' ? Colors.planet : Colors.primary;
 
@@ -182,17 +182,13 @@ const Post = ({navigation, route}) => {
             Applaud
             Shoutout
             Comment
-            dataProfile={dataProfile}
+            profileDataInfo={profileDataInfo}
           />
         </View>
         <View style={styles.postContainer}>
-          <ServeProfileInfo
-            profileImageUrl={profileImageUrl}
-            name={name}
-            isVerified={isVerified}
-          />
-          <ServePostTitle title={title} />
-          <ServePost post={post} category={category} />
+          <ServeProfileInfo />
+          <ServePostTitle />
+          <ServePost />
           {getInvolved && (
             <View style={styles.getInvolvedActions}>
               <CustomButton

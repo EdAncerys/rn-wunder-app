@@ -132,7 +132,7 @@ const Search = ({navigation}) => {
       onPress={() =>
         navigation.navigate('ProjectStack', {
           screen: 'Post',
-          params: {dataProfile: item},
+          params: {profileDataInfo: item},
         })
       }>
       <View style={{flex: 1}}>
@@ -164,11 +164,11 @@ const Search = ({navigation}) => {
   );
 
   const RenderItems = () => {
-    const items = data.map(dataProfile => {
-      const {title, total, images} = dataProfile;
+    const items = data.map(profileDataInfo => {
+      const {title, total, images} = profileDataInfo;
 
       return (
-        <View>
+        <View key={images.toString()}>
           <View style={styles.hashtagContainer}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <View style={styles.iconBackground}>

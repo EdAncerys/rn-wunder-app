@@ -60,10 +60,17 @@ const styles = StyleSheet.create({
 });
 
 // SERVERS ---------------------------------------------------------
-const ServeProfileInfo = ({dataProfile}) => {
-  const {profileImageUrl, name, isVerified} = dataProfile;
+const ServeProfileInfo = ({navigation, profileDataInfo}) => {
+  const {profileImageUrl, name, isVerified} = profileDataInfo;
   return (
-    <View style={styles.rowWrapper}>
+    <TouchableOpacity
+      style={styles.rowWrapper}
+      onPress={() =>
+        navigation.navigate('AppStack', {
+          screen: 'Profile',
+          params: {profileDataInfo: profileDataInfo},
+        })
+      }>
       <View>
         <Image
           style={{
@@ -83,14 +90,14 @@ const ServeProfileInfo = ({dataProfile}) => {
           </View>
         </View>
       )}
-    </View>
+    </TouchableOpacity>
   );
 };
-const ServePostTitle = ({dataProfile}) => {
-  return <Text style={styles.title}>{dataProfile.title}</Text>;
+const ServePostTitle = ({profileDataInfo}) => {
+  return <Text style={styles.title}>{profileDataInfo.title}</Text>;
 };
-const ServePost = ({dataProfile}) => {
-  const {post, category} = dataProfile;
+const ServePost = ({profileDataInfo}) => {
+  const {post, category} = profileDataInfo;
   const postTagIcon = category === 'planet' ? 'Planet' : 'People';
   const iconColor = category === 'planet' ? Colors.planet : Colors.primary;
 
@@ -128,14 +135,17 @@ const ServePost = ({dataProfile}) => {
   );
 };
 
-const PostPreview = ({dataProfile}) => {
-  const {getInvolved} = dataProfile;
+const PostPreview = ({navigation, profileDataInfo}) => {
+  const {getInvolved} = profileDataInfo;
 
   return (
     <View style={styles.container}>
-      <ServeProfileInfo dataProfile={dataProfile} />
-      <ServePostTitle dataProfile={dataProfile} />
-      <ServePost dataProfile={dataProfile} />
+      <ServeProfileInfo
+        navigation={navigation}
+        profileDataInfo={profileDataInfo}
+      />
+      <ServePostTitle profileDataInfo={profileDataInfo} />
+      <ServePost profileDataInfo={profileDataInfo} />
       {getInvolved && (
         <View style={styles.getInvolvedActions}>
           <CustomButton

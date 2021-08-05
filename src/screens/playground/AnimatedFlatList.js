@@ -132,7 +132,7 @@ export default function App() {
             }}
             scrollEnabled={false}
             removeClippedSubviews={false}
-            renderItem={({dataProfile, index}) => {
+            renderItem={({profileDataInfo, index}) => {
               const inputRange = [index - 1, index, index + 1];
               const translateY = scrollYAnimated.interpolate({
                 inputRange,
@@ -161,7 +161,7 @@ export default function App() {
                     ],
                   }}>
                   <Image
-                    source={{uri: dataProfile.poster}}
+                    source={{uri: profileDataInfo.poster}}
                     style={{
                       width: ITEM_WIDTH,
                       height: ITEM_HEIGHT,

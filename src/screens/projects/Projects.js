@@ -88,7 +88,7 @@ const Projects = ({navigation}) => {
     }
     if (filter === 'people' || 'planet') {
       const mutatedData = data.filter(
-        dataProfile => dataProfile.category == filter,
+        profileDataInfo => profileDataInfo.category == filter,
       );
       const mutatedDataArray = serveMutateArray(mutatedData);
       setMutatedData(mutatedDataArray);
@@ -103,16 +103,16 @@ const Projects = ({navigation}) => {
   // SERVERS ---------------------------------------------------------
   const serveMutateArray = array => {
     let mutatedArray = [];
-    array.map((dataProfile, index) => {
+    array.map((profileDataInfo, index) => {
       let dummy = {
         url: DummyBackground,
         dummy: true,
       };
 
-      if (index % 4 === 0) dataProfile.halfWidth = true;
+      if (index % 4 === 0) profileDataInfo.halfWidth = true;
       if (index % 5 === 0 && index !== 0)
         mutatedArray = [...mutatedArray, dummy];
-      mutatedArray = [...mutatedArray, dataProfile];
+      mutatedArray = [...mutatedArray, profileDataInfo];
     });
 
     return mutatedArray;
@@ -243,7 +243,7 @@ const Projects = ({navigation}) => {
         onPress={() =>
           navigation.navigate('ProjectStack', {
             screen: 'Post',
-            params: {dataProfile: item},
+            params: {profileDataInfo: item},
           })
         }>
         <View style={styles.imageContainer}>

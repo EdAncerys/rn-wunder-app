@@ -66,7 +66,7 @@ const Home = ({navigation}) => {
   }, [addAction]);
 
   // SERVERS ---------------------------------------------------------
-  const ServeScreen = ({dataProfile, currentIndex}) => {
+  const ServeScreen = ({profileDataInfo, currentIndex}) => {
     let screenBorder = {};
     if (currentIndex !== index)
       screenBorder = {
@@ -76,12 +76,12 @@ const Home = ({navigation}) => {
 
     return (
       <View style={{...styles.screenContainer, ...screenBorder}}>
-        <HomeScreen navigation={navigation} dataProfile={dataProfile} />
+        <HomeScreen navigation={navigation} profileDataInfo={profileDataInfo} />
       </View>
     );
   };
 
-  const renderItem = ({item, index}) => {
+  const renderFlatListItem = ({item, index}) => {
     const inputRange = [index - 1, index, index + 1];
     let screenOverlap = ITEM_HEIGHT - 180;
     const translateY = scrollYAnimated.interpolate({
@@ -105,7 +105,7 @@ const Home = ({navigation}) => {
             {scale},
           ],
         }}>
-        <ServeScreen dataProfile={item} currentIndex={index} />
+        <ServeScreen profileDataInfo={item} currentIndex={index} />
       </Animated.View>
     );
   };
@@ -148,7 +148,7 @@ const Home = ({navigation}) => {
             }}
             scrollEnabled={false}
             removeClippedSubviews={false}
-            renderItem={renderItem}
+            renderItem={renderFlatListItem}
           />
         </View>
       </FlingGestureHandler>

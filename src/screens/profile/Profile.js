@@ -17,7 +17,6 @@ import AddPostAction from '../../components/AddPostAction';
 import {PROFILE_DATA, POST_DATA} from '../../config/data';
 import SlidingUpPanel from 'rn-sliding-up-panel';
 
-import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
@@ -73,16 +72,18 @@ const styles = StyleSheet.create({
 });
 
 const Profile = ({navigation, route}) => {
-  const {dataProfile} = route.params;
-  const data = dataProfile || PROFILE_DATA;
-
-  console.log('dataProfile: ', dataProfile);
-
   const {addAction} = useAuthState();
   const [addPostPopUp, setAddPostPopUp] = React.useState(null);
-  const [profile, setProfile] = React.useState(data);
+  const [profile, setProfile] = React.useState(PROFILE_DATA);
   const [projects, setProjects] = React.useState(POST_DATA);
   const {url, name, followers, about} = profile;
+
+  React.useEffect(() => {
+    if (route.params) {
+      const {profileDataInfo} = route.params;
+      setProfile(profileDataInfo);
+    }
+  }, [route.params]);
 
   React.useEffect(() => {
     if (addAction) setAddPostPopUp(addAction.addAction);
@@ -110,7 +111,7 @@ const Profile = ({navigation, route}) => {
       onPress={() =>
         navigation.navigate('ProjectStack', {
           screen: 'Post',
-          params: {dataProfile: item},
+          params: {profileDataInfo: item},
         })
       }>
       <View>

@@ -72,8 +72,8 @@ const Cards = ({}) => {
     </View>
   );
 
-  const renderFlatList = ({dataProfile, index}) => {
-    const {url, title} = dataProfile;
+  const renderFlatList = ({profileDataInfo, index}) => {
+    const {url, title} = profileDataInfo;
     return (
       <TouchableOpacity
         style={{flexDirection: 'row'}}

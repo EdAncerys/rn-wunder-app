@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
 });
 
 // HANDLERS ---------------------------------------------------------
-const handleShoutout = async dataProfile => {
-  const {title, url} = dataProfile;
+const handleShoutout = async profileDataInfo => {
+  const {title, url} = profileDataInfo;
 
   const shareOptions = {
     message: title,
@@ -59,7 +59,7 @@ const AppActions = ({
   Applaud,
   Shoutout,
   Comment,
-  dataProfile,
+  profileDataInfo,
 }) => {
   return (
     <View style={styles.container}>
@@ -74,7 +74,7 @@ const AppActions = ({
               onPress={() =>
                 navigation.navigate('ProfileStack', {
                   screen: 'Settings',
-                  params: {dataProfile: dataProfile},
+                  params: {profileDataInfo: profileDataInfo},
                 })
               }
               style={{backgroundColor: Colors.transparent}}
@@ -115,7 +115,7 @@ const AppActions = ({
               iconHeight={20}
               iconFill={Colors.white}
               style={{backgroundColor: Colors.transparent}}
-              onPress={() => handleShoutout(dataProfile)}
+              onPress={() => handleShoutout(profileDataInfo)}
             />
             <Text style={styles.title}>346</Text>
           </View>
