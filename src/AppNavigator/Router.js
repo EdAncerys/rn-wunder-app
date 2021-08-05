@@ -65,6 +65,7 @@ import HelpAndSupport from '../screens/profile/HelpAndSupport';
 import About from '../screens/profile/About';
 import SharePost from '../screens/posts/SharePost';
 import Draft from '../screens/posts/Draft';
+import Commending from '../screens/commending/Commending';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -72,11 +73,11 @@ const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="CreateAccountStack">
-      {/* <Stack.Screen
+      <Stack.Screen
         name="TestScreen"
-        component={DonationNotification}
+        component={Commending}
         options={{headerShown: false}}
-      /> */}
+      />
       {/* <Stack.Screen
         name="CreateAccountStack"
         component={CreateAccountStack}
