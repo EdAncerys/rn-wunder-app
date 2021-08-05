@@ -7,6 +7,7 @@ import CustomButton from './CustomButton';
 import DonatePopUp from './donateActions/DonatePopUp';
 import Wallet from './wallet/Wallet';
 import NavigateAction from './NavigateAction';
+import ManageDonateActions from './donateReason/ManageDonateActions';
 
 const {width} = Dimensions.get('screen');
 
@@ -28,7 +29,12 @@ const styles = StyleSheet.create({
 });
 
 // SERVERS ---------------------------------------------------------
-const ServeProfileHeader = ({navigation, profileDataInfo, onPress}) => {
+const ServeProfileHeader = ({
+  navigation,
+  profileDataInfo,
+  setDonateReason,
+  onPress,
+}) => {
   const {name} = profileDataInfo;
 
   return (
@@ -62,7 +68,7 @@ const ServeProfileHeader = ({navigation, profileDataInfo, onPress}) => {
           iconWidth={20}
           iconHeight={20}
           iconFill={Colors.white}
-          onPress={() => alert('donate')}
+          onPress={() => setDonateReason(true)}
         />
       </View>
     </View>
@@ -71,6 +77,7 @@ const ServeProfileHeader = ({navigation, profileDataInfo, onPress}) => {
 
 // RETURN ---------------------------------------------------------
 const UserProfileHeaderActions = ({navigation, profileDataInfo, onPress}) => {
+  const [donateReason, setDonateReason] = React.useState(false);
   const [donateAction, setDonateAction] = React.useState(false);
 
   return (
@@ -78,14 +85,14 @@ const UserProfileHeaderActions = ({navigation, profileDataInfo, onPress}) => {
       <ServeProfileHeader
         navigation={navigation}
         profileDataInfo={profileDataInfo}
+        setDonateReason={setDonateReason}
         onPress={onPress}
       />
 
-      {donateAction && (
-        <ServeDonate
-          donateAction={donateAction}
-          setDonateAction={setDonateAction}
-          profile={profile}
+      {donateReason && (
+        <ManageDonateActions
+          donateReason={donateReason}
+          setDonateReason={setDonateReason}
         />
       )}
     </View>
