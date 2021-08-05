@@ -93,8 +93,6 @@ const AppActions = ({
   const [reportAction, setReportAction] = React.useState(false);
   const [blockAction, setBlockAction] = React.useState(false);
 
-  console.log('profile info ', profileDataInfo);
-
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>

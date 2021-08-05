@@ -74,7 +74,7 @@ export const AppNavigator = () => {
     <Stack.Navigator initialRouteName="CreateAccountStack">
       {/* <Stack.Screen
         name="TestScreen"
-        component={Projects}
+        component={DonationNotification}
         options={{headerShown: false}}
       /> */}
       {/* <Stack.Screen

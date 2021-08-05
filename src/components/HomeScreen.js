@@ -36,8 +36,6 @@ const styles = StyleSheet.create({
 });
 
 const HomeScreen = ({navigation, profileDataInfo}) => {
-  // console.log(navigation);
-
   const {url, getInvolved, donateAction} = profileDataInfo;
 
   let applyMarginPost = {marginBottom: '15%'};

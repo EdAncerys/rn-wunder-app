@@ -200,23 +200,21 @@ const DATA_THIS_WEEK = [
 ];
 
 // SERVERS ---------------------------------------------------------
-const renderItem = ({profileDataInfo, index}) => {
+const renderItem = ({item, index}) => {
   const placeDivider = (index + 1) % 4 === 0;
-  const notificationImg = profileDataInfo.notificationImg;
-  const donate = profileDataInfo.action === 'donate';
-  const following = profileDataInfo.action === 'following';
+  const notificationImg = item.notificationImg;
+  const donate = item.action === 'donate';
+  const following = item.action === 'following';
 
   const ServeNotification = ({props}) => {
-    const SvgIcon = Icons[profileDataInfo.actionIcon];
+    const SvgIcon = Icons[item.actionIcon];
 
     return (
       <ImageBackground
-        source={profileDataInfo.notificationImg}
+        source={item.notificationImg}
         style={styles.imgContainerBackground}>
         <View style={styles.imgWrapper}>
-          {donate && (
-            <Text style={styles.msgCoins}>{profileDataInfo.coins}</Text>
-          )}
+          {donate && <Text style={styles.msgCoins}>{item.coins}</Text>}
           {!donate && <SvgIcon width={14} fill={Colors.white} />}
         </View>
       </ImageBackground>
@@ -226,7 +224,7 @@ const renderItem = ({profileDataInfo, index}) => {
   const ServeFollow = ({onPress}) => {
     return (
       <CustomButton
-        title={profileDataInfo.action}
+        title={item.action}
         style={{
           borderRadius: 6,
           minWidth: 80,
@@ -252,12 +250,12 @@ const renderItem = ({profileDataInfo, index}) => {
     );
   };
 
-  const ServeMultipleAvatar = ({profileDataInfo}) => {
+  const ServeMultipleAvatar = ({item}) => {
     return (
       <View>
-        <Image source={profileDataInfo.avatar} style={styles.multipleAvatar} />
+        <Image source={item.avatar} style={styles.multipleAvatar} />
         <Image
-          source={profileDataInfo.avatarSecondary}
+          source={item.avatarSecondary}
           style={{
             ...styles.multipleAvatar,
             top: -13,
@@ -274,28 +272,20 @@ const renderItem = ({profileDataInfo, index}) => {
         style={styles.notificationContainer}
         onPress={() => alert('profile')}>
         <View style={styles.avatarContainer}>
-          {!profileDataInfo.multiple && (
-            <Image source={profileDataInfo.avatar} />
-          )}
-          {profileDataInfo.multiple && (
-            <ServeMultipleAvatar profileDataInfo={profileDataInfo} />
-          )}
+          {!item.multiple && <Image source={item.avatar} />}
+          {item.multiple && <ServeMultipleAvatar item={item} />}
         </View>
         <View style={styles.msgContainer}>
           <View style={styles.notificationContainer}>
-            <Text style={styles.name}>{profileDataInfo.name}</Text>
+            <Text style={styles.name}>{item.name}</Text>
             <Text style={{...styles.notificationMsg, ...styles.createdAt}}>
-              {profileDataInfo.createdAt}
+              {item.createdAt}
             </Text>
           </View>
-          <Text style={styles.notificationMsg}>
-            {profileDataInfo.notificationMsg}
-          </Text>
+          <Text style={styles.notificationMsg}>{item.notificationMsg}</Text>
         </View>
         {notificationImg && <ServeNotification />}
-        {!notificationImg && (
-          <ServeFollow onPress={() => alert(profileDataInfo.action)} />
-        )}
+        {!notificationImg && <ServeFollow onPress={() => alert(item.action)} />}
       </TouchableOpacity>
       {placeDivider && <View style={styles.divider}></View>}
     </ScrollView>
