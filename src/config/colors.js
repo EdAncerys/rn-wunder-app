@@ -18,6 +18,7 @@ const Colors = {
   blurFilter: 'rgba(0, 0, 0, .2)',
   matFilter: 'rgba(255, 255, 255, 0.4)',
   transparent: '#00000000',
+  gradientProfile: 'rgba(0, 0, 0, 0.4)',
 };
 
 export default Colors;

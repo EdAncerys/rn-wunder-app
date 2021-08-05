@@ -106,7 +106,11 @@ const Post = ({navigation, route}) => {
         onPress={() =>
           navigation.navigate('AppStack', {
             screen: 'Profile',
-            params: {profileDataInfo: profileDataInfo},
+            params: {
+              profileDataInfo: profileDataInfo,
+              key: route.key,
+              name: route.name,
+            },
           })
         }>
         <View>

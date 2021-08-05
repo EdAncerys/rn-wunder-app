@@ -183,7 +183,7 @@ const ProfileHeaderActions = ({navigation, profileDataInfo}) => {
               padding: 10,
               borderRadius: 100,
             }}
-            iconLeft="ThreeDots"
+            iconLeft="ThreeDotsFill"
             iconWidth={32}
             iconHeight={32}
             iconFill={Colors.white}

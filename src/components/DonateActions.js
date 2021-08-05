@@ -6,7 +6,6 @@ import Fonts from '../config/fonts';
 import CustomButton from './CustomButton';
 import DonatePopUp from './donateActions/DonatePopUp';
 import Wallet from './wallet/Wallet';
-import NavigateAction from './NavigateAction';
 
 const {width} = Dimensions.get('screen');
 
@@ -35,11 +34,6 @@ const ServeDonate = ({donateAction, setDonateAction, profile}) => {
     <View>
       {profile && (
         <View>
-          {/* <NavigateAction
-            title="@sarah_wills"
-            titleStyling={Colors.white}
-            onPress={() => navigation.goBack()}
-          /> */}
           <Wallet
             donateAction={donateAction}
             setDonateAction={setDonateAction}

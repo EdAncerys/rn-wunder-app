@@ -60,6 +60,7 @@ const AppActions = ({
   Shoutout,
   Comment,
   profileDataInfo,
+  More,
 }) => {
   return (
     <View style={styles.container}>
@@ -131,6 +132,18 @@ const AppActions = ({
               style={{backgroundColor: Colors.transparent}}
             />
             <Text style={styles.title}>346</Text>
+          </View>
+        )}
+        {More && (
+          <View style={styles.iconContainer}>
+            <CustomButton
+              iconLeft="ThreeDots"
+              iconWidth={19}
+              iconHeight={5}
+              iconFill={Colors.white}
+              style={{backgroundColor: Colors.transparent}}
+              onPress={() => alert('ThreeDots')}
+            />
           </View>
         )}
       </View>
