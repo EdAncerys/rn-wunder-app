@@ -39,13 +39,14 @@ const styles = StyleSheet.create({
     marginVertical: '15%',
   },
   appActions: {
-    marginTop: height / 3,
+    flex: 1,
+    marginTop: height / 5,
     alignItems: 'flex-start',
     justifyContent: 'center',
     marginHorizontal: '5%',
   },
   postContainer: {
-    marginTop: height / 10,
+    flex: 1,
     marginHorizontal: '5%',
   },
   rowWrapper: {
@@ -134,45 +135,51 @@ const Profile = ({navigation, route}) => {
     <View style={styles.rowWrapper}>
       <View
         style={{
-          flex: 1.5,
+          flex: 3,
         }}>
         <Text style={styles.post}>@{name}</Text>
         <Text style={styles.info}>{followers} followers</Text>
         <Text style={styles.info}>{about}</Text>
       </View>
 
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'row',
-          justifyContent: 'space-around',
-          alignItems: 'center',
-        }}>
-        <View>
-          <CustomButton
-            iconLeft="LifeOnLand"
-            iconFill={Colors.white}
-            style={{backgroundColor: Colors.transparent}}
-            onPress={() => alert('Life on Earth')}
-          />
+      <View style={{flex: 2, justifyContent: 'center'}}>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+          }}>
+          <View>
+            <CustomButton
+              iconLeft="LifeOnLand"
+              iconFill={Colors.white}
+              style={{backgroundColor: Colors.transparent}}
+              onPress={() => alert('Life on Earth')}
+            />
+          </View>
+          <View>
+            <CustomButton
+              iconLeft="Climate"
+              iconFill={Colors.white}
+              style={{backgroundColor: Colors.transparent}}
+              iconStyling={{width: 23, height: 32}}
+              onPress={() => alert('Climate')}
+            />
+          </View>
+          <View>
+            <CustomButton
+              iconLeft="Health"
+              iconFill={Colors.white}
+              style={{backgroundColor: Colors.transparent}}
+              onPress={() => alert('Health')}
+            />
+          </View>
         </View>
-        <View>
-          <CustomButton
-            iconLeft="Climate"
-            iconFill={Colors.white}
-            style={{backgroundColor: Colors.transparent}}
-            iconStyling={{width: 23, height: 32}}
-            onPress={() => alert('Climate')}
-          />
-        </View>
-        <View>
-          <CustomButton
-            iconLeft="Health"
-            iconFill={Colors.white}
-            style={{backgroundColor: Colors.transparent}}
-            onPress={() => alert('Health')}
-          />
-        </View>
+        {!myProfile && (
+          <View style={{marginVertical: '5%'}}>
+            <CustomButton title="Follow" onPress={() => alert('Follow')} />
+          </View>
+        )}
       </View>
     </View>
   );

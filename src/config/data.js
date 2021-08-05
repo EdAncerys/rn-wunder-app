@@ -166,6 +166,8 @@ export const PROFILE_DATA_TWO = [
     id: '6',
     date: '05.05.21',
     interest: 'Zero Hunger',
+    followers: '5k',
+    about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
     url: require('../assets/dummyAssets/search2.jpg'),
@@ -180,6 +182,8 @@ export const PROFILE_DATA_TWO = [
     id: '7',
     date: '05.05.21',
     interest: 'Zero Hunger',
+    followers: '5k',
+    about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
     url: require('../assets/dummyAssets/search3.jpg'),
@@ -194,6 +198,8 @@ export const PROFILE_DATA_TWO = [
     id: '0',
     date: '05.05.21',
     interest: 'Zero Hunger',
+    followers: '5k',
+    about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
     url: require('../assets/dummyAssets/search8.jpg'),
@@ -208,6 +214,8 @@ export const PROFILE_DATA_TWO = [
     id: '0',
     date: '05.05.21',
     interest: 'Zero Hunger',
+    followers: '5k',
+    about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
     url: require('../assets/dummyAssets/search9.jpg'),
@@ -222,6 +230,8 @@ export const PROFILE_DATA_TWO = [
     id: '8',
     date: '05.05.21',
     interest: 'Zero Hunger',
+    followers: '5k',
+    about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
     url: require('../assets/dummyAssets/search7.jpg'),
@@ -238,7 +248,7 @@ export const PROFILE_DATA_TWO = [
     interest: 'Zero Hunger',
     name: 'sarah_wills',
     followers: '5k',
-    about: 'She/Her. Passionate about plants.',
+    about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
 ];
 
@@ -419,6 +429,8 @@ export const HOME_SCREEN_DATA = [
     category: 'planet',
     getInvolved: false,
     donateAction: true,
+    followers: '5k',
+    about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
     url: require('../assets/images/home/home-exp-two-background.png'),
@@ -430,6 +442,8 @@ export const HOME_SCREEN_DATA = [
     category: false,
     getInvolved: false,
     donateAction: false,
+    followers: '5k',
+    about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
     url: require('../assets/images/home/home-exp-three-background.png'),
@@ -441,6 +455,8 @@ export const HOME_SCREEN_DATA = [
     category: 'planet',
     getInvolved: true,
     donateAction: false,
+    followers: '5k',
+    about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
     url: require('../assets/images/home/home-exp-four-background.png'),
@@ -452,6 +468,8 @@ export const HOME_SCREEN_DATA = [
     category: 'planet',
     getInvolved: true,
     donateAction: false,
+    followers: '5k',
+    about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
     url: require('../assets/images/home/home-exp-five-background.png'),
@@ -463,6 +481,8 @@ export const HOME_SCREEN_DATA = [
     category: 'planet',
     getInvolved: false,
     donateAction: false,
+    followers: '5k',
+    about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
     url: require('../assets/images/home/home-exp-six-background.png'),
@@ -475,6 +495,8 @@ export const HOME_SCREEN_DATA = [
     getInvolved: false,
     donateAction: false,
     navigateActions: false,
+    followers: '5k',
+    about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
     url: require('../assets/images/home/home-exp-seven-background.png'),
@@ -486,6 +508,8 @@ export const HOME_SCREEN_DATA = [
     category: false,
     getInvolved: false,
     donateAction: false,
+    followers: '5k',
+    about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
     url: require('../assets/images/home/home-exp-eight-background.png'),
@@ -497,6 +521,8 @@ export const HOME_SCREEN_DATA = [
     category: false,
     getInvolved: false,
     donateAction: false,
+    followers: '5k',
+    about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
     url: require('../assets/images/home/home-exp-nine-background.png'),
@@ -508,6 +534,8 @@ export const HOME_SCREEN_DATA = [
     category: POST_DATA,
     getInvolved: false,
     donateAction: false,
+    followers: '5k',
+    about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
   {
     url: require('../assets/images/home/home-exp-one-background.png'),
@@ -519,6 +547,8 @@ export const HOME_SCREEN_DATA = [
     category: 'planet',
     getInvolved: false,
     donateAction: true,
+    followers: '5k',
+    about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
   },
 ];
 
