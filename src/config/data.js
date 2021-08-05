@@ -62,6 +62,8 @@ export const PROFILE_DATA = {
   about: 'She/Her. Passionate about plants.',
   location: 'London',
   fullName: 'Nora Osborn',
+  locationMap: require('../assets/dummyAssets/location.png'),
+  progressBar: require('../assets/dummyAssets/progress-bar.png'),
 };
 
 export const PROFILE_DATA_ONE = [
