@@ -14,17 +14,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const CameraActionsPopUp = ({
-  handleCamera,
-  handleGallery,
-  setUploadOptions,
-}) => {
+const DraftActionsPopUp = ({navigation, setDraftActions, image}) => {
   return (
     <Modal animationType="fade" transparent={true} visible={true}>
       <View style={{flex: 1, backgroundColor: Colors.gradientProfile}}>
         <View style={styles.container}>
           <CustomButton
-            title="Camera"
+            title="Open Draft"
             titleStyling={{...Fonts.N_400_20, color: Colors.lightBlue}}
             style={{
               backgroundColor: Colors.transparentMatWhite,
@@ -34,24 +30,30 @@ const CameraActionsPopUp = ({
               borderBottomWidth: 1,
               borderColor: Colors.lightSilver,
             }}
-            onPress={handleCamera}
+            onPress={() => {
+              setDraftActions(false);
+              navigation.navigate('AddStack', {
+                screen: 'SharePost',
+                params: {image: image},
+              });
+            }}
           />
           <CustomButton
-            title="Photo & Video Gallery"
-            titleStyling={{...Fonts.N_400_20, color: Colors.lightBlue}}
+            title="Delete Draft"
+            titleStyling={{...Fonts.N_400_20, color: Colors.primary}}
             style={{
               backgroundColor: Colors.transparentMatWhite,
               borderRadius: 0,
               borderBottomLeftRadius: 10,
               borderBottomRightRadius: 10,
             }}
-            onPress={handleGallery}
+            onPress={() => setDraftActions(false)}
           />
           <CustomButton
             title="Cancel"
             titleStyling={{...Fonts.N_400_20, color: Colors.lightBlue}}
             style={{backgroundColor: Colors.white, marginVertical: 10}}
-            onPress={() => setUploadOptions(false)}
+            onPress={() => setDraftActions(false)}
           />
         </View>
       </View>
@@ -59,4 +61,4 @@ const CameraActionsPopUp = ({
   );
 };
 
-export default CameraActionsPopUp;
+export default DraftActionsPopUp;

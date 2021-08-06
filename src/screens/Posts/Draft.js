@@ -14,7 +14,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
-import CustomButton from '../../components/CustomButton';
+import DraftActionsPopUp from '../../components/DraftActionsPopUp';
 import NavigateAction from '../../components/NavigateAction';
 import {PROJECTS_DATA} from '../../config/data';
 
@@ -29,19 +29,19 @@ const styles = StyleSheet.create({
 
 const Draft = ({navigation}) => {
   const [data, setData] = React.useState(PROJECTS_DATA);
+  const [draftActions, setDraftActions] = React.useState(false);
+  const [image, setImage] = React.useState(false);
 
-  const renderFlatListItem = ({profileDataInfo, index}) => {
-    const {url} = profileDataInfo;
+  const renderFlatListItem = ({item, index}) => {
+    const {url} = item;
 
     return (
       <TouchableOpacity
         style={{flexDirection: 'row'}}
-        onPress={() =>
-          navigation.navigate('AddStack', {
-            screen: 'SharePost',
-            params: {image: profileDataInfo},
-          })
-        }>
+        onPress={() => {
+          setImage(item);
+          setDraftActions(true);
+        }}>
         <View
           style={{
             borderTopWidth: 1,
@@ -74,18 +74,8 @@ const Draft = ({navigation}) => {
                   width: '100%',
                   bottom: 10,
                   paddingHorizontal: 10,
-                }}>
-                {/* <Text style={styles.textOverlay}>{profileDataInfo.title}</Text>
-                <View
-                  style={{
-                    paddingVertical: 5,
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                  }}>
-                  <Text style={styles.textOverlay}>{profileDataInfo.time}</Text>
-                </View> */}
-              </View>
+                }}
+              />
             </LinearGradient>
           </ImageBackground>
           <View
@@ -99,7 +89,7 @@ const Draft = ({navigation}) => {
                 textAlign: 'center',
                 color: Colors.lightBlack,
               }}>
-              {profileDataInfo.title}
+              {item.title}
             </Text>
           </View>
         </View>
@@ -110,6 +100,13 @@ const Draft = ({navigation}) => {
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper>
+      {draftActions && (
+        <DraftActionsPopUp
+          navigation={navigation}
+          setDraftActions={setDraftActions}
+          image={image}
+        />
+      )}
       <View style={styles.wrapper}>
         <View>
           <NavigateAction
