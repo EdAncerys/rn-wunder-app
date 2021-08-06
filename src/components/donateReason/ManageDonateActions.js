@@ -13,6 +13,7 @@ import Colors from '../../config/colors';
 import SelectDonateReason from '../donateReason/SelectDonateReason';
 import DonateEvent from './DonateEvent';
 import DonateVolunteer from './DonateVolunteer';
+import DonateBoth from './DonateBoth';
 import ConfirmDonation from '../donateActions/ConfirmDonation';
 import DonationConfirmationMsg from '../donateActions/DonationConfirmationMsg';
 import DonateInput from '../donateActions/DonateInput';
@@ -83,6 +84,14 @@ const DonateReason = ({donateReason, setDonateReason}) => {
                 setDonateReason={setDonateReason}
                 setReason={setReason}
                 setVolunteer={setVolunteer}
+                setDonateCoins={setDonateCoins}
+              />
+            )}
+            {both && (
+              <DonateBoth
+                setDonateReason={setDonateReason}
+                setReason={setReason}
+                setBoth={setBoth}
                 setDonateCoins={setDonateCoins}
               />
             )}
