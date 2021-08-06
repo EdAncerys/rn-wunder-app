@@ -196,6 +196,7 @@ const Profile = ({navigation, route}) => {
       <LinearGradient
         colors={[Colors.gradientProfile, Colors.transparent]}
         start={{x: 0, y: 0}}
+        end={{x: 0, y: 0.5}}
         style={{flex: 1}}>
         <StatusBar hidden />
         <SafeAreaView style={styles.wrapper}>
