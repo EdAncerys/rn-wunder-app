@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
 });
 
 const Commending = ({navigation}) => {
+  const [sponsor, setSponsor] = React.useState(false);
   const [profile, setProfile] = React.useState(PROFILE_DATA);
   const [projectImages, setProjectImages] = React.useState(PROFILE_DATA_ONE);
   const {url, about, name, followers, post} = profile;
@@ -157,32 +158,189 @@ const Commending = ({navigation}) => {
     </View>
   );
 
+  // SERVERS ---------------------------------------------------------
+  const ServeCommendHeader = ({}) => {
+    return (
+      <View style={{height: height / 2}}>
+        <ImageBackground
+          source={url}
+          style={{
+            flex: 1,
+            resizeMode: 'cover',
+            justifyContent: 'center',
+          }}>
+          <View style={{flex: 1, alignItems: 'center', marginVertical: '10%'}}>
+            <UserProfileHeaderActions
+              navigation={navigation}
+              profileDataInfo={profile}
+              onPress={() => navigation.goBack()}
+            />
+          </View>
+          <View style={styles.postContainer}>
+            <ServeProfileInfo />
+          </View>
+        </ImageBackground>
+      </View>
+    );
+  };
+
+  const ServeFundingGoals = ({}) => {
+    return (
+      <View>
+        <View style={{marginVertical: '5%'}}>
+          <Text style={{...Fonts.N_700_28, color: Colors.lightBlack}}>
+            Funding Goals
+          </Text>
+        </View>
+        <View>
+          <Text style={{...Fonts.N_400_16, color: Colors.lightBlack}}>
+            We are looking for kind donations from users to reach the goal of
+            £15,000. This money will go on equipment and help with paying staff
+            who work tirelessly to put this together.
+          </Text>
+        </View>
+        <View style={{marginVertical: '5%'}}>
+          <Text style={{...Fonts.N_700_16, color: Colors.lightBlack}}>
+            Progress
+          </Text>
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'flex-end',
+          }}>
+          <View>
+            <Text style={{...Fonts.N_700_24, color: Colors.primary}}>
+              £15.000
+            </Text>
+          </View>
+          <View>
+            <Text
+              style={{
+                ...Fonts.N_400_12,
+                color: Colors.primary,
+                marginHorizontal: 10,
+                marginBottom: 5,
+              }}>
+              Goal
+            </Text>
+          </View>
+        </View>
+        <View style={{marginVertical: '5%'}}>
+          <Image
+            style={{
+              width: '100%',
+              overflow: 'hidden',
+              resizeMode: 'cover',
+            }}
+            source={progressBar}
+          />
+          <View style={{marginVertical: '5%'}}>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                alignItems: 'flex-end',
+                justifyContent: 'space-between',
+              }}>
+              <View>
+                <Text
+                  style={{
+                    ...Fonts.N_700_18,
+                    color: Colors.lightBlack,
+                  }}>
+                  £9750
+                </Text>
+                <Text
+                  style={{
+                    ...Fonts.N_400_12,
+                    color: Colors.lightBlack,
+                  }}>
+                  Raised
+                </Text>
+              </View>
+              <View>
+                <Text
+                  style={{
+                    ...Fonts.N_700_18,
+                    color: Colors.lightBlack,
+                  }}>
+                  £5250
+                </Text>
+                <Text
+                  style={{
+                    ...Fonts.N_400_12,
+                    color: Colors.lightBlack,
+                  }}>
+                  Required
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View style={{marginVertical: 10}}>
+          <CustomButton
+            title={`Commend ${name}`}
+            iconRight="Commend"
+            iconWidth={28}
+            iconHeight={28}
+            iconFill={Colors.white}
+            onPress={() => alert('commend')}
+          />
+        </View>
+        <View style={{marginVertical: 10}}>
+          <CustomButton
+            title={`Sponsor ${name}`}
+            iconRight="HandShake"
+            iconWidth={28}
+            iconHeight={28}
+            iconFill={Colors.white}
+            style={{backgroundColor: Colors.success}}
+            onPress={() => alert('get involved')}
+          />
+        </View>
+      </View>
+    );
+  };
+
+  const ServeAbout = ({}) => {
+    return (
+      <View>
+        <View>
+          <Text style={{...Fonts.N_700_14, color: Colors.lightBlack}}>
+            Together with residents we have developed a vision for Pembury in
+            2025:
+          </Text>
+        </View>
+        <View style={{marginVertical: '5%'}}>
+          <View>
+            <Text style={{...Fonts.N_400_14, color: Colors.lightBlack}}>
+              • a neighbourhood where people are proud to live
+            </Text>
+          </View>
+          <View>
+            <Text style={{...Fonts.N_400_14, color: Colors.lightBlack}}>
+              • a community where people from all backgrounds come together,
+              where everyone matters and there are opportunities for all
+            </Text>
+          </View>
+          <View>
+            <Text style={{...Fonts.N_400_14, color: Colors.lightBlack}}>
+              • a place where young people are encouraged, inspired and
+              empowered to get the best out of life
+            </Text>
+          </View>
+        </View>
+      </View>
+    );
+  };
+
   // RETURN ---------------------------------------------------------
   return (
     <View style={{flex: 1}}>
       <StatusBar hidden />
       <ScrollView>
-        <View style={{height: height / 2}}>
-          <ImageBackground
-            source={url}
-            style={{
-              flex: 1,
-              resizeMode: 'cover',
-              justifyContent: 'center',
-            }}>
-            <View
-              style={{flex: 1, alignItems: 'center', marginVertical: '10%'}}>
-              <UserProfileHeaderActions
-                navigation={navigation}
-                profileDataInfo={profile}
-                onPress={() => navigation.goBack()}
-              />
-            </View>
-            <View style={styles.postContainer}>
-              <ServeProfileInfo />
-            </View>
-          </ImageBackground>
-        </View>
+        <ServeCommendHeader />
 
         <View style={styles.container}>
           <View>
@@ -239,127 +397,9 @@ const Commending = ({navigation}) => {
             </View>
           </View>
 
-          <View>
-            <Text style={{...Fonts.N_700_14, color: Colors.lightBlack}}>
-              {post}
-            </Text>
-          </View>
-          <View style={{marginVertical: '5%'}}>
-            <Text style={{...Fonts.N_400_14, color: Colors.lightBlack}}>
-              {post}
-            </Text>
-          </View>
+          <ServeAbout />
           <View style={styles.divider}></View>
-          <View style={{marginVertical: '5%'}}>
-            <Text style={{...Fonts.N_700_28, color: Colors.lightBlack}}>
-              Funding Goals
-            </Text>
-          </View>
-          <View style={{marginVertical: '5%'}}>
-            <Text style={{...Fonts.N_400_16, color: Colors.lightBlack}}>
-              {post}
-            </Text>
-          </View>
-          <View style={{marginVertical: '5%'}}>
-            <Text style={{...Fonts.N_700_16, color: Colors.lightBlack}}>
-              Progress
-            </Text>
-          </View>
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'flex-end',
-            }}>
-            <View>
-              <Text style={{...Fonts.N_700_24, color: Colors.primary}}>
-                £15.000
-              </Text>
-            </View>
-            <View>
-              <Text
-                style={{
-                  ...Fonts.N_400_12,
-                  color: Colors.primary,
-                  marginHorizontal: 10,
-                  marginBottom: 5,
-                }}>
-                Goal
-              </Text>
-            </View>
-          </View>
-          <View style={{marginVertical: '5%'}}>
-            <Image
-              style={{
-                width: '100%',
-                overflow: 'hidden',
-                resizeMode: 'cover',
-              }}
-              source={progressBar}
-            />
-            <View style={{marginVertical: '5%'}}>
-              <View
-                style={{
-                  flex: 1,
-                  flexDirection: 'row',
-                  alignItems: 'flex-end',
-                  justifyContent: 'space-between',
-                }}>
-                <View>
-                  <Text
-                    style={{
-                      ...Fonts.N_700_18,
-                      color: Colors.lightBlack,
-                    }}>
-                    £9750
-                  </Text>
-                  <Text
-                    style={{
-                      ...Fonts.N_400_12,
-                      color: Colors.lightBlack,
-                    }}>
-                    Raised
-                  </Text>
-                </View>
-                <View>
-                  <Text
-                    style={{
-                      ...Fonts.N_700_18,
-                      color: Colors.lightBlack,
-                    }}>
-                    £5250
-                  </Text>
-                  <Text
-                    style={{
-                      ...Fonts.N_400_12,
-                      color: Colors.lightBlack,
-                    }}>
-                    Required
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-          <View style={{marginVertical: 10}}>
-            <CustomButton
-              title={`Commend ${name}`}
-              iconRight="Commend"
-              iconWidth={28}
-              iconHeight={28}
-              iconFill={Colors.white}
-              onPress={() => alert('commend')}
-            />
-          </View>
-          <View style={{marginVertical: 10}}>
-            <CustomButton
-              title={`Sponsor ${name}`}
-              iconRight="HandShake"
-              iconWidth={28}
-              iconHeight={28}
-              iconFill={Colors.white}
-              style={{backgroundColor: Colors.success}}
-              onPress={() => alert('get involved')}
-            />
-          </View>
+          <ServeFundingGoals />
         </View>
       </ScrollView>
     </View>
