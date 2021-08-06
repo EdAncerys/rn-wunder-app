@@ -18,8 +18,9 @@ import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import UserProfileHeaderActions from '../../components/UserProfileHeaderActions';
 import {PROFILE_DATA, PROFILE_DATA_ONE} from '../../config/data';
-import CommendActions from '../../components/CommendActions';
+import AppActionsHorizontal from '../../components/AppActionsHorizontal';
 import SponsorPopUp from '../../components/sponsorActions/SponsorPopUp';
+import CommendActions from '../../components/commendActions/CommendActions';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -53,12 +54,12 @@ const styles = StyleSheet.create({
 const Commending = ({navigation, route}) => {
   const {profileDataInfo} = route.params;
   const [profile, setProfile] = React.useState(profileDataInfo);
-  const [projectImages, setProjectImages] = React.useState(PROFILE_DATA_ONE);
   const [sponsorAction, setSponsorAction] = React.useState(false);
+  const [donateReason, setDonateReason] = React.useState(false);
+  const [projectImages, setProjectImages] = React.useState(PROFILE_DATA_ONE);
   const {url, about, name, followers, post} = profile;
   const {locationMap, progressBar} = PROFILE_DATA;
-
-  console.log(locationMap);
+  const screenFilter = sponsorAction || donateReason;
 
   // HELPERS ---------------------------------------------------------
   const renderFlatListItem = ({item, index}) => (
@@ -128,7 +129,7 @@ const Commending = ({navigation, route}) => {
   );
 
   // SERVERS ---------------------------------------------------------
-  const ServeProfileInfo = () => (
+  const ServeProfileInfo = ({setDonateReason}) => (
     <View style={styles.profileInfoContainer}>
       <View
         style={{
@@ -153,14 +154,14 @@ const Commending = ({navigation, route}) => {
 
       <View style={{flex: 2, justifyContent: 'center'}}>
         <View style={{marginVertical: '5%'}}>
-          <CustomButton title="commend" onPress={() => alert('Follow')} />
+          <CustomButton title="commend" onPress={() => setDonateReason(true)} />
         </View>
       </View>
     </View>
   );
 
   // SERVERS ---------------------------------------------------------
-  const ServeCommendHeader = ({}) => {
+  const ServeCommendHeader = ({setDonateReason}) => {
     return (
       <View style={{height: height / 2}}>
         <ImageBackground
@@ -178,14 +179,14 @@ const Commending = ({navigation, route}) => {
             />
           </View>
           <View style={styles.postContainer}>
-            <ServeProfileInfo />
+            <ServeProfileInfo setDonateReason={setDonateReason} />
           </View>
         </ImageBackground>
       </View>
     );
   };
 
-  const ServeFundingGoals = ({}) => {
+  const ServeFundingGoals = ({setDonateReason}) => {
     return (
       <View>
         <View style={{marginVertical: '5%'}}>
@@ -286,7 +287,7 @@ const Commending = ({navigation, route}) => {
             iconWidth={28}
             iconHeight={28}
             iconFill={Colors.white}
-            onPress={() => alert('commend')}
+            onPress={() => setDonateReason(true)}
           />
         </View>
         <View style={{marginVertical: 10}}>
@@ -340,14 +341,31 @@ const Commending = ({navigation, route}) => {
   return (
     <View style={{flex: 1}}>
       <StatusBar hidden />
+      {screenFilter && (
+        <View
+          style={{
+            width: width,
+            height: height,
+            position: 'absolute',
+            zIndex: 99,
+            backgroundColor: Colors.gradientFilterBottom,
+          }}
+        />
+      )}
       {sponsorAction && (
         <SponsorPopUp
           sponsorAction={sponsorAction}
           setSponsorAction={setSponsorAction}
         />
       )}
+      {donateReason && (
+        <CommendActions
+          donateReason={donateReason}
+          setDonateReason={setDonateReason}
+        />
+      )}
       <ScrollView>
-        <ServeCommendHeader />
+        <ServeCommendHeader setDonateReason={setDonateReason} />
 
         <View style={styles.container}>
           <View>
@@ -365,7 +383,10 @@ const Commending = ({navigation, route}) => {
               alignItems: 'flex-start',
               marginLeft: -5,
             }}>
-            <CommendActions navigation={navigation} profileDataInfo={profile} />
+            <AppActionsHorizontal
+              navigation={navigation}
+              profileDataInfo={profile}
+            />
           </View>
           <View style={{marginVertical: '5%'}}>
             <Text style={{...Fonts.N_400_14, color: Colors.lightBlack}}>
@@ -405,8 +426,8 @@ const Commending = ({navigation, route}) => {
           </View>
 
           <ServeAbout />
-          <View style={styles.divider}></View>
-          <ServeFundingGoals />
+          <View style={styles.divider} />
+          <ServeFundingGoals setDonateReason={setDonateReason} />
         </View>
       </ScrollView>
     </View>

@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import Colors from '../../config/colors';
-import SelectDonateReason from '../donateReason/SelectDonateReason';
+import SelectDonateReason from './SelectDonateReason';
 import DonateEvent from './DonateEvent';
 import DonateVolunteer from './DonateVolunteer';
 import DonateBoth from './DonateBoth';
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ManageDonateActions = ({donateReason, setDonateReason}) => {
+const CommendActions = ({donateReason, setDonateReason}) => {
   const [reason, setReason] = React.useState(true);
   const [event, setEvent] = React.useState(false);
   const [volunteer, setVolunteer] = React.useState(false);
@@ -130,4 +130,4 @@ const ManageDonateActions = ({donateReason, setDonateReason}) => {
   );
 };
 
-export default ManageDonateActions;
+export default CommendActions;

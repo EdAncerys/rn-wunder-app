@@ -3,9 +3,9 @@ import {Text, View, StyleSheet, Share, Dimensions} from 'react-native';
 
 import Colors from '../config/colors';
 import Fonts from '../config/fonts';
-import CustomButton from '../components/CustomButton';
-import ReportAction from '../components/ReportAction';
-import BlockUser from '../components/BlockUser';
+import CustomButton from './CustomButton';
+import ReportAction from './ReportAction';
+import BlockUser from './BlockUser';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -80,7 +80,7 @@ const ServeBlockUser = ({setBlockAction, profileDataInfo}) => {
 };
 
 // RETURN ---------------------------------------------------------
-const AppActions = ({navigation, profileDataInfo}) => {
+const AppActionsHorizontal = ({navigation, profileDataInfo}) => {
   const [reportAction, setReportAction] = React.useState(false);
   const [blockAction, setBlockAction] = React.useState(false);
 
@@ -151,4 +151,4 @@ const AppActions = ({navigation, profileDataInfo}) => {
   );
 };
 
-export default AppActions;
+export default AppActionsHorizontal;

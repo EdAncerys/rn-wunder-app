@@ -4,7 +4,7 @@ import {Text, View, StyleSheet, Dimensions} from 'react-native';
 import Colors from '../config/colors';
 import Fonts from '../config/fonts';
 import CustomButton from './CustomButton';
-import ManageDonateActions from './donateReason/ManageDonateActions';
+import CommendActions from './commendActions/CommendActions';
 
 const {width} = Dimensions.get('screen');
 
@@ -86,7 +86,7 @@ const UserProfileHeaderActions = ({navigation, profileDataInfo, onPress}) => {
       />
 
       {donateReason && (
-        <ManageDonateActions
+        <CommendActions
           donateReason={donateReason}
           setDonateReason={setDonateReason}
         />
