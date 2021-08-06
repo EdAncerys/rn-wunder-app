@@ -11,8 +11,10 @@ import {
 
 import Colors from '../../config/colors';
 import SelectDonateReason from '../donateReason/SelectDonateReason';
+import DonateEvent from './DonateEvent';
 import ConfirmDonation from '../donateActions/ConfirmDonation';
 import DonationConfirmationMsg from '../donateActions/DonationConfirmationMsg';
+import DonateInput from '../donateActions/DonateInput';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -45,6 +47,11 @@ const DonateReason = ({donateReason, setDonateReason}) => {
   const [volunteer, setVolunteer] = React.useState(false);
   const [both, setBoth] = React.useState(false);
 
+  const [donateCoins, setDonateCoins] = React.useState(false);
+  const [confirmCoins, setConfirmCoins] = React.useState(false);
+  const [coins, setCoins] = React.useState('');
+  const [msg, setMsg] = React.useState('');
+
   // RETURN ---------------------------------------------------------
   return (
     <View style={styles.container}>
@@ -60,6 +67,24 @@ const DonateReason = ({donateReason, setDonateReason}) => {
                 setEvent={setEvent}
                 setVolunteer={setVolunteer}
                 setBoth={setBoth}
+              />
+            )}
+            {event && (
+              <DonateEvent
+                setDonateReason={setDonateReason}
+                setReason={setReason}
+                setEvent={setEvent}
+                setDonateCoins={setDonateCoins}
+              />
+            )}
+            {donateCoins && (
+              <DonateInput
+                setDonateAction={setDonateReason}
+                coins={coins}
+                setCoins={setCoins}
+                msg={msg}
+                setMsg={setMsg}
+                setDonateCoins={setDonateCoins}
               />
             )}
           </View>

@@ -11,6 +11,16 @@ const styles = StyleSheet.create({
   },
   title: {
     ...Fonts.N_700_18,
+    color: Colors.lightBlack,
+    textAlign: 'center',
+  },
+  msgContainer: {
+    paddingHorizontal: '5%',
+    marginVertical: '5%',
+  },
+  msg: {
+    ...Fonts.N_400_12,
+    color: Colors.lightBlack,
     textAlign: 'center',
   },
   actionContainer: {
@@ -19,16 +29,26 @@ const styles = StyleSheet.create({
   },
 });
 
-const SelectDonateReason = ({
+const DonateEvent = ({
   setDonateReason,
   setReason,
   setEvent,
-  setVolunteer,
-  setBoth,
+  setDonateCoins,
 }) => {
   return (
     <View>
-      <View style={{...styles.actionContainer, alignSelf: 'flex-end'}}>
+      <View style={{...styles.actionContainer}}>
+        <CustomButton
+          style={{backgroundColor: Colors.transparent}}
+          iconLeft="ChevronLeft"
+          iconWidth={16}
+          iconHeight={16}
+          iconStyling={styles.icon}
+          onPress={() => {
+            setEvent(false);
+            setReason(true);
+          }}
+        />
         <CustomButton
           style={{backgroundColor: Colors.transparent}}
           iconLeft="Cross"
@@ -39,37 +59,22 @@ const SelectDonateReason = ({
       </View>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>
-          Do you wish to donate coins to the event or to the users donating?
+          Donating to an event will only occur if the financial goal is reached
+        </Text>
+      </View>
+      <View style={styles.msgContainer}>
+        <Text style={styles.msg}>
+          If the financial goal for the event is reached then your donation will
+          go through, if not it will be returned
         </Text>
       </View>
 
-      <View style={{flexDirection: 'row', marginVertical: '5%'}}>
-        <View style={{flex: 1, marginRight: 10}}>
-          <CustomButton
-            title="Event"
-            onPress={() => {
-              setReason(false);
-              setEvent(true);
-            }}
-          />
-        </View>
-        <View style={{flex: 1}}>
-          <CustomButton
-            title="Volunteer"
-            onPress={() => {
-              setReason(false);
-              setVolunteer(true);
-            }}
-          />
-        </View>
-      </View>
       <View>
         <CustomButton
-          title="Both"
-          style={{backgroundColor: Colors.success}}
+          title="Continue"
           onPress={() => {
-            setReason(false);
-            setBoth(true);
+            setEvent(false);
+            setDonateCoins(true);
           }}
         />
       </View>
@@ -77,4 +82,4 @@ const SelectDonateReason = ({
   );
 };
 
-export default SelectDonateReason;
+export default DonateEvent;

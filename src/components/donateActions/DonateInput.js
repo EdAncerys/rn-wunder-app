@@ -43,10 +43,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  icon: {
-    width: 16,
-    height: 16,
-  },
 });
 
 const DonateInput = ({
@@ -65,7 +61,6 @@ const DonateInput = ({
           iconLeft="Cross"
           iconWidth={16}
           iconHeight={16}
-          iconStyling={styles.icon}
           onPress={() => setDonateAction(false)}
         />
       </View>

@@ -40,11 +40,10 @@ const styles = StyleSheet.create({
 });
 
 const DonatePopUp = ({donateAction, setDonateAction}) => {
-  const [donateCoins, setDonateCoins] = React.useState(false);
+  const [donateCoins, setDonateCoins] = React.useState(true);
   const [confirmCoins, setConfirmCoins] = React.useState(false);
   const [coins, setCoins] = React.useState('');
   const [msg, setMsg] = React.useState('');
-  const inputRef = React.createRef();
 
   // ANIMATION HANDLER -----------------------------------------------------
   const scrollYAnimated = React.useRef(
@@ -81,7 +80,7 @@ const DonatePopUp = ({donateAction, setDonateAction}) => {
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={styles.container}>
           <View style={styles.modalView}>
-            {!donateCoins && (
+            {donateCoins && (
               <DonateInput
                 setDonateAction={setDonateAction}
                 coins={coins}
