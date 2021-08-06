@@ -29,10 +29,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const DonateEvent = ({
+const DonateVolunteer = ({
   setDonateReason,
   setReason,
-  setEvent,
+  setVolunteer,
   setDonateCoins,
 }) => {
   return (
@@ -45,7 +45,7 @@ const DonateEvent = ({
           iconHeight={16}
           iconStyling={styles.icon}
           onPress={() => {
-            setEvent(false);
+            setVolunteer(false);
             setReason(true);
           }}
         />
@@ -59,13 +59,13 @@ const DonateEvent = ({
       </View>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>
-          Donating to an event will only occur if the financial goal is reached
+          Donating to users will only occur if the financial goal is reached
         </Text>
       </View>
       <View style={styles.msgContainer}>
         <Text style={styles.msg}>
           If the financial goal for the event is reached then your donation will
-          go through, if not it will be returned
+          be split evenly amongst each user
         </Text>
       </View>
 
@@ -73,7 +73,7 @@ const DonateEvent = ({
         <CustomButton
           title="Continue"
           onPress={() => {
-            setEvent(false);
+            setVolunteer(false);
             setDonateCoins(true);
           }}
         />
@@ -82,4 +82,4 @@ const DonateEvent = ({
   );
 };
 
-export default DonateEvent;
+export default DonateVolunteer;
