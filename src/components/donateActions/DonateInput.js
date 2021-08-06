@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     backgroundColor: Colors.white,
-    marginVertical: '10%',
+    marginVertical: '5%',
     borderRadius: 9,
     paddingVertical: 8,
     paddingHorizontal: 16,
@@ -52,6 +52,7 @@ const DonateInput = ({
   msg,
   setMsg,
   setDonateCoins,
+  setConfirmCoins,
 }) => {
   return (
     <View>
@@ -93,7 +94,10 @@ const DonateInput = ({
       </View>
       <CustomButton
         title="Donate Coin(s)"
-        onPress={() => setDonateCoins(true)}
+        onPress={() => {
+          setDonateCoins(false);
+          setConfirmCoins(true);
+        }}
       />
     </View>
   );

@@ -78,7 +78,6 @@ const ServeProfileHeader = ({
 // RETURN ---------------------------------------------------------
 const UserProfileHeaderActions = ({navigation, profileDataInfo, onPress}) => {
   const [donateReason, setDonateReason] = React.useState(false);
-  const [donateAction, setDonateAction] = React.useState(false);
 
   return (
     <View>

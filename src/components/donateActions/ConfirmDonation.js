@@ -47,6 +47,7 @@ const ConfirmDonation = ({
   msg,
   setDonateCoins,
   setConfirmCoins,
+  setThanksMsg,
 }) => {
   return (
     <View style={styles.container}>
@@ -57,7 +58,10 @@ const ConfirmDonation = ({
           iconWidth={16}
           iconHeight={16}
           iconStyling={styles.icon}
-          onPress={() => setDonateCoins(false)}
+          onPress={() => {
+            setConfirmCoins(false);
+            setDonateCoins(true);
+          }}
         />
         <CustomButton
           style={{backgroundColor: Colors.transparent}}
@@ -82,7 +86,10 @@ const ConfirmDonation = ({
       <View>
         <CustomButton
           title="Confirm Coin(s)"
-          onPress={() => setConfirmCoins(true)}
+          onPress={() => {
+            setConfirmCoins(false);
+            setThanksMsg(true);
+          }}
         />
       </View>
     </View>

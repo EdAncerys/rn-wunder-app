@@ -40,7 +40,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const DonationConfirmationMsg = ({setDonateAction, setConfirmCoins}) => {
+const DonationConfirmationMsg = ({
+  setDonateAction,
+  setConfirmCoins,
+  setThanksMsg,
+}) => {
   return (
     <TouchableWithoutFeedback onPress={() => setDonateAction(false)}>
       <View style={styles.container}>
@@ -51,7 +55,10 @@ const DonationConfirmationMsg = ({setDonateAction, setConfirmCoins}) => {
             iconWidth={16}
             iconHeight={16}
             iconStyling={styles.icon}
-            onPress={() => setConfirmCoins(false)}
+            onPress={() => {
+              setThanksMsg(false);
+              setConfirmCoins(true);
+            }}
           />
           <CustomButton
             style={{backgroundColor: Colors.transparent}}
