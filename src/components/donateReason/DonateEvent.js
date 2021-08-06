@@ -43,7 +43,6 @@ const DonateEvent = ({
           iconLeft="ChevronLeft"
           iconWidth={16}
           iconHeight={16}
-          iconStyling={styles.icon}
           onPress={() => {
             setEvent(false);
             setReason(true);

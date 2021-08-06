@@ -19,7 +19,7 @@ import CustomButton from '../../components/CustomButton';
 import UserProfileHeaderActions from '../../components/UserProfileHeaderActions';
 import {PROFILE_DATA, PROFILE_DATA_ONE} from '../../config/data';
 import CommendActions from '../../components/CommendActions';
-import Location from '../../assets/dummyAssets/location.png';
+import SponsorPopUp from '../../components/sponsorActions/SponsorPopUp';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -51,9 +51,9 @@ const styles = StyleSheet.create({
 });
 
 const Commending = ({navigation}) => {
-  const [sponsor, setSponsor] = React.useState(false);
   const [profile, setProfile] = React.useState(PROFILE_DATA);
   const [projectImages, setProjectImages] = React.useState(PROFILE_DATA_ONE);
+  const [sponsorAction, setSponsorAction] = React.useState(false);
   const {url, about, name, followers, post} = profile;
   const {locationMap, progressBar} = profile;
 
@@ -296,7 +296,7 @@ const Commending = ({navigation}) => {
             iconHeight={28}
             iconFill={Colors.white}
             style={{backgroundColor: Colors.success}}
-            onPress={() => alert('get involved')}
+            onPress={() => setSponsorAction(true)}
           />
         </View>
       </View>
@@ -339,6 +339,12 @@ const Commending = ({navigation}) => {
   return (
     <View style={{flex: 1}}>
       <StatusBar hidden />
+      {sponsorAction && (
+        <SponsorPopUp
+          sponsorAction={sponsorAction}
+          setSponsorAction={setSponsorAction}
+        />
+      )}
       <ScrollView>
         <ServeCommendHeader />
 

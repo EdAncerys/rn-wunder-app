@@ -7,19 +7,18 @@ import CustomButton from '../CustomButton';
 
 const styles = StyleSheet.create({
   titleContainer: {
-    paddingHorizontal: '10%',
+    paddingHorizontal: '15%',
   },
   title: {
-    ...Fonts.N_700_18,
-    color: Colors.lightBlack,
+    ...Fonts.N_500_22,
     textAlign: 'center',
   },
   msgContainer: {
-    paddingHorizontal: '5%',
+    paddingHorizontal: '10%',
     marginVertical: '5%',
   },
   msg: {
-    ...Fonts.N_400_12,
+    ...Fonts.N_400_45,
     color: Colors.lightBlack,
     textAlign: 'center',
   },
@@ -29,9 +28,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const DonateBoth = ({setDonateReason, setReason, setBoth, setDonateCoins}) => {
+const SponsorConfirmation = ({
+  setSponsorAction,
+  setSponsor,
+  setThanksMsg,
+  setConfirmSponsor,
+}) => {
   return (
-    <View>
+    <View style={{width: '100%'}}>
       <View style={{...styles.actionContainer}}>
         <CustomButton
           style={{backgroundColor: Colors.transparent}}
@@ -39,8 +43,8 @@ const DonateBoth = ({setDonateReason, setReason, setBoth, setDonateCoins}) => {
           iconWidth={16}
           iconHeight={16}
           onPress={() => {
-            setBoth(false);
-            setReason(true);
+            setConfirmSponsor(false);
+            setSponsor(true);
           }}
         />
         <CustomButton
@@ -48,32 +52,25 @@ const DonateBoth = ({setDonateReason, setReason, setBoth, setDonateCoins}) => {
           iconLeft="Cross"
           iconWidth={16}
           iconHeight={16}
-          onPress={() => setDonateReason(false)}
+          onPress={() => setSponsorAction(false)}
         />
       </View>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>
-          Donating to both will only occur if the financial goal is reached
-        </Text>
+        <Text style={styles.title}>Confirm your sponsorship</Text>
       </View>
       <View style={styles.msgContainer}>
-        <Text style={styles.msg}>
-          Your donation will be split in half, half to the event and half
-          distributed evenly amongst each user
-        </Text>
+        <Text style={styles.msg}>📝</Text>
       </View>
 
-      <View>
-        <CustomButton
-          title="Continue"
-          onPress={() => {
-            setBoth(false);
-            setDonateCoins(true);
-          }}
-        />
-      </View>
+      <CustomButton
+        title="Confirm"
+        onPress={() => {
+          setConfirmSponsor(false);
+          setThanksMsg(true);
+        }}
+      />
     </View>
   );
 };
 
-export default DonateBoth;
+export default SponsorConfirmation;

@@ -7,15 +7,14 @@ import CustomButton from '../CustomButton';
 
 const styles = StyleSheet.create({
   titleContainer: {
-    paddingHorizontal: '10%',
+    paddingHorizontal: '8%',
   },
   title: {
-    ...Fonts.N_700_18,
-    color: Colors.lightBlack,
+    ...Fonts.N_500_22,
     textAlign: 'center',
   },
   msgContainer: {
-    paddingHorizontal: '5%',
+    paddingHorizontal: '10%',
     marginVertical: '5%',
   },
   msg: {
@@ -29,51 +28,38 @@ const styles = StyleSheet.create({
   },
 });
 
-const DonateBoth = ({setDonateReason, setReason, setBoth, setDonateCoins}) => {
+const Sponsor = ({setSponsorAction, setSponsor, setConfirmSponsor}) => {
   return (
     <View>
-      <View style={{...styles.actionContainer}}>
-        <CustomButton
-          style={{backgroundColor: Colors.transparent}}
-          iconLeft="ChevronLeft"
-          iconWidth={16}
-          iconHeight={16}
-          onPress={() => {
-            setBoth(false);
-            setReason(true);
-          }}
-        />
+      <View style={{...styles.actionContainer, alignSelf: 'flex-end'}}>
         <CustomButton
           style={{backgroundColor: Colors.transparent}}
           iconLeft="Cross"
           iconWidth={16}
           iconHeight={16}
-          onPress={() => setDonateReason(false)}
+          onPress={() => setSponsorAction(false)}
         />
       </View>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>
-          Donating to both will only occur if the financial goal is reached
+          Donate 2000 coins up front to become a sponsor
         </Text>
       </View>
       <View style={styles.msgContainer}>
         <Text style={styles.msg}>
-          Your donation will be split in half, half to the event and half
-          distributed evenly amongst each user
+          By donating you will appear as a sponsor on the project page.
         </Text>
       </View>
 
-      <View>
-        <CustomButton
-          title="Continue"
-          onPress={() => {
-            setBoth(false);
-            setDonateCoins(true);
-          }}
-        />
-      </View>
+      <CustomButton
+        title="Continue"
+        onPress={() => {
+          setSponsor(false);
+          setConfirmSponsor(true);
+        }}
+      />
     </View>
   );
 };
 
-export default DonateBoth;
+export default Sponsor;
