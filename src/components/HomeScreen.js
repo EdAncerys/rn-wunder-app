@@ -64,6 +64,7 @@ const HomeScreen = ({navigation, profileDataInfo}) => {
         {donateAction && <ServeDonate />}
         <View style={{...styles.appActions, ...applyMarginActions}}>
           <AppActions
+            navigation={navigation}
             Commend
             Applaud
             Shoutout

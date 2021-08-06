@@ -120,7 +120,12 @@ const AppActions = ({
               iconWidth={24}
               iconHeight={24}
               iconFill={Colors.white}
-              onPress={() => alert('Commend')}
+              onPress={() =>
+                navigation.navigate('ProjectStack', {
+                  screen: 'Commend',
+                  params: {profileDataInfo: profileDataInfo},
+                })
+              }
               style={{backgroundColor: Colors.transparent}}
             />
             <Text style={styles.title}>1346</Text>

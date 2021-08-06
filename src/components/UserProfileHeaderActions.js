@@ -4,9 +4,6 @@ import {Text, View, StyleSheet, Dimensions} from 'react-native';
 import Colors from '../config/colors';
 import Fonts from '../config/fonts';
 import CustomButton from './CustomButton';
-import DonatePopUp from './donateActions/DonatePopUp';
-import Wallet from './wallet/Wallet';
-import NavigateAction from './NavigateAction';
 import ManageDonateActions from './donateReason/ManageDonateActions';
 
 const {width} = Dimensions.get('screen');

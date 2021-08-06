@@ -4,8 +4,6 @@ import {
   KeyboardAvoidingView,
   StyleSheet,
   Dimensions,
-  Animated,
-  Keyboard,
   Modal,
 } from 'react-native';
 
@@ -43,7 +41,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const DonateReason = ({donateReason, setDonateReason}) => {
+const ManageDonateActions = ({donateReason, setDonateReason}) => {
   const [reason, setReason] = React.useState(true);
   const [event, setEvent] = React.useState(false);
   const [volunteer, setVolunteer] = React.useState(false);
@@ -132,4 +130,4 @@ const DonateReason = ({donateReason, setDonateReason}) => {
   );
 };
 
-export default DonateReason;
+export default ManageDonateActions;

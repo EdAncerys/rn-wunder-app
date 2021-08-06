@@ -4,8 +4,6 @@ import {
   KeyboardAvoidingView,
   StyleSheet,
   Dimensions,
-  Animated,
-  Keyboard,
   Modal,
 } from 'react-native';
 
@@ -45,33 +43,6 @@ const DonatePopUp = ({donateAction, setDonateAction}) => {
   const [thanksMsg, setThanksMsg] = React.useState(false);
   const [coins, setCoins] = React.useState('');
   const [msg, setMsg] = React.useState('');
-
-  // ANIMATION HANDLER -----------------------------------------------------
-  // const scrollYAnimated = React.useRef(
-  //   new Animated.Value(height / 6.5),
-  // ).current;
-
-  // React.useEffect(() => {
-  //   const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
-  //     Animated.spring(scrollYAnimated, {
-  //       toValue: height / 12,
-  //       useNativeDriver: false,
-  //       stiffness: 45,
-  //     }).start();
-  //   });
-  //   const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
-  //     Animated.spring(scrollYAnimated, {
-  //       toValue: height / 6.5,
-  //       useNativeDriver: false,
-  //       stiffness: 80,
-  //     }).start();
-  //   });
-
-  //   return () => {
-  //     showSubscription.remove();
-  //     hideSubscription.remove();
-  //   };
-  // }, []);
 
   // RETURN ---------------------------------------------------------
   return (

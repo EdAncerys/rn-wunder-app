@@ -50,12 +50,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const Commending = ({navigation}) => {
-  const [profile, setProfile] = React.useState(PROFILE_DATA);
+const Commending = ({navigation, route}) => {
+  const {profileDataInfo} = route.params;
+  const [profile, setProfile] = React.useState(profileDataInfo);
   const [projectImages, setProjectImages] = React.useState(PROFILE_DATA_ONE);
   const [sponsorAction, setSponsorAction] = React.useState(false);
   const {url, about, name, followers, post} = profile;
-  const {locationMap, progressBar} = profile;
+  const {locationMap, progressBar} = PROFILE_DATA;
 
   console.log(locationMap);
 

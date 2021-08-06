@@ -12,6 +12,7 @@ import {
 import Colors from '../../config/colors';
 import Sponsor from './Sponsor';
 import SponsorConfirmation from './SponsorConfirmation';
+import ThankYouMsg from './ThankYouMsg';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -60,6 +61,14 @@ const SponsorPopUp = ({sponsorAction, setSponsorAction}) => {
             )}
             {confirmSponsor && (
               <SponsorConfirmation
+                setSponsorAction={setSponsorAction}
+                setSponsor={setSponsor}
+                setConfirmSponsor={setConfirmSponsor}
+                setThanksMsg={setThanksMsg}
+              />
+            )}
+            {thanksMsg && (
+              <ThankYouMsg
                 setSponsorAction={setSponsorAction}
                 setSponsor={setSponsor}
                 setConfirmSponsor={setConfirmSponsor}
