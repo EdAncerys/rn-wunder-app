@@ -932,7 +932,7 @@ export const NOTIFICATION_DATA = [
   },
   {
     multiple: true,
-    name: 'Joe Gardner & 10 others',
+    name: 'savetheoceans',
     createdAt: '1d',
     notificationBody: 'Applauded your post: Daily meditation for...',
     profileImageUrl: 'https://reactnative.dev/img/tiny_logo.png',
@@ -958,7 +958,7 @@ export const NOTIFICATION_DATA = [
   },
   {
     multiple: true,
-    name: 'Joe Gardner & 10 others',
+    name: 'helptodonate',
     createdAt: '1d',
     notificationBody: 'Applauded your post: Daily meditation for...',
     profileImageUrl: 'https://reactnative.dev/img/tiny_logo.png',
@@ -967,7 +967,7 @@ export const NOTIFICATION_DATA = [
   },
   {
     multiple: true,
-    name: 'Joe Gardner & 10 others',
+    name: 'savetheplanet',
     createdAt: '1d',
     notificationBody: 'Applauded your post: Daily meditation for...',
     profileImageUrl: 'https://reactnative.dev/img/tiny_logo.png',

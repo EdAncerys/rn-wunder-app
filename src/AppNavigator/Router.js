@@ -3,7 +3,7 @@ import {View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {useAuthState, useAuthDispatch, addPostAction} from '../context/auth';
+import {useAuthDispatch, addPostAction} from '../context/auth';
 import {useApiDispatch} from '../context/api';
 
 import Colors from '../config/colors';
@@ -40,7 +40,7 @@ import VerifyOTPU16 from '../screens/onboardingUnderSixteen/VerifyOTPU16';
 import Yay from '../screens/onboardingUnderSixteen/Yay';
 import Profile from '../screens/profile/Profile';
 import Home from '../screens/home/Home';
-import UserNotification from '../screens/donate/UserNotification';
+import UserNotification from '../screens/notifications/UserNotification';
 import Search from '../screens/search/Search';
 import CreateProAccount from '../screens/profile/CreateProAccount';
 import OrganizationRegNumber from '../screens/profile/OrganizationRegNumber';
@@ -66,6 +66,7 @@ import About from '../screens/profile/About';
 import SharePost from '../screens/posts/SharePost';
 import Draft from '../screens/posts/Draft';
 import Commend from '../screens/commending/Commend';
+import QRCode from '../screens/notifications/QRCode';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -265,6 +266,11 @@ const ProjectStack = ({navigation}) => {
       <Stack.Screen
         name="Commend"
         component={Commend}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="QRCode"
+        component={QRCode}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
