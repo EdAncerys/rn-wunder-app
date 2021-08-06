@@ -49,7 +49,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const SelectDonateReason = ({setDonateReason}) => {
+const SelectDonateReason = ({
+  setDonateReason,
+  setReason,
+  setEvent,
+  setVolunteer,
+  setBoth,
+}) => {
   return (
     <View>
       <View style={{...styles.actionContainer, alignSelf: 'flex-end'}}>
@@ -70,12 +76,21 @@ const SelectDonateReason = ({setDonateReason}) => {
 
       <View style={{flexDirection: 'row', marginVertical: '5%'}}>
         <View style={{flex: 1, marginRight: 10}}>
-          <CustomButton title="Event" onPress={() => setDonateCoins(true)} />
+          <CustomButton
+            title="Event"
+            onPress={() => {
+              setReason(false);
+              setEvent(true);
+            }}
+          />
         </View>
         <View style={{flex: 1}}>
           <CustomButton
             title="Volunteer"
-            onPress={() => setDonateCoins(true)}
+            onPress={() => {
+              setReason(false);
+              setVolunteer(true);
+            }}
           />
         </View>
       </View>
@@ -83,7 +98,10 @@ const SelectDonateReason = ({setDonateReason}) => {
         <CustomButton
           title="Both"
           style={{backgroundColor: Colors.success}}
-          onPress={() => setDonateCoins(true)}
+          onPress={() => {
+            setReason(false);
+            setBoth(true);
+          }}
         />
       </View>
     </View>

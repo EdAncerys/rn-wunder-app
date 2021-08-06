@@ -40,9 +40,10 @@ const styles = StyleSheet.create({
 });
 
 const DonateReason = ({donateReason, setDonateReason}) => {
-  const [reason, setReason] = React.useState(false);
+  const [reason, setReason] = React.useState(true);
   const [event, setEvent] = React.useState(false);
-  const [volunteer, setVolunteer] = React.useState('');
+  const [volunteer, setVolunteer] = React.useState(false);
+  const [both, setBoth] = React.useState(false);
 
   // RETURN ---------------------------------------------------------
   return (
@@ -52,10 +53,13 @@ const DonateReason = ({donateReason, setDonateReason}) => {
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
           style={styles.container}>
           <View style={styles.modalView}>
-            {!reason && (
+            {reason && (
               <SelectDonateReason
                 setDonateReason={setDonateReason}
                 setReason={setReason}
+                setEvent={setEvent}
+                setVolunteer={setVolunteer}
+                setBoth={setBoth}
               />
             )}
           </View>
