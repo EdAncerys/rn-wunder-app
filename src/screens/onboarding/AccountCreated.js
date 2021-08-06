@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     marginVertical: '2%',
   },
   msg: {
-    ...Fonts.N_500_12,
+    ...Fonts.N_400_12,
     color: Colors.white,
     textAlign: 'center',
   },

@@ -40,7 +40,7 @@ import VerifyOTPU16 from '../screens/onboardingUnderSixteen/VerifyOTPU16';
 import Yay from '../screens/onboardingUnderSixteen/Yay';
 import Profile from '../screens/profile/Profile';
 import Home from '../screens/home/Home';
-import DonationNotification from '../screens/donate/DonationNotification';
+import UserNotification from '../screens/donate/UserNotification';
 import Search from '../screens/search/Search';
 import CreateProAccount from '../screens/profile/CreateProAccount';
 import OrganizationRegNumber from '../screens/profile/OrganizationRegNumber';
@@ -73,11 +73,11 @@ const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="CreateAccountStack">
-      {/* <Stack.Screen
+      <Stack.Screen
         name="TestScreen"
-        component={Commend}
+        component={UserNotification}
         options={{headerShown: false}}
-      /> */}
+      />
       {/* <Stack.Screen
         name="CreateAccountStack"
         component={CreateAccountStack}
@@ -198,8 +198,8 @@ const HomeStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="DonationNotification"
-        component={DonationNotification}
+        name="UserNotification"
+        component={UserNotification}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

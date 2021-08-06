@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     color: Colors.white,
   },
   msg: {
-    ...Fonts.N_500_12,
+    ...Fonts.N_400_12,
     textAlign: 'center',
     paddingHorizontal: '20%',
     color: Colors.silver,

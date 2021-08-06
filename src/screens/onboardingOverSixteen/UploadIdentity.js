@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textDivider: {
-    ...Fonts.N_500_12,
+    ...Fonts.N_400_12,
     color: Colors.white,
   },
   dash: {
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     color: Colors.white,
   },
   infoText: {
-    ...Fonts.N_500_12,
+    ...Fonts.N_400_12,
     color: Colors.white,
   },
   navigateActionContainer: {

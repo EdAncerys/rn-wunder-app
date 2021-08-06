@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
   },
   info: {
-    ...Fonts.N_500_12,
+    ...Fonts.N_400_12,
     textAlign: 'center',
     color: Colors.lightSilver,
   },
