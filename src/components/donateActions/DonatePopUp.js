@@ -42,35 +42,36 @@ const styles = StyleSheet.create({
 const DonatePopUp = ({donateAction, setDonateAction}) => {
   const [donateCoins, setDonateCoins] = React.useState(true);
   const [confirmCoins, setConfirmCoins] = React.useState(false);
+  const [thanksMsg, setThanksMsg] = React.useState(false);
   const [coins, setCoins] = React.useState('');
   const [msg, setMsg] = React.useState('');
 
   // ANIMATION HANDLER -----------------------------------------------------
-  const scrollYAnimated = React.useRef(
-    new Animated.Value(height / 6.5),
-  ).current;
+  // const scrollYAnimated = React.useRef(
+  //   new Animated.Value(height / 6.5),
+  // ).current;
 
-  React.useEffect(() => {
-    const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
-      Animated.spring(scrollYAnimated, {
-        toValue: height / 12,
-        useNativeDriver: false,
-        stiffness: 45,
-      }).start();
-    });
-    const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
-      Animated.spring(scrollYAnimated, {
-        toValue: height / 6.5,
-        useNativeDriver: false,
-        stiffness: 80,
-      }).start();
-    });
+  // React.useEffect(() => {
+  //   const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
+  //     Animated.spring(scrollYAnimated, {
+  //       toValue: height / 12,
+  //       useNativeDriver: false,
+  //       stiffness: 45,
+  //     }).start();
+  //   });
+  //   const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
+  //     Animated.spring(scrollYAnimated, {
+  //       toValue: height / 6.5,
+  //       useNativeDriver: false,
+  //       stiffness: 80,
+  //     }).start();
+  //   });
 
-    return () => {
-      showSubscription.remove();
-      hideSubscription.remove();
-    };
-  }, []);
+  //   return () => {
+  //     showSubscription.remove();
+  //     hideSubscription.remove();
+  //   };
+  // }, []);
 
   // RETURN ---------------------------------------------------------
   return (
@@ -87,22 +88,26 @@ const DonatePopUp = ({donateAction, setDonateAction}) => {
                 setCoins={setCoins}
                 msg={msg}
                 setMsg={setMsg}
+                donateCoins={donateCoins}
                 setDonateCoins={setDonateCoins}
+                setConfirmCoins={setConfirmCoins}
               />
             )}
-            {donateCoins && !confirmCoins && (
+            {confirmCoins && (
               <ConfirmDonation
                 setDonateAction={setDonateAction}
                 coins={coins}
                 msg={msg}
                 setDonateCoins={setDonateCoins}
                 setConfirmCoins={setConfirmCoins}
+                setThanksMsg={setThanksMsg}
               />
             )}
-            {confirmCoins && (
+            {thanksMsg && (
               <DonationConfirmationMsg
                 setDonateAction={setDonateAction}
                 setConfirmCoins={setConfirmCoins}
+                setThanksMsg={setThanksMsg}
               />
             )}
           </View>

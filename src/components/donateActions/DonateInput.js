@@ -51,6 +51,7 @@ const DonateInput = ({
   setCoins,
   msg,
   setMsg,
+  donateCoins,
   setDonateCoins,
   setConfirmCoins,
 }) => {
@@ -62,7 +63,7 @@ const DonateInput = ({
           iconLeft="Cross"
           iconWidth={16}
           iconHeight={16}
-          onPress={() => setDonateAction(false)}
+          onPress={() => setDonateAction(!donateCoins)}
         />
       </View>
       <View style={styles.titleContainer}>

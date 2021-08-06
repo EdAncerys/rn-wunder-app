@@ -74,7 +74,7 @@ const Commending = ({navigation}) => {
           style={{
             justifyContent: 'center',
             alignItems: 'center',
-            marginRight: 2,
+            marginRight: 15,
             overflow: 'hidden',
           }}>
           <ImageBackground

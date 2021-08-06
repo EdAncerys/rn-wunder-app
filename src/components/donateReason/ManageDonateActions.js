@@ -103,6 +103,7 @@ const DonateReason = ({donateReason, setDonateReason}) => {
                 msg={msg}
                 setCoins={setCoins}
                 setMsg={setMsg}
+                donateCoins={donateCoins}
                 setDonateCoins={setDonateCoins}
                 setConfirmCoins={setConfirmCoins}
               />
