@@ -9,6 +9,7 @@ import {
   FlatList,
   TouchableOpacity,
   ScrollView,
+  Animated,
   Dimensions,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
@@ -64,6 +65,19 @@ const Commending = ({navigation, route}) => {
   const screenFilter = sponsorAction || donateReason;
   const imgArrayLength = projectImages.length;
   const headerHeight = height / 10;
+
+  // ANIMATION ---------------------------------------------------------
+  const scrollY = React.useRef(new Animated.Value(0)).current;
+
+  const handleScroll = React.useCallback(event => {
+    const scrollPosition = event.nativeEvent.contentOffset.y;
+    scrollY.setValue(scrollPosition);
+  });
+
+  const translateY = scrollY.interpolate({
+    inputRange: [0, height],
+    outputRange: [0, 50],
+  });
 
   // HELPERS ---------------------------------------------------------
   const renderFlatListItem = ({item, index}) => (
@@ -121,7 +135,7 @@ const Commending = ({navigation, route}) => {
   );
 
   // SERVERS ---------------------------------------------------------
-  const ServeProfileInfo = ({}) => (
+  const ServeProfileActions = ({}) => (
     <View
       style={{
         flexDirection: 'row',
@@ -141,13 +155,44 @@ const Commending = ({navigation, route}) => {
         />
       </View>
 
-      <View style={{flex: 1, justifyContent: 'center'}}>
-        <View style={{marginVertical: '5%'}}>
-          <CustomButton title="commend" onPress={() => setDonateReason(true)} />
-        </View>
+      <View style={{flex: 1, marginHorizontal: '5%'}}>
+        <CustomButton title="commend" onPress={() => setDonateReason(true)} />
       </View>
     </View>
   );
+
+  const ServeProfileInfo = () => {
+    return (
+      <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+        <View style={{flex: 1}}>
+          <Image
+            source={profileImageUrl}
+            style={{
+              width: 96,
+              height: 96,
+              borderRadius: 100,
+              borderWidth: 1,
+              borderColor: Colors.lightSilver,
+            }}
+          />
+        </View>
+        <View style={{flex: 2}}>
+          <View style={{flex: 1}}>
+            <View style={{flex: 1}}>
+              <Text style={{...Fonts.N_700_12, color: Colors.lightBlack}}>
+                About Charity
+              </Text>
+            </View>
+            <View>
+              <Text style={{...Fonts.N_700_24, color: Colors.lightBlack}}>
+                {about}
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    );
+  };
 
   // SERVERS ---------------------------------------------------------
   const ServeProfileHeader = ({setDonateReason}) => {
@@ -294,47 +339,29 @@ const Commending = ({navigation, route}) => {
         />
       </View>
       <ScrollView
-        stickyHeaderIndices={[1]}
+        onScroll={handleScroll}
+        scrollEventThrottle={16}
+        stickyHeaderIndices={[2]}
         showsVerticalScrollIndicator={false}
         style={{paddingVertical: headerHeight}}>
         <View style={{marginTop: -headerHeight}}>
           <ServeProfileHeader setDonateReason={setDonateReason} />
         </View>
-
+        <Animated.View
+          style={[
+            {
+              height: scrollY.interpolate({
+                inputRange: [0, height],
+                outputRange: [0, 200],
+              }),
+            },
+          ]}
+        />
         <ServePageNavigation />
-
         <View style={styles.container}>
           <View style={styles.wrapper}>
-            <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-              <View style={{flex: 1}}>
-                <Image
-                  source={profileImageUrl}
-                  style={{
-                    width: 96,
-                    height: 96,
-                    borderRadius: 100,
-                    borderWidth: 1,
-                    borderColor: Colors.lightSilver,
-                  }}
-                />
-              </View>
-              <View style={{flex: 2}}>
-                <View style={{flex: 1}}>
-                  <View style={{flex: 1}}>
-                    <Text style={{...Fonts.N_700_12, color: Colors.lightBlack}}>
-                      About Charity
-                    </Text>
-                  </View>
-                  <View>
-                    <Text style={{...Fonts.N_700_24, color: Colors.lightBlack}}>
-                      {about}
-                    </Text>
-                  </View>
-                </View>
-              </View>
-            </View>
-
             <ServeProfileInfo />
+            <ServeProfileActions />
             <View style={{marginVertical: '5%'}}>
               <Text style={{...Fonts.N_400_14, color: Colors.lightBlack}}>
                 {post}

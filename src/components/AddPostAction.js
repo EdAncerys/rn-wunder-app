@@ -58,7 +58,7 @@ const AddPostAction = ({navigation}) => {
 
   // RETURN ---------------------------------------------------------
   return (
-    <Modal animationType="fade" transparent={true} visible={true}>
+    <Modal animationType="slide" transparent={true} visible={true}>
       <View style={{flex: 1, backgroundColor: Colors.gradientProfile}}>
         <View style={styles.container}>
           <CustomButton
