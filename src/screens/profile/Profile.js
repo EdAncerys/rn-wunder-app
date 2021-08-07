@@ -78,6 +78,7 @@ const Profile = ({navigation, route}) => {
   const [myProfile, setMyProfile] = React.useState(true);
   const [profile, setProfile] = React.useState(PROFILE_DATA);
   const [projects, setProjects] = React.useState(POST_DATA);
+  const [follow, setFollow] = React.useState(false);
   const {url, name, followers, about} = profile;
 
   React.useEffect(() => {
@@ -177,7 +178,13 @@ const Profile = ({navigation, route}) => {
         </View>
         {!myProfile && (
           <View style={{marginVertical: '5%'}}>
-            <CustomButton title="Follow" onPress={() => alert('Follow')} />
+            <CustomButton
+              title={follow ? 'Following' : 'Follow'}
+              style={{
+                backgroundColor: follow ? Colors.success : Colors.primary,
+              }}
+              onPress={() => setFollow(!follow)}
+            />
           </View>
         )}
       </View>
