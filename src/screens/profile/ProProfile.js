@@ -20,7 +20,6 @@ import CustomButton from '../../components/CustomButton';
 import UserProfileHeaderActions from '../../components/UserProfileHeaderActions';
 import {PROFESSIONAL_PROFILE_DATA, PROFILE_DATA_ONE} from '../../config/data';
 import AppActionsHorizontal from '../../components/AppActionsHorizontal';
-import SponsorPopUp from '../../components/sponsorActions/SponsorPopUp';
 import CommendActions from '../../components/commendActions/CommendActions';
 
 const {width, height} = Dimensions.get('screen');
@@ -55,16 +54,25 @@ const styles = StyleSheet.create({
 const Commending = ({navigation, route}) => {
   // const {profileDataInfo} = route.params;
   const [profile, setProfile] = React.useState(PROFESSIONAL_PROFILE_DATA);
-  const [sponsorAction, setSponsorAction] = React.useState(false);
   const [donateReason, setDonateReason] = React.useState(false);
   const [projectImages, setProjectImages] = React.useState(PROFILE_DATA_ONE);
   const [aboutProfile, setAboutProfile] = React.useState(true);
   const [projectsProfile, setProjectsProfile] = React.useState(false);
+  const [screenFilter, setScreenFilter] = React.useState(false);
+  const [colorFill, setColorFill] = React.useState(Colors.white);
 
   const {url, about, name, followers, post, profileImageUrl} = profile;
-  const screenFilter = sponsorAction || donateReason;
   const imgArrayLength = projectImages.length;
   const headerHeight = height / 10;
+
+  React.useEffect(() => {
+    console.log(donateReason);
+    if (donateReason) {
+      setScreenFilter(true);
+      return;
+    }
+    setScreenFilter(false);
+  }, [donateReason]);
 
   // ANIMATION ---------------------------------------------------------
   const scrollY = React.useRef(new Animated.Value(0)).current;
@@ -72,11 +80,9 @@ const Commending = ({navigation, route}) => {
   const handleScroll = React.useCallback(event => {
     const scrollPosition = event.nativeEvent.contentOffset.y;
     scrollY.setValue(scrollPosition);
-  });
-
-  const translateY = scrollY.interpolate({
-    inputRange: [0, height],
-    outputRange: [0, 50],
+    const colorFlipPoint = 365;
+    if (scrollPosition > colorFlipPoint) setColorFill(Colors.lightBlack);
+    if (scrollPosition < colorFlipPoint) setColorFill(Colors.white);
   });
 
   // HELPERS ---------------------------------------------------------
@@ -194,8 +200,7 @@ const Commending = ({navigation, route}) => {
     );
   };
 
-  // SERVERS ---------------------------------------------------------
-  const ServeProfileHeader = ({setDonateReason}) => {
+  const ServeProfileHeader = ({}) => {
     return (
       <View style={{height: height / 2}}>
         <ImageBackground
@@ -228,7 +233,6 @@ const Commending = ({navigation, route}) => {
                   paddingVertical: 5,
                   borderRadius: 20,
                 }}
-                onPress={() => setSponsorAction(true)}
               />
             </View>
           </LinearGradient>
@@ -282,6 +286,7 @@ const Commending = ({navigation, route}) => {
           style={{
             flexDirection: 'row',
             marginHorizontal: '5%',
+            marginTop: 10,
           }}>
           <View style={{flex: 1}}>
             <CustomButton
@@ -305,17 +310,36 @@ const Commending = ({navigation, route}) => {
     );
   };
 
+  const ServeTopBar = () => {
+    return (
+      <Animated.View
+        style={{
+          position: 'absolute',
+          zIndex: 4,
+        }}>
+        <View
+          style={{
+            marginHorizontal: '5%',
+            paddingTop: '10%',
+            paddingBottom: 20,
+          }}>
+          <UserProfileHeaderActions
+            navigation={navigation}
+            profileDataInfo={profile}
+            color={colorFill}
+            walletOnPress={() => setDonateReason(true)}
+            onPress={() => navigation.goBack()}
+          />
+        </View>
+      </Animated.View>
+    );
+  };
+
   // RETURN ---------------------------------------------------------
   return (
     <View style={{flex: 1}}>
       <StatusBar hidden />
       {screenFilter && <ScreenFilter />}
-      {sponsorAction && (
-        <SponsorPopUp
-          sponsorAction={sponsorAction}
-          setSponsorAction={setSponsorAction}
-        />
-      )}
       {donateReason && (
         <CommendActions
           donateReason={donateReason}
@@ -323,21 +347,7 @@ const Commending = ({navigation, route}) => {
         />
       )}
 
-      <View
-        style={{
-          position: 'absolute',
-          zIndex: 4,
-          top: 0,
-          alignItems: 'center',
-          marginHorizontal: '5%',
-          paddingVertical: '10%',
-        }}>
-        <UserProfileHeaderActions
-          navigation={navigation}
-          profileDataInfo={profile}
-          onPress={() => navigation.goBack()}
-        />
-      </View>
+      <ServeTopBar />
       <ScrollView
         onScroll={handleScroll}
         scrollEventThrottle={16}
@@ -345,7 +355,7 @@ const Commending = ({navigation, route}) => {
         showsVerticalScrollIndicator={false}
         style={{paddingVertical: headerHeight}}>
         <View style={{marginTop: -headerHeight}}>
-          <ServeProfileHeader setDonateReason={setDonateReason} />
+          <ServeProfileHeader />
         </View>
         <Animated.View
           style={[
