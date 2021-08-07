@@ -1,29 +1,17 @@
 import * as React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Dimensions,
-  FlatList,
-  Image,
-  ScrollView,
-  ImageBackground,
-} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {useAuthState} from '../../context/auth';
 import AddPostAction from '../../components/AddPostAction';
-import LinearGradient from 'react-native-linear-gradient';
 import {PROJECTS_DATA} from '../../config/data';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
-import {Planet, People} from '../../config/icons';
 import CustomButton from '../../components/CustomButton';
 import DonateActions from '../../components/DonateActions';
+import ProjectList from '../../components/ProjectList';
 
 import DummyBackground from '../../assets/images/profile/profile-background.png';
-const {width, height} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -39,31 +27,8 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     marginVertical: '5%',
   },
-  imgIconBackground: {
-    width: 16,
-    height: 16,
-    borderRadius: 16 / 2,
-    overflow: 'hidden',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  image: {
-    height: height / 4 + 50,
-    width: width / 2 - 30,
-    resizeMode: 'cover',
-  },
-  imageStyle: {
-    resizeMode: 'cover',
-    height: height / 3,
-    width: width / 3,
-  },
   actionTitle: {
     ...Fonts.N_700_12,
-  },
-  imgInfoOverlay: {},
-  textOverlay: {
-    ...Fonts.N_400_10,
-    color: Colors.white,
   },
 });
 
@@ -116,30 +81,6 @@ const Projects = ({navigation}) => {
     });
 
     return mutatedArray;
-  };
-
-  const ServePeopleIcon = () => {
-    return (
-      <View
-        style={{
-          ...styles.imgIconBackground,
-          backgroundColor: Colors.primary,
-        }}>
-        <People width={10} height={10} fill={Colors.white} />
-      </View>
-    );
-  };
-
-  const ServePlanetIcon = () => {
-    return (
-      <View
-        style={{
-          ...styles.imgIconBackground,
-          backgroundColor: Colors.planet,
-        }}>
-        <Planet width={10} height={10} fill={Colors.white} />
-      </View>
-    );
   };
 
   const ServeActions = ({navigation}) => {
@@ -197,97 +138,6 @@ const Projects = ({navigation}) => {
     );
   };
 
-  let countItemWidth = 0;
-  let countItemHeight = 0;
-  const renderFlatListItem = ({item, index}) => {
-    const {url, title, category, time, dummy} = item;
-    const projectsArrayLength = mutatedData.length;
-
-    const handlePictureWidth = () => {
-      let picWidth = width / 3;
-
-      if (dummy) picWidth = 0;
-      if (countItemWidth === 3 || countItemWidth === 4) picWidth = width / 2;
-
-      if (projectsArrayLength <= 2) picWidth = width / 2;
-      if (projectsArrayLength % 3 === 1 && index === projectsArrayLength - 1)
-        picWidth = width;
-
-      if (projectsArrayLength % 5 === 3 && index === projectsArrayLength - 2)
-        picWidth = width / 2;
-      if (projectsArrayLength % 5 === 3 && index === projectsArrayLength - 1)
-        picWidth = width / 2;
-
-      countItemWidth += 1;
-      if (countItemWidth === 6 || index === projectsArrayLength - 1)
-        countItemWidth = 0;
-      return picWidth;
-    };
-
-    const handlePictureHeight = () => {
-      let picHeight = height / 4;
-
-      if (countItemHeight === 3 || countItemHeight === 4)
-        picHeight = height / 3;
-      if (dummy) picHeight = 0;
-      countItemHeight += 1;
-      if (countItemHeight === 6 || index === projectsArrayLength - 1)
-        countItemHeight = 0;
-
-      return picHeight;
-    };
-
-    return (
-      <TouchableOpacity
-        style={{flexDirection: 'row'}}
-        onPress={() =>
-          navigation.navigate('ProjectStack', {
-            screen: 'Post',
-            params: {profileDataInfo: item},
-          })
-        }>
-        <View style={styles.imageContainer}>
-          <ImageBackground
-            source={url}
-            style={{
-              resizeMode: 'cover',
-              height: handlePictureHeight(),
-              width: handlePictureWidth(),
-              marginLeft: index % 3 !== 0 ? 2 : 0,
-              marginBottom: 2,
-            }}>
-            <LinearGradient
-              colors={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}
-              start={{x: 0.4, y: 0.4}}
-              style={{flex: 1}}>
-              <View
-                style={{
-                  zIndex: 1,
-                  position: 'absolute',
-                  width: '100%',
-                  bottom: 10,
-                  paddingHorizontal: 10,
-                }}>
-                <Text style={styles.textOverlay}>{title}</Text>
-                <View
-                  style={{
-                    paddingVertical: 5,
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                  }}>
-                  <Text style={styles.textOverlay}>{time}</Text>
-                  {category === 'people' && <ServePeopleIcon />}
-                  {category !== 'people' && <ServePlanetIcon />}
-                </View>
-              </View>
-            </LinearGradient>
-          </ImageBackground>
-        </View>
-      </TouchableOpacity>
-    );
-  };
-
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper>
@@ -299,19 +149,8 @@ const Projects = ({navigation}) => {
         <View style={styles.actionContainer}>
           <ServeActions navigation={navigation} />
         </View>
-
-        <ScrollView showsVerticalScrollIndicator={false} horizontal={false}>
-          <View style={{marginBottom: 60}}>
-            <FlatList
-              keyExtractor={(_, index) => String(index)}
-              showsVerticalScrollIndicator={false}
-              numColumns={3}
-              data={mutatedData}
-              renderItem={renderFlatListItem}
-              nestedScrollEnabled={true}
-            />
-          </View>
-        </ScrollView>
+        <ProjectList navigation={navigation} projects={mutatedData} />
+        <View style={{paddingBottom: 60}} />
       </View>
     </ScreenWrapper>
   );
