@@ -80,57 +80,72 @@ const ServeBlockUser = ({setBlockAction, profileDataInfo}) => {
 };
 
 // RETURN ---------------------------------------------------------
-const AppActionsHorizontal = ({navigation, profileDataInfo}) => {
+const AppActionsHorizontal = ({
+  navigation,
+  profileDataInfo,
+  commend,
+  applaud,
+  shoutout,
+  comment,
+}) => {
   const [reportAction, setReportAction] = React.useState(false);
   const [blockAction, setBlockAction] = React.useState(false);
 
   return (
     <View style={styles.container}>
       <View style={styles.wrapper}>
-        <View style={styles.iconContainer}>
-          <CustomButton
-            iconLeft="Commend"
-            iconWidth={28}
-            iconHeight={28}
-            iconFill={Colors.lightBlack}
-            onPress={() => alert('Commend')}
-            style={{backgroundColor: Colors.transparent}}
-          />
-          <Text style={styles.title}>1346</Text>
-        </View>
-        <View style={styles.iconContainer}>
-          <CustomButton
-            iconLeft="Applaud"
-            iconWidth={28}
-            iconHeight={28}
-            iconFill={Colors.lightBlack}
-            onPress={() => alert('Applaud')}
-            style={{backgroundColor: Colors.transparent}}
-          />
-          <Text style={styles.title}>346</Text>
-        </View>
-        <View style={styles.iconContainer}>
-          <CustomButton
-            iconLeft="Shoutout"
-            iconWidth={28}
-            iconHeight={24}
-            iconFill={Colors.lightBlack}
-            style={{backgroundColor: Colors.transparent}}
-            onPress={() => handleShoutout(profileDataInfo)}
-          />
-          <Text style={styles.title}>346</Text>
-        </View>
-        <View style={styles.iconContainer}>
-          <CustomButton
-            iconLeft="Comment"
-            iconWidth={28}
-            iconHeight={24}
-            iconFill={Colors.lightBlack}
-            onPress={() => alert('Comment')}
-            style={{backgroundColor: Colors.transparent}}
-          />
-          <Text style={styles.title}>346</Text>
-        </View>
+        {commend && (
+          <View style={styles.iconContainer}>
+            <CustomButton
+              iconLeft="Commend"
+              iconWidth={28}
+              iconHeight={28}
+              iconFill={Colors.lightBlack}
+              onPress={() => alert('Commend')}
+              style={{backgroundColor: Colors.transparent}}
+            />
+            <Text style={styles.title}>1346</Text>
+          </View>
+        )}
+        {applaud && (
+          <View style={styles.iconContainer}>
+            <CustomButton
+              iconLeft="Applaud"
+              iconWidth={28}
+              iconHeight={28}
+              iconFill={Colors.lightBlack}
+              onPress={() => alert('Applaud')}
+              style={{backgroundColor: Colors.transparent}}
+            />
+            <Text style={styles.title}>346</Text>
+          </View>
+        )}
+        {shoutout && (
+          <View style={styles.iconContainer}>
+            <CustomButton
+              iconLeft="Shoutout"
+              iconWidth={28}
+              iconHeight={24}
+              iconFill={Colors.lightBlack}
+              style={{backgroundColor: Colors.transparent}}
+              onPress={() => handleShoutout(profileDataInfo)}
+            />
+            <Text style={styles.title}>346</Text>
+          </View>
+        )}
+        {comment && (
+          <View style={styles.iconContainer}>
+            <CustomButton
+              iconLeft="Comment"
+              iconWidth={28}
+              iconHeight={24}
+              iconFill={Colors.lightBlack}
+              onPress={() => alert('Comment')}
+              style={{backgroundColor: Colors.transparent}}
+            />
+            <Text style={styles.title}>346</Text>
+          </View>
+        )}
 
         {reportAction && (
           <ServeReportAction

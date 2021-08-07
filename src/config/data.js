@@ -66,6 +66,28 @@ export const PROFILE_DATA = {
   progressBar: require('../assets/dummyAssets/progress-bar.png'),
 };
 
+export const PROFESSIONAL_PROFILE_DATA = {
+  url: require('../assets/dummyAssets/pro-background.png'),
+  title: 'Meditation to rel...',
+  time: '4 hrs ago',
+  profileImageUrl: require('../assets/dummyAssets/pro-avatar.png'),
+  name: 'Friendsoftheearth',
+  post: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+  category: 'people',
+  getInvolved: false,
+  isVerified: true,
+  id: '1',
+  date: '05.05.21',
+  interest: 'Zero Hunger',
+  name: 'nora.osborn',
+  followers: '5k',
+  about: 'Friends of the Earth Manchester',
+  location: 'London',
+  fullName: 'Nora Osborn',
+  locationMap: require('../assets/dummyAssets/location.png'),
+  progressBar: require('../assets/dummyAssets/progress-bar.png'),
+};
+
 export const PROFILE_DATA_ONE = [
   {
     url: require('../assets/dummyAssets/search7.jpg'),

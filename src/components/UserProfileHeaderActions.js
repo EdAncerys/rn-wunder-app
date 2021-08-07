@@ -32,7 +32,7 @@ const ServeProfileHeader = ({
   setDonateReason,
   onPress,
 }) => {
-  const {name} = profileDataInfo;
+  const {name, isVerified} = profileDataInfo;
 
   return (
     <View style={styles.container}>
@@ -50,8 +50,17 @@ const ServeProfileHeader = ({
         />
       </View>
 
-      <View>
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
         <Text style={styles.profileName}>@{name}</Text>
+        {isVerified && (
+          <CustomButton
+            iconLeft="Verified"
+            iconFill={Colors.primary}
+            iconWidth={20}
+            iconHeight={20}
+            style={{backgroundColor: Colors.transparent}}
+          />
+        )}
       </View>
 
       <View>

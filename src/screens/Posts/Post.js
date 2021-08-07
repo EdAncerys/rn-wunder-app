@@ -182,6 +182,7 @@ const Post = ({navigation, route}) => {
         <ServePostHeaderActions />
         <View style={styles.appActions}>
           <AppActions
+            navigation={navigation}
             Commend
             Applaud
             Shoutout

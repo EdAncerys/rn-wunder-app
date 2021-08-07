@@ -171,16 +171,23 @@ const Commending = ({navigation, route}) => {
             resizeMode: 'cover',
             justifyContent: 'center',
           }}>
-          <View style={{flex: 1, alignItems: 'center', marginVertical: '10%'}}>
-            <UserProfileHeaderActions
-              navigation={navigation}
-              profileDataInfo={profile}
-              onPress={() => navigation.goBack()}
-            />
-          </View>
-          <View style={styles.postContainer}>
-            <ServeProfileInfo setDonateReason={setDonateReason} />
-          </View>
+          <LinearGradient
+            colors={[Colors.gradientProfile, Colors.transparent]}
+            start={{x: 0, y: 0}}
+            end={{x: 0, y: 0.5}}
+            style={{flex: 1}}>
+            <View
+              style={{flex: 1, alignItems: 'center', marginVertical: '10%'}}>
+              <UserProfileHeaderActions
+                navigation={navigation}
+                profileDataInfo={profile}
+                onPress={() => navigation.goBack()}
+              />
+            </View>
+            <View>
+              <ServeProfileInfo setDonateReason={setDonateReason} />
+            </View>
+          </LinearGradient>
         </ImageBackground>
       </View>
     );
@@ -386,6 +393,10 @@ const Commending = ({navigation, route}) => {
             <AppActionsHorizontal
               navigation={navigation}
               profileDataInfo={profile}
+              commend
+              applaud
+              shoutout
+              comment
             />
           </View>
           <View style={{marginVertical: '5%'}}>
