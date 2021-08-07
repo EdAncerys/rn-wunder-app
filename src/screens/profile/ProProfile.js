@@ -12,7 +12,7 @@ import {
   Dimensions,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {Verified} from '../../config/icons';
+import ScreenFilter from '../../components/ScreenFilter';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
@@ -264,17 +264,7 @@ const Commending = ({navigation, route}) => {
   return (
     <View style={{flex: 1}}>
       <StatusBar hidden />
-      {screenFilter && (
-        <View
-          style={{
-            width: width,
-            height: height,
-            position: 'absolute',
-            zIndex: 99,
-            backgroundColor: Colors.gradientFilterBottom,
-          }}
-        />
-      )}
+      {screenFilter && <ScreenFilter />}
       {sponsorAction && (
         <SponsorPopUp
           sponsorAction={sponsorAction}
