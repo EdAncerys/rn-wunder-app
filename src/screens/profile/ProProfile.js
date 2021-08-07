@@ -25,6 +25,8 @@ import {
 } from '../../config/data';
 import AppActionsHorizontal from '../../components/AppActionsHorizontal';
 import CommendActions from '../../components/commendActions/CommendActions';
+import ProjectList from '../../components/ProjectList';
+import DummyBackground from '../../assets/images/profile/profile-background.png';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -40,7 +42,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    marginVertical: '10%',
   },
   wrapper: {
     marginHorizontal: '5%',
@@ -63,9 +64,9 @@ const Commending = ({navigation, route}) => {
   const [aboutProfile, setAboutProfile] = React.useState(true);
   const [screenFilter, setScreenFilter] = React.useState(false);
   const [colorFill, setColorFill] = React.useState(Colors.white);
-
-  const [data, setData] = React.useState(PROJECTS_DATA);
-  const [mutatedData, setMutatedData] = React.useState(false);
+  const [backgroundFill, setBackgroundFill] = React.useState(
+    Colors.transparent,
+  );
 
   const {url, about, name, followers, post, profileImageUrl} = profile;
   const imgArrayLength = projectImages.length;
@@ -91,9 +92,17 @@ const Commending = ({navigation, route}) => {
   const handleScroll = React.useCallback(event => {
     const scrollPosition = event.nativeEvent.contentOffset.y;
     scrollY.setValue(scrollPosition);
-    const colorFlipPoint = 365;
-    if (scrollPosition > colorFlipPoint) setColorFill(Colors.lightBlack);
-    if (scrollPosition < colorFlipPoint) setColorFill(Colors.white);
+    const fontColorFlipPoint = 365;
+    const backgroundColorFlipPoint = 465;
+
+    console.log(scrollPosition);
+    if (scrollPosition > fontColorFlipPoint) setColorFill(Colors.lightBlack);
+    if (scrollPosition < fontColorFlipPoint) setColorFill(Colors.white);
+
+    if (scrollPosition > backgroundColorFlipPoint)
+      setBackgroundFill(Colors.white);
+    if (scrollPosition < backgroundColorFlipPoint)
+      setBackgroundFill(Colors.transparent);
   });
 
   // HELPERS ---------------------------------------------------------
@@ -180,7 +189,12 @@ const Commending = ({navigation, route}) => {
 
   const ServeProfileInfo = () => {
     return (
-      <View style={{flexDirection: 'row', justifyContent: 'center'}}>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'center',
+          marginVertical: 50,
+        }}>
         <View style={{flex: 1}}>
           <Image
             source={profileImageUrl}
@@ -292,7 +306,7 @@ const Commending = ({navigation, route}) => {
 
   const ServePageNavigation = () => {
     return (
-      <View>
+      <View style={{backgroundColor: Colors.white}}>
         <View
           style={{
             flexDirection: 'row',
@@ -327,6 +341,7 @@ const Commending = ({navigation, route}) => {
         style={{
           position: 'absolute',
           zIndex: 4,
+          backgroundColor: backgroundFill,
         }}>
         <View
           style={{
@@ -389,132 +404,22 @@ const Commending = ({navigation, route}) => {
       mutatedArray = [...mutatedArray, profileDataInfo];
     });
 
-    React.useEffect(() => {
-      const mutatedDataArray = serveMutateArray(data);
-      setMutatedData(mutatedDataArray);
-    }, [data]);
-
     return mutatedArray;
   };
 
-  let countItemWidth = 0;
-  let countItemHeight = 0;
-  const renderFlatListProjectItem = ({item, index}) => {
-    console.log('mutatedData ', mutatedData);
-    console.log('data ', data);
-    const {url, title, category, time, dummy} = item;
-    const projectsArrayLength = mutatedData.length;
-
-    const handlePictureWidth = () => {
-      let picWidth = width / 3;
-
-      if (dummy) picWidth = 0;
-      if (countItemWidth === 3 || countItemWidth === 4) picWidth = width / 2;
-
-      if (projectsArrayLength <= 2) picWidth = width / 2;
-      if (projectsArrayLength % 3 === 1 && index === projectsArrayLength - 1)
-        picWidth = width;
-
-      if (projectsArrayLength % 5 === 3 && index === projectsArrayLength - 2)
-        picWidth = width / 2;
-      if (projectsArrayLength % 5 === 3 && index === projectsArrayLength - 1)
-        picWidth = width / 2;
-
-      countItemWidth += 1;
-      if (countItemWidth === 6 || index === projectsArrayLength - 1)
-        countItemWidth = 0;
-      return picWidth;
-    };
-
-    const handlePictureHeight = () => {
-      let picHeight = height / 4;
-
-      if (countItemHeight === 3 || countItemHeight === 4)
-        picHeight = height / 3;
-      if (dummy) picHeight = 0;
-      countItemHeight += 1;
-      if (countItemHeight === 6 || index === projectsArrayLength - 1)
-        countItemHeight = 0;
-
-      return picHeight;
-    };
-
-    return (
-      <TouchableOpacity
-        style={{flexDirection: 'row'}}
-        onPress={() =>
-          navigation.navigate('ProjectStack', {
-            screen: 'Post',
-            params: {profileDataInfo: item},
-          })
-        }>
-        <View style={styles.imageContainer}>
-          <ImageBackground
-            source={url}
-            style={{
-              resizeMode: 'cover',
-              height: handlePictureHeight(),
-              width: handlePictureWidth(),
-              marginLeft: index % 3 !== 0 ? 2 : 0,
-              marginBottom: 2,
-            }}>
-            <LinearGradient
-              colors={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}
-              start={{x: 0.4, y: 0.4}}
-              style={{flex: 1}}>
-              <View
-                style={{
-                  zIndex: 1,
-                  position: 'absolute',
-                  width: '100%',
-                  bottom: 10,
-                  paddingHorizontal: 10,
-                }}>
-                <Text style={styles.textOverlay}>{title}</Text>
-                <View
-                  style={{
-                    paddingVertical: 5,
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                  }}>
-                  <Text style={styles.textOverlay}>{time}</Text>
-                  {category === 'people' && <ServePeopleIcon />}
-                  {category !== 'people' && <ServePlanetIcon />}
-                </View>
-              </View>
-            </LinearGradient>
-          </ImageBackground>
-        </View>
-      </TouchableOpacity>
-    );
-  };
-
   const ServeProjectView = () => {
+    const dataArray = serveMutateArray(PROJECTS_DATA);
     return (
       <View>
-        <FlatList
-          keyExtractor={(_, index) => String(index)}
-          showsVerticalScrollIndicator={false}
-          numColumns={3}
-          data={mutatedData}
-          renderItem={renderFlatListProjectItem}
-          nestedScrollEnabled={true}
-        />
-        {/* <FlatList
-          keyExtractor={(_, index) => String(index)}
-          horizontal={true}
-          data={projectImages}
-          renderItem={renderFlatListItem}
-          showsHorizontalScrollIndicator={false}
-        /> */}
+        <ProjectList navigation={navigation} projects={dataArray} />
+        <View style={{marginBottom: headerHeight}} />
       </View>
     );
   };
 
   // RETURN ---------------------------------------------------------
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor: Colors.white}}>
       <StatusBar hidden />
       {screenFilter && <ScreenFilter />}
       {donateReason && (
@@ -527,7 +432,7 @@ const Commending = ({navigation, route}) => {
       <ServeTopBar />
       <ScrollView
         onScroll={handleScroll}
-        scrollEventThrottle={16}
+        scrollEventThrottle={72}
         stickyHeaderIndices={[2]}
         showsVerticalScrollIndicator={false}
         style={{paddingVertical: headerHeight}}>
@@ -536,6 +441,9 @@ const Commending = ({navigation, route}) => {
         </View>
         <Animated.View
           style={[
+            {
+              backgroundColor: Colors.white,
+            },
             {
               height: scrollY.interpolate({
                 inputRange: [0, height],
