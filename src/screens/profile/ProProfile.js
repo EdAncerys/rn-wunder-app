@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
 });
 
 const Commending = ({navigation, route}) => {
-  // const {profileDataInfo} = route.params;
-  const [profile, setProfile] = React.useState(PROFESSIONAL_PROFILE_DATA);
+  const {profileDataInfo} = route.params;
+  const [profile, setProfile] = React.useState(profileDataInfo);
   const [donateReason, setDonateReason] = React.useState(false);
   const [projectImages, setProjectImages] = React.useState(PROFILE_DATA_ONE);
   const [aboutProfile, setAboutProfile] = React.useState(true);
@@ -68,7 +68,8 @@ const Commending = ({navigation, route}) => {
     Colors.transparent,
   );
 
-  const {url, about, name, followers, post, profileImageUrl} = profile;
+  console.log(profileDataInfo);
+  const {url, about, post, profileImageUrl} = profile;
   const imgArrayLength = projectImages.length;
   const headerHeight = height / 10;
 
@@ -95,7 +96,6 @@ const Commending = ({navigation, route}) => {
     const fontColorFlipPoint = 365;
     const backgroundColorFlipPoint = 465;
 
-    console.log(scrollPosition);
     if (scrollPosition > fontColorFlipPoint) setColorFill(Colors.lightBlack);
     if (scrollPosition < fontColorFlipPoint) setColorFill(Colors.white);
 
@@ -197,7 +197,7 @@ const Commending = ({navigation, route}) => {
         }}>
         <View style={{flex: 1}}>
           <Image
-            source={profileImageUrl}
+            source={{uri: profileImageUrl}}
             style={{
               width: 96,
               height: 96,

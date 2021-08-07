@@ -88,6 +88,9 @@ const Post = ({navigation, route}) => {
     getInvolved,
   } = profileDataInfo;
 
+  const navStack = isVerified ? 'ProfileStack' : 'AppStack';
+  const navScreen = isVerified ? 'ProProfile' : 'Profile';
+
   // SERVERS ---------------------------------------------------------
   const ServePostHeaderActions = () => {
     return (
@@ -104,12 +107,10 @@ const Post = ({navigation, route}) => {
       <TouchableOpacity
         style={styles.rowWrapper}
         onPress={() =>
-          navigation.navigate('AppStack', {
-            screen: 'Profile',
+          navigation.navigate(navStack, {
+            screen: navScreen,
             params: {
               profileDataInfo: profileDataInfo,
-              key: route.key,
-              name: route.name,
             },
           })
         }>

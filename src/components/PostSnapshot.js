@@ -62,13 +62,19 @@ const styles = StyleSheet.create({
 // SERVERS ---------------------------------------------------------
 const ServeProfileInfo = ({navigation, profileDataInfo}) => {
   const {profileImageUrl, name, isVerified} = profileDataInfo;
+
+  const navStack = isVerified ? 'ProfileStack' : 'AppStack';
+  const navScreen = isVerified ? 'ProProfile' : 'Profile';
+
   return (
     <TouchableOpacity
       style={styles.rowWrapper}
       onPress={() =>
-        navigation.navigate('AppStack', {
-          screen: 'Profile',
-          params: {profileDataInfo: profileDataInfo},
+        navigation.navigate(navStack, {
+          screen: navScreen,
+          params: {
+            profileDataInfo: profileDataInfo,
+          },
         })
       }>
       <View>
