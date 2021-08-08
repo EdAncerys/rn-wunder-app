@@ -6,7 +6,6 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-  Dimensions,
 } from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
@@ -15,9 +14,7 @@ import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import AppActions from '../../components/AppActions';
 import ProfileHeaderActions from '../../components/PostHeaderActions';
-import {Verified} from '../../config/icons';
-
-const {width} = Dimensions.get('screen');
+import CommendActions from '../../components/commendActions/CommendActions';
 
 const styles = StyleSheet.create({
   container: {
@@ -76,6 +73,7 @@ const styles = StyleSheet.create({
 });
 
 const Post = ({navigation, route}) => {
+  const [donateReason, setDonateReason] = React.useState(false);
   const {profileDataInfo} = route.params;
   const {
     url,
@@ -128,9 +126,14 @@ const Post = ({navigation, route}) => {
         <Text style={styles.profile}>@{name}</Text>
         {isVerified && (
           <View style={styles.isVerified}>
-            <View>
-              <Verified width={20} height={20} fill={Colors.primary} />
-            </View>
+            <CustomButton
+              iconLeft="Verified"
+              iconFill={Colors.primary}
+              iconWidth={20}
+              iconHeight={20}
+              style={{backgroundColor: Colors.transparent}}
+              noFeedback
+            />
           </View>
         )}
       </TouchableOpacity>
@@ -199,12 +202,18 @@ const Post = ({navigation, route}) => {
             <View style={styles.getInvolvedActions}>
               <CustomButton
                 title="get involved"
-                onPress={() => alert('get involved')}
+                onPress={() => setDonateReason(true)}
               />
             </View>
           )}
         </View>
       </View>
+      {donateReason && (
+        <CommendActions
+          donateReason={donateReason}
+          setDonateReason={setDonateReason}
+        />
+      )}
     </ScreenWrapper>
   );
 };

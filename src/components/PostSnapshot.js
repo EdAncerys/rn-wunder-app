@@ -10,8 +10,9 @@ import {
 
 import Colors from '../config/colors';
 import Fonts from '../config/fonts';
-import {Verified} from '../config/icons';
 import CustomButton from '../components/CustomButton';
+import CommendActions from '../components/commendActions/CommendActions';
+
 const {width} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
@@ -59,109 +60,120 @@ const styles = StyleSheet.create({
   },
 });
 
-// SERVERS ---------------------------------------------------------
-const ServeProfileInfo = ({navigation, profileDataInfo}) => {
-  const {profileImageUrl, name, isVerified} = profileDataInfo;
+const PostSnapshot = ({navigation, profileDataInfo}) => {
+  const {getInvolved} = profileDataInfo;
+  const [donateReason, setDonateReason] = React.useState(false);
 
-  const navStack = isVerified ? 'ProfileStack' : 'AppStack';
-  const navScreen = isVerified ? 'ProProfile' : 'Profile';
+  // SERVERS ---------------------------------------------------------
+  const ServeProfileInfo = ({}) => {
+    const {profileImageUrl, name, isVerified} = profileDataInfo;
 
-  return (
-    <TouchableOpacity
-      style={styles.rowWrapper}
-      onPress={() =>
-        navigation.navigate(navStack, {
-          screen: navScreen,
-          params: {
-            profileDataInfo: profileDataInfo,
-          },
-        })
-      }>
-      <View>
-        <Image
-          style={{
-            width: 32,
-            height: 32,
-            borderRadius: 16,
-            overflow: 'hidden',
-          }}
-          source={{uri: profileImageUrl}}
-        />
-      </View>
-      <Text style={styles.profile}>@{name}</Text>
-      {isVerified && (
-        <View style={styles.verified}>
-          <View>
-            <Verified width={20} height={20} fill={Colors.primary} />
-          </View>
-        </View>
-      )}
-    </TouchableOpacity>
-  );
-};
-const ServePostTitle = ({profileDataInfo}) => {
-  return <Text style={styles.title}>{profileDataInfo.title}</Text>;
-};
-const ServePost = ({profileDataInfo}) => {
-  const {post, category} = profileDataInfo;
-  const postTagIcon = category === 'planet' ? 'Planet' : 'People';
-  const iconColor = category === 'planet' ? Colors.planet : Colors.primary;
+    const navStack = isVerified ? 'ProfileStack' : 'AppStack';
+    const navScreen = isVerified ? 'ProProfile' : 'Profile';
 
-  return (
-    <View style={styles.rowWrapper}>
-      <TouchableOpacity onPress={() => alert('post')}>
+    return (
+      <TouchableOpacity
+        style={styles.rowWrapper}
+        onPress={() =>
+          navigation.navigate(navStack, {
+            screen: navScreen,
+            params: {
+              profileDataInfo: profileDataInfo,
+            },
+          })
+        }>
         <View>
-          <Text style={styles.post}>
-            {post}
-            <Text style={styles.postAction}>... more</Text>
-          </Text>
-        </View>
-      </TouchableOpacity>
-      <View style={styles.badge}>
-        <View
-          style={{
-            backgroundColor: iconColor,
-            padding: 8.75,
-            borderRadius: 100,
-          }}>
-          <CustomButton
-            iconLeft={postTagIcon}
-            iconFill={Colors.white}
-            iconWidth={25}
-            iconHeight={25}
-            iconStyling={styles.postTagIcon}
+          <Image
             style={{
-              backgroundColor: Colors.transparent,
+              width: 32,
+              height: 32,
+              borderRadius: 16,
+              overflow: 'hidden',
             }}
-            onPress={() => alert(postTagIcon)}
+            source={{uri: profileImageUrl}}
           />
         </View>
+        <Text style={styles.profile}>@{name}</Text>
+        {isVerified && (
+          <View style={styles.verified}>
+            <CustomButton
+              iconLeft="Verified"
+              iconFill={Colors.primary}
+              iconWidth={20}
+              iconHeight={20}
+              style={{backgroundColor: Colors.transparent}}
+              noFeedback
+            />
+          </View>
+        )}
+      </TouchableOpacity>
+    );
+  };
+  const ServePostTitle = ({}) => {
+    return <Text style={styles.title}>{profileDataInfo.title}</Text>;
+  };
+  const ServePost = ({}) => {
+    const {post, category} = profileDataInfo;
+    const postTagIcon = category === 'planet' ? 'Planet' : 'People';
+    const iconColor = category === 'planet' ? Colors.planet : Colors.primary;
+
+    return (
+      <View style={styles.rowWrapper}>
+        <TouchableOpacity onPress={() => alert('post')}>
+          <View>
+            <Text style={styles.post}>
+              {post}
+              <Text style={styles.postAction}>... more</Text>
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <View style={styles.badge}>
+          <View
+            style={{
+              backgroundColor: iconColor,
+              padding: 8.75,
+              borderRadius: 100,
+            }}>
+            <CustomButton
+              iconLeft={postTagIcon}
+              iconFill={Colors.white}
+              iconWidth={25}
+              iconHeight={25}
+              iconStyling={styles.postTagIcon}
+              style={{
+                backgroundColor: Colors.transparent,
+              }}
+              onPress={() => alert(postTagIcon)}
+            />
+          </View>
+        </View>
       </View>
-    </View>
-  );
-};
+    );
+  };
 
-const PostPreview = ({navigation, profileDataInfo}) => {
-  const {getInvolved} = profileDataInfo;
-
+  // RETURN ---------------------------------------------------------
   return (
     <View style={styles.container}>
-      <ServeProfileInfo
-        navigation={navigation}
-        profileDataInfo={profileDataInfo}
-      />
-      <ServePostTitle profileDataInfo={profileDataInfo} />
-      <ServePost profileDataInfo={profileDataInfo} />
+      <ServeProfileInfo />
+      <ServePostTitle />
+      <ServePost />
+
       {getInvolved && (
         <View style={styles.getInvolvedActions}>
           <CustomButton
             title="get involved"
-            onPress={() => alert('get involved')}
+            onPress={() => setDonateReason(true)}
           />
         </View>
+      )}
+      {donateReason && (
+        <CommendActions
+          donateReason={donateReason}
+          setDonateReason={setDonateReason}
+        />
       )}
     </View>
   );
 };
 
-export default PostPreview;
+export default PostSnapshot;

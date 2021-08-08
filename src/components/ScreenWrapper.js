@@ -55,7 +55,7 @@ const ServeImgBackground = ({props}) => {
   return screen;
 };
 const ServeScreenView = ({props}) => {
-  const screenFilter = props.filter || Colors.white;
+  const screenFilter = props.filter || Colors.transparent;
   const gradientFilter = props.gradient || [
     Colors.transparent,
     Colors.transparent,

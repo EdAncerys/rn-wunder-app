@@ -9,16 +9,13 @@ import {
   TextInput,
   TouchableOpacity,
   Dimensions,
-  TouchableHighlight,
 } from 'react-native';
 
-import {POST_DATA, PROFILE_DATA} from '../../config/data';
+import {POST_DATA} from '../../config/data';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
-import * as Icons from '../../config/icons';
-import NavigateAction from '../../components/NavigateAction';
 import CustomButton from '../../components/CustomButton';
 
 const {width, height} = Dimensions.get('screen');
@@ -27,27 +24,6 @@ const styles = StyleSheet.create({
   divider: {
     borderColor: Colors.silver,
     borderBottomWidth: 1,
-  },
-  contentContainer: {
-    paddingHorizontal: '8%',
-    marginVertical: '2%',
-  },
-  notificationContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  imgContainerBackground: {
-    width: 32,
-    height: 40,
-    borderRadius: 5,
-    marginLeft: 10,
-    overflow: 'hidden',
-  },
-  imgWrapper: {
-    flex: 1,
-    backgroundColor: Colors.screenFilter,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   title: {
     ...Fonts.N_700_28,
@@ -83,9 +59,7 @@ const styles = StyleSheet.create({
 });
 
 const ServeReplyInput = ({profileDataInfo, reply, setReply}) => {
-  const {profileImageUrl, name, isVerified} = profileDataInfo;
-  const navStack = isVerified ? 'ProfileStack' : 'AppStack';
-  const navScreen = isVerified ? 'ProProfile' : 'Profile';
+  const {profileImageUrl, name} = profileDataInfo;
 
   return (
     <View>
@@ -131,15 +105,14 @@ const ServeReplyInput = ({profileDataInfo, reply, setReply}) => {
   );
 };
 
-const Commenting = ({navigation}) => {
-  const [postBody, setPostBody] = React.useState(PROFILE_DATA);
+const Commenting = ({navigation, route}) => {
+  const {profileDataInfo} = route.params;
+  const [postBody, setPostBody] = React.useState(profileDataInfo);
   const [comment, setComment] = React.useState(POST_DATA);
   const [reply, setReply] = React.useState('');
   const [randomComment, setRandomComment] = React.useState(comment);
 
-  const {profileImageUrl, category, name, postTitle, tags, post, isVerified} =
-    postBody;
-  console.log(postBody);
+  const {category, title, tags, post} = postBody;
 
   React.useEffect(() => {
     const commentData = comment.sort(() => 0.5 - Math.random()).slice(0, 8);
@@ -251,6 +224,7 @@ const Commenting = ({navigation}) => {
               iconWidth={20}
               iconHeight={20}
               style={{backgroundColor: Colors.transparent}}
+              noFeedback
             />
           )}
         </View>
@@ -272,7 +246,7 @@ const Commenting = ({navigation}) => {
         </View>
         <ServeProfileInfo profileDataInfo={postBody} />
         <View style={{marginVertical: 20}}>
-          <Text style={styles.title}>{postTitle}</Text>
+          <Text style={styles.title}>{title}</Text>
         </View>
         <View
           style={{
@@ -283,7 +257,7 @@ const Commenting = ({navigation}) => {
           </View>
           <View style={{flex: 1, alignItems: 'center'}}>
             <CustomButton
-              iconLeft={category === 'Planet' ? 'Planet' : 'People'}
+              iconLeft={category === 'planet' ? 'Planet' : 'People'}
               iconWidth={34}
               iconHeight={34}
               iconFill={Colors.white}
@@ -291,14 +265,16 @@ const Commenting = ({navigation}) => {
                 padding: 5,
                 borderRadius: 30,
                 backgroundColor:
-                  category === 'Planet' ? Colors.planet : Colors.primary,
+                  category === 'planet' ? Colors.planet : Colors.primary,
               }}
-              onPress={() => alert('Planet')}
+              onPress={() => alert(category)}
             />
           </View>
         </View>
         <View style={{width: width / 1.5, marginVertical: 20}}>
-          <Text style={styles.post}>{tags}</Text>
+          <Text style={styles.post}>
+            #healthyeating #fruit #veg #vegetables #eatgreen #wunder
+          </Text>
         </View>
       </View>
     );

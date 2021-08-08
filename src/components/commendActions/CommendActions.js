@@ -20,8 +20,8 @@ const {width, height} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
+    position: 'absolute',
+    bottom: height / 3,
   },
   modalView: {
     paddingHorizontal: 10,

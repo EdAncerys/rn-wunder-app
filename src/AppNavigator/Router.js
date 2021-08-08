@@ -76,11 +76,11 @@ const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="CreateAccountStack">
-      <Stack.Screen
+      {/* <Stack.Screen
         name="TestScreen"
         component={Commenting}
         options={{headerShown: false}}
-      />
+      /> */}
       {/* <Stack.Screen
         name="CreateAccountStack"
         component={CreateAccountStack}
@@ -203,6 +203,11 @@ const HomeStack = () => {
       <Stack.Screen
         name="UserNotification"
         component={UserNotification}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Commenting"
+        component={Commenting}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

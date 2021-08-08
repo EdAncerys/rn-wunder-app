@@ -201,9 +201,8 @@ const Profile = ({navigation, route}) => {
         justifyContent: 'center',
       }}>
       <LinearGradient
-        colors={[Colors.gradientProfile, Colors.transparent]}
-        start={{x: 0, y: 0}}
-        end={{x: 0, y: 0.5}}
+        colors={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}
+        start={{x: 0.4, y: 0.4}}
         style={{flex: 1}}>
         <StatusBar hidden />
         <SafeAreaView style={styles.wrapper}>

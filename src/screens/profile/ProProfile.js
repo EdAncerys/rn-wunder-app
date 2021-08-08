@@ -18,11 +18,7 @@ import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import UserProfileHeaderActions from '../../components/UserProfileHeaderActions';
-import {
-  PROFESSIONAL_PROFILE_DATA,
-  PROJECTS_DATA,
-  PROFILE_DATA_ONE,
-} from '../../config/data';
+import {PROJECTS_DATA, PROFILE_DATA_ONE} from '../../config/data';
 import AppActionsHorizontal from '../../components/AppActionsHorizontal';
 import CommendActions from '../../components/commendActions/CommendActions';
 import ProjectList from '../../components/ProjectList';

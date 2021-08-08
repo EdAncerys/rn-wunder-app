@@ -12,7 +12,6 @@ import {
   Dimensions,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import {Verified} from '../../config/icons';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
@@ -141,7 +140,14 @@ const Commending = ({navigation, route}) => {
           }}>
           <Text style={styles.post}>@{name}</Text>
           <View style={{marginHorizontal: '5%'}}>
-            <Verified width={20} height={20} fill={Colors.primary} />
+            <CustomButton
+              iconLeft="Verified"
+              iconFill={Colors.primary}
+              iconWidth={20}
+              iconHeight={20}
+              style={{backgroundColor: Colors.transparent}}
+              noFeedback
+            />
           </View>
         </View>
         <View

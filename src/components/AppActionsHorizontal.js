@@ -90,6 +90,7 @@ const AppActionsHorizontal = ({
 }) => {
   const [reportAction, setReportAction] = React.useState(false);
   const [blockAction, setBlockAction] = React.useState(false);
+  const [applaudCount, setApplaudCount] = React.useState(365);
 
   return (
     <View style={styles.container}>
@@ -114,10 +115,10 @@ const AppActionsHorizontal = ({
               iconWidth={28}
               iconHeight={28}
               iconFill={Colors.lightBlack}
-              onPress={() => alert('Applaud')}
+              onPress={() => setApplaudCount(applaudCount + 1)}
               style={{backgroundColor: Colors.transparent}}
             />
-            <Text style={styles.title}>346</Text>
+            <Text style={styles.title}>{applaudCount}</Text>
           </View>
         )}
         {shoutout && (

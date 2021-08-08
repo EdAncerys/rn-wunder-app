@@ -76,6 +76,7 @@ const UserProfileHeaderActions = ({
               iconWidth={20}
               iconHeight={20}
               style={{backgroundColor: Colors.transparent}}
+              noFeedback
             />
           )}
         </View>
