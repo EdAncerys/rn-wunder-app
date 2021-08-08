@@ -1,16 +1,18 @@
 import * as React from 'react';
-import {View, StyleSheet, Modal} from 'react-native';
+import {View, StyleSheet, Modal, Dimensions} from 'react-native';
 
 import Colors from '../config/colors';
 import Fonts from '../config/fonts';
 import CustomButton from './CustomButton';
+
+const {width, height} = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     width: '100%',
     paddingHorizontal: '5%',
-    bottom: 50,
+    bottom: height / 16,
   },
 });
 

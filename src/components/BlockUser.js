@@ -17,7 +17,6 @@ const BlockUser = ({setBlockAction, profileDataInfo}) => {
           position: 'absolute',
           width: '100%',
           paddingHorizontal: '5%',
-          bottom: 50,
           bottom: height / 2.5,
         }}>
         <View

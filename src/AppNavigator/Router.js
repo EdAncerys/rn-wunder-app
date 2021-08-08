@@ -78,7 +78,7 @@ export const AppNavigator = () => {
     <Stack.Navigator initialRouteName="CreateAccountStack">
       {/* <Stack.Screen
         name="TestScreen"
-        component={Commenting}
+        component={SharePost}
         options={{headerShown: false}}
       /> */}
       {/* <Stack.Screen

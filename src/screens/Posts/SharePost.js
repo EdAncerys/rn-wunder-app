@@ -65,6 +65,76 @@ const styles = StyleSheet.create({
   },
 });
 
+// HANDLERS ---------------------------------------------------------
+const AboutPost = ({renderImg, title, setTitle, caption, setCaption}) => {
+  return (
+    <View
+      style={{
+        flexDirection: 'row',
+        marginVertical: '5%',
+      }}>
+      <View
+        style={{
+          height: 170,
+        }}>
+        <Image
+          style={{
+            width: 80,
+            height: 170,
+            borderRadius: 5,
+            overflow: 'hidden',
+            resizeMode: 'cover',
+          }}
+          source={renderImg}
+        />
+      </View>
+      <View
+        style={{
+          flex: 1,
+          alignItems: 'flex-start',
+          marginLeft: '5%',
+        }}>
+        <View
+          style={{
+            borderBottomWidth: 1,
+            borderColor: Colors.lightSilver,
+            width: '100%',
+          }}>
+          <TextInput
+            maxLength={20}
+            require={true}
+            placeholder="Title of post..."
+            underlineColorAndroid="transparent"
+            placeholderTextColor={Colors.lightSilver}
+            style={styles.inputContainer}
+            value={title}
+            onChangeText={setTitle}
+            autoCapitalize="none"
+          />
+        </View>
+        <View
+          style={{
+            width: '100%',
+            height: 100,
+          }}>
+          <TextInput
+            multiline={true}
+            numberOfLines={3}
+            require={true}
+            placeholder="Write a caption..."
+            underlineColorAndroid="transparent"
+            placeholderTextColor={Colors.lightSilver}
+            style={styles.inputContainer}
+            onChangeText={setCaption}
+            value={caption}
+            autoCapitalize="none"
+          />
+        </View>
+      </View>
+    </View>
+  );
+};
+
 const SharePost = ({navigation, route}) => {
   const {image} = route.params;
   const {url} = image;
@@ -76,76 +146,6 @@ const SharePost = ({navigation, route}) => {
   const [people, setPeople] = React.useState(false);
   const [planet, setPlanet] = React.useState(true);
   const [draft, setDraft] = React.useState(false);
-
-  // HANDLERS ---------------------------------------------------------
-  const AboutPost = () => {
-    return (
-      <View
-        style={{
-          flexDirection: 'row',
-          marginVertical: '5%',
-        }}>
-        <View
-          style={{
-            height: 170,
-          }}>
-          <Image
-            style={{
-              width: 80,
-              height: 170,
-              borderRadius: 5,
-              overflow: 'hidden',
-              resizeMode: 'cover',
-            }}
-            source={renderImg}
-          />
-        </View>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'flex-start',
-            marginLeft: '5%',
-          }}>
-          <View
-            style={{
-              borderBottomWidth: 1,
-              borderColor: Colors.lightSilver,
-              width: '100%',
-            }}>
-            <TextInput
-              maxLength={20}
-              require={true}
-              placeholder="Title of post..."
-              underlineColorAndroid="transparent"
-              placeholderTextColor={Colors.lightSilver}
-              style={styles.inputContainer}
-              // value={title}
-              // onChangeText={setTitle}
-              autoCapitalize="none"
-            />
-          </View>
-          <View
-            style={{
-              width: '100%',
-              height: 100,
-            }}>
-            <TextInput
-              multiline={true}
-              numberOfLines={3}
-              require={true}
-              placeholder="Write a caption..."
-              underlineColorAndroid="transparent"
-              placeholderTextColor={Colors.lightSilver}
-              style={styles.inputContainer}
-              // onChangeText={setCaption}
-              // value={caption}
-              autoCapitalize="none"
-            />
-          </View>
-        </View>
-      </View>
-    );
-  };
 
   // RETURN ---------------------------------------------------------
   return (
@@ -171,7 +171,13 @@ const SharePost = ({navigation, route}) => {
         </View>
         <View style={styles.divider} />
         <View style={styles.content}>
-          <AboutPost />
+          <AboutPost
+            renderImg={renderImg}
+            title={title}
+            setTitle={setTitle}
+            caption={caption}
+            setCaption={setCaption}
+          />
           <View style={styles.divider} />
 
           <View
