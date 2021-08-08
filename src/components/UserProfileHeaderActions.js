@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
 
 const UserProfileHeaderActions = ({
   navigation,
+  commend,
   profileDataInfo,
   color,
   onPress,
@@ -104,6 +105,7 @@ const UserProfileHeaderActions = ({
 
       {donateReason && (
         <CommendActions
+          commend
           donateReason={donateReason}
           setDonateReason={setDonateReason}
         />

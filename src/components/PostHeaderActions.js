@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: width - width / 10,
   },
   icon: {
     width: 32,
@@ -35,37 +34,32 @@ const styles = StyleSheet.create({
   },
 });
 
-// SERVERS ---------------------------------------------------------
-const ServeReportAction = ({
-  navigation,
-  setReportAction,
-  setBlockAction,
-  profileDataInfo,
-}) => {
-  return (
-    <ReportAction
-      navigation={navigation}
-      setReportAction={setReportAction}
-      setBlockAction={setBlockAction}
-      profileDataInfo={profileDataInfo}
-    />
-  );
-};
-
-const ServeBlockUser = ({setBlockAction, profileDataInfo}) => {
-  return (
-    <BlockUser
-      setBlockAction={setBlockAction}
-      profileDataInfo={profileDataInfo}
-    />
-  );
-};
-
-// RETURN ---------------------------------------------------------
 const ProfileHeaderActions = ({navigation, profileDataInfo}) => {
   const [reportAction, setReportAction] = React.useState(false);
   const [blockAction, setBlockAction] = React.useState(false);
 
+  // SERVERS ---------------------------------------------------------
+  const ServeReportAction = ({}) => {
+    return (
+      <ReportAction
+        navigation={navigation}
+        setReportAction={setReportAction}
+        setBlockAction={setBlockAction}
+        profileDataInfo={profileDataInfo}
+      />
+    );
+  };
+
+  const ServeBlockUser = ({}) => {
+    return (
+      <BlockUser
+        setBlockAction={setBlockAction}
+        profileDataInfo={profileDataInfo}
+      />
+    );
+  };
+
+  // RETURN ---------------------------------------------------------
   return (
     <View>
       <View style={styles.container}>
@@ -99,20 +93,8 @@ const ProfileHeaderActions = ({navigation, profileDataInfo}) => {
           />
         </View>
       </View>
-      {reportAction && (
-        <ServeReportAction
-          navigation={navigation}
-          setReportAction={setReportAction}
-          setBlockAction={setBlockAction}
-          profileDataInfo={profileDataInfo}
-        />
-      )}
-      {blockAction && (
-        <ServeBlockUser
-          setBlockAction={setBlockAction}
-          profileDataInfo={profileDataInfo}
-        />
-      )}
+      {reportAction && <ServeReportAction />}
+      {blockAction && <ServeBlockUser />}
     </View>
   );
 };

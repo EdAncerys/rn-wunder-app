@@ -41,13 +41,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const CommendActions = ({donateReason, setDonateReason}) => {
-  const [reason, setReason] = React.useState(true);
+const CommendActions = ({donateReason, setDonateReason, commend}) => {
+  const [reason, setReason] = React.useState(!commend);
   const [event, setEvent] = React.useState(false);
   const [volunteer, setVolunteer] = React.useState(false);
   const [both, setBoth] = React.useState(false);
 
-  const [donateCoins, setDonateCoins] = React.useState(false);
+  const [donateCoins, setDonateCoins] = React.useState(commend);
   const [confirmCoins, setConfirmCoins] = React.useState(false);
   const [thanksMsg, setThanksMsg] = React.useState(false);
   const [coins, setCoins] = React.useState('');

@@ -370,6 +370,7 @@ const Commending = ({navigation, route}) => {
           }}>
           <UserProfileHeaderActions
             navigation={navigation}
+            commend
             profileDataInfo={profile}
             color={colorFill}
             walletOnPress={() => setDonateReason(true)}

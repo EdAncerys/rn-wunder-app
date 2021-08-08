@@ -4,7 +4,7 @@ import {View, StyleSheet, Dimensions} from 'react-native';
 import Colors from '../config/colors';
 import Fonts from '../config/fonts';
 import CustomButton from './CustomButton';
-import DonatePopUp from './donateActions/DonatePopUp';
+import CommendActions from './commendActions/CommendActions';
 import Wallet from './wallet/Wallet';
 
 const {width} = Dimensions.get('screen');
@@ -28,157 +28,137 @@ const styles = StyleSheet.create({
   },
 });
 
-// SERVERS ---------------------------------------------------------
-const ServeDonate = ({donateAction, setDonateAction, profile}) => {
-  return (
-    <View>
-      {profile && (
-        <View>
-          <Wallet
-            donateAction={donateAction}
-            setDonateAction={setDonateAction}
-          />
-        </View>
-      )}
-      {!profile && (
-        <DonatePopUp
-          donateAction={donateAction}
-          setDonateAction={setDonateAction}
-        />
-      )}
-    </View>
-  );
-};
-const ServeNavigateProfile = ({navigation, screen}) => {
-  const [active, setActive] = React.useState({color: Colors.white});
-  const [inactive, setInactive] = React.useState({color: Colors.lightSilver});
-
-  React.useEffect(() => {
-    setInactive({color: Colors.lightSilver});
-    setActive({color: Colors.white});
-
-    if (screen === 'CreateProAccount') {
-      setActive({color: Colors.lightSilver});
-      setInactive({color: Colors.white});
-    }
-  }, [screen]);
-
-  return (
-    <View style={styles.profileContainer}>
-      <CustomButton
-        style={{backgroundColor: Colors.transparent}}
-        title="Personal"
-        titleStyling={{...styles.profileType, ...active}}
-        onPress={() => navigation.navigate('AppStack', {screen: 'Profile'})}
-      />
-      <View style={{justifyContent: 'center'}}>
-        <View
-          style={{
-            borderRightWidth: 2,
-            borderColor: Colors.white,
-            height: 35,
-          }}
-        />
-      </View>
-      <CustomButton
-        style={{backgroundColor: Colors.transparent}}
-        title="Professional"
-        titleStyling={{...styles.profileType, ...inactive}}
-        onPress={() =>
-          navigation.navigate('ProfileStack', {
-            screen: 'CreateProAccount',
-            params: {screen: 'CreateProAccount'},
-          })
-        }
-      />
-    </View>
-  );
-};
-const ServeProjects = ({navigation}) => {
-  return (
-    <View>
-      <CustomButton
-        style={{
-          backgroundColor: Colors.transparent,
-        }}
-        title="Projects"
-        titleStyling={{color: Colors.lightBlack, ...Fonts.N_700_16}}
-        // onPress={() => navigation.navigate('AppStack', {screen: 'Profile'})}
-      />
-    </View>
-  );
-};
-
-const ServeDonateHeader = ({
-  navigation,
-  profile,
-  projects,
-  screen,
-  donateAction,
-  setDonateAction,
-}) => {
-  return (
-    <View style={styles.container}>
-      <View>
-        <CustomButton
-          style={{
-            backgroundColor: Colors.secondary,
-            padding: 10,
-            borderRadius: 100,
-          }}
-          iconLeft="NotificationsLine"
-          iconWidth={18.5}
-          iconHeight={20}
-          iconFill={Colors.white}
-          onPress={() =>
-            navigation.navigate('HomeStack', {screen: 'Notifications'})
-          }
-        />
-      </View>
-      {profile && (
-        <ServeNavigateProfile navigation={navigation} screen={screen} />
-      )}
-      {projects && <ServeProjects />}
-      <View>
-        <CustomButton
-          style={{
-            backgroundColor: Colors.secondary,
-            padding: 10,
-            borderRadius: 100,
-          }}
-          iconLeft="Wallet"
-          iconWidth={20}
-          iconHeight={20}
-          iconFill={Colors.white}
-          onPress={() => setDonateAction(!donateAction)}
-        />
-      </View>
-    </View>
-  );
-};
-
-// RETURN ---------------------------------------------------------
 const DonateActions = ({navigation, profile, projects, screen}) => {
   const [donateAction, setDonateAction] = React.useState(false);
 
+  // SERVERS ---------------------------------------------------------
+  const ServeDonate = ({}) => {
+    return (
+      <View>
+        {profile && (
+          <View>
+            <Wallet
+              donateAction={donateAction}
+              setDonateAction={setDonateAction}
+            />
+          </View>
+        )}
+        {!profile && (
+          <CommendActions
+            donateReason={donateAction}
+            setDonateReason={setDonateAction}
+          />
+        )}
+      </View>
+    );
+  };
+  const ServeNavigateProfile = ({}) => {
+    const [active, setActive] = React.useState({color: Colors.white});
+    const [inactive, setInactive] = React.useState({color: Colors.lightSilver});
+
+    React.useEffect(() => {
+      setInactive({color: Colors.lightSilver});
+      setActive({color: Colors.white});
+
+      if (screen === 'CreateProAccount') {
+        setActive({color: Colors.lightSilver});
+        setInactive({color: Colors.white});
+      }
+    }, [screen]);
+
+    return (
+      <View style={styles.profileContainer}>
+        <CustomButton
+          style={{backgroundColor: Colors.transparent}}
+          title="Personal"
+          titleStyling={{...styles.profileType, ...active}}
+          onPress={() => navigation.navigate('AppStack', {screen: 'Profile'})}
+        />
+        <View style={{justifyContent: 'center'}}>
+          <View
+            style={{
+              borderRightWidth: 2,
+              borderColor: Colors.white,
+              height: 35,
+            }}
+          />
+        </View>
+        <CustomButton
+          style={{backgroundColor: Colors.transparent}}
+          title="Professional"
+          titleStyling={{...styles.profileType, ...inactive}}
+          onPress={() =>
+            navigation.navigate('ProfileStack', {
+              screen: 'CreateProAccount',
+              params: {screen: 'CreateProAccount'},
+            })
+          }
+        />
+      </View>
+    );
+  };
+  const ServeProjects = ({}) => {
+    return (
+      <View>
+        <CustomButton
+          style={{
+            backgroundColor: Colors.transparent,
+          }}
+          title="Projects"
+          titleStyling={{color: Colors.lightBlack, ...Fonts.N_700_16}}
+          // onPress={() => navigation.navigate('AppStack', {screen: 'Profile'})}
+        />
+      </View>
+    );
+  };
+
+  const ServeDonateHeader = ({}) => {
+    return (
+      <View style={styles.container}>
+        <View>
+          <CustomButton
+            style={{
+              backgroundColor: Colors.secondary,
+              padding: 10,
+              borderRadius: 100,
+            }}
+            iconLeft="NotificationsLine"
+            iconWidth={18.5}
+            iconHeight={20}
+            iconFill={Colors.white}
+            onPress={() =>
+              navigation.navigate('HomeStack', {screen: 'Notifications'})
+            }
+          />
+        </View>
+        {profile && (
+          <ServeNavigateProfile navigation={navigation} screen={screen} />
+        )}
+        {projects && <ServeProjects />}
+        <View>
+          <CustomButton
+            style={{
+              backgroundColor: Colors.secondary,
+              padding: 10,
+              borderRadius: 100,
+            }}
+            iconLeft="Wallet"
+            iconWidth={20}
+            iconHeight={20}
+            iconFill={Colors.white}
+            onPress={() => setDonateAction(!donateAction)}
+          />
+        </View>
+      </View>
+    );
+  };
+
+  // RETURN ---------------------------------------------------------
   return (
     <View>
-      <ServeDonateHeader
-        navigation={navigation}
-        profile={profile}
-        projects={projects}
-        screen={screen}
-        donateAction={donateAction}
-        setDonateAction={setDonateAction}
-      />
+      <ServeDonateHeader />
 
-      {donateAction && (
-        <ServeDonate
-          donateAction={donateAction}
-          setDonateAction={setDonateAction}
-          profile={profile}
-        />
-      )}
+      {donateAction && <ServeDonate />}
     </View>
   );
 };
