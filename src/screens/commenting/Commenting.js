@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import {NOTIFICATION_DATA} from '../../config/data';
+import {NOTIFICATION_DATA, PROFILE_DATA} from '../../config/data';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
 });
 
 const UserNotification = ({navigation}) => {
+  const [comment, setComment] = React.useState(PROFILE_DATA);
   const [notifications, setNotifications] = React.useState(NOTIFICATION_DATA);
   const [filteredData, setFilteredData] = React.useState(notifications);
   const [filter, setFilter] = React.useState('All');
@@ -195,51 +196,56 @@ const UserNotification = ({navigation}) => {
     );
   };
 
-  const ServeNavigation = ({filter, setFilter}) => {
-    const allAction = filter === 'All' ? Fonts.N_700_12 : Fonts.N_400_12;
-    const userInteractions =
-      filter === 'userInteractions' ? Fonts.N_700_12 : Fonts.N_400_12;
-    const QRCode = filter === 'QRCode' ? Fonts.N_700_12 : Fonts.N_400_12;
+  const ServeComment = ({filter, setFilter}) => {
+    const {profileImageUrl, name, postTitle, tags, post, isVerified} = comment;
 
     return (
       <View>
-        <View style={{marginHorizontal: '5%'}}>
-          <NavigateAction
-            iconFill={Colors.lightBlack}
-            title="Notifications"
-            titleStyling={{...Fonts.N_700_16, color: Colors.lightBlack}}
-            onPress={() => navigation.goBack()}
+        <View style={{alignSelf: 'flex-end'}}>
+          <CustomButton
+            style={{backgroundColor: Colors.transparent}}
+            iconLeft="Cross"
+            iconWidth={16}
+            iconHeight={16}
+            // onPress={() => setSponsorAction(false)}
           />
         </View>
-        <View style={styles.divider} />
-        <View style={{marginHorizontal: '5%'}}>
-          <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
-            <CustomButton
-              title="All"
-              titleStyling={{...allAction, color: Colors.lightBlack}}
-              style={{
-                backgroundColor: Colors.transparent,
-              }}
-              onPress={() => setFilter('All')}
-            />
-            <CustomButton
-              title="User Interactions"
-              titleStyling={{...userInteractions, color: Colors.lightBlack}}
-              style={{
-                backgroundColor: Colors.transparent,
-              }}
-              onPress={() => setFilter('userInteractions')}
-            />
-            <CustomButton
-              title="QR Codes"
-              titleStyling={{...QRCode, color: Colors.lightBlack}}
-              style={{
-                backgroundColor: Colors.transparent,
-              }}
-              onPress={() => setFilter('QRCode')}
-            />
+        <View>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View>
+              <Image
+                source={{uri: profileImageUrl}}
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: 20,
+                }}
+              />
+            </View>
+            <View>
+              <Text>@{name}</Text>
+            </View>
+            {isVerified && (
+              <CustomButton
+                iconLeft="Verified"
+                iconFill={Colors.primary}
+                iconWidth={20}
+                iconHeight={20}
+                style={{backgroundColor: Colors.transparent}}
+              />
+            )}
           </View>
         </View>
+        <View style={{marginVertical: 20}}>
+          <Text style={{...Fonts.N_700_28}}>{postTitle}</Text>
+        </View>
+        <View style={{}}>
+          <Text style={{...Fonts.N_400_16}}>{post}</Text>
+        </View>
+        <View style={{marginVertical: 20}}>
+          <Text style={{...Fonts.N_400_16}}>{tags}</Text>
+        </View>
+        <View style={styles.divider} />
       </View>
     );
   };
@@ -261,12 +267,10 @@ const UserNotification = ({navigation}) => {
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper>
-      <ServeNavigation filter={filter} setFilter={setFilter} />
+      <ServeComment filter={filter} setFilter={setFilter} />
       <ScrollView>
         <ServeData data={mostReascent} title="most recent" />
-        <ServeData data={thisWeek} title="this week" divider />
-        <ServeData data={filteredData} title="earlier" divider />
-      </ScrollView>
+       </ScrollView>
     </ScreenWrapper>
   );
 };

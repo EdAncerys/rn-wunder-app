@@ -68,6 +68,8 @@ const AccountCreated = ({navigation}) => {
           <CustomButton
             iconLeft="ArrowRight"
             iconWidth={24}
+            iconHeight={24}
+            iconFill={Colors.white}
             style={{paddingVertical: 10, paddingHorizontal: 24}}
             onPress={() =>
               navigation.navigate('AppStack', {screen: 'HomeStack'})

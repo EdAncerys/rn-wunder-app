@@ -45,7 +45,7 @@ const UserNotification = ({navigation, route}) => {
             onPress={() => navigation.goBack()}
           />
         </View>
-        <View style={styles.divider}></View>
+        <View style={styles.divider}/>
       </View>
     );
   };

@@ -3,117 +3,135 @@ import {
   View,
   Text,
   StyleSheet,
-  StatusBar,
-  TouchableWithoutFeedback,
-  Keyboard,
-  KeyboardAvoidingView,
-  SafeAreaView,
+  ImageBackground,
+  Image,
+  FlatList,
+  TouchableOpacity,
+  Dimensions,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
+import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 
+import {INTEREST_DATA} from '../../config/data';
+const {width, height} = Dimensions.get('screen');
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.white,
-  },
   wrapper: {
     flex: 1,
     marginHorizontal: '5%',
   },
-  formContainer: {
-    flex: 4,
+  contentContainer: {
     alignItems: 'center',
-    paddingTop: '15%',
   },
   titleContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: '10%',
-    marginVertical: '8%',
+    marginVertical: 20,
   },
   title: {
     ...Fonts.N_700_16,
+    color: Colors.lightBlack,
     textAlign: 'center',
-    marginVertical: '4%',
-    color: Colors.black,
   },
-  info: {
-    ...Fonts.N_400_12,
+  msg: {
+    ...Fonts.N_700_12,
+    color: Colors.white,
+    marginVertical: 5,
     textAlign: 'center',
-    color: Colors.lightSilver,
-  },
-  inputWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '80%',
-  },
-  inputContainer: {
-    ...Fonts.N_700_24,
-    textAlign: 'center',
-    width: 56,
-    marginVertical: '2%',
-    padding: 13,
-    borderRadius: 4,
-    backgroundColor: Colors.white,
-  },
-  actionsContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  navigateActionContainer: {
-    flex: 1,
-    marginTop: '5%',
   },
 });
 
-const Interests = ({navigation}) => {
-  const [codeOne, setCodeOne] = React.useState('');
-  const [codeTwo, setCodeTwo] = React.useState('');
-  const [codeThree, setCodeThree] = React.useState('');
-  const [codeFour, setCodeFour] = React.useState('');
-  const [btnInactive, setBtnInactive] = React.useState(true);
+const AccountCreated = ({navigation}) => {
+  const [interestData, setInterestData] = React.useState(INTEREST_DATA);
+  const [selected, setSelected] = React.useState([]);
+  let filterFill = [Colors.gradientFilterTop, Colors.gradientFilterBottom];
 
-  React.useEffect(() => {
-    setBtnInactive(true);
-    if (!!codeOne && !!codeTwo && !!codeThree && !!codeFour)
-      setBtnInactive(false);
-  }, [codeOne, codeTwo, codeThree, codeFour]);
+  const renderListItem = ({item, index}) => {
+    console.log(selected);
+    if (selected.includes(index))
+      filterFill = [Colors.matFilter, Colors.matFilter];
+    const {url} = item;
 
-  // HANDLERS ---------------------------------------------------------
-  const handleContinue = () => {
-    navigation.navigate('Username');
+    const handleImageSelect = () => {
+      if (selected.includes(index)) {
+        const data = selected.filter(item => item !== index);
+        setSelected(data);
+        return;
+      }
+      setSelected([...selected, index]);
+      console.log(index);
+    };
+
+    return (
+      <TouchableOpacity onPress={handleImageSelect}>
+        <ImageBackground
+          source={item.url}
+          style={{
+            height: height / 5.5,
+            width: width / 2.5,
+            borderRadius: 20,
+            marginLeft: 10,
+            marginBottom: 10,
+            resizeMode: 'cover',
+            overflow: 'hidden',
+          }}>
+          <LinearGradient
+            colors={filterFill}
+            start={{x: 0.4, y: 0.4}}
+            style={{flex: 1}}>
+            <View
+              style={{
+                position: 'absolute',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: width / 2 - 40,
+                height: 200,
+              }}>
+              <Image
+                source={{uri: item.profileImageUrl}}
+                style={{height: 40, width: 40}}
+              />
+              <View>
+                <Text style={styles.msg}>{item.interest}</Text>
+              </View>
+            </View>
+          </LinearGradient>
+        </ImageBackground>
+      </TouchableOpacity>
+    );
   };
 
-  // RETURN ---------------------------------------------------------
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.container}>
-        <StatusBar hidden />
-        <SafeAreaView style={styles.wrapper}>
-          <View style={styles.formContainer}>
-            <View style={styles.titleContainer}>
-              <Text style={styles.title}>What are you interested in?</Text>
-            </View>
-          </View>
-          <View style={styles.actionsContainer}>
-            <CustomButton
-              iconLeft="ChevronRight"
-              iconFill={Colors.white}
-              onPress={() => handleContinue()}
-              style={{paddingHorizontal: 24, paddingVertical: 10}}
-              iconStyling={{width: 24, height: 18}}
-            />
-          </View>
-        </SafeAreaView>
-      </KeyboardAvoidingView>
-    </TouchableWithoutFeedback>
+    <ScreenWrapper filter={Colors.white}>
+      <View style={styles.wrapper}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>What are you interested in?</Text>
+        </View>
+        <FlatList
+          data={interestData}
+          renderItem={renderListItem}
+          numColumns={2}
+        />
+        <View style={{alignItems: 'center', marginTop: -50}}>
+          <CustomButton
+            iconLeft="ArrowRight"
+            iconWidth={24}
+            iconHeight={24}
+            iconFill={Colors.white}
+            style={{paddingVertical: 10, paddingHorizontal: 24}}
+            onPress={() =>
+              navigation.navigate('AppStack', {screen: 'HomeStack'})
+            }
+          />
+        </View>
+      </View>
+    </ScreenWrapper>
   );
 };
 
-export default Interests;
+export default AccountCreated;

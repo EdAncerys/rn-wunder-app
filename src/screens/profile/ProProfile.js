@@ -64,11 +64,7 @@ const Commending = ({navigation, route}) => {
   const [aboutProfile, setAboutProfile] = React.useState(true);
   const [screenFilter, setScreenFilter] = React.useState(false);
   const [colorFill, setColorFill] = React.useState(Colors.white);
-  const [backgroundFill, setBackgroundFill] = React.useState(
-    Colors.transparent,
-  );
 
-  console.log(profileDataInfo);
   const {url, about, post, profileImageUrl} = profile;
   const imgArrayLength = projectImages.length;
   const headerHeight = height / 10;
@@ -90,19 +86,12 @@ const Commending = ({navigation, route}) => {
   // ANIMATION ---------------------------------------------------------
   const scrollY = React.useRef(new Animated.Value(0)).current;
 
+  const fontColorFlipPoint = 220;
   const handleScroll = React.useCallback(event => {
     const scrollPosition = event.nativeEvent.contentOffset.y;
     scrollY.setValue(scrollPosition);
-    const fontColorFlipPoint = 365;
-    const backgroundColorFlipPoint = 465;
-
     if (scrollPosition > fontColorFlipPoint) setColorFill(Colors.lightBlack);
     if (scrollPosition < fontColorFlipPoint) setColorFill(Colors.white);
-
-    if (scrollPosition > backgroundColorFlipPoint)
-      setBackgroundFill(Colors.white);
-    if (scrollPosition < backgroundColorFlipPoint)
-      setBackgroundFill(Colors.transparent);
   });
 
   // HELPERS ---------------------------------------------------------
@@ -240,6 +229,24 @@ const Commending = ({navigation, route}) => {
             start={{x: 0, y: 0}}
             end={{x: 0, y: 0.5}}
             style={{flex: 1}}>
+            <Animated.View
+              style={[
+                {
+                  flex: 1,
+                  height: '100%',
+                  width: '100%',
+                  position: 'absolute',
+                  zIndex: 4,
+                  backgroundColor: Colors.white,
+                },
+                {
+                  opacity: scrollY.interpolate({
+                    inputRange: [200, 360],
+                    outputRange: [0, 1],
+                  }),
+                },
+              ]}
+            />
             <View
               style={{
                 flex: 1,
@@ -337,12 +344,24 @@ const Commending = ({navigation, route}) => {
 
   const ServeTopBar = () => {
     return (
-      <Animated.View
-        style={{
-          position: 'absolute',
-          zIndex: 4,
-          backgroundColor: backgroundFill,
-        }}>
+      <View style={{position: 'absolute', zIndex: 4}}>
+        <Animated.View
+          style={[
+            {
+              flex: 1,
+              height: '100%',
+              width: '100%',
+              position: 'absolute',
+              backgroundColor: Colors.white,
+            },
+            {
+              opacity: scrollY.interpolate({
+                inputRange: [350, 400],
+                outputRange: [0, 1],
+              }),
+            },
+          ]}
+        />
         <View
           style={{
             marginHorizontal: '5%',
@@ -357,7 +376,7 @@ const Commending = ({navigation, route}) => {
             onPress={() => navigation.goBack()}
           />
         </View>
-      </Animated.View>
+      </View>
     );
   };
 
