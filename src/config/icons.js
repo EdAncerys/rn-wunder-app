@@ -293,11 +293,7 @@ export const Projects = ({
   );
 };
 
-export const ReplyComment = ({
-  width = 42,
-  height = 44,
-  fill = Colors.lightBlack,
-}) => {
+export const Reply = ({width = 42, height = 44, fill = Colors.lightBlack}) => {
   return (
     <Svg width={width} height={height} viewBox="0 0 42 44" fill={fill}>
       <Path
