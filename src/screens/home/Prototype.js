@@ -16,6 +16,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
+import AppActions from '../../components/AppActions';
 
 import {HOME_SCREEN_DATA} from '../../config/data';
 
@@ -94,12 +95,30 @@ const Prototype = ({navigation}) => {
               paddingHorizontal: 10,
             }}
           />
-          <Text style={{fontSize: 24}} numberOfLines={1}>
-            {title}
-          </Text>
-          <Text style={{fontSize: 12}} numberOfLines={3}>
-            {post}
-          </Text>
+          <View style={{marginHorizontal: '5%'}}>
+            <View style={{marginVertical: '15%'}}>
+              <Text
+                style={{...Fonts.N_700_34, color: Colors.white}}
+                numberOfLines={1}>
+                {title}
+              </Text>
+              <Text
+                style={{...Fonts.N_400_16, color: Colors.white}}
+                numberOfLines={3}>
+                {post}
+              </Text>
+            </View>
+            <View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
+              <AppActions
+                navigation={navigation}
+                Commend
+                Applaud
+                Shoutout
+                Comment
+                profileDataInfo={item}
+              />
+            </View>
+          </View>
         </LinearGradient>
       </ImageBackground>
     );
@@ -116,12 +135,15 @@ const Prototype = ({navigation}) => {
     console.log(currentIndex);
     console.log('index', index);
 
-    const inputRange = [index - 1, index];
+    const inputRange = [
+      (index - 1) * CARD_HEIGHT,
+      index * CARD_HEIGHT,
+      (index + 1) * CARD_HEIGHT,
+    ];
     let screenOverlap = -200;
-    const current = index - 1 === index;
     const translateY = scrollY.interpolate({
       inputRange,
-      outputRange: [current ? -200 : 0, 0],
+      outputRange: [-200, 0, 0],
       extrapolate: 'clamp',
     });
 
@@ -155,7 +177,7 @@ const Prototype = ({navigation}) => {
         snapToInterval={CARD_HEIGHT}
         snapToAlignment="start"
         onScroll={Animated.event(
-          [{nativeEvent: {contentOffset: {x: scrollY}}}],
+          [{nativeEvent: {contentOffset: {y: scrollY}}}],
           {useNativeDriver: true},
         )}
         scrollEventThrottle={16}
