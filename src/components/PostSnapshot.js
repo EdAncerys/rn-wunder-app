@@ -119,7 +119,13 @@ const PostSnapshot = ({navigation, profileDataInfo}) => {
 
     return (
       <View style={styles.rowWrapper}>
-        <TouchableOpacity onPress={() => alert('post')}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('ProjectStack', {
+              screen: 'Post',
+              params: {profileDataInfo: profileDataInfo},
+            })
+          }>
           <View>
             <Text style={styles.post}>
               {post}

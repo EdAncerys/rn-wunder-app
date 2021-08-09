@@ -69,6 +69,7 @@ import Commend from '../screens/commending/Commend';
 import QRCode from '../screens/notifications/QRCode';
 import ProProfile from '../screens/profile/ProProfile';
 import Commenting from '../screens/commenting/Commenting';
+import Prototype from '../screens/home/Prototype';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -78,14 +79,14 @@ export const AppNavigator = () => {
     <Stack.Navigator initialRouteName="CreateAccountStack">
       {/* <Stack.Screen
         name="TestScreen"
-        component={SharePost}
+        component={Interests}
         options={{headerShown: false}}
       /> */}
-      {/* <Stack.Screen
+      <Stack.Screen
         name="CreateAccountStack"
         component={CreateAccountStack}
         options={{headerShown: false}}
-      /> */}
+      />
       <Stack.Screen
         name="AppStack"
         component={AppStack}

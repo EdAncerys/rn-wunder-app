@@ -57,15 +57,17 @@ const Login = ({navigation}) => {
       return;
     }
 
-    const logInData = {identifier: logInEmail, password: logInPassword};
-    logIn({dispatchAuth, dispatchApi, logInData});
-    setLogInEmail('');
-    setLogInPassword('');
+    navigation.navigate('AppStack', {screen: 'HomeStack'});
+
+    // const logInData = {identifier: logInEmail, password: logInPassword};
+    // logIn({dispatchAuth, dispatchApi, logInData});
+    // setLogInEmail('');
+    // setLogInPassword('');
   };
 
-  React.useEffect(() => {
-    if (jwt) navigation.navigate('AppStack', {screen: 'HomeStack'});
-  }, [jwt]);
+  // React.useEffect(() => {
+  //   if (jwt) navigation.navigate('AppStack', {screen: 'HomeStack'});
+  // }, [jwt]);
 
   return (
     <ScreenWrapper filter={Colors.lightBlack}>
@@ -76,6 +78,14 @@ const Login = ({navigation}) => {
           <View style={styles.infoTextContainer}>
             <Text style={styles.infoText}>
               * login screen & process to be confirmed
+            </Text>
+            <Text
+              style={{
+                ...Fonts.N_700_16,
+                textAlign: 'center',
+                color: Colors.primary,
+              }}>
+              * login with any email & password
             </Text>
           </View>
         </View>

@@ -141,7 +141,12 @@ const AppActionsHorizontal = ({
               iconWidth={28}
               iconHeight={24}
               iconFill={Colors.lightBlack}
-              onPress={() => alert('Comment')}
+              onPress={() =>
+                navigation.navigate('HomeStack', {
+                  screen: 'Commenting',
+                  params: {profileDataInfo: profileDataInfo},
+                })
+              }
               style={{backgroundColor: Colors.transparent}}
             />
             <Text style={styles.title}>346</Text>

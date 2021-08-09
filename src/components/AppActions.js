@@ -92,6 +92,7 @@ const AppActions = ({
 }) => {
   const [reportAction, setReportAction] = React.useState(false);
   const [blockAction, setBlockAction] = React.useState(false);
+  const [applaudCount, setApplaudCount] = React.useState(365);
 
   return (
     <View style={styles.container}>
@@ -138,10 +139,10 @@ const AppActions = ({
               iconWidth={24}
               iconHeight={24}
               iconFill={Colors.white}
-              onPress={() => alert('Applaud')}
+              onPress={() => setApplaudCount(applaudCount + 1)}
               style={{backgroundColor: Colors.transparent}}
             />
-            <Text style={styles.title}>346</Text>
+            <Text style={styles.title}>{applaudCount}</Text>
           </View>
         )}
         {Shoutout && (
