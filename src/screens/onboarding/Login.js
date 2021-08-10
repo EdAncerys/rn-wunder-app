@@ -1,5 +1,10 @@
 import * as React from 'react';
-import {useAuthState, useAuthDispatch, logIn} from '../../context/auth';
+import {
+  useAuthState,
+  useAuthDispatch,
+  logIn,
+  getPosts,
+} from '../../context/auth';
 import {useApiDispatch, useApiState} from '../../context/api';
 import {LOGIN_EMAIL, LOGIN_PASSWORD} from '@env';
 
@@ -47,7 +52,7 @@ const styles = StyleSheet.create({
 const Login = ({navigation}) => {
   const dispatchAuth = useAuthDispatch();
   const dispatchApi = useApiDispatch();
-  const {user, jwt} = useAuthState();
+  const {jwt} = useAuthState();
   const {error} = useApiState();
 
   const [isLoading, setIsLoading] = React.useState(false);
@@ -62,8 +67,8 @@ const Login = ({navigation}) => {
     // }
     setIsLoading(true);
     const logInData = {
-      identifier: 'vicki.watkins@example.com',
-      password: '12345',
+      identifier: LOGIN_EMAIL,
+      password: LOGIN_PASSWORD,
     };
     logIn({dispatchAuth, dispatchApi, logInData});
     setLogInEmail('');
@@ -73,10 +78,11 @@ const Login = ({navigation}) => {
   React.useEffect(() => {
     if (error) alert(error);
     if (jwt) {
-      setIsLoading(false);
+      // getPosts({dispatchAuth, dispatchApi, jwt});
       navigation.navigate('AppStack', {screen: 'HomeStack'});
     }
-    console.log('hello ', user);
+
+    setIsLoading(false);
   }, [error, jwt]);
 
   if (isLoading) return <Loading />;

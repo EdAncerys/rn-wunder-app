@@ -19,12 +19,7 @@ import CustomButton from '../../components/CustomButton';
 import AppActions from '../../components/AppActions';
 
 // GRAPH QL ---------------------------------------------------------
-import {
-  useAuthState,
-  useAuthDispatch,
-  getPostsAction,
-  logIn,
-} from '../../context/auth';
+import {useAuthState, useAuthDispatch, getPosts} from '../../context/auth';
 import {useApiDispatch} from '../../context/api';
 
 import {HOME_SCREEN_DATA} from '../../config/data';
@@ -56,22 +51,20 @@ const styles = StyleSheet.create({
 const Prototype = ({navigation}) => {
   const dispatchAuth = useAuthDispatch();
   const dispatchApi = useApiDispatch();
-  const {posts} = useAuthState();
-  console.log('posts', posts);
-
+  const {posts, jwt} = useAuthState();
   const [addPostPopUp, setAddPostPopUp] = React.useState(null);
 
   const [postData, setPostData] = React.useState(null);
   const scrollY = React.useRef(new Animated.Value(0)).current;
   const [currentIndex, setCurrentIndex] = React.useState(0);
 
-  // getPostsAction({dispatchAuth, dispatchApi});
-  const logInData = {identifier: 'LOGIN_EMAIL', password: 'LOGIN_PASSWORD'};
-  logIn({dispatchAuth, dispatchApi, logInData});
+  React.useEffect(() => {
+    if (jwt) getPosts({dispatchAuth, dispatchApi, jwt});
+  }, [jwt]);
 
   React.useEffect(() => {
-    getPostsAction({dispatchAuth, dispatchApi});
-  }, []);
+    if (posts) setPostData(posts);
+  }, [posts]);
 
   if (!postData) {
     return <Loading />;
@@ -79,10 +72,12 @@ const Prototype = ({navigation}) => {
 
   // SERVERS ---------------------------------------------------------
   const ServeHomeScreen = ({item}) => {
-    const {url, title, post} = item;
+    const {id, title, body, picture} = item;
+    console.log('item ', item);
+
     return (
       <ImageBackground
-        source={url}
+        source={{uri: picture.url}}
         style={{
           resizeMode: 'cover',
           width: CARD_WIDTH,
@@ -111,7 +106,7 @@ const Prototype = ({navigation}) => {
               <Text
                 style={{...Fonts.N_400_16, color: Colors.white}}
                 numberOfLines={3}>
-                {post}
+                {body}
               </Text>
             </View>
             <View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
@@ -155,7 +150,6 @@ const Prototype = ({navigation}) => {
         style={{
           alignItems: 'center',
           transform: [{translateY}],
-          backgroundColor: 'pink',
           overflow: 'hidden',
           // borderRadius: 34,
         }}>

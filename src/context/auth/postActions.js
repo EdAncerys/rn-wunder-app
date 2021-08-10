@@ -1,20 +1,20 @@
 import client from '../../apollo/client';
-import {QUERY_GET_POSTS} from '../../apollo/queries/auth';
+import {QUERY_GET_POSTS} from '../../apollo/queries/posts';
 
 import {errorHandler, setError} from '../api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const getPostsAction = async ({dispatchAuth, dispatchApi}) => {
+export const getPosts = async ({dispatchAuth, dispatchApi, jwt}) => {
   try {
-    console.log('posts triggered'); //debug
+    console.log('getPosts triggered'); //debug
     //0. clear api errors
     setError({dispatchApi, errorMessage: null});
 
     //1. get all posts and add to context and async storage
-    const posts = await getPosts({});
-    console.log(`posts`, posts); //debug
+    const posts = await getPostsAction({jwt});
+    console.log(`posts data length `, posts.length); //debug
     setPostsAction({dispatchAuth, posts});
-    // await AsyncStorage.setItem('user', JSON.stringify(posts));
+    await AsyncStorage.setItem('user', JSON.stringify(posts));
   } catch (err) {
     console.log('err', JSON.stringify(err)); //debug
     errorHandler({dispatchApi, errorObject: err});
@@ -22,17 +22,17 @@ export const getPostsAction = async ({dispatchAuth, dispatchApi}) => {
 };
 
 // FETCH DATA GRAPH QL QUERY ---------------------------------------------------------
-export const getPosts = async ({jwt}) => {
-  console.log('getPosts triggered'); //debug
+export const getPostsAction = async ({jwt}) => {
+  console.log('getPostsAction triggered'); //debug
   const getUserResponse = await client.query({
     query: QUERY_GET_POSTS,
-    // context: {
-    //   headers: {
-    //     authorization: 'Bearer ' + jwt,
-    //   },
-    // },
+    context: {
+      headers: {
+        authorization: 'Bearer ' + jwt,
+      },
+    },
   });
-  return getUserResponse.data.user;
+  return getUserResponse.data.posts;
 };
 
 // SET CONTEXT ---------------------------------------------------------

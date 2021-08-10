@@ -6,6 +6,9 @@ export const QUERY_GET_POSTS = gql`
       id
       title
       body
+      picture {
+        url
+      }
     }
   }
 `;

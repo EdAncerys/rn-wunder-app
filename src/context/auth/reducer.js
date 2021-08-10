@@ -26,7 +26,7 @@ export const AuthReducer = (state = initialState, action) => {
     case 'SET_ADD_ACTION':
       return {...state, addAction: {...action.payload}};
     case 'SET_POSTS':
-      return {...state, addAction: {...action.payload}};
+      return {...state, posts: action.payload};
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }

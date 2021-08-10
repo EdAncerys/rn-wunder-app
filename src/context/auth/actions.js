@@ -64,7 +64,7 @@ export const signUp = async ({dispatchApi, dispatchAuth, newUserData}) => {
 
     //2. add token to context and async storage
     const {jwt} = signUpResponse.data.register;
-    console.log(`jwt`, jwt); //debug
+    // console.log(`jwt`, jwt); //debug
     setToken({dispatchAuth, jwt});
     await AsyncStorage.setItem('jwt', jwt);
 
@@ -78,17 +78,6 @@ export const signUp = async ({dispatchApi, dispatchAuth, newUserData}) => {
     console.log('err', JSON.stringify(err)); //debug
     errorHandler({dispatchApi, errorObject: err});
   }
-};
-
-// SET CONTEXT ---------------------------------------------------------
-export const setToken = async ({dispatchAuth, jwt}) => {
-  console.log('setToken triggered'); //debug
-  dispatchAuth({type: 'SET_TOKEN', payload: jwt});
-};
-
-export const setUser = async ({dispatchAuth, user}) => {
-  console.log('setUser triggered'); //debug
-  dispatchAuth({type: 'SET_USER', payload: user});
 };
 
 export const getUser = async ({userId, jwt}) => {
@@ -158,4 +147,15 @@ export const storageCheck = async ({dispatchAuth, dispatchApi}) => {
     console.log(`err`, err);
     errorHandler({dispatchApi, errorObject: err});
   }
+};
+
+// SET CONTEXT ---------------------------------------------------------
+export const setToken = async ({dispatchAuth, jwt}) => {
+  console.log('setToken triggered'); //debug
+  dispatchAuth({type: 'SET_TOKEN', payload: jwt});
+};
+
+export const setUser = async ({dispatchAuth, user}) => {
+  console.log('setUser triggered'); //debug
+  dispatchAuth({type: 'SET_USER', payload: user});
 };
