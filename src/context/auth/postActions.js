@@ -35,7 +35,7 @@ export const getPosts = async ({jwt}) => {
   return getUserResponse.data.user;
 };
 
-// MANAGE CONTEXT ---------------------------------------------------------
+// SET CONTEXT ---------------------------------------------------------
 export const setPostsAction = async ({dispatchAuth, posts}) => {
   console.log('setPostsAction triggered'); //debug
   dispatchAuth({type: 'SET_POSTS', payload: posts});

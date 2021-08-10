@@ -56,25 +56,28 @@ const Login = ({navigation}) => {
 
   // HANDLERS ---------------------------------------------------------
   const handleLogIn = () => {
-    // setIsLoading(true);
     // if (!logInEmail && !logInPassword) {
-    //   alert('No credentials provided!');
+    //   alert('Please fill all the required fields!');
     //   return;
     // }
+    setIsLoading(true);
     const logInData = {
       identifier: 'vicki.watkins@example.com',
       password: '12345',
     };
     logIn({dispatchAuth, dispatchApi, logInData});
-    // setLogInEmail('');
-    // setLogInPassword('');
+    setLogInEmail('');
+    setLogInPassword('');
   };
 
   React.useEffect(() => {
-    setIsLoading(false);
     if (error) alert(error);
-    // if (jwt) navigation.navigate('AppStack', {screen: 'HomeStack'});
-  }, [user, error]);
+    if (jwt) {
+      setIsLoading(false);
+      navigation.navigate('AppStack', {screen: 'HomeStack'});
+    }
+    console.log('hello ', user);
+  }, [error, jwt]);
 
   if (isLoading) return <Loading />;
 

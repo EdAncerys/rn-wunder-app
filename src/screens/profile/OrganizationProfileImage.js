@@ -9,6 +9,7 @@ import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
 import LicenceImage from '../../assets/images/onboardingOverSixteen/upload-licence.png';
 import CameraActionsPopUp from '../../components/CameraActionsPopUp';
+import ScreenFilter from '../../components/ScreenFilter';
 
 const styles = StyleSheet.create({
   contentContainer: {
@@ -54,7 +55,6 @@ const OrganizationProfileImage = ({navigation}) => {
   const [image, setImage] = React.useState(false);
   const [uploadOptions, setUploadOptions] = React.useState(false);
   const renderImg = image || LicenceImage;
-  const imgOpacity = uploadOptions ? 0.4 : 1;
 
   // HANDLERS ---------------------------------------------------------
   const handleContinue = () => {
@@ -80,52 +80,55 @@ const OrganizationProfileImage = ({navigation}) => {
 
   // RETURN ---------------------------------------------------------
   return (
-    <ScreenWrapper filter={Colors.lightBlack}>
-      <View style={styles.wrapper}>
-        <View style={styles.navigateActionContainer}>
-          <NavigateAction
-            title={image ? 'Step 6 of 6' : 'Step 5 of 6'}
-            onPress={() => navigation.navigate('OrganizationWebsite')}
-          />
-        </View>
-
-        <View style={styles.contentContainer}>
-          <Text style={styles.title}>
-            Add profile picture for your organisation
-          </Text>
-          <View style={styles.imageContainer}>
-            <Image
-              source={renderImg}
-              resizeMode="cover"
-              style={{...styles.image, opacity: imgOpacity}}
+    <View style={{flex: 1}}>
+      {uploadOptions && <ScreenFilter />}
+      <ScreenWrapper filter={Colors.lightBlack}>
+        <View style={styles.wrapper}>
+          <View style={styles.navigateActionContainer}>
+            <NavigateAction
+              title={image ? 'Step 6 of 6' : 'Step 5 of 6'}
+              onPress={() => navigation.navigate('OrganizationWebsite')}
             />
           </View>
-        </View>
 
-        <View style={styles.actionsContainer}>
-          {!uploadOptions && (
-            <View>
-              <CustomButton
-                title="Create Profile"
-                onPress={() => handleContinue()}
-              />
-              <CustomButton
-                title="Not Now"
-                style={{backgroundColor: Colors.transparent, marginTop: 10}}
-                onPress={() => navigation.navigate('Profile')}
+          <View style={styles.contentContainer}>
+            <Text style={styles.title}>
+              Add profile picture for your organisation
+            </Text>
+            <View style={styles.imageContainer}>
+              <Image
+                source={renderImg}
+                resizeMode="cover"
+                style={styles.image}
               />
             </View>
-          )}
-          {uploadOptions && (
-            <CameraActionsPopUp
-              handleCamera={handleCamera}
-              handleGallery={handleGallery}
-              setUploadOptions={setUploadOptions}
-            />
-          )}
+          </View>
+
+          <View style={styles.actionsContainer}>
+            {!uploadOptions && (
+              <View>
+                <CustomButton
+                  title="Create Profile"
+                  onPress={() => handleContinue()}
+                />
+                <CustomButton
+                  title="Not Now"
+                  style={{backgroundColor: Colors.transparent, marginTop: 10}}
+                  onPress={() => navigation.navigate('Profile')}
+                />
+              </View>
+            )}
+            {uploadOptions && (
+              <CameraActionsPopUp
+                handleCamera={handleCamera}
+                handleGallery={handleGallery}
+                setUploadOptions={setUploadOptions}
+              />
+            )}
+          </View>
         </View>
-      </View>
-    </ScreenWrapper>
+      </ScreenWrapper>
+    </View>
   );
 };
 

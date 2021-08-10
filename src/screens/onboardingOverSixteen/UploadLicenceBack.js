@@ -9,6 +9,7 @@ import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
 import LicenceImage from '../../assets/images/onboardingOverSixteen/upload-licence.png';
 import CameraActionsPopUp from '../../components/CameraActionsPopUp';
+import ScreenFilter from '../../components/ScreenFilter';
 
 const styles = StyleSheet.create({
   contentContainer: {
@@ -54,7 +55,6 @@ const UploadLicenceBack = ({navigation}) => {
   const [image, setImage] = React.useState(false);
   const [uploadOptions, setUploadOptions] = React.useState(false);
   const renderImg = image || LicenceImage;
-  const imgOpacity = uploadOptions ? 0.4 : 1;
 
   // HANDLERS ---------------------------------------------------------
   const handleContinue = () => {
@@ -80,50 +80,53 @@ const UploadLicenceBack = ({navigation}) => {
 
   // RETURN ---------------------------------------------------------
   return (
-    <ScreenWrapper filter={Colors.lightBlack}>
-      <View style={styles.wrapper}>
-        <View style={styles.navigateActionContainer}>
-          <NavigateAction
-            title="Step 3 of 7"
-            onPress={() => navigation.navigate('UploadLicenceFront')}
-          />
-        </View>
-
-        <View style={styles.contentContainer}>
-          <Text style={styles.title}>
-            Upload a clear picture of the back of your licence
-          </Text>
-          <View style={styles.imageContainer}>
-            <Image
-              source={renderImg}
-              resizeMode="cover"
-              style={{...styles.image, opacity: imgOpacity}}
+    <View style={{flex: 1}}>
+      {uploadOptions && <ScreenFilter />}
+      <ScreenWrapper filter={Colors.lightBlack}>
+        <View style={styles.wrapper}>
+          <View style={styles.navigateActionContainer}>
+            <NavigateAction
+              title="Step 3 of 7"
+              onPress={() => navigation.navigate('UploadLicenceFront')}
             />
           </View>
-        </View>
 
-        <View style={styles.actionsContainer}>
-          {!uploadOptions && (
-            <View style={{alignItems: 'center'}}>
-              <CustomButton
-                iconLeft="ArrowRight"
-                iconWidth={24}
-                iconFill={Colors.white}
-                style={{paddingVertical: 10, paddingHorizontal: 24}}
-                onPress={handleContinue}
+          <View style={styles.contentContainer}>
+            <Text style={styles.title}>
+              Upload a clear picture of the back of your licence
+            </Text>
+            <View style={styles.imageContainer}>
+              <Image
+                source={renderImg}
+                resizeMode="cover"
+                style={styles.image}
               />
             </View>
-          )}
-          {uploadOptions && (
-            <CameraActionsPopUp
-              handleCamera={handleCamera}
-              handleGallery={handleGallery}
-              setUploadOptions={setUploadOptions}
-            />
-          )}
+          </View>
+
+          <View style={styles.actionsContainer}>
+            {!uploadOptions && (
+              <View style={{alignItems: 'center'}}>
+                <CustomButton
+                  iconLeft="ArrowRight"
+                  iconWidth={24}
+                  iconFill={Colors.white}
+                  style={{paddingVertical: 10, paddingHorizontal: 24}}
+                  onPress={handleContinue}
+                />
+              </View>
+            )}
+            {uploadOptions && (
+              <CameraActionsPopUp
+                handleCamera={handleCamera}
+                handleGallery={handleGallery}
+                setUploadOptions={setUploadOptions}
+              />
+            )}
+          </View>
         </View>
-      </View>
-    </ScreenWrapper>
+      </ScreenWrapper>
+    </View>
   );
 };
 
