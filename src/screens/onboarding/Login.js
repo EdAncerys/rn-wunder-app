@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {useAuthState, useAuthDispatch, logIn} from '../../context/auth';
-import {useApiDispatch} from '../../context/api';
+import {useApiDispatch, useApiState} from '../../context/api';
+import {LOGIN_EMAIL, LOGIN_PASSWORD} from '@env';
 
 import {View, TextInput, StyleSheet, Text} from 'react-native';
 
@@ -8,6 +9,7 @@ import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
+import Loading from '../../components/Loading';
 
 const styles = StyleSheet.create({
   container: {
@@ -45,29 +47,36 @@ const styles = StyleSheet.create({
 const Login = ({navigation}) => {
   const dispatchAuth = useAuthDispatch();
   const dispatchApi = useApiDispatch();
-  const {jwt} = useAuthState();
+  const {user, jwt} = useAuthState();
+  const {error} = useApiState();
 
+  const [isLoading, setIsLoading] = React.useState(false);
   const [logInEmail, setLogInEmail] = React.useState('');
   const [logInPassword, setLogInPassword] = React.useState('');
 
   // HANDLERS ---------------------------------------------------------
   const handleLogIn = () => {
-    if (!logInEmail && !logInPassword) {
-      alert('No credentials provided!');
-      return;
-    }
-
-    navigation.navigate('AppStack', {screen: 'HomeStack'});
-
-    // const logInData = {identifier: logInEmail, password: logInPassword};
-    // logIn({dispatchAuth, dispatchApi, logInData});
+    // setIsLoading(true);
+    // if (!logInEmail && !logInPassword) {
+    //   alert('No credentials provided!');
+    //   return;
+    // }
+    const logInData = {
+      identifier: 'vicki.watkins@example.com',
+      password: '12345',
+    };
+    logIn({dispatchAuth, dispatchApi, logInData});
     // setLogInEmail('');
     // setLogInPassword('');
   };
 
-  // React.useEffect(() => {
-  //   if (jwt) navigation.navigate('AppStack', {screen: 'HomeStack'});
-  // }, [jwt]);
+  React.useEffect(() => {
+    setIsLoading(false);
+    if (error) alert(error);
+    // if (jwt) navigation.navigate('AppStack', {screen: 'HomeStack'});
+  }, [user, error]);
+
+  if (isLoading) return <Loading />;
 
   return (
     <ScreenWrapper filter={Colors.lightBlack}>

@@ -8,6 +8,7 @@ import {
   storageCheck,
   updateUser,
 } from './actions';
+import {getPostsAction} from './postActions';
 
 export {
   AuthProvider,
@@ -20,4 +21,5 @@ export {
   addPostAction,
   storageCheck,
   updateUser,
+  getPostsAction,
 };

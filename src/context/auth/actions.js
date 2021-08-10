@@ -31,9 +31,9 @@ export const logIn = async ({dispatchAuth, dispatchApi, logInData}) => {
     //3. get full user and add it to context and async storage
     const userId = logInResponse.data.login.user.id;
     const user = await getUser({userId, jwt});
-    console.log(`user`, user); //debug
-    setUser({dispatchAuth, user});
-    await AsyncStorage.setItem('user', JSON.stringify(user));
+    console.log(`user `, user); //debug
+    // setUser({dispatchAuth, user});
+    // await AsyncStorage.setItem('user', JSON.stringify(user));
   } catch (err) {
     console.log('err', JSON.stringify(err)); //debug
     errorHandler({dispatchApi, errorObject: err});
@@ -155,6 +155,8 @@ export const getUser = async ({userId, jwt}) => {
       },
     },
   });
+
+  console.log('getUserResponse ', getUserResponse);
   return getUserResponse.data.user;
 };
 

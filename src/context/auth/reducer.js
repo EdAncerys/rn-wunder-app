@@ -12,6 +12,7 @@ export const initialState = {
   user: emptyUser,
   tempData: null,
   addAction: null,
+  posts: null,
 };
 
 export const AuthReducer = (state = initialState, action) => {
@@ -23,6 +24,8 @@ export const AuthReducer = (state = initialState, action) => {
     case 'SET_TEMP_DATA':
       return {...state, tempData: {...action.payload}};
     case 'SET_ADD_ACTION':
+      return {...state, addAction: {...action.payload}};
+    case 'SET_POSTS':
       return {...state, addAction: {...action.payload}};
     default:
       throw new Error(`Unhandled action type: ${action.type}`);

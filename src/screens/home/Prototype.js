@@ -10,13 +10,22 @@ import {
   Platform,
 } from 'react-native';
 import AddPostAction from '../../components/AddPostAction';
-import {useAuthState} from '../../context/auth';
+import Loading from '../../components/Loading';
 
 import LinearGradient from 'react-native-linear-gradient';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import AppActions from '../../components/AppActions';
+
+// GRAPH QL ---------------------------------------------------------
+import {
+  useAuthState,
+  useAuthDispatch,
+  getPostsAction,
+  logIn,
+} from '../../context/auth';
+import {useApiDispatch} from '../../context/api';
 
 import {HOME_SCREEN_DATA} from '../../config/data';
 
@@ -44,30 +53,27 @@ const styles = StyleSheet.create({
   },
 });
 
-const Loading = () => (
-  <View
-    style={{
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}>
-    <Text style={styles.paragraph}>Loading...</Text>
-  </View>
-);
-
 const Prototype = ({navigation}) => {
-  const {addAction} = useAuthState();
+  const dispatchAuth = useAuthDispatch();
+  const dispatchApi = useApiDispatch();
+  const {posts} = useAuthState();
+  console.log('posts', posts);
+
   const [addPostPopUp, setAddPostPopUp] = React.useState(null);
 
-  const [postData, setPostData] = React.useState(HOME_SCREEN_DATA);
+  const [postData, setPostData] = React.useState(null);
   const scrollY = React.useRef(new Animated.Value(0)).current;
   const [currentIndex, setCurrentIndex] = React.useState(0);
 
-  React.useEffect(() => {
-    console.log('currentIndex', currentIndex);
-  }, [currentIndex]);
+  // getPostsAction({dispatchAuth, dispatchApi});
+  const logInData = {identifier: 'LOGIN_EMAIL', password: 'LOGIN_PASSWORD'};
+  logIn({dispatchAuth, dispatchApi, logInData});
 
-  if (postData.length === 0) {
+  React.useEffect(() => {
+    getPostsAction({dispatchAuth, dispatchApi});
+  }, []);
+
+  if (!postData) {
     return <Loading />;
   }
 
@@ -131,9 +137,6 @@ const Prototype = ({navigation}) => {
     //     borderTopLeftRadius: CARD_WIDTH / 10,
     //     borderTopRightRadius: CARD_WIDTH / 10,
     //   };
-    setCurrentIndex(index);
-    console.log(currentIndex);
-    console.log('index', index);
 
     const inputRange = [
       (index - 1) * CARD_HEIGHT,
