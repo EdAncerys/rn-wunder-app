@@ -1,0 +1,33 @@
+import {gql} from '@apollo/client';
+
+export const MUTATION_CREATE_NEW_POST = gql`
+  mutation creteNewPost(
+    $user: ID!
+    $title: String
+    $body: String
+    $location: String
+    $picture: ID
+    $people: Boolean
+    $planet: Boolean
+    $canVolunteer: Boolean
+  ) {
+    createPost(
+      input: {
+        data: {
+          user: $user
+          title: $title
+          body: $body
+          location: $location
+          picture: $picture
+          people: $people
+          planet: $planet
+          canVolunteer: $canVolunteer
+        }
+      }
+    ) {
+      post {
+        id
+      }
+    }
+  }
+`;

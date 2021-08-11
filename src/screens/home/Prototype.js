@@ -22,8 +22,6 @@ import AppActions from '../../components/AppActions';
 import {useAuthState, useAuthDispatch, getPosts} from '../../context/auth';
 import {useApiDispatch} from '../../context/api';
 
-import {HOME_SCREEN_DATA} from '../../config/data';
-
 const {width, height} = Dimensions.get('screen');
 const CARD_WIDTH = width;
 const CARD_HEIGHT = height;
@@ -51,12 +49,13 @@ const styles = StyleSheet.create({
 const Prototype = ({navigation}) => {
   const dispatchAuth = useAuthDispatch();
   const dispatchApi = useApiDispatch();
-  const {posts, jwt} = useAuthState();
+  const {addAction, posts, jwt} = useAuthState();
   const [addPostPopUp, setAddPostPopUp] = React.useState(null);
 
   const [postData, setPostData] = React.useState(null);
+  const [currentIndex, seCurrentIndex] = React.useState(null);
   const scrollY = React.useRef(new Animated.Value(0)).current;
-  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const scrollYIndex = React.useRef(new Animated.Value(0)).current;
 
   React.useEffect(() => {
     if (jwt) getPosts({dispatchAuth, dispatchApi, jwt});
@@ -66,73 +65,17 @@ const Prototype = ({navigation}) => {
     if (posts) setPostData(posts);
   }, [posts]);
 
+  React.useEffect(() => {
+    if (addAction) setAddPostPopUp(addAction.addAction);
+  }, [addAction]);
+
   if (!postData) {
     return <Loading />;
   }
 
   // SERVERS ---------------------------------------------------------
-  const ServeHomeScreen = ({item}) => {
-    const {id, title, body, picture} = item;
-    console.log('item ', item);
-
-    return (
-      <ImageBackground
-        source={{uri: picture.url}}
-        style={{
-          resizeMode: 'cover',
-          width: CARD_WIDTH,
-          height: CARD_HEIGHT,
-        }}>
-        <LinearGradient
-          colors={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}
-          start={{x: 0.4, y: 0.4}}
-          style={{flex: 1}}>
-          <View
-            style={{
-              zIndex: 1,
-              position: 'absolute',
-              width: '100%',
-              bottom: 10,
-              paddingHorizontal: 10,
-            }}
-          />
-          <View style={{marginHorizontal: '5%'}}>
-            <View style={{marginVertical: '15%'}}>
-              <Text
-                style={{...Fonts.N_700_34, color: Colors.white}}
-                numberOfLines={1}>
-                {title}
-              </Text>
-              <Text
-                style={{...Fonts.N_400_16, color: Colors.white}}
-                numberOfLines={3}>
-                {body}
-              </Text>
-            </View>
-            <View style={{alignItems: 'flex-start', justifyContent: 'center'}}>
-              <AppActions
-                navigation={navigation}
-                Commend
-                Applaud
-                Shoutout
-                Comment
-                profileDataInfo={item}
-              />
-            </View>
-          </View>
-        </LinearGradient>
-      </ImageBackground>
-    );
-  };
 
   const renderFlatList = ({item, index}) => {
-    // let screenBorder = {};
-    // if (currentIndex !== currentIndex - 1)
-    //   screenBorder = {
-    //     borderTopLeftRadius: CARD_WIDTH / 10,
-    //     borderTopRightRadius: CARD_WIDTH / 10,
-    //   };
-
     const inputRange = [
       (index - 1) * CARD_HEIGHT,
       index * CARD_HEIGHT,
@@ -141,9 +84,67 @@ const Prototype = ({navigation}) => {
     let screenOverlap = -200;
     const translateY = scrollY.interpolate({
       inputRange,
-      outputRange: [-200, 0, 0],
+      outputRange: [screenOverlap, 0, 0],
       extrapolate: 'clamp',
     });
+
+    const ServeHomeScreen = ({}) => {
+      const {id, title, body, picture} = item;
+      const itemIndex = index + 1;
+
+      return (
+        <ImageBackground
+          source={{uri: picture.url}}
+          style={{
+            resizeMode: 'cover',
+            width: CARD_WIDTH,
+            height: CARD_HEIGHT,
+            // borderTopLeftRadius: item + 1 === itemIndex ? CARD_WIDTH / 10 : 0,
+            borderTopRightRadius: CARD_WIDTH / 10,
+            overflow: 'hidden',
+          }}>
+          <LinearGradient
+            colors={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}
+            start={{x: 0.4, y: 0.4}}
+            style={{flex: 1}}>
+            <View
+              style={{
+                zIndex: 1,
+                position: 'absolute',
+                width: '100%',
+                bottom: 10,
+                paddingHorizontal: 10,
+              }}
+            />
+            <View style={{marginHorizontal: '5%'}}>
+              <View style={{marginVertical: '15%'}}>
+                <Text
+                  style={{...Fonts.N_700_34, color: Colors.white}}
+                  numberOfLines={1}>
+                  {title}
+                </Text>
+                <Text
+                  style={{...Fonts.N_400_16, color: Colors.white}}
+                  numberOfLines={3}>
+                  {body}
+                </Text>
+              </View>
+              <View
+                style={{alignItems: 'flex-start', justifyContent: 'center'}}>
+                <AppActions
+                  navigation={navigation}
+                  Commend
+                  Applaud
+                  Shoutout
+                  Comment
+                  profileDataInfo={item}
+                />
+              </View>
+            </View>
+          </LinearGradient>
+        </ImageBackground>
+      );
+    };
 
     return (
       <Animated.View
@@ -153,7 +154,7 @@ const Prototype = ({navigation}) => {
           overflow: 'hidden',
           // borderRadius: 34,
         }}>
-        <ServeHomeScreen item={item} />
+        <ServeHomeScreen />
       </Animated.View>
     );
   };
@@ -171,7 +172,8 @@ const Prototype = ({navigation}) => {
         decelerationRate={Platform.OS === 'ios' ? 0 : 0.98}
         renderToHardwareTextureAndroid
         contentContainerStyle={{alignItems: 'center'}}
-        snapToInterval={CARD_HEIGHT}
+        // snapToInterval={CARD_HEIGHT}
+        pagingEnabled
         snapToAlignment="start"
         onScroll={Animated.event(
           [{nativeEvent: {contentOffset: {y: scrollY}}}],

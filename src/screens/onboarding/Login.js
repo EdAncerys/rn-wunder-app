@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  useAuthState,
-  useAuthDispatch,
-  logIn,
-  getPosts,
-} from '../../context/auth';
+import {useAuthState, useAuthDispatch, logIn} from '../../context/auth';
 import {useApiDispatch, useApiState} from '../../context/api';
 import {LOGIN_EMAIL, LOGIN_PASSWORD} from '@env';
 
@@ -78,7 +73,6 @@ const Login = ({navigation}) => {
   React.useEffect(() => {
     if (error) alert(error);
     if (jwt) {
-      // getPosts({dispatchAuth, dispatchApi, jwt});
       navigation.navigate('AppStack', {screen: 'HomeStack'});
     }
 

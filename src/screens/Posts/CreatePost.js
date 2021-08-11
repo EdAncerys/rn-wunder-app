@@ -21,18 +21,8 @@ const CreatePost = ({navigation}) => {
   const [image, setImage] = React.useState(null);
   const [uploadOptions, setUploadOptions] = React.useState(true);
 
-  const tabPress = navigation.addListener('tabPress', e => {
-    // Prevent default action
-    // e.preventDefault();
-  });
-
   const index = useNavigationState(state => state.index);
-  console.log(`State Index: ${index}`);
   if (index === 2) navigation.goBack();
-
-  React.useEffect(() => {
-    setUploadOptions(true);
-  }, [tabPress]);
 
   // HANDLERS ---------------------------------------------------------
 

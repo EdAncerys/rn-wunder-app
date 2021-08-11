@@ -71,7 +71,6 @@ const Commending = ({navigation, route}) => {
   const projectNavStyle = !aboutProfile ? active : inactive;
 
   React.useEffect(() => {
-    console.log(donateReason);
     if (donateReason) {
       setScreenFilter(true);
       return;

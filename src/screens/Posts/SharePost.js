@@ -1,4 +1,7 @@
 import * as React from 'react';
+import {useAuthState, useAuthDispatch, createNewPost} from '../../context/auth';
+import {useApiDispatch, useApiState} from '../../context/api';
+
 import {View, StyleSheet, Image, TextInput, Switch} from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
@@ -6,6 +9,7 @@ import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
 import NavigateAction from '../../components/NavigateAction';
+import Loading from '../../components/Loading';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -65,8 +69,8 @@ const styles = StyleSheet.create({
   },
 });
 
-// HANDLERS ---------------------------------------------------------
-const AboutPost = ({renderImg, title, setTitle, caption, setCaption}) => {
+// SERVERS ---------------------------------------------------------
+const ServeAboutPostSection = ({renderImg, title, setTitle, body, setBody}) => {
   return (
     <View
       style={{
@@ -101,7 +105,7 @@ const AboutPost = ({renderImg, title, setTitle, caption, setCaption}) => {
             width: '100%',
           }}>
           <TextInput
-            maxLength={20}
+            // maxLength={20}
             require={true}
             placeholder="Title of post..."
             underlineColorAndroid="transparent"
@@ -121,12 +125,12 @@ const AboutPost = ({renderImg, title, setTitle, caption, setCaption}) => {
             multiline={true}
             numberOfLines={3}
             require={true}
-            placeholder="Write a caption..."
+            placeholder="Write a body..."
             underlineColorAndroid="transparent"
             placeholderTextColor={Colors.lightSilver}
             style={styles.inputContainer}
-            onChangeText={setCaption}
-            value={caption}
+            onChangeText={setBody}
+            value={body}
             autoCapitalize="none"
           />
         </View>
@@ -136,16 +140,53 @@ const AboutPost = ({renderImg, title, setTitle, caption, setCaption}) => {
 };
 
 const SharePost = ({navigation, route}) => {
+  const dispatchAuth = useAuthDispatch();
+  const dispatchApi = useApiDispatch();
+  const {user, jwt} = useAuthState();
+  const {error} = useApiState();
+
   const {image} = route.params;
   const {url} = image;
   const renderImg = url || image;
+  const userID = user.id;
 
+  const [isLoading, setIsLoading] = React.useState(false);
   const [title, setTitle] = React.useState('');
-  const [caption, setCaption] = React.useState('');
+  const [body, setBody] = React.useState('');
   const [hashtag, setHashtag] = React.useState('');
+  const [tagPeople, setTagPeople] = React.useState('');
+  const [location, setLocation] = React.useState('London');
   const [people, setPeople] = React.useState(false);
-  const [planet, setPlanet] = React.useState(true);
+  const [planet, setPlanet] = React.useState(false);
   const [draft, setDraft] = React.useState(false);
+  const [canVolunteer, setCanVolunteer] = React.useState(false);
+
+  // HANDLERS ---------------------------------------------------------
+  const handleSharePost = () => {
+    // setIsLoading(true);
+    const createNewPostData = {
+      user: userID,
+      title,
+      body,
+      location,
+      picture: '610c1143f6b07a016f68eacf',
+      people,
+      planet,
+      canVolunteer,
+    };
+    createNewPost({dispatchAuth, dispatchApi, createNewPostData, jwt});
+    // setTile('');
+    // setBody('');
+    // setHashtag('');
+    // setLocation('');
+    // setPeople(false);
+    // setPlanet(false);
+    // setDraft(false);
+
+    // navigation.navigate('AppStack', {screen: 'Home'})
+  };
+
+  if (isLoading) return <Loading />;
 
   // RETURN ---------------------------------------------------------
   return (
@@ -165,18 +206,18 @@ const SharePost = ({navigation, route}) => {
               title="Share"
               titleStyling={{...Fonts.N_700_12, color: Colors.primary}}
               style={styles.btnStyling}
-              onPress={() => navigation.navigate('AppStack', {screen: 'Home'})}
+              onPress={handleSharePost}
             />
           </View>
         </View>
         <View style={styles.divider} />
         <View style={styles.content}>
-          <AboutPost
+          <ServeAboutPostSection
             renderImg={renderImg}
             title={title}
             setTitle={setTitle}
-            caption={caption}
-            setCaption={setCaption}
+            body={body}
+            setBody={setBody}
           />
           <View style={styles.divider} />
 

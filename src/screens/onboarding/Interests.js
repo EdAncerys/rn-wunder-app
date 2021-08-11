@@ -52,7 +52,6 @@ const AccountCreated = ({navigation}) => {
   let filterFill = [Colors.gradientFilterTop, Colors.gradientFilterBottom];
 
   const renderListItem = ({item, index}) => {
-    // console.log(selected);
     // if (selected.includes(index))
     //   filterFill = [Colors.matFilter, Colors.matFilter];
     const {url} = item;
@@ -64,7 +63,6 @@ const AccountCreated = ({navigation}) => {
         return;
       }
       setSelected([...selected, index]);
-      console.log(index);
     };
 
     return (

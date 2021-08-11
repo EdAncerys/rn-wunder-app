@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
 const UserNotification = ({navigation, route}) => {
   const {profileDataInfo} = route.params;
   const {name} = profileDataInfo;
-  console.log(profileDataInfo);
 
   // SERVERS ---------------------------------------------------------
   const ServeNavigation = () => {
@@ -45,7 +44,7 @@ const UserNotification = ({navigation, route}) => {
             onPress={() => navigation.goBack()}
           />
         </View>
-        <View style={styles.divider}/>
+        <View style={styles.divider} />
       </View>
     );
   };
