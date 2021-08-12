@@ -188,7 +188,14 @@ const Commenting = ({navigation, route}) => {
   };
 
   const ServeProfileInfo = ({profileDataInfo}) => {
-    const {profileImageUrl, name, isVerified} = profileDataInfo;
+    const {title, body, canVolunteer, people, planet, picture, user} =
+      profileDataInfo;
+    console.log('hello profileDataInfo', profileDataInfo);
+
+    const isVerified = user.confirmed;
+    const profileImage = user.picture[0].url;
+    const username = user.username;
+
     const navStack = isVerified ? 'ProfileStack' : 'AppStack';
     const navScreen = isVerified ? 'ProProfile' : 'Profile';
 
@@ -206,7 +213,7 @@ const Commenting = ({navigation, route}) => {
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <View>
             <Image
-              source={{uri: profileImageUrl}}
+              source={{uri: profileImage}}
               style={{
                 width: 40,
                 height: 40,
@@ -215,7 +222,7 @@ const Commenting = ({navigation, route}) => {
             />
           </View>
           <View>
-            <Text style={styles.name}>@{name}</Text>
+            <Text style={styles.name}>{username}</Text>
           </View>
           {isVerified && (
             <CustomButton

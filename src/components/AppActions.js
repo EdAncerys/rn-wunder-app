@@ -104,12 +104,12 @@ const AppActions = ({
               iconWidth={24}
               iconHeight={24}
               iconFill={Colors.white}
-              onPress={() =>
-                navigation.navigate('ProfileStack', {
-                  screen: 'Settings',
-                  params: {profileDataInfo: profileDataInfo},
-                })
-              }
+              // onPress={() =>
+              //   navigation.navigate('ProfileStack', {
+              //     screen: 'Settings',
+              //     params: {profileDataInfo: profileDataInfo},
+              //   })
+              // }
               style={{backgroundColor: Colors.transparent}}
             />
           </View>
@@ -121,12 +121,12 @@ const AppActions = ({
               iconWidth={24}
               iconHeight={24}
               iconFill={Colors.white}
-              onPress={() =>
-                navigation.navigate('ProjectStack', {
-                  screen: 'Commend',
-                  params: {profileDataInfo: profileDataInfo},
-                })
-              }
+              // onPress={() =>
+              //   navigation.navigate('ProjectStack', {
+              //     screen: 'Commend',
+              //     params: {profileDataInfo: profileDataInfo},
+              //   })
+              // }
               style={{backgroundColor: Colors.transparent}}
             />
             <Text style={styles.title}>1346</Text>
@@ -165,12 +165,12 @@ const AppActions = ({
               iconWidth={24}
               iconHeight={20}
               iconFill={Colors.white}
-              onPress={() =>
-                navigation.navigate('HomeStack', {
-                  screen: 'Commenting',
-                  params: {profileDataInfo: profileDataInfo},
-                })
-              }
+              // onPress={() =>
+              //   navigation.navigate('HomeStack', {
+              //     screen: 'Commenting',
+              //     params: {profileDataInfo: profileDataInfo},
+              //   })
+              // }
               style={{backgroundColor: Colors.transparent}}
             />
             <Text style={styles.title}>346</Text>

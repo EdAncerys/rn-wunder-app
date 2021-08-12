@@ -70,7 +70,7 @@ import QRCode from '../screens/notifications/QRCode';
 import ProProfile from '../screens/profile/ProProfile';
 import Commenting from '../screens/commenting/Commenting';
 import Prototype from '../screens/home/Prototype';
-import ExampleVertical from '../screens/home/ExampleVertical';
+import HomePrototype from '../screens/home/HomePrototype';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -78,16 +78,16 @@ const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="CreateAccountStack">
-      <Stack.Screen
-        name="TestScreen"
-        component={ExampleVertical}
-        options={{headerShown: false}}
-      />
       {/* <Stack.Screen
+        name="TestScreen"
+        component={HomePrototype}
+        options={{headerShown: false}}
+      /> */}
+      <Stack.Screen
         name="CreateAccountStack"
         component={CreateAccountStack}
         options={{headerShown: false}}
-      /> */}
+      />
       <Stack.Screen
         name="AppStack"
         component={AppStack}
@@ -144,20 +144,20 @@ const AppStack = ({navigation}) => {
       }}>
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={HomePrototype}
         options={{
           tabBarLabel: 'home',
           tabBarIcon: () => <HomeIcon width={28} height={28} />,
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Prototype"
         component={Prototype}
         options={{
           tabBarLabel: 'Prototype',
           tabBarIcon: () => <HomeIcon width={28} height={28} />,
         }}
-      />
+      /> */}
       <Tab.Screen
         name="Search"
         component={Search}
