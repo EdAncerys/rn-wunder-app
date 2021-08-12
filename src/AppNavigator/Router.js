@@ -78,16 +78,16 @@ const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="CreateAccountStack">
-      {/* <Stack.Screen
+      <Stack.Screen
         name="TestScreen"
         component={HomePrototype}
         options={{headerShown: false}}
-      /> */}
-      <Stack.Screen
+      />
+      {/* <Stack.Screen
         name="CreateAccountStack"
         component={CreateAccountStack}
         options={{headerShown: false}}
-      />
+      /> */}
       <Stack.Screen
         name="AppStack"
         component={AppStack}
@@ -150,14 +150,6 @@ const AppStack = ({navigation}) => {
           tabBarIcon: () => <HomeIcon width={28} height={28} />,
         }}
       />
-      {/* <Tab.Screen
-        name="Prototype"
-        component={Prototype}
-        options={{
-          tabBarLabel: 'Prototype',
-          tabBarIcon: () => <HomeIcon width={28} height={28} />,
-        }}
-      /> */}
       <Tab.Screen
         name="Search"
         component={Search}

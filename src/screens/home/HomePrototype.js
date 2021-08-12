@@ -63,11 +63,7 @@ const HomePrototype = ({navigation}) => {
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMGJjZmYwMWQ1YjBmZTRjMzBhZWNiNyIsImlhdCI6MTYyODU5NjQ1NSwiZXhwIjoxNjMxMTg4NDU1fQ.2Yi-c-1LhCd7Xbk8Z5WgNL45N99QeBJenM-nvpiStk4';
 
   const [postData, setPostData] = React.useState(null);
-  const [currentIndex, setCurrentIndex] = React.useState(null);
   const scrollY = React.useRef(new Animated.Value(0)).current;
-  const onViewRef = React.useRef(viewableItems => {
-    setCurrentIndex(viewableItems.viewableItems[0].index);
-  });
 
   React.useEffect(() => {
     if (jwt) getPosts({dispatchAuth, dispatchApi, jwt});
@@ -92,7 +88,7 @@ const HomePrototype = ({navigation}) => {
     const profileImage = user.picture[0].url;
     const username = user.username;
 
-    const borderRadius = currentIndex !== index ? CARD_WIDTH / 6 : 0;
+    const BORDER_RADIUS = CARD_WIDTH / 6;
     const inputRange = [
       (index - 1) * CARD_HEIGHT,
       index * CARD_HEIGHT,
@@ -108,8 +104,25 @@ const HomePrototype = ({navigation}) => {
       inputRange,
       outputRange: [0, 0, CARD_HEIGHT * 1],
     });
+    const borderRadiusY = scrollY.interpolate({
+      inputRange,
+      outputRange: [BORDER_RADIUS, 0, 0],
+    });
 
     // SERVERS ---------------------------------------------------------
+    const ServeHeader = ({}) => {
+      return (
+        <View
+          style={{
+            marginTop: '10%',
+            justifyContent: 'center',
+          }}>
+          {/* {isVerified && <DonateActions navigation={navigation} />} */}
+          <DonateActions navigation={navigation} />
+        </View>
+      );
+    };
+
     const ServeProfileInfo = ({}) => {
       return (
         <TouchableOpacity
@@ -161,18 +174,6 @@ const HomePrototype = ({navigation}) => {
             )}
           </View>
         </TouchableOpacity>
-      );
-    };
-
-    const ServeHeader = ({}) => {
-      return (
-        <View
-          style={{
-            flex: 0.3,
-            justifyContent: 'center',
-          }}>
-          {isVerified && <DonateActions navigation={navigation} />}
-        </View>
       );
     };
 
@@ -251,11 +252,13 @@ const HomePrototype = ({navigation}) => {
       return (
         <View
           style={{
-            flex: 1,
+            flex: 2,
           }}>
           <View
             style={{
-              paddingBottom: -OVERLAP,
+              flex: 1,
+              marginBottom: -OVERLAP + 20,
+              justifyContent: 'flex-end',
             }}>
             <ServeProfileInfo />
             <ServePostTitle />
@@ -267,38 +270,23 @@ const HomePrototype = ({navigation}) => {
 
     const ServeContent = () => {
       return (
-        <ImageBackground
-          source={{uri: picture.url}}
+        <Animated.View
           style={{
-            width: CARD_WIDTH,
-            height: CARD_HEIGHT,
-            resizeMode: 'cover',
+            transform: [{translateY}],
           }}>
-          <LinearGradient
-            colors={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}
-            start={{x: 0.4, y: 0.4}}
-            style={{flex: 1}}>
+          <ImageBackground
+            source={{uri: picture.url}}
+            style={{
+              width: CARD_WIDTH,
+              height: CARD_HEIGHT,
+              resizeMode: 'cover',
+            }}>
             <View style={{flex: 1, marginHorizontal: '5%'}}>
               <ServeHeader />
-              <View
-                style={{
-                  flex: 1,
-                  alignItems: 'flex-start',
-                  justifyContent: 'center',
-                }}>
-                <AppActions
-                  navigation={navigation}
-                  Commend
-                  Applaud
-                  Shoutout
-                  Comment
-                  profileDataInfo={item}
-                />
-              </View>
               <ServePostContent />
             </View>
-          </LinearGradient>
-        </ImageBackground>
+          </ImageBackground>
+        </Animated.View>
       );
     };
 
@@ -307,16 +295,11 @@ const HomePrototype = ({navigation}) => {
         <Animated.View
           style={{
             transform: [{translateY: overlap}],
+            borderTopLeftRadius: borderRadiusY,
+            borderTopRightRadius: borderRadiusY,
+            overflow: 'hidden',
           }}>
-          <Animated.View
-            style={{
-              transform: [{translateY}],
-              borderTopLeftRadius: borderRadius,
-              borderTopRightRadius: borderRadius,
-              overflow: 'hidden',
-            }}>
-            <ServeContent />
-          </Animated.View>
+          <ServeContent />
         </Animated.View>
       </View>
     );
@@ -331,17 +314,16 @@ const HomePrototype = ({navigation}) => {
         snapToAlignment="start"
         bounces={false}
         pagingEnabled
-        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         keyExtractor={(_, index) => String(index)}
         decelerationRate={Platform.OS === 'ios' ? 0 : 0.98}
         renderToHardwareTextureAndroid
-        contentContainerStyle={{alignItems: 'center'}}
         scrollEventThrottle={16}
         onScroll={Animated.event(
           [{nativeEvent: {contentOffset: {y: scrollY}}}],
           {useNativeDriver: true},
         )}
-        onViewableItemsChanged={onViewRef.current}
+        onScrollAnimationEnd={e => console.log('end')}
         data={postData}
         renderItem={renderFlatList}
       />
