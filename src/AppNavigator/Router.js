@@ -39,7 +39,6 @@ import EmailOTP from '../screens/onboardingUnderSixteen/EmailOTP';
 import VerifyOTPU16 from '../screens/onboardingUnderSixteen/VerifyOTPU16';
 import Yay from '../screens/onboardingUnderSixteen/Yay';
 import Profile from '../screens/profile/Profile';
-import Home from '../screens/home/Home';
 import UserNotification from '../screens/notifications/UserNotification';
 import Search from '../screens/search/Search';
 import CreateProAccount from '../screens/profile/CreateProAccount';
@@ -69,8 +68,7 @@ import Commend from '../screens/commending/Commend';
 import QRCode from '../screens/notifications/QRCode';
 import ProProfile from '../screens/profile/ProProfile';
 import Commenting from '../screens/commenting/Commenting';
-import Prototype from '../screens/home/Prototype';
-import HomePrototype from '../screens/home/HomePrototype';
+import Home from '../screens/home/Home';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -78,11 +76,11 @@ const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="CreateAccountStack">
-      <Stack.Screen
+      {/* <Stack.Screen
         name="TestScreen"
         component={HomePrototype}
         options={{headerShown: false}}
-      />
+      /> */}
       {/* <Stack.Screen
         name="CreateAccountStack"
         component={CreateAccountStack}
@@ -144,7 +142,7 @@ const AppStack = ({navigation}) => {
       }}>
       <Tab.Screen
         name="Home"
-        component={HomePrototype}
+        component={Home}
         options={{
           tabBarLabel: 'home',
           tabBarIcon: () => <HomeIcon width={28} height={28} />,

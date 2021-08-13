@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   appActions: {
-    flex: 4,
+    flex: 3,
     alignItems: 'flex-start',
     justifyContent: 'center',
   },
@@ -75,16 +75,11 @@ const styles = StyleSheet.create({
 const Post = ({navigation, route}) => {
   const [donateReason, setDonateReason] = React.useState(false);
   const {profileDataInfo} = route.params;
-  const {
-    url,
-    profileImageUrl,
-    title,
-    name,
-    isVerified,
-    post,
-    category,
-    getInvolved,
-  } = profileDataInfo;
+  const {title, body, canVolunteer, people, planet, picture, user} =
+    profileDataInfo;
+  const isVerified = user.confirmed;
+  const profileImage = user.picture[0].url;
+  const username = user.username;
 
   const navStack = isVerified ? 'ProfileStack' : 'AppStack';
   const navScreen = isVerified ? 'ProProfile' : 'Profile';
@@ -120,10 +115,10 @@ const Post = ({navigation, route}) => {
               borderRadius: 16,
               overflow: 'hidden',
             }}
-            source={{uri: profileImageUrl}}
+            source={{uri: profileImage}}
           />
         </View>
-        <Text style={styles.profile}>@{name}</Text>
+        <Text style={styles.profile}>{username}</Text>
         {isVerified && (
           <View style={styles.isVerified}>
             <CustomButton
@@ -143,44 +138,47 @@ const Post = ({navigation, route}) => {
     return <Text style={styles.title}>{title}</Text>;
   };
   const ServePost = ({}) => {
-    const postTagIcon = category === 'planet' ? 'Planet' : 'People';
-    const iconColor = category === 'planet' ? Colors.planet : Colors.primary;
+    const postTagIcon = planet ? 'Planet' : 'People';
+    const iconColor = planet ? Colors.planet : Colors.primary;
 
     return (
-      <View style={styles.rowWrapper}>
-        <ScrollView showsVerticalScrollIndicator={false} horizontal={false}>
-          <View style={styles.postWrapper}>
-            <Text style={styles.postTitle}>{post}</Text>
-          </View>
-        </ScrollView>
-        <View style={styles.badgeContainer}>
-          <View
-            style={{
-              backgroundColor: iconColor,
-              padding: 8.75,
-              borderRadius: 100,
-            }}>
-            <CustomButton
-              iconLeft={postTagIcon}
-              iconFill={Colors.white}
-              iconWidth={25}
-              iconHeight={25}
-              iconStyling={styles.postTagIcon}
-              style={{
-                backgroundColor: Colors.transparent,
-              }}
-              onPress={() => alert(postTagIcon)}
-            />
-          </View>
+      // <View style={styles.rowWrapper}>
+      //   <ScrollView showsVerticalScrollIndicator={false} horizontal={false}>
+      //     <Text style={styles.postTitle}>{body}</Text>
+      //   </ScrollView>
+      //   <View style={styles.badgeContainer}>
+      //     <View
+      //       style={{
+      //         backgroundColor: iconColor,
+      //         padding: 8.75,
+      //         borderRadius: 100,
+      //       }}>
+      //       <CustomButton
+      //         iconLeft={postTagIcon}
+      //         iconFill={Colors.white}
+      //         iconWidth={25}
+      //         iconHeight={25}
+      //         iconStyling={styles.postTagIcon}
+      //         style={{
+      //           backgroundColor: Colors.transparent,
+      //         }}
+      //         onPress={() => alert(postTagIcon)}
+      //       />
+      //     </View>
+      //   </View>
+      // </View>
+      <ScrollView contentInsetAdjustmentBehavior="automatic">
+        <View style={styles.msgContainer}>
+          <Text style={styles.msg}>{body}</Text>
         </View>
-      </View>
+      </ScrollView>
     );
   };
 
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper
-      image={url}
+      image={picture.url}
       gradient={[Colors.gradientFilterTop, Colors.gradientFilterBottom]}>
       <View style={styles.wrapper}>
         <ServePostHeaderActions />
@@ -198,7 +196,7 @@ const Post = ({navigation, route}) => {
           <ServeProfileInfo />
           <ServePostTitle />
           <ServePost />
-          {getInvolved && (
+          {canVolunteer && (
             <View style={styles.getInvolvedActions}>
               <CustomButton
                 title="get involved"

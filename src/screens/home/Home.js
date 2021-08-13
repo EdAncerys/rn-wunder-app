@@ -1,159 +1,92 @@
 import * as React from 'react';
-import {
-  StatusBar,
-  FlatList,
-  Dimensions,
-  Animated,
-  View,
-  StyleSheet,
-} from 'react-native';
-import {
-  FlingGestureHandler,
-  Directions,
-  State,
-} from 'react-native-gesture-handler';
-import {useAuthState} from '../../context/auth';
+import {StatusBar, View, StyleSheet, Animated, Platform} from 'react-native';
 import AddPostAction from '../../components/AddPostAction';
-import {HOME_SCREEN_DATA} from '../../config/data';
-
-const {width, height} = Dimensions.get('screen');
+import Loading from '../../components/Loading';
 
 import HomeScreen from '../../components/HomeScreen';
+import CommendActions from '../../components/commendActions/CommendActions';
 
-const ITEM_WIDTH = width;
-const ITEM_HEIGHT = height;
+// GRAPH QL ---------------------------------------------------------
+import {useAuthState, useAuthDispatch, getPosts} from '../../context/auth';
+import {useApiDispatch} from '../../context/api';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  screenContainer: {
-    width: width,
-    height: height,
-    overflow: 'hidden',
-  },
 });
 
-const Home = ({navigation}) => {
-  const {addAction} = useAuthState();
+const HomePrototype = ({navigation}) => {
+  const dispatchAuth = useAuthDispatch();
+  const dispatchApi = useApiDispatch();
+  const {addAction, posts} = useAuthState();
   const [addPostPopUp, setAddPostPopUp] = React.useState(null);
-  const [data, setData] = React.useState(HOME_SCREEN_DATA);
-  const scrollYIndex = React.useRef(new Animated.Value(0)).current;
-  const scrollYAnimated = React.useRef(new Animated.Value(0)).current;
-  const [index, setIndex] = React.useState(0);
-  const setActiveIndex = React.useCallback(activeIndex => {
-    scrollYIndex.setValue(activeIndex);
-    setIndex(activeIndex);
-  });
+  const [commendAction, setCommendAction] = React.useState(null);
+  const jwt =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMGJjZmYwMWQ1YjBmZTRjMzBhZWNiNyIsImlhdCI6MTYyODU5NjQ1NSwiZXhwIjoxNjMxMTg4NDU1fQ.2Yi-c-1LhCd7Xbk8Z5WgNL45N99QeBJenM-nvpiStk4';
+
+  const [postData, setPostData] = React.useState(null);
+  const scrollY = React.useRef(new Animated.Value(0)).current;
 
   React.useEffect(() => {
-    if (index === data.length - 1) {
-      const newData = [...data, ...data]; // Apply looping to render components
-      setData(newData);
-    }
-  });
+    if (jwt) getPosts({dispatchAuth, dispatchApi, jwt});
+  }, [jwt]);
 
   React.useEffect(() => {
-    Animated.spring(scrollYAnimated, {
-      toValue: scrollYIndex,
-      useNativeDriver: true,
-      friction: 15,
-    }).start();
-  });
+    if (posts) setPostData(posts);
+  }, [posts]);
 
   React.useEffect(() => {
     if (addAction) setAddPostPopUp(addAction.addAction);
   }, [addAction]);
 
+  if (!postData) {
+    return <Loading />;
+  }
+
   // SERVERS ---------------------------------------------------------
-  const ServeScreen = ({profileDataInfo, currentIndex}) => {
-    let screenBorder = {};
-    if (currentIndex !== index)
-      screenBorder = {
-        borderTopLeftRadius: ITEM_WIDTH / 10,
-        borderTopRightRadius: ITEM_WIDTH / 10,
-      };
-
+  const renderFlatList = ({item, index}) => {
     return (
-      <View style={{...styles.screenContainer, ...screenBorder}}>
-        <HomeScreen navigation={navigation} profileDataInfo={profileDataInfo} />
+      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+        <HomeScreen
+          item={item}
+          index={index}
+          scrollY={scrollY}
+          navigation={navigation}
+        />
       </View>
-    );
-  };
-
-  const renderFlatListItem = ({item, index}) => {
-    const inputRange = [index - 1, index, index + 1];
-    let screenOverlap = ITEM_HEIGHT - 180;
-    const translateY = scrollYAnimated.interpolate({
-      inputRange,
-      outputRange: [screenOverlap, 0, 0],
-    });
-    const scale = scrollYAnimated.interpolate({
-      inputRange,
-      outputRange: [1, 1, 0],
-    });
-
-    return (
-      <Animated.View
-        style={{
-          position: 'absolute',
-          left: -ITEM_WIDTH / 2,
-          transform: [
-            {
-              translateY,
-            },
-            {scale},
-          ],
-        }}>
-        <ServeScreen profileDataInfo={item} currentIndex={index} />
-      </Animated.View>
     );
   };
 
   // RETURN ---------------------------------------------------------
   return (
-    <FlingGestureHandler
-      key="up"
-      direction={Directions.UP}
-      onHandlerStateChange={ev => {
-        if (ev.nativeEvent.state === State.END) {
-          if (index === data.length - 1) {
-            return;
-          }
-          setActiveIndex(index + 1);
-        }
-      }}>
-      <FlingGestureHandler
-        key="down"
-        direction={Directions.DOWN}
-        onHandlerStateChange={ev => {
-          if (ev.nativeEvent.state === State.END) {
-            if (index === 0) {
-              return;
-            }
-            setActiveIndex(index - 1);
-          }
-        }}>
-        <View style={styles.container}>
-          <StatusBar hidden />
-          {addPostPopUp && <AddPostAction navigation={navigation} />}
-          <FlatList
-            data={data}
-            keyExtractor={(_, index) => String(index)}
-            horizontal
-            inverted
-            contentContainerStyle={{
-              flex: 1,
-              justifyContent: 'center',
-            }}
-            scrollEnabled={false}
-            removeClippedSubviews={false}
-            renderItem={renderFlatListItem}
-          />
-        </View>
-      </FlingGestureHandler>
-    </FlingGestureHandler>
+    <View style={styles.container}>
+      <StatusBar hidden />
+      {addPostPopUp && <AddPostAction navigation={navigation} />}
+      {commendAction && (
+        <CommendActions
+          donateReason={commendAction}
+          setDonateReason={setCommendAction}
+        />
+      )}
+      <Animated.FlatList
+        snapToAlignment="start"
+        bounces={false}
+        pagingEnabled
+        showsVerticalScrollIndicator={false}
+        keyExtractor={(_, index) => String(index)}
+        decelerationRate={Platform.OS === 'ios' ? 0 : 0.98}
+        renderToHardwareTextureAndroid
+        scrollEventThrottle={16}
+        onScroll={Animated.event(
+          [{nativeEvent: {contentOffset: {y: scrollY}}}],
+          {useNativeDriver: true},
+        )}
+        data={postData}
+        renderItem={renderFlatList}
+      />
+    </View>
   );
 };
 
-export default Home;
+export default HomePrototype;

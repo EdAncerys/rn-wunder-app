@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
 });
 
 const HomeScreen = ({item, index, scrollY, navigation}) => {
-  // SERVERS ---------------------------------------------------------
   const {title, body, canVolunteer, people, planet, picture, user} = item;
   const isVerified = user.confirmed;
   const profileImage = user.picture[0].url;
@@ -174,8 +173,8 @@ const HomeScreen = ({item, index, scrollY, navigation}) => {
   };
 
   const ServePost = ({}) => {
-    const postTagIcon = people === 'planet' ? 'Planet' : 'People';
-    const iconColor = people === 'planet' ? Colors.planet : Colors.primary;
+    const postTagIcon = planet ? 'Planet' : 'People';
+    const iconColor = planet ? Colors.planet : Colors.primary;
 
     return (
       <View>
@@ -186,13 +185,12 @@ const HomeScreen = ({item, index, scrollY, navigation}) => {
           }}>
           <View style={{flex: 3}}>
             <TouchableOpacity
-            // onPress={() =>
-            //   navigation.navigate('ProjectStack', {
-            //     screen: 'Post',
-            //     params: {profileDataInfo: profileDataInfo},
-            //   })
-            // }
-            >
+              onPress={() =>
+                navigation.navigate('ProjectStack', {
+                  screen: 'Post',
+                  params: {profileDataInfo: item},
+                })
+              }>
               <View>
                 <Text
                   style={{
