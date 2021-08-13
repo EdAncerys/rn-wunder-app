@@ -1,5 +1,15 @@
 import {gql} from '@apollo/client';
 
+export const ADD_FILE = gql`
+  mutation uploadOneFile($file: Upload!) {
+    upload(file: $file) {
+      id
+      name
+      createdAt
+    }
+  }
+`;
+
 export const MUTATION_CREATE_NEW_POST = gql`
   mutation creteNewPost(
     $user: ID!

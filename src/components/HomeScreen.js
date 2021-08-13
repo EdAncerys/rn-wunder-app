@@ -20,7 +20,7 @@ import DonateActions from './DonateActions';
 const {width, height} = Dimensions.get('screen');
 const CARD_WIDTH = width;
 const CARD_HEIGHT = height;
-const OVERLAP = -200;
+const OVERLAP = -180;
 
 const styles = StyleSheet.create({
   container: {
@@ -292,6 +292,7 @@ const HomeScreen = ({item, index, scrollY, navigation}) => {
   // RETURN ---------------------------------------------------------
   return (
     <Animated.View
+      key={String(index)}
       style={{
         transform: [{translateY: overlap}],
         borderTopLeftRadius: borderRadiusY,

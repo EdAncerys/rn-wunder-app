@@ -25,7 +25,6 @@ const CreatePost = ({navigation}) => {
   if (index === 2) navigation.goBack();
 
   // HANDLERS ---------------------------------------------------------
-
   const handleGallery = () => {
     openGallery(setImage);
   };

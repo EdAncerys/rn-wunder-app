@@ -22,12 +22,7 @@ export const getPosts = async ({dispatchAuth, dispatchApi, jwt}) => {
   }
 };
 
-export const createNewPost = async ({
-  dispatchAuth,
-  dispatchApi,
-  createNewPostData,
-  jwt,
-}) => {
+export const createNewPost = async ({dispatchApi, createNewPostData, jwt}) => {
   try {
     console.log('createNewPost triggered'); //debug
     //0. clear api errors

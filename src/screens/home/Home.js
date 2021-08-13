@@ -1,14 +1,15 @@
 import * as React from 'react';
 import {StatusBar, View, StyleSheet, Animated, Platform} from 'react-native';
+import {useIsFocused} from '@react-navigation/native';
+
 import AddPostAction from '../../components/AddPostAction';
 import Loading from '../../components/Loading';
-
 import HomeScreen from '../../components/HomeScreen';
 import CommendActions from '../../components/commendActions/CommendActions';
 
 // GRAPH QL ---------------------------------------------------------
 import {useAuthState, useAuthDispatch, getPosts} from '../../context/auth';
-import {useApiDispatch} from '../../context/api';
+import {useApiDispatch, useApiState} from '../../context/api';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,18 +20,21 @@ const styles = StyleSheet.create({
 const HomePrototype = ({navigation}) => {
   const dispatchAuth = useAuthDispatch();
   const dispatchApi = useApiDispatch();
-  const {addAction, posts} = useAuthState();
+  const {error} = useApiState();
+  const isFocused = useIsFocused();
+  const {addAction, posts, jwt} = useAuthState();
   const [addPostPopUp, setAddPostPopUp] = React.useState(null);
   const [commendAction, setCommendAction] = React.useState(null);
-  const jwt =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxMGJjZmYwMWQ1YjBmZTRjMzBhZWNiNyIsImlhdCI6MTYyODU5NjQ1NSwiZXhwIjoxNjMxMTg4NDU1fQ.2Yi-c-1LhCd7Xbk8Z5WgNL45N99QeBJenM-nvpiStk4';
 
   const [postData, setPostData] = React.useState(null);
   const scrollY = React.useRef(new Animated.Value(0)).current;
 
   React.useEffect(() => {
-    if (jwt) getPosts({dispatchAuth, dispatchApi, jwt});
-  }, [jwt]);
+    if (isFocused) {
+      if (jwt) getPosts({dispatchAuth, dispatchApi, jwt});
+      if (!jwt) alert('jwt error');
+    }
+  }, [isFocused]);
 
   React.useEffect(() => {
     if (posts) setPostData(posts);
@@ -47,7 +51,9 @@ const HomePrototype = ({navigation}) => {
   // SERVERS ---------------------------------------------------------
   const renderFlatList = ({item, index}) => {
     return (
-      <View style={{justifyContent: 'center', alignItems: 'center'}}>
+      <View
+        key={String(index)}
+        style={{justifyContent: 'center', alignItems: 'center'}}>
         <HomeScreen
           item={item}
           index={index}

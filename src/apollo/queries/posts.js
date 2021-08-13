@@ -2,7 +2,7 @@ import {gql} from '@apollo/client';
 
 export const QUERY_GET_POSTS = gql`
   query getPosts {
-    posts {
+    posts(limit: 10, sort: "createdAt:desc") {
       id
       title
       body

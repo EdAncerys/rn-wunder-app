@@ -1,8 +1,14 @@
 import * as React from 'react';
+import {
+  View,
+  StyleSheet,
+  Image,
+  TextInput,
+  Switch,
+  ScrollView,
+} from 'react-native';
 import {useAuthState, useAuthDispatch, createNewPost} from '../../context/auth';
 import {useApiDispatch, useApiState} from '../../context/api';
-
-import {View, StyleSheet, Image, TextInput, Switch} from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -70,71 +76,101 @@ const styles = StyleSheet.create({
 });
 
 // SERVERS ---------------------------------------------------------
-const ServeAboutPostSection = ({renderImg, title, setTitle, body, setBody}) => {
+const ServeAboutPostSection = ({
+  renderImg,
+  title,
+  setTitle,
+  body,
+  setBody,
+  hashtag,
+  setHashtag,
+}) => {
   return (
-    <View
-      style={{
-        flexDirection: 'row',
-        marginVertical: '5%',
-      }}>
+    <View>
       <View
         style={{
-          height: 170,
+          flexDirection: 'row',
+          marginVertical: '5%',
         }}>
-        <Image
+        <View
           style={{
-            width: 80,
             height: 170,
-            borderRadius: 5,
-            overflow: 'hidden',
-            resizeMode: 'cover',
-          }}
-          source={renderImg}
+          }}>
+          <Image
+            style={{
+              width: 80,
+              height: 170,
+              borderRadius: 5,
+              overflow: 'hidden',
+              resizeMode: 'cover',
+            }}
+            source={renderImg}
+          />
+        </View>
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'flex-start',
+            marginLeft: '5%',
+          }}>
+          <View
+            style={{
+              borderBottomWidth: 1,
+              borderColor: Colors.lightSilver,
+              width: '100%',
+            }}>
+            <TextInput
+              // maxLength={20}
+              require={true}
+              placeholder="Title of post..."
+              underlineColorAndroid="transparent"
+              placeholderTextColor={Colors.lightSilver}
+              style={styles.inputContainer}
+              value={title}
+              onChangeText={setTitle}
+              autoCapitalize="none"
+            />
+          </View>
+          <View
+            style={{
+              width: '100%',
+              height: 100,
+            }}>
+            <TextInput
+              multiline={true}
+              numberOfLines={3}
+              require={true}
+              placeholder="Write a body..."
+              underlineColorAndroid="transparent"
+              placeholderTextColor={Colors.lightSilver}
+              style={styles.inputContainer}
+              onChangeText={setBody}
+              value={body}
+              autoCapitalize="none"
+            />
+          </View>
+        </View>
+      </View>
+      <View style={styles.divider} />
+      <View
+        style={{
+          width: '100%',
+          height: 100,
+        }}>
+        <TextInput
+          multiline={true}
+          numberOfLines={3}
+          require={true}
+          placeholder="Create some hashtags..."
+          underlineColorAndroid="transparent"
+          placeholderTextColor={Colors.lightSilver}
+          style={styles.inputContainer}
+          onChangeText={setHashtag}
+          value={hashtag}
+          autoCapitalize="none"
         />
       </View>
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'flex-start',
-          marginLeft: '5%',
-        }}>
-        <View
-          style={{
-            borderBottomWidth: 1,
-            borderColor: Colors.lightSilver,
-            width: '100%',
-          }}>
-          <TextInput
-            // maxLength={20}
-            require={true}
-            placeholder="Title of post..."
-            underlineColorAndroid="transparent"
-            placeholderTextColor={Colors.lightSilver}
-            style={styles.inputContainer}
-            value={title}
-            onChangeText={setTitle}
-            autoCapitalize="none"
-          />
-        </View>
-        <View
-          style={{
-            width: '100%',
-            height: 100,
-          }}>
-          <TextInput
-            multiline={true}
-            numberOfLines={3}
-            require={true}
-            placeholder="Write a body..."
-            underlineColorAndroid="transparent"
-            placeholderTextColor={Colors.lightSilver}
-            style={styles.inputContainer}
-            onChangeText={setBody}
-            value={body}
-            autoCapitalize="none"
-          />
-        </View>
-      </View>
+      <View style={styles.divider} />
     </View>
   );
 };
@@ -161,6 +197,104 @@ const SharePost = ({navigation, route}) => {
   const [draft, setDraft] = React.useState(false);
   const [canVolunteer, setCanVolunteer] = React.useState(false);
 
+  // SERVERS ---------------------------------------------------------
+  const ServeActions = ({}) => {
+    return (
+      <View>
+        <View style={styles.contentWrapper}>
+          <CustomButton
+            title="Tag People"
+            iconRight="ChevronRight"
+            iconWidth={12}
+            iconHeight={16}
+            titleStyling={styles.btnTitleStyling}
+            style={styles.btnStyling}
+            onPress={() => alert('Tag People')}
+          />
+        </View>
+        <View style={styles.contentWrapper}>
+          <CustomButton
+            title="Location"
+            iconRight="ChevronRight"
+            iconWidth={12}
+            iconHeight={16}
+            titleStyling={styles.btnTitleStyling}
+            style={styles.btnStyling}
+            onPress={() => alert('Location')}
+          />
+        </View>
+        <View style={styles.btnWrapper}>
+          <View style={{flex: 1}}>
+            <CustomButton
+              noFeedback
+              title="People"
+              titleStyling={styles.btnTitleStyling}
+              style={styles.btnStyling}
+            />
+          </View>
+          <View>
+            <Switch
+              trackColor={{false: Colors.matFilter, true: Colors.primary}}
+              thumbColor={Colors.white}
+              ios_backgroundColor={Colors.matFilter}
+              onValueChange={() => setPeople(!people)}
+              value={people}
+            />
+          </View>
+        </View>
+        <View style={styles.btnWrapper}>
+          <View style={{flex: 1}}>
+            <CustomButton
+              noFeedback
+              title="Planet"
+              titleStyling={styles.btnTitleStyling}
+              style={styles.btnStyling}
+            />
+          </View>
+          <View>
+            <Switch
+              trackColor={{false: Colors.matFilter, true: Colors.planet}}
+              thumbColor={Colors.white}
+              ios_backgroundColor={Colors.matFilter}
+              onValueChange={() => setPlanet(!planet)}
+              value={planet}
+            />
+          </View>
+        </View>
+        <View style={styles.btnWrapper}>
+          <View style={{flex: 1}}>
+            <CustomButton
+              noFeedback
+              title="Save for to drafts?"
+              titleStyling={styles.btnTitleStyling}
+              style={styles.btnStyling}
+            />
+          </View>
+          <View>
+            <Switch
+              trackColor={{false: Colors.matFilter, true: Colors.primary}}
+              thumbColor={Colors.white}
+              ios_backgroundColor={Colors.matFilter}
+              onValueChange={() => setDraft(!draft)}
+              value={draft}
+            />
+          </View>
+        </View>
+        <View style={styles.contentWrapper}>
+          <CustomButton
+            title="Advanced Settings"
+            iconRight="ChevronRight"
+            iconWidth={12}
+            iconHeight={16}
+            titleStyling={styles.btnTitleStyling}
+            style={styles.btnStyling}
+            onPress={() => alert('Advanced Settings')}
+          />
+        </View>
+      </View>
+    );
+  };
+
   // HANDLERS ---------------------------------------------------------
   const handleSharePost = () => {
     // setIsLoading(true);
@@ -174,7 +308,7 @@ const SharePost = ({navigation, route}) => {
       planet,
       canVolunteer,
     };
-    createNewPost({dispatchAuth, dispatchApi, createNewPostData, jwt});
+    // createNewPost({dispatchAuth, dispatchApi, createNewPostData, jwt});
     // setTile('');
     // setBody('');
     // setHashtag('');
@@ -218,119 +352,10 @@ const SharePost = ({navigation, route}) => {
             setTitle={setTitle}
             body={body}
             setBody={setBody}
+            hashtag={hashtag}
+            setHashtag={setHashtag}
           />
-          <View style={styles.divider} />
-
-          <View
-            style={{
-              width: '100%',
-              height: 100,
-            }}>
-            <TextInput
-              multiline={true}
-              numberOfLines={3}
-              require={true}
-              placeholder="Create some hashtags..."
-              underlineColorAndroid="transparent"
-              placeholderTextColor={Colors.lightSilver}
-              style={styles.inputContainer}
-              onChangeText={setHashtag}
-              value={hashtag}
-              autoCapitalize="none"
-            />
-          </View>
-          <View style={styles.divider} />
-
-          <View style={styles.contentWrapper}>
-            <CustomButton
-              title="Tag People"
-              iconRight="ChevronRight"
-              iconWidth={12}
-              iconHeight={16}
-              titleStyling={styles.btnTitleStyling}
-              style={styles.btnStyling}
-              onPress={() => alert('Tag People')}
-            />
-          </View>
-          <View style={styles.contentWrapper}>
-            <CustomButton
-              title="Location"
-              iconRight="ChevronRight"
-              iconWidth={12}
-              iconHeight={16}
-              titleStyling={styles.btnTitleStyling}
-              style={styles.btnStyling}
-              onPress={() => alert('Location')}
-            />
-          </View>
-          <View style={styles.btnWrapper}>
-            <View style={{flex: 1}}>
-              <CustomButton
-                noFeedback
-                title="People"
-                titleStyling={styles.btnTitleStyling}
-                style={styles.btnStyling}
-              />
-            </View>
-            <View>
-              <Switch
-                trackColor={{false: Colors.matFilter, true: Colors.primary}}
-                thumbColor={Colors.white}
-                ios_backgroundColor={Colors.matFilter}
-                onValueChange={() => setPeople(!people)}
-                value={people}
-              />
-            </View>
-          </View>
-          <View style={styles.btnWrapper}>
-            <View style={{flex: 1}}>
-              <CustomButton
-                noFeedback
-                title="Planet"
-                titleStyling={styles.btnTitleStyling}
-                style={styles.btnStyling}
-              />
-            </View>
-            <View>
-              <Switch
-                trackColor={{false: Colors.matFilter, true: Colors.planet}}
-                thumbColor={Colors.white}
-                ios_backgroundColor={Colors.matFilter}
-                onValueChange={() => setPlanet(!planet)}
-                value={planet}
-              />
-            </View>
-          </View>
-          <View style={styles.btnWrapper}>
-            <View style={{flex: 1}}>
-              <CustomButton
-                noFeedback
-                title="Save for to drafts?"
-                titleStyling={styles.btnTitleStyling}
-                style={styles.btnStyling}
-              />
-            </View>
-            <View>
-              <Switch
-                trackColor={{false: Colors.matFilter, true: Colors.primary}}
-                thumbColor={Colors.white}
-                ios_backgroundColor={Colors.matFilter}
-                onValueChange={() => setDraft(!draft)}
-                value={draft}
-              />
-            </View>
-          </View>
-          <View style={styles.contentWrapper}>
-            <CustomButton
-              title="Advanced Settings"
-              iconRight="ChevronRight"
-              iconWidth={12}
-              iconHeight={16}
-              titleStyling={styles.btnTitleStyling}
-              style={styles.btnStyling}
-              onPress={() => alert('Advanced Settings')}
-            />
-          </View>
+          <ServeActions />
         </View>
       </View>
     </ScreenWrapper>
