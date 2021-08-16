@@ -25,7 +25,6 @@ const AddPostAction = ({navigation}) => {
   const dispatchApi = useApiDispatch();
 
   // HANDLERS ---------------------------------------------------------
-
   const handleGallery = () => {
     openGallery(setImage);
   };

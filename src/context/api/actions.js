@@ -1,4 +1,5 @@
-export const setLoading = ({dispatchApi, loadingBoolean}) => {
+export const setLoading = (dispatchApi, loadingBoolean) => {
+  console.log('setLoading triggered', loadingBoolean); //debug
   dispatchApi({type: 'SET_LOADING', payload: loadingBoolean});
 };
 

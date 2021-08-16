@@ -5,38 +5,45 @@ import {
   MUTATION_SIGN_UP,
   MUTATION_UPDATE_USER,
 } from '../../apollo/mutations/auth';
-import {errorHandler, setError} from '../api';
+import {errorHandler, setError, setLoading} from '../api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {emptyUser} from './reducer';
 
 export const logIn = async ({dispatchAuth, dispatchApi, logInData}) => {
   try {
     console.log('logIn triggered'); //debug
-    //0. clear api errors
+    //0. set loading
+    setLoading(dispatchApi, true);
+
+    //1. clear api errors
     setError({dispatchApi, errorMessage: null});
 
-    //1. log in
+    //2. log in
     const logInResponse = await client.mutate({
       mutation: MUTATION_LOG_IN,
       variables: logInData,
     });
     console.log(`logInResponse`, logInResponse); //debug
 
-    //2. add token to context and async storage
+    //3. add token to context and async storage
     const {jwt} = logInResponse.data.login;
     console.log(`jwt`, jwt); //debug
     setToken({dispatchAuth, jwt});
     await AsyncStorage.setItem('jwt', jwt);
 
-    //3. get full user and add it to context and async storage
+    //4. get full user and add it to context and async storage
     const userId = logInResponse.data.login.user.id;
     const user = await getUser({userId, jwt});
     console.log(`user `, user); //debug
     setUser({dispatchAuth, user});
     await AsyncStorage.setItem('user', JSON.stringify(user));
+
+    //5. set loading
+    setLoading(dispatchApi, false);
   } catch (err) {
     console.log('err', JSON.stringify(err)); //debug
     errorHandler({dispatchApi, errorObject: err});
+    setLoading(dispatchApi, false);
   }
 };
 
@@ -80,20 +87,6 @@ export const signUp = async ({dispatchApi, dispatchAuth, newUserData}) => {
   }
 };
 
-export const getUser = async ({userId, jwt}) => {
-  console.log('getUser triggered'); //debug
-  const getUserResponse = await client.query({
-    query: QUERY_GET_USER,
-    variables: {id: userId},
-    context: {
-      headers: {
-        authorization: 'Bearer ' + jwt,
-      },
-    },
-  });
-  return getUserResponse.data.user;
-};
-
 export const updateUser = async ({
   dispatchApi,
   dispatchAuth,
@@ -129,6 +122,20 @@ export const updateUser = async ({
     console.log('err', JSON.stringify(err)); //debug
     errorHandler({dispatchApi, errorObject: err});
   }
+};
+
+export const getUser = async ({userId, jwt}) => {
+  console.log('getUser triggered'); //debug
+  const getUserResponse = await client.query({
+    query: QUERY_GET_USER,
+    variables: {id: userId},
+    context: {
+      headers: {
+        authorization: 'Bearer ' + jwt,
+      },
+    },
+  });
+  return getUserResponse.data.user;
 };
 
 export const storageCheck = async ({dispatchAuth, dispatchApi}) => {

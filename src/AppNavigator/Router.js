@@ -3,8 +3,8 @@ import {View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {useAuthDispatch, addPostAction, useAuthState} from '../context/auth';
-import {useApiDispatch} from '../context/api';
+import {useAuthDispatch, useAuthState, addPostAction} from '../context/auth';
+import {useApiDispatch, useApiState} from '../context/api';
 import Loading from '../components/Loading';
 
 import Colors from '../config/colors';
@@ -75,16 +75,17 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export const AppNavigator = () => {
-  const {loading} = useAuthState();
-  const [isLoading, setIsLoading] = React.useState(false);
+  const {loading} = useApiState();
+  const {jwt} = useAuthState();
 
-  React.useEffect(() => {
-    console.log('loading', isLoading);
-    setIsLoading(loading.loading);
-  }, [loading]);
+  // const ServeApp = () => {
+  //   return jwt ? <TabStack /> : <AppStack />;
+  // };
+  // return loading ? <Loading /> : <ServeApp />;
+  return <AppStack />;
+};
 
-  if (isLoading) return <Loading />;
-
+const AppStack = () => {
   return (
     <Stack.Navigator initialRouteName="CreateAccountStack">
       {/* <Stack.Screen
@@ -98,8 +99,8 @@ export const AppNavigator = () => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="AppStack"
-        component={AppStack}
+        name="TabStack"
+        component={TabStack}
         options={{headerShown: false}}
       />
       <Stack.Screen
@@ -131,7 +132,7 @@ export const AppNavigator = () => {
   );
 };
 
-const AppStack = ({navigation}) => {
+const TabStack = () => {
   const dispatchAuth = useAuthDispatch();
   const dispatchApi = useApiDispatch();
 
@@ -179,9 +180,9 @@ const AppStack = ({navigation}) => {
             </View>
           ),
         }}
-        listeners={({navigation}) => ({
+        listeners={() => ({
           tabPress: e => {
-            // Prevent default TabNav action to trigger popUp
+            // Prevent default TabNav action & trigger popUp
             e.preventDefault();
             const addAction = {addAction: true};
             addPostAction({dispatchAuth, dispatchApi, addAction});
@@ -225,7 +226,7 @@ const HomeStack = () => {
   );
 };
 
-const SearchStack = ({navigation}) => {
+const SearchStack = () => {
   return (
     <Stack.Navigator initialRouteName="Search">
       <Stack.Screen
@@ -236,7 +237,8 @@ const SearchStack = ({navigation}) => {
     </Stack.Navigator>
   );
 };
-const AddStack = ({navigation}) => {
+
+const AddStack = () => {
   return (
     <Stack.Navigator initialRouteName="CreatePost">
       <Stack.Screen
@@ -258,7 +260,8 @@ const AddStack = ({navigation}) => {
     </Stack.Navigator>
   );
 };
-const ProjectStack = ({navigation}) => {
+
+const ProjectStack = () => {
   return (
     <Stack.Navigator initialRouteName="Projects">
       <Stack.Screen
@@ -294,7 +297,8 @@ const ProjectStack = ({navigation}) => {
     </Stack.Navigator>
   );
 };
-const ProfileStack = ({navigation}) => {
+
+const ProfileStack = () => {
   return (
     <Stack.Navigator initialRouteName="CreateProAccount">
       <Stack.Screen
@@ -385,7 +389,8 @@ const ProfileStack = ({navigation}) => {
     </Stack.Navigator>
   );
 };
-const CreateAccountStack = ({navigation}) => {
+
+const CreateAccountStack = () => {
   return (
     <Stack.Navigator initialRouteName="SplashScreen">
       <Stack.Screen
