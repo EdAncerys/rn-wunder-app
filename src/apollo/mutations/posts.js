@@ -15,7 +15,6 @@ export const MUTATION_CREATE_NEW_POST = gql`
     $user: ID!
     $title: String
     $body: String
-    $location: String
     $picture: ID
     $people: Boolean
     $planet: Boolean
@@ -27,7 +26,6 @@ export const MUTATION_CREATE_NEW_POST = gql`
           user: $user
           title: $title
           body: $body
-          location: $location
           picture: $picture
           people: $people
           planet: $planet

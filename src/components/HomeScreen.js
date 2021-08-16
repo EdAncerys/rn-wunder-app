@@ -198,7 +198,7 @@ const HomeScreen = ({item, index, scrollY, navigation}) => {
                     color: Colors.planet,
                   }}
                   numberOfLines={3}>
-                  >{body}
+                  {body}
                 </Text>
               </View>
             </TouchableOpacity>

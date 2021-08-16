@@ -1,5 +1,10 @@
 import * as React from 'react';
-import {useAuthState, useAuthDispatch, logIn} from '../../context/auth';
+import {
+  useAuthState,
+  useAuthDispatch,
+  logIn,
+  setLoading,
+} from '../../context/auth';
 import {useApiDispatch, useApiState} from '../../context/api';
 import {LOGIN_EMAIL, LOGIN_PASSWORD} from '@env';
 
@@ -9,7 +14,6 @@ import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
 import Fonts from '../../config/fonts';
 import CustomButton from '../../components/CustomButton';
-import Loading from '../../components/Loading';
 
 const styles = StyleSheet.create({
   container: {
@@ -50,7 +54,6 @@ const Login = ({navigation}) => {
   const {jwt} = useAuthState();
   const {error} = useApiState();
 
-  const [isLoading, setIsLoading] = React.useState(false);
   const [logInEmail, setLogInEmail] = React.useState('');
   const [logInPassword, setLogInPassword] = React.useState('');
 
@@ -60,7 +63,9 @@ const Login = ({navigation}) => {
     //   alert('Please fill all the required fields!');
     //   return;
     // }
-    setIsLoading(true);
+    // const loadingBoolean = {loading: true};
+    // setLoading({dispatchAuth, loadingBoolean});
+
     const logInData = {
       identifier: LOGIN_EMAIL,
       password: LOGIN_PASSWORD,
@@ -71,15 +76,14 @@ const Login = ({navigation}) => {
   };
 
   React.useEffect(() => {
+    console.log('hello jwt ', jwt);
     if (error) alert(error);
     if (jwt) {
       navigation.navigate('AppStack', {screen: 'HomeStack'});
+      // const loadingBoolean = {loading: false};
+      // setLoading({dispatchAuth, loadingBoolean});
     }
-
-    setIsLoading(false);
   }, [error, jwt]);
-
-  if (isLoading) return <Loading />;
 
   return (
     <ScreenWrapper filter={Colors.lightBlack}>

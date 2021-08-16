@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {useAuthState, useAuthDispatch, createNewPost} from '../../context/auth';
 import {useApiDispatch, useApiState} from '../../context/api';
+import {gql, useApolloClient, useMutation} from '@apollo/client';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
 
 // SERVERS ---------------------------------------------------------
 const ServeAboutPostSection = ({
-  renderImg,
+  uri,
   title,
   setTitle,
   body,
@@ -104,7 +105,7 @@ const ServeAboutPostSection = ({
               overflow: 'hidden',
               resizeMode: 'cover',
             }}
-            source={renderImg}
+            source={{uri: uri}}
           />
         </View>
         <View
@@ -182,8 +183,7 @@ const SharePost = ({navigation, route}) => {
   const {error} = useApiState();
 
   const {image} = route.params;
-  const {url} = image;
-  const renderImg = url || image;
+  const {uri} = image;
   const userID = user.id;
 
   const [isLoading, setIsLoading] = React.useState(false);
@@ -300,15 +300,16 @@ const SharePost = ({navigation, route}) => {
     // setIsLoading(true);
     const createNewPostData = {
       user: userID,
+      uri,
       title,
       body,
       location,
-      picture: '610c1143f6b07a016f68eacf',
       people,
       planet,
       canVolunteer,
     };
-    // createNewPost({dispatchAuth, dispatchApi, createNewPostData, jwt});
+
+    createNewPost({dispatchAuth, dispatchApi, createNewPostData, jwt});
     // setTile('');
     // setBody('');
     // setHashtag('');
@@ -347,7 +348,7 @@ const SharePost = ({navigation, route}) => {
         <View style={styles.divider} />
         <View style={styles.content}>
           <ServeAboutPostSection
-            renderImg={renderImg}
+            uri={uri}
             title={title}
             setTitle={setTitle}
             body={body}
@@ -355,7 +356,9 @@ const SharePost = ({navigation, route}) => {
             hashtag={hashtag}
             setHashtag={setHashtag}
           />
-          <ServeActions />
+          <ScrollView>
+            <ServeActions />
+          </ScrollView>
         </View>
       </View>
     </ScreenWrapper>

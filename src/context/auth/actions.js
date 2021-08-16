@@ -1,4 +1,4 @@
-import client from '../../apollo/client';
+import {client} from '../../apollo/client';
 import {QUERY_GET_USER} from '../../apollo/queries/auth';
 import {
   MUTATION_LOG_IN,

@@ -1,6 +1,10 @@
-import client from '../../apollo/client';
+import {client, uploadClient} from '../../apollo/client';
+
+import {ReactNativeFile} from 'apollo-upload-client';
+import * as mime from 'react-native-mime-types';
+
 import {QUERY_GET_POSTS} from '../../apollo/queries/posts';
-import {MUTATION_CREATE_NEW_POST} from '../../apollo/mutations/posts';
+import {MUTATION_CREATE_NEW_POST, ADD_FILE} from '../../apollo/mutations/posts';
 
 import {errorHandler, setError} from '../api';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -27,7 +31,15 @@ export const createNewPost = async ({dispatchApi, createNewPostData, jwt}) => {
     console.log('createNewPost triggered'); //debug
     //0. clear api errors
     setError({dispatchApi, errorMessage: null});
-    //1. create new post
+    //1. add file
+    const {uri} = createNewPostData;
+    const newFile = await addFile({uri, jwt});
+    const {id} = newFile;
+    console.log(`id `, id); //debug
+
+    //2. create new post
+    createNewPostData.picture = id;
+    console.log(createNewPostData);
     const newPost = await createNewPostAction({createNewPostData, jwt});
     console.log(`newPost`, newPost); //debug
   } catch (err) {
@@ -64,13 +76,39 @@ export const createNewPostAction = async ({createNewPostData, jwt}) => {
   return createNewPostResponse.data.createPost.post;
 };
 
+const generateRNFile = (uri, name) => {
+  return uri
+    ? new ReactNativeFile({
+        uri,
+        type: mime.lookup(uri) || 'image',
+        name,
+      })
+    : null;
+};
+
+export const addFile = async ({uri, jwt}) => {
+  try {
+    console.log('addFile triggered'); //debug
+    const picture = generateRNFile(uri, `picture-${Date.now()}`);
+    const file = {file: picture};
+
+    const addFileResponse = await uploadClient.mutate({
+      mutation: ADD_FILE,
+      variables: file,
+      context: {
+        headers: {
+          authorization: 'Bearer ' + jwt,
+        },
+      },
+    });
+    return addFileResponse.data.upload;
+  } catch (err) {
+    console.log('err', JSON.stringify(err)); //debug
+  }
+};
+
 // SET CONTEXT ---------------------------------------------------------
 export const setPostsAction = async ({dispatchAuth, posts}) => {
   console.log('setPostsAction triggered'); //debug
   dispatchAuth({type: 'SET_POSTS', payload: posts});
-};
-
-export const setTempData = async ({dispatchAuth, tempData}) => {
-  console.log('setTempData triggered'); //debug
-  dispatchAuth({type: 'SET_TEMP_DATA', payload: tempData});
 };

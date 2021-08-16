@@ -1,7 +1,5 @@
 import * as React from 'react';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-import {useAuthState, useAuthDispatch, logIn} from '../context/auth';
-import {useApiDispatch} from '../context/api';
 
 const handleResponse = (response, setImage) => {
   console.log(response);
@@ -11,39 +9,25 @@ const handleResponse = (response, setImage) => {
   setImage(image);
 };
 
+const IMG_HEIGHT = 926;
+const IMG_WIDTH = IMG_HEIGHT / 2;
+const IMAGE_SETTINGS = {
+  saveToPhotos: true,
+  mediaType: 'photo',
+  maxWidth: IMG_WIDTH,
+  maxHeight: IMG_HEIGHT,
+  quality: 0.7,
+  includeBase64: false,
+};
+
 export const openGallery = setImage => {
-  launchImageLibrary(
-    {
-      mediaType: 'photo',
-      maxWidth: 300,
-      maxHeight: 300,
-      quality: 0.7,
-      includeBase64: false,
-    },
-    response => {
-      handleResponse(response, setImage);
-    },
-  );
+  launchImageLibrary(IMAGE_SETTINGS, response => {
+    handleResponse(response, setImage);
+  });
 };
 
 export const openCamera = setImage => {
-  launchCamera(
-    {saveToPhotos: true, mediaType: 'photo', includeBase64: false},
-    response => {
-      handleResponse(response, setImage);
-    },
-  );
-};
-
-export const openCameraPopUp = () => {
-  const handleCameraPopUp = () => {
-    const [logInEmail, setLogInEmail] = React.useState('');
-    const [logInPassword, setLogInPassword] = React.useState('');
-    const dispatchAuth = useAuthDispatch();
-    const dispatchApi = useApiDispatch();
-
-    console.log('handler triggered');
-  };
-
-  console.log('Open camera handler triggered');
+  launchCamera(IMAGE_SETTINGS, response => {
+    handleResponse(response, setImage);
+  });
 };

@@ -3,8 +3,9 @@ import {View} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {useAuthDispatch, addPostAction} from '../context/auth';
+import {useAuthDispatch, addPostAction, useAuthState} from '../context/auth';
 import {useApiDispatch} from '../context/api';
+import Loading from '../components/Loading';
 
 import Colors from '../config/colors';
 import {
@@ -74,11 +75,21 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export const AppNavigator = () => {
+  const {loading} = useAuthState();
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    console.log('loading', isLoading);
+    setIsLoading(loading.loading);
+  }, [loading]);
+
+  if (isLoading) return <Loading />;
+
   return (
     <Stack.Navigator initialRouteName="CreateAccountStack">
       {/* <Stack.Screen
         name="TestScreen"
-        component={HomePrototype}
+        component={Home}
         options={{headerShown: false}}
       /> */}
       <Stack.Screen

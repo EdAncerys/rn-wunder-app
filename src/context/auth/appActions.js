@@ -55,3 +55,7 @@ export const setAddPostAction = async ({dispatchAuth, addAction}) => {
   console.log('setAddPostAction triggered'); //debug
   dispatchAuth({type: 'SET_ADD_ACTION', payload: addAction});
 };
+
+export const setLoading = ({dispatchAuth, loadingBoolean}) => {
+  dispatchAuth({type: 'SET_LOADING', payload: loadingBoolean});
+};
