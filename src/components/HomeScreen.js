@@ -185,12 +185,13 @@ const HomeScreen = ({item, index, scrollY, navigation}) => {
           }}>
           <View style={{flex: 3}}>
             <TouchableOpacity
-              onPress={() =>
-                navigation.navigate('ProjectStack', {
-                  screen: 'Post',
-                  params: {profileDataInfo: item},
-                })
-              }>
+            // onPress={() =>
+            //   navigation.navigate('ProjectStack', {
+            //     screen: 'Post',
+            //     params: {profileDataInfo: item},
+            //   })
+            // }
+            >
               <View>
                 <Text
                   style={{

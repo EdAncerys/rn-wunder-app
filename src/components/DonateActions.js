@@ -72,7 +72,7 @@ const DonateActions = ({navigation, profile, projects, screen}) => {
           style={{backgroundColor: Colors.transparent}}
           title="Personal"
           titleStyling={{...styles.profileType, ...active}}
-          onPress={() => navigation.navigate('AppStack', {screen: 'Profile'})}
+          onPress={() => navigation.navigate('TabStack', {screen: 'Profile'})}
         />
         <View style={{justifyContent: 'center'}}>
           <View
@@ -127,7 +127,7 @@ const DonateActions = ({navigation, profile, projects, screen}) => {
             iconHeight={20}
             iconFill={Colors.white}
             onPress={() =>
-              navigation.navigate('ProfileStack', {screen: 'Notifications'})
+              navigation.navigate('HomeStack', {screen: 'Notifications'})
             }
           />
         </View>

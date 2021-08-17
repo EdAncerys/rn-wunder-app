@@ -79,6 +79,7 @@ const Login = ({navigation}) => {
       </TouchableOpacity>
     );
   };
+
   const renderFlatListItem = ({item, index}) => <User item={item} />;
 
   const RenderUsersList = () => {
@@ -141,6 +142,7 @@ const Login = ({navigation}) => {
   }, [error, jwt]);
 
   if (loading) return <Loading />;
+
   // RETURN ---------------------------------------------------------
   return (
     <ScreenWrapper filter={Colors.lightBlack}>

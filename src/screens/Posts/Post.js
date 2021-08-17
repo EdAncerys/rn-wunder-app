@@ -98,14 +98,15 @@ const Post = ({navigation, route}) => {
     return (
       <TouchableOpacity
         style={styles.rowWrapper}
-        onPress={() =>
-          navigation.navigate(navStack, {
-            screen: navScreen,
-            params: {
-              profileDataInfo: profileDataInfo,
-            },
-          })
-        }>
+        // onPress={() =>
+        //   navigation.navigate(navStack, {
+        //     screen: navScreen,
+        //     params: {
+        //       profileDataInfo: profileDataInfo,
+        //     },
+        //   })
+        // }
+      >
         <View>
           <Image
             style={{
