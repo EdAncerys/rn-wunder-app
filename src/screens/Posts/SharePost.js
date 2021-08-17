@@ -76,6 +76,106 @@ const styles = StyleSheet.create({
   },
 });
 
+// SERVERS ---------------------------------------------------------
+const ServeAboutPostSection = ({
+  uri,
+  title,
+  setTitle,
+  body,
+  setBody,
+  hashtag,
+  setHashtag,
+}) => {
+  return (
+    <View>
+      <View
+        style={{
+          flexDirection: 'row',
+          marginVertical: '5%',
+        }}>
+        <View
+          style={{
+            height: 170,
+          }}>
+          <Image
+            style={{
+              width: 80,
+              height: 170,
+              borderRadius: 5,
+              overflow: 'hidden',
+              resizeMode: 'cover',
+            }}
+            source={{uri: uri}}
+          />
+        </View>
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'flex-start',
+            marginLeft: '5%',
+          }}>
+          <View
+            style={{
+              borderBottomWidth: 1,
+              borderColor: Colors.lightSilver,
+              width: '100%',
+            }}>
+            <TextInput
+              // maxLength={20}
+              require={true}
+              placeholder="Title of post..."
+              underlineColorAndroid="transparent"
+              placeholderTextColor={Colors.lightSilver}
+              style={styles.inputContainer}
+              // value={title}
+              // onChangeText={setTitle}
+              autoCapitalize="none"
+            />
+          </View>
+          <View
+            style={{
+              width: '100%',
+              height: 100,
+            }}>
+            <TextInput
+              multiline={true}
+              numberOfLines={3}
+              require={true}
+              placeholder="Write a body..."
+              underlineColorAndroid="transparent"
+              placeholderTextColor={Colors.lightSilver}
+              style={styles.inputContainer}
+              // onChangeText={setBody}
+              // value={body}
+              autoCapitalize="none"
+            />
+          </View>
+        </View>
+      </View>
+      <View style={styles.divider} />
+      <View
+        style={{
+          width: '100%',
+          height: 100,
+        }}>
+        <TextInput
+          multiline={true}
+          numberOfLines={3}
+          require={true}
+          placeholder="Create some hashtags..."
+          underlineColorAndroid="transparent"
+          placeholderTextColor={Colors.lightSilver}
+          style={styles.inputContainer}
+          onChangeText={setHashtag}
+          value={hashtag}
+          autoCapitalize="none"
+        />
+      </View>
+      <View style={styles.divider} />
+    </View>
+  );
+};
+
 const SharePost = ({navigation, route}) => {
   const dispatchAuth = useAuthDispatch();
   const dispatchApi = useApiDispatch();
@@ -98,97 +198,6 @@ const SharePost = ({navigation, route}) => {
   const [canVolunteer, setCanVolunteer] = React.useState(false);
 
   // SERVERS ---------------------------------------------------------
-  const ServeAboutPostSection = ({}) => {
-    return (
-      <View>
-        <View
-          style={{
-            flexDirection: 'row',
-            marginVertical: '5%',
-          }}>
-          <View
-            style={{
-              height: 170,
-            }}>
-            <Image
-              style={{
-                width: 80,
-                height: 170,
-                borderRadius: 5,
-                overflow: 'hidden',
-                resizeMode: 'cover',
-              }}
-              source={{uri: uri}}
-            />
-          </View>
-          <View
-            style={{
-              flex: 1,
-              alignItems: 'flex-start',
-              marginLeft: '5%',
-            }}>
-            <View
-              style={{
-                borderBottomWidth: 1,
-                borderColor: Colors.lightSilver,
-                width: '100%',
-              }}>
-              <TextInput
-                // maxLength={20}
-                require={true}
-                placeholder="Title of post..."
-                underlineColorAndroid="transparent"
-                placeholderTextColor={Colors.lightSilver}
-                style={styles.inputContainer}
-                value={title}
-                onChange={e => setTitle(e.target.value)}
-                autoCapitalize="none"
-              />
-            </View>
-            <View
-              style={{
-                width: '100%',
-                height: 100,
-              }}>
-              <TextInput
-                multiline={true}
-                numberOfLines={3}
-                require={true}
-                placeholder="Write a body..."
-                underlineColorAndroid="transparent"
-                placeholderTextColor={Colors.lightSilver}
-                style={styles.inputContainer}
-                onChange={e => setBody(e.target.value)}
-                value={body}
-                autoCapitalize="none"
-              />
-            </View>
-          </View>
-        </View>
-        <View style={styles.divider} />
-        <View
-          style={{
-            width: '100%',
-            height: 100,
-          }}>
-          <TextInput
-            multiline={true}
-            numberOfLines={3}
-            require={true}
-            placeholder="Create some hashtags..."
-            underlineColorAndroid="transparent"
-            placeholderTextColor={Colors.lightSilver}
-            style={styles.inputContainer}
-            onChangeText={setHashtag}
-            value={hashtag}
-            autoCapitalize="none"
-          />
-        </View>
-        <View style={styles.divider} />
-      </View>
-    );
-  };
-
   const ServeActions = ({}) => {
     return (
       <View>

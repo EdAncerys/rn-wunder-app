@@ -195,7 +195,7 @@ const Post = ({navigation, route}) => {
             <View style={styles.getInvolvedActions}>
               <CustomButton
                 title="get involved"
-                onPress={() => setDonateReason(true)}
+                // onPress={() => setDonateReason(true)}
               />
             </View>
           )}
