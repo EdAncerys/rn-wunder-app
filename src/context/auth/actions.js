@@ -1,5 +1,5 @@
 import {client} from '../../apollo/client';
-import {QUERY_GET_USER} from '../../apollo/queries/auth';
+import {QUERY_GET_USER, QUERY_GET_ALL_USERS} from '../../apollo/queries/auth';
 import {
   MUTATION_LOG_IN,
   MUTATION_SIGN_UP,
@@ -138,6 +138,15 @@ export const getUser = async ({userId, jwt}) => {
   return getUserResponse.data.user;
 };
 
+export const getAllUsers = async ({dispatchAuth}) => {
+  console.log('getAllUsers triggered'); //debug
+  const getAllUsersResponse = await client.query({
+    query: QUERY_GET_ALL_USERS,
+  });
+  const allUsers = getAllUsersResponse.data.users;
+  setAllUsers({dispatchAuth, allUsers});
+};
+
 export const storageCheck = async ({dispatchAuth, dispatchApi}) => {
   try {
     console.log('storageCheck triggered'); //debug
@@ -165,4 +174,9 @@ export const setToken = async ({dispatchAuth, jwt}) => {
 export const setUser = async ({dispatchAuth, user}) => {
   console.log('setUser triggered'); //debug
   dispatchAuth({type: 'SET_USER', payload: user});
+};
+
+export const setAllUsers = async ({dispatchAuth, allUsers}) => {
+  console.log('setAllUsers triggered'); //debug
+  dispatchAuth({type: 'SET_ALL_USERS', payload: allUsers});
 };

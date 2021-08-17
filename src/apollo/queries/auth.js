@@ -15,3 +15,12 @@ export const QUERY_GET_USER = gql`
     }
   }
 `;
+
+export const QUERY_GET_ALL_USERS = gql`
+  query getAllUsers {
+    users {
+      id
+      email
+    }
+  }
+`;

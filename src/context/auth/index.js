@@ -1,5 +1,12 @@
 import {AuthProvider, useAuthDispatch, useAuthState} from './context';
-import {logIn, logOut, signUp, storageCheck, updateUser} from './actions';
+import {
+  logIn,
+  logOut,
+  signUp,
+  storageCheck,
+  updateUser,
+  getAllUsers,
+} from './actions';
 import {getPosts, createNewPost} from './postActions';
 import {tempDataStorage, addPostAction} from './appActions';
 
@@ -16,4 +23,5 @@ export {
   updateUser,
   getPosts,
   createNewPost,
+  getAllUsers,
 };
