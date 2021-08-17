@@ -16,6 +16,7 @@ import Fonts from '../config/fonts';
 import CustomButton from './CustomButton';
 import AppActions from './AppActions';
 import DonateActions from './DonateActions';
+import CommendActions from './commendActions/CommendActions';
 
 const {width, height} = Dimensions.get('screen');
 const CARD_WIDTH = width;
@@ -47,7 +48,9 @@ const styles = StyleSheet.create({
 });
 
 const HomeScreen = ({item, index, scrollY, navigation}) => {
+  const [donateReason, setDonateReason] = React.useState(false);
   const {title, body, canVolunteer, people, planet, picture, user} = item;
+
   const isVerified = user.confirmed;
   const profileImage = user.picture[0].url;
   const username = user.username;
@@ -234,9 +237,15 @@ const HomeScreen = ({item, index, scrollY, navigation}) => {
           <View>
             <CustomButton
               title="get involved"
-              onPress={() => setCommendAction(true)}
+              onPress={() => setDonateReason(true)}
             />
           </View>
+        )}
+        {donateReason && (
+          <CommendActions
+            donateReason={donateReason}
+            setDonateReason={setDonateReason}
+          />
         )}
       </View>
     );

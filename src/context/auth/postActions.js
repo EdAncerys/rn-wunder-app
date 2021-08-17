@@ -20,6 +20,7 @@ export const getPosts = async ({dispatchAuth, dispatchApi, jwt}) => {
 
     //2. get all posts and add to context and async storage
     const posts = await getPostsAction({jwt});
+    console.log('last post 2', posts[0]);
     console.log(`posts data length `, posts.length); //debug
     setPostsAction({dispatchAuth, posts});
     await AsyncStorage.setItem('user', JSON.stringify(posts));

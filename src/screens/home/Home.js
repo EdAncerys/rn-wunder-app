@@ -30,12 +30,13 @@ const HomePrototype = ({navigation}) => {
   const scrollY = React.useRef(new Animated.Value(0)).current;
 
   React.useEffect(() => {
-    if (isFocused) getPosts({dispatchAuth, dispatchApi, jwt});
+    getPosts({dispatchAuth, dispatchApi, jwt});
+    // if (isFocused) data = await getPosts({dispatchAuth, dispatchApi, jwt});
   }, [isFocused]);
 
-  React.useEffect(() => {
-    setPostsData(posts);
-  }, [posts]);
+  // React.useEffect(() => {
+  //   setPostsData(posts);
+  // }, [posts]);
 
   React.useEffect(() => {
     if (addAction) setAddPostPopUp(addAction.addAction);
@@ -82,7 +83,8 @@ const HomePrototype = ({navigation}) => {
           [{nativeEvent: {contentOffset: {y: scrollY}}}],
           {useNativeDriver: true},
         )}
-        data={postsData}
+        extraData={isFocused} // re-renders upon new Data
+        data={Object.values(posts)}
         renderItem={renderFlatList}
       />
     </View>
