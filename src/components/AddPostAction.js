@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: '100%',
     paddingHorizontal: '5%',
-    bottom: 100,
+    bottom: 20,
   },
 });
 

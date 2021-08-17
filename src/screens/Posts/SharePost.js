@@ -265,6 +265,25 @@ const SharePost = ({navigation, route}) => {
           <View style={{flex: 1}}>
             <CustomButton
               noFeedback
+              title="Can Volunteer"
+              titleStyling={styles.btnTitleStyling}
+              style={styles.btnStyling}
+            />
+          </View>
+          <View>
+            <Switch
+              trackColor={{false: Colors.matFilter, true: Colors.primary}}
+              thumbColor={Colors.white}
+              ios_backgroundColor={Colors.matFilter}
+              onValueChange={() => setCanVolunteer(!canVolunteer)}
+              value={canVolunteer}
+            />
+          </View>
+        </View>
+        <View style={styles.btnWrapper}>
+          <View style={{flex: 1}}>
+            <CustomButton
+              noFeedback
               title="Save for to drafts?"
               titleStyling={styles.btnTitleStyling}
               style={styles.btnStyling}
@@ -308,17 +327,18 @@ const SharePost = ({navigation, route}) => {
       planet,
       canVolunteer,
     };
+    // createNewPost({dispatchAuth, dispatchApi, createNewPostData, jwt});
 
-    createNewPost({dispatchAuth, dispatchApi, createNewPostData, jwt});
-    // setTile('');
+    // setTitle('');
     // setBody('');
     // setHashtag('');
     // setLocation('');
     // setPeople(false);
     // setPlanet(false);
     // setDraft(false);
+    // setCanVolunteer(false);
 
-    // navigation.navigate('AppStack', {screen: 'Home'})
+    navigation.navigate('TabStack', {screen: 'Home'});
   };
 
   if (isLoading) return <Loading />;

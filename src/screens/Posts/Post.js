@@ -6,6 +6,7 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
@@ -16,25 +17,25 @@ import AppActions from '../../components/AppActions';
 import ProfileHeaderActions from '../../components/PostHeaderActions';
 import CommendActions from '../../components/commendActions/CommendActions';
 
+const {width, height} = Dimensions.get('screen');
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   wrapper: {
     flex: 1,
     marginHorizontal: '5%',
   },
-  donateContainer: {
+  headerContainer: {
     justifyContent: 'center',
   },
   appActions: {
-    flex: 3,
+    flex: 1,
     alignItems: 'flex-start',
     justifyContent: 'center',
   },
   postContainer: {
-    flex: 2,
+    height: height / 3,
     marginVertical: '5%',
+    backgroundColor: 'pink',
   },
   getInvolvedActions: {
     marginVertical: 5,
@@ -58,9 +59,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  postWrapper: {
-    flex: 3,
-  },
   postTitle: {
     ...Fonts.N_400_16,
     color: Colors.planet,
@@ -80,6 +78,7 @@ const Post = ({navigation, route}) => {
   const isVerified = user.confirmed;
   const profileImage = user.picture[0].url;
   const username = user.username;
+  console.log(picture.url);
 
   const navStack = isVerified ? 'ProfileStack' : 'AppStack';
   const navScreen = isVerified ? 'ProProfile' : 'Profile';
@@ -87,7 +86,7 @@ const Post = ({navigation, route}) => {
   // SERVERS ---------------------------------------------------------
   const ServePostHeaderActions = () => {
     return (
-      <View style={styles.donateContainer}>
+      <View style={styles.headerContainer}>
         <ProfileHeaderActions
           navigation={navigation}
           profileDataInfo={profileDataInfo}
@@ -142,36 +141,29 @@ const Post = ({navigation, route}) => {
     const iconColor = planet ? Colors.planet : Colors.primary;
 
     return (
-      // <View style={styles.rowWrapper}>
-      //   <ScrollView showsVerticalScrollIndicator={false} horizontal={false}>
-      //     <Text style={styles.postTitle}>{body}</Text>
-      //   </ScrollView>
-      //   <View style={styles.badgeContainer}>
-      //     <View
-      //       style={{
-      //         backgroundColor: iconColor,
-      //         padding: 8.75,
-      //         borderRadius: 100,
-      //       }}>
-      //       <CustomButton
-      //         iconLeft={postTagIcon}
-      //         iconFill={Colors.white}
-      //         iconWidth={25}
-      //         iconHeight={25}
-      //         iconStyling={styles.postTagIcon}
-      //         style={{
-      //           backgroundColor: Colors.transparent,
-      //         }}
-      //         onPress={() => alert(postTagIcon)}
-      //       />
-      //     </View>
-      //   </View>
-      // </View>
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <View style={styles.msgContainer}>
-          <Text style={styles.msg}>{body}</Text>
+      <View style={styles.rowWrapper}>
+        <Text style={styles.postTitle}>{body}</Text>
+        <View style={styles.badgeContainer}>
+          <View
+            style={{
+              backgroundColor: iconColor,
+              padding: 8.75,
+              borderRadius: 100,
+            }}>
+            <CustomButton
+              iconLeft={postTagIcon}
+              iconFill={Colors.white}
+              iconWidth={25}
+              iconHeight={25}
+              iconStyling={styles.postTagIcon}
+              style={{
+                backgroundColor: Colors.transparent,
+              }}
+              onPress={() => alert(postTagIcon)}
+            />
+          </View>
         </View>
-      </ScrollView>
+      </View>
     );
   };
 
@@ -194,8 +186,10 @@ const Post = ({navigation, route}) => {
         </View>
         <View style={styles.postContainer}>
           <ServeProfileInfo />
-          <ServePostTitle />
-          <ServePost />
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <ServePostTitle />
+            <ServePost />
+          </ScrollView>
           {canVolunteer && (
             <View style={styles.getInvolvedActions}>
               <CustomButton

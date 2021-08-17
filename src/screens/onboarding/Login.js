@@ -121,10 +121,10 @@ const Login = ({navigation}) => {
 
   // HANDLERS ---------------------------------------------------------
   const handleLogIn = () => {
-    // if (!logInEmail && !logInPassword) {
-    //   alert('Please fill all the required fields!');
-    //   return;
-    // }
+    if (!logInEmail && !logInPassword) {
+      alert('Please fill all the required fields!');
+      return;
+    }
     const logInData = {
       identifier: !!logInEmail ? logInEmail : LOGIN_EMAIL,
       password: !!logInPassword ? logInPassword : LOGIN_PASSWORD,
@@ -172,6 +172,17 @@ const Login = ({navigation}) => {
           <CustomButton title="Login" onPress={handleLogIn} />
         </View>
         {allUsers && <RenderUsersList />}
+        {!allUsers && (
+          <Text
+            style={{
+              ...Fonts.N_700_16,
+              marginVertical: '20%',
+              textAlign: 'center',
+              color: Colors.primary,
+            }}>
+            Loading...
+          </Text>
+        )}
       </View>
     </ScreenWrapper>
   );

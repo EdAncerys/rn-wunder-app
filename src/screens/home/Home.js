@@ -23,12 +23,18 @@ const HomePrototype = ({navigation}) => {
   const {error, loading} = useApiState();
   const isFocused = useIsFocused();
   const {addAction, posts, jwt} = useAuthState();
+
+  const [postsData, setPostsData] = React.useState(null);
   const [addPostPopUp, setAddPostPopUp] = React.useState(null);
   const [commendAction, setCommendAction] = React.useState(null);
   const scrollY = React.useRef(new Animated.Value(0)).current;
 
   React.useEffect(() => {
     if (isFocused) getPosts({dispatchAuth, dispatchApi, jwt});
+  }, [isFocused]);
+
+  React.useEffect(() => {
+    setPostsData(posts);
   }, [posts]);
 
   React.useEffect(() => {
@@ -76,7 +82,7 @@ const HomePrototype = ({navigation}) => {
           [{nativeEvent: {contentOffset: {y: scrollY}}}],
           {useNativeDriver: true},
         )}
-        data={posts}
+        data={postsData}
         renderItem={renderFlatList}
       />
     </View>

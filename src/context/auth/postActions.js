@@ -69,7 +69,7 @@ export const getPostsAction = async ({jwt}) => {
 };
 
 export const createNewPostAction = async ({createNewPostData, jwt}) => {
-  console.log('getPostsAction triggered'); //debug
+  console.log('createNewPostAction triggered'); //debug
   const createNewPostResponse = await client.mutate({
     mutation: MUTATION_CREATE_NEW_POST,
     variables: createNewPostData,

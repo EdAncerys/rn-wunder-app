@@ -28,61 +28,65 @@ const styles = StyleSheet.create({
   },
 });
 
-// SERVERS ---------------------------------------------------------
-const ServeScrollView = ({props}) => {
-  let screen = (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      showsHorizontalScrollIndicator={false}
-      contentContainerStyle={{flexGrow: 1}}>
-      {props.children}
-    </ScrollView>
-  );
-
-  if (!props.scroll) screen = <View>{props.children}</View>;
-
-  return screen;
-};
-const ServeImgBackground = ({props}) => {
-  const background = props.image || props.url;
-  let screen = <ServeScreenView props={props} />;
-  if (background)
-    screen = (
-      <ImageBackground source={background} style={styles.backgroundImg}>
-        <ServeScreenView props={props} />
-      </ImageBackground>
+const ScreenWrapper = ({
+  image,
+  filter,
+  gradient,
+  statusBar,
+  scroll,
+  children,
+}) => {
+  // SERVERS ---------------------------------------------------------
+  const ServeScrollView = () => {
+    let screen = (
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{flexGrow: 1}}>
+        {children}
+      </ScrollView>
     );
-  return screen;
-};
-const ServeScreenView = ({props}) => {
-  const screenFilter = props.filter || Colors.transparent;
-  const gradientFilter = props.gradient || [
-    Colors.transparent,
-    Colors.transparent,
-  ];
 
-  return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      style={styles.container}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={{flex: 1, backgroundColor: screenFilter}}>
-          <LinearGradient
-            colors={gradientFilter}
-            start={{x: 0.4, y: 0.4}}
-            style={styles.container}>
-            {!props.statusBar && <StatusBar hidden />}
-            <SafeAreaView style={styles.wrapper}>{props.children}</SafeAreaView>
-          </LinearGradient>
-        </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
-  );
-};
+    if (!scroll) screen = <View>{children}</View>;
 
-// RETURN ---------------------------------------------------------
-const ScreenWrapper = props => {
-  return <ServeImgBackground props={props} />;
+    return screen;
+  };
+
+  const ServeImgBackground = () => {
+    let screen = <ServeScreenView />;
+    if (image)
+      screen = (
+        <ImageBackground source={image} style={styles.backgroundImg}>
+          <ServeScreenView />
+        </ImageBackground>
+      );
+    return screen;
+  };
+  const ServeScreenView = () => {
+    const screenFilter = filter || Colors.transparent;
+    const gradientFilter = gradient || [Colors.transparent, Colors.transparent];
+
+    return (
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={styles.container}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={{flex: 1, backgroundColor: screenFilter}}>
+            <LinearGradient
+              colors={gradientFilter}
+              start={{x: 0.4, y: 0.4}}
+              style={styles.container}>
+              {!statusBar && <StatusBar hidden />}
+              <SafeAreaView style={styles.wrapper}>{children}</SafeAreaView>
+            </LinearGradient>
+          </View>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
+    );
+  };
+
+  // RETURN ---------------------------------------------------------
+  return <ServeImgBackground />;
 };
 
 export default ScreenWrapper;
