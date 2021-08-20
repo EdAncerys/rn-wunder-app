@@ -84,7 +84,7 @@ const HomePrototype = ({navigation}) => {
           {useNativeDriver: true},
         )}
         extraData={isFocused} // re-renders upon new Data
-        data={Object.values(posts)}
+        data={posts ? Object.values(posts) : false}
         renderItem={renderFlatList}
       />
     </View>

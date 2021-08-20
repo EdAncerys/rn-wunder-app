@@ -5,7 +5,7 @@ export const ADD_FILE = gql`
     upload(file: $file) {
       id
       name
-      createdAt
+      created_at
     }
   }
 `;

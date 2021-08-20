@@ -187,8 +187,8 @@ const SharePost = ({navigation, route}) => {
   const userID = user.id;
 
   const [isLoading, setIsLoading] = React.useState(false);
-  const [title, setTitle] = React.useState('');
-  const [body, setBody] = React.useState('');
+  const [title, setTitle] = React.useState('Hello new post title');
+  const [body, setBody] = React.useState('Hello new post body with img');
   const [hashtag, setHashtag] = React.useState('');
   const [tagPeople, setTagPeople] = React.useState('');
   const [location, setLocation] = React.useState('London');
@@ -329,14 +329,14 @@ const SharePost = ({navigation, route}) => {
     };
     createNewPost({dispatchAuth, dispatchApi, createNewPostData, jwt});
 
-    setTitle('');
-    setBody('');
-    setHashtag('');
-    setLocation('');
-    setPeople(false);
-    setPlanet(false);
-    setDraft(false);
-    setCanVolunteer(false);
+    // setTitle('');
+    // setBody('');
+    // setHashtag('');
+    // setLocation('');
+    // setPeople(false);
+    // setPlanet(false);
+    // setDraft(false);
+    // setCanVolunteer(false);
 
     navigation.navigate('TabStack', {screen: 'Home'});
   };
@@ -369,7 +369,7 @@ const SharePost = ({navigation, route}) => {
         <View style={styles.content}>
           <ServeAboutPostSection
             uri={uri}
-            title={title}
+            // title={title}
             setTitle={setTitle}
             body={body}
             setBody={setBody}
