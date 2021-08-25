@@ -32,12 +32,12 @@ const SplashScreen = ({navigation}) => {
         <Image source={Logo} />
       </View>
       <View style={styles.actionsContainer}>
+        <Text style={{color: Colors.white}}>Release date: 25.08.2021</Text>
         <CustomButton
           onPress={() => navigation.navigate('Visual')}
           title="Tap to Start"
           style={{backgroundColor: Colors.transparent}}
         />
-        <Text style={{color: Colors.white}}>25.08.2021</Text>
       </View>
     </ScreenWrapper>
   );
