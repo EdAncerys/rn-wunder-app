@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {View, StyleSheet, Image} from 'react-native';
+import {Text, View, StyleSheet, Image} from 'react-native';
 
 import ScreenWrapper from '../../components/ScreenWrapper';
 import Colors from '../../config/colors';
@@ -37,6 +37,7 @@ const SplashScreen = ({navigation}) => {
           title="Tap to Start"
           style={{backgroundColor: Colors.transparent}}
         />
+        <Text style={{color: Colors.white}}>25.08.2021</Text>
       </View>
     </ScreenWrapper>
   );
